@@ -30,6 +30,7 @@ import java.util.UUID;
 @Controller
 public class RegisterController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
     private UserService userService;
     private EmailService emailService;
     private RoleRepository roleRepository;

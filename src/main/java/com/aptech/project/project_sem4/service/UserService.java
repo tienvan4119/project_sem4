@@ -38,7 +38,7 @@ public class UserService implements UserDetailsService {
         return userRepository.findByEmail(email);
     }
     public void saveUser(User user) {
-        Role userRole = roleRepository.findByRole("ADMIN");
+        Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(user);
 

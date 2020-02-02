@@ -19,7 +19,7 @@
     <link th:href="@{css/style.css}" rel="stylesheet" />
 </head>
 <body class="gray-bg">
-<div class="middle-box text-center loginscreen animated fadeInDown">
+<div class="middle-box text-center loginscreen animated fadeInDown" layout:fragment="content">
     <form th:action="@{/login}" method="post">
         <h3>USER LOGIN</h3>
         <div th:if="${param.error}">
@@ -35,7 +35,7 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
     <form class="middle-box text-center loginscreen animated fadeInDown" th:action="@{/register}" method="get">
-        <button style="margin-top: 15px" class="btn btn-md btn-success btn-block" type="Submit">Signup Here</button>
+        <button class="btn btn-md btn-success btn-block" type="Submit">Signup Here</button>
     </form>
 </div>
 </body>
