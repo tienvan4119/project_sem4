@@ -43,7 +43,7 @@ protected void configure(HttpSecurity http)  throws Exception{
             .antMatchers("/login").permitAll()
             .antMatchers("/register").permitAll()
             .antMatchers("/confirm").permitAll()
-            .antMatchers("/dashboard/**").hasAuthority("ADMIN").anyRequest()
+            .antMatchers("/index/**").hasAuthority("ADMIN").anyRequest()
             .authenticated().and().csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler)
             .loginPage("/login").failureUrl("/login?error=true")
             .usernameParameter("email")

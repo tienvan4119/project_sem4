@@ -165,6 +165,14 @@ public class RegisterController {
         modelAndView.setViewName("home");
         return modelAndView;
     }
+    @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
+    public ModelAndView userView()
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+        return modelAndView;
+    }
+
 
 }
 
