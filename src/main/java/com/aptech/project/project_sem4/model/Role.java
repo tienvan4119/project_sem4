@@ -14,16 +14,21 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToMany;
+import java.io.Serializable;
+import java.util.Objects;
+import java.util.Set;
 
 
 @Document(collection = "role")
-public class Role {
+public class Role  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     ObjectId id;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
     private String role;
+
 
     public ObjectId getId() {
         return id;

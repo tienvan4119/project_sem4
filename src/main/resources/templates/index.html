@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-layout-decorate="~{fragments/layout}" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" data-layout-decorate="~{fragments/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5">>
 <head>
 
-    <title>Gentelella Alela! | </title>
+    <title>home </title>
 
 
 </head>
@@ -54,10 +55,25 @@
                             <div class="x_content">
                                 Add content to the page ...
                             </div>
+                            <div>
+                                <table>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>email</th>
+                                        <th>Name</th>
+                                    </tr>
+                                    <tr th:each="user : ${listUser}" >
+                                        <td><span sec:authentication="principal.authorities"></span></td>
+                                        <td><p th:text="${user.email}"></p></td>
+                                        <td><p th:text="${user.lastName} +  ' ' + ${user.firstName}"></p></td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <!-- /page content -->
 

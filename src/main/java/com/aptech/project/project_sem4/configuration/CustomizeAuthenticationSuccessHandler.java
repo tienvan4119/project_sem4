@@ -30,6 +30,9 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
             if ("ADMIN".equals(auth.getAuthority())) {
                 response.sendRedirect("/index");
             }
+            else if ("USER".equals(auth.getAuthority())){
+                response.sendRedirect("/section");
+            }
            /* if("USER".equals(auth.getAuthority())){
                 response.sendRedirect("/index");
             }*/

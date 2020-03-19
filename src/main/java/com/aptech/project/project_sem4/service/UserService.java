@@ -1,8 +1,12 @@
 package com.aptech.project.project_sem4.service;
 
 import com.aptech.project.project_sem4.model.Role;
+import com.aptech.project.project_sem4.model.Section;
+import com.aptech.project.project_sem4.model.Topic;
 import com.aptech.project.project_sem4.model.User;
 import com.aptech.project.project_sem4.repository.RoleRepository;
+import com.aptech.project.project_sem4.repository.SectionRepository;
+import com.aptech.project.project_sem4.repository.TopicRepository;
 import com.aptech.project.project_sem4.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +30,8 @@ public class UserService implements UserDetailsService {
     private RoleRepository roleRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private SectionRepository sectionRepository;
 
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
@@ -41,7 +47,6 @@ public class UserService implements UserDetailsService {
         Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(user);
-
     }
 
     @Override
@@ -69,4 +74,17 @@ public class UserService implements UserDetailsService {
     private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
+    public List<User> listAll()
+    {
+        return userRepository.findAll();
+    }
+    public List<Role> listAllRole()
+    {
+        return roleRepository.findAll();
+    }
+    public List<Section> listAllSection()
+    {
+        return sectionRepository.findAll();
+    }
+
 }

@@ -9,8 +9,9 @@ package com.aptech.project.project_sem4.repository;
 import com.aptech.project.project_sem4.model.Role;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-
-public interface RoleRepository extends CrudRepository<Role, String> {
+@Repository
+public interface RoleRepository extends MongoRepository<Role, String> {
     Role findByRole(String role);
 }

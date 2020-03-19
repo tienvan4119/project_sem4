@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 @Document(collection = "User")
-public class User {
+public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,6 +42,8 @@ public class User {
 
     @Field(name = "confirmation_token")
     String confirmationToken;
+
+    @Field(name = "")
 
     @DBRef
     private Set<Role> roles;

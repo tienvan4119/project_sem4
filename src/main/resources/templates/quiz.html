@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Topic</th>
+            <th>ID</th>
+        </tr>
+        <tr th:each="topic : ${listTopic}" >
+            <td>
+                <a>
+                    <a th:text="${topic.title}"></a>
+                </a>
+            </td>
+            <td>
+                <p th:text="${topic.id}"></p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

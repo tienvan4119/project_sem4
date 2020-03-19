@@ -3,6 +3,7 @@ package com.aptech.project.project_sem4.controller;
 import com.aptech.project.project_sem4.model.Role;
 import com.aptech.project.project_sem4.model.User;
 import com.aptech.project.project_sem4.repository.RoleRepository;
+import com.aptech.project.project_sem4.repository.UserRepository;
 import com.aptech.project.project_sem4.service.EmailService;
 import com.aptech.project.project_sem4.service.UserService;
 import com.nulabinc.zxcvbn.Strength;
@@ -13,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,10 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class RegisterController {
@@ -34,7 +33,7 @@ public class RegisterController {
     private UserService userService;
     private EmailService emailService;
     private RoleRepository roleRepository;
-
+    private UserRepository userRepository;
 
     @Autowired
     public RegisterController(BCryptPasswordEncoder bCryptPasswordEncoder, UserService userService, EmailService emailService) {
@@ -43,7 +42,7 @@ public class RegisterController {
         this.emailService = emailService;
 
     }
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login( ModelAndView modelAndView, User user) {
         modelAndView.addObject("user", user);
         modelAndView.setViewName("login");
@@ -113,7 +112,6 @@ public class RegisterController {
     @RequestMapping(value = "/confirm", method = RequestMethod.POST)
     public ModelAndView confirmRegistration(ModelAndView modelAndView, BindingResult bindingResult, @RequestParam Map<String, String> requestParams, RedirectAttributes redir, User user) {
 
-
         Zxcvbn passwordCheck = new Zxcvbn();
 
         Strength strength = passwordCheck.measure(requestParams.get("password"));
@@ -165,14 +163,16 @@ public class RegisterController {
         modelAndView.setViewName("home");
         return modelAndView;
     }
-    @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
-    public ModelAndView userView()
+    @RequestMapping(value = {"/index"})
+    public String userView(Model model)
     {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
-        return modelAndView;
-    }
+        List <User> listUser = userService.listAll();
+        List <Role> listRole = userService.listAllRole();
 
+        model.addAttribute("listUser", listUser);
+        model.addAttribute("userRole", listRole);
+        return "index";
+    }
 
 }
 
