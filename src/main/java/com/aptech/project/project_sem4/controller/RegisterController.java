@@ -173,6 +173,5 @@ public class RegisterController {
         model.addAttribute("userRole", listRole);
         return "index";
     }
-
 }
 
