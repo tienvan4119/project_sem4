@@ -28,8 +28,7 @@ public class QuizService {
     {
         return topicRepository.findTopicsBySectionId(section_id);
     }
-    public List<String> listRandomQuestion(String section_id)
-    {
+
 //        MongoClient mongoClient = new MongoClient("localhost", 27017);
 //        MongoDatabase database = mongoClient.getDatabase("multipleChoice_Project");
 //        MongoCollection<Document> collection = database.getCollection("question");
@@ -39,5 +38,5 @@ public class QuizService {
 //            lst.add(d.getString("_id"));
 //        }
 //        return  lst;
-    }
+
 }
