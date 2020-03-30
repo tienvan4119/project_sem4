@@ -3,6 +3,7 @@ package com.aptech.project.project_sem4.controller;
 import com.aptech.project.project_sem4.model.*;
 import com.aptech.project.project_sem4.service.QuizService;
 import com.aptech.project.project_sem4.service.UserService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Controller
 public class UserController {
@@ -48,21 +48,23 @@ public class UserController {
             Question a = getRandomList(listQuestion);
             newListQuestion.add(a);
             listQuestion.remove(a);
-
         }
-
         model.addAttribute("listQuestion", newListQuestion);
+        List<String> listQuestion_id = new ArrayList<String>();
+        List<Choice> listChoice = new ArrayList<Choice>();
+        for(int i = 0; i< 10;i++)
+        {
+            String question_id = newListQuestion.get(i).getId();
+            listChoice.addAll(quizService.listChoiceByQuestion_id(question_id));
+            System.out.println(question_id);
+        }
         return "quiz";
     }
 
-
     public Question getRandomList(List<Question> list) {
-
         //0-4
         int index = random.nextInt(list.size());
         System.out.println("\nIndex :" + index );
         return list.get(index);
     }
-
-
 }

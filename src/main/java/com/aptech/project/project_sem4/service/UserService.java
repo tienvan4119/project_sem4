@@ -86,5 +86,4 @@ public class UserService implements UserDetailsService {
     {
         return sectionRepository.findAll();
     }
-
 }
