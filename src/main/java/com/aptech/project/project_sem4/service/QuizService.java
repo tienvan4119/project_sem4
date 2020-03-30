@@ -1,6 +1,9 @@
 package com.aptech.project.project_sem4.service;
 
+import com.aptech.project.project_sem4.model.Question;
+import com.aptech.project.project_sem4.model.Section;
 import com.aptech.project.project_sem4.model.Topic;
+import com.aptech.project.project_sem4.repository.QuestionRepository;
 import com.aptech.project.project_sem4.repository.TopicRepository;
 import com.mongodb.MongoClient;
 import com.mongodb.client.AggregateIterable;
@@ -23,20 +26,16 @@ public class QuizService {
     private TopicRepository topicRepository;
     @Autowired
     MongoTemplate mongoTemplate = null;
+    @Autowired
+    private QuestionRepository questionRepository;
 
     public List<Topic> listAllTopicBySection_id(String section_id)
     {
         return topicRepository.findTopicsBySectionId(section_id);
     }
-
-//        MongoClient mongoClient = new MongoClient("localhost", 27017);
-//        MongoDatabase database = mongoClient.getDatabase("multipleChoice_Project");
-//        MongoCollection<Document> collection = database.getCollection("question");
-//        AggregateIterable<Document> documents = collection.aggregate(Arrays.asList(Aggregates.sample(3)));
-//        List<String> lst = new LinkedList<>();
-//        for(Document d: documents) {
-//            lst.add(d.getString("_id"));
-//        }
-//        return  lst;
+    public List<Question> listAllQuestion()
+    {
+        return questionRepository.findAll();
+    }
 
 }

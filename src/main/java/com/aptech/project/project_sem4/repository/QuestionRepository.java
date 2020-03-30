@@ -11,6 +11,5 @@ import java.util.List;
 
 @Repository
 public interface QuestionRepository  extends MongoRepository<Question, Long> {
-    @Query("{$sample: {size: 3} }")
-    public List<Question> findQuestionByTopicId(String topic_id);
+
 }

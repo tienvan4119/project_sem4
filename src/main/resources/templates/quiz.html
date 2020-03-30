@@ -11,14 +11,14 @@
             <th>Topic</th>
             <th>ID</th>
         </tr>
-        <tr th:each="topic : ${listTopic}" >
+        <tr th:each="question : ${listQuestion}" >
             <td>
                 <a>
-                    <a th:text="${topic.title}"></a>
+                    <a th:text="${question.question_desc}"></a>
                 </a>
             </td>
             <td>
-                <p th:text="${topic.id}"></p>
+                <p th:text="${question.id}"></p>
             </td>
         </tr>
     </table>

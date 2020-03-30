@@ -1,5 +1,4 @@
 package com.aptech.project.project_sem4.configuration;
-
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -66,4 +65,6 @@ public class MvcConfig implements WebMvcConfigurer {
 						"classpath:/static/css/",
 						"classpath:/static/js/");
 	}
+
+
 }
