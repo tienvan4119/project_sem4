@@ -11,14 +11,14 @@ import javax.persistence.GenerationType;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    String id;
+    ObjectId id;
     String question_desc;
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

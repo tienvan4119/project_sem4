@@ -1,26 +1,49 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5">
+      xmlns:sec="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5 ">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Topic</th>
-            <th>ID</th>
-        </tr>
-        <tr th:each="question : ${listQuestion}" >
-            <td>
-                <a>
-                    <a th:text="${question.question_desc}"></a>
-                </a>
-            </td>
-            <td>
-                <p th:text="${question.id}"></p>
-            </td>
-        </tr>
-    </table>
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>Topic</th>-->
+<!--            <th>ID</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="question : ${listQuestion}" >-->
+<!--            <td>-->
+<!--                <a>-->
+<!--                    <a th:text="${question.question_desc}"></a>-->
+<!--                </a>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <p th:text="${question.id}"></p>-->
+<!--            </td>-->t
+<!--        </tr>-->
+<!--    </table>-->
+<div class="container">
+    <form th:action="@{/checkMark}">
+        <div class="card" th:each="question, state : ${listQuestion}">
+            <div>
+                <h2 th:utext="Question + ${state.count}"></h2>
+                <img th:src="@{${'/images/image_question/' + question.question_desc }}" width="40%" height="40%"/>
+                <div class="radio" th:each="choice :${listChoice}" th:if="${question.id.equals(choice.question_id)}">
+                    <label>
+                    <input  th:value="${.id}" type="radio" name="optradio" checked th:text="${choice.choice_desc}">
+                    </label>
+                    <br>
+                    <br>
+                </div>
+                <br>t
+            </div>
+        </div>
+        <button style="text-align: center; margin-left: 100px; margin-top: 10px" name="section_id"
+                 class="btn btn-primary">Test Now>
+        </button>
+    </form>
+</div>
 </body>
 </html>

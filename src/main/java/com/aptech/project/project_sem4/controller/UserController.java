@@ -54,10 +54,11 @@ public class UserController {
         List<Choice> listChoice = new ArrayList<Choice>();
         for(int i = 0; i< 10;i++)
         {
-            String question_id = newListQuestion.get(i).getId();
+            String question_id = newListQuestion.get(i).getId().toString();
             listChoice.addAll(quizService.listChoiceByQuestion_id(question_id));
             System.out.println(question_id);
         }
+        model.addAttribute("listChoice", listChoice);
         return "quiz";
     }
 
