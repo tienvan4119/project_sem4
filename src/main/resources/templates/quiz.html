@@ -21,7 +21,7 @@
 <!--            </td>-->
 <!--            <td>-->
 <!--                <p th:text="${question.id}"></p>-->
-<!--            </td>-->t
+<!--            </td>-->
 <!--        </tr>-->
 <!--    </table>-->
 <div class="container">
@@ -32,16 +32,16 @@
                 <img th:src="@{${'/images/image_question/' + question.question_desc }}" width="40%" height="40%"/>
                 <div class="radio" th:each="choice :${listChoice}" th:if="${question.id.equals(choice.question_id)}">
                     <label>
-                    <input  th:value="${.id}" type="radio" name="optradio" checked th:text="${choice.choice_desc}">
+                    <input  th:value="${choice.id}" type="radio" th:name="${question.id}"  th:text="${choice.choice_desc}">
                     </label>
                     <br>
                     <br>
                 </div>
-                <br>t
+                <br>
             </div>
         </div>
         <button style="text-align: center; margin-left: 100px; margin-top: 10px" name="section_id"
-                 class="btn btn-primary">Test Now>
+                 class="btn btn-primary">Test Now
         </button>
     </form>
 </div>
