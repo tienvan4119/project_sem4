@@ -36,4 +36,8 @@ public class QuizService {
     {
        return choiceRepository.findChoiceByQuestionId(question_id);
     }
+    public List<Question> listQuestionByTopic(String topic_id)
+    {
+        return questionRepository.findQuestionByTopicId(topic_id);
+    }
 }

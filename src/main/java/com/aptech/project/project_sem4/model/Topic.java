@@ -11,11 +11,11 @@ import javax.persistence.GenerationType;
 @ToString(excludes = {"id", "sectionId"})
 @Document(collection = "topic")
 public class Topic {
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -27,18 +27,17 @@ public class Topic {
         this.title = title;
     }
 
-    public String getSectionId() {
-        return sectionId;
+    public ObjectId getSectionId() {
+        return section_id;
     }
 
-    public void setSectionId(String sectionId) {
-        this.sectionId = sectionId;
+    public void setSectionId(ObjectId sectionId) {
+        this.section_id = sectionId;
     }
 
     @Id
-    String id;
+    ObjectId id;
     String title;
-    String sectionId;
-
+    ObjectId section_id;
 
 }

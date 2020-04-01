@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
@@ -29,7 +30,6 @@ public class UserController {
         List <Section> listSection = userService.listAllSection();
         model.addAttribute("listUser", listUser);
         model.addAttribute("listSection", listSection);
-
         return "section";
     }
     @RequestMapping(value = {"/createQuiz"})
@@ -42,12 +42,21 @@ public class UserController {
        // model.addAttribute("listTopic", listTopic);
         System.out.println(section_id[1]);
         List<Question> listQuestion = quizService.listAllQuestion();
+        List<Question> listQuestionyByTopic = new ArrayList<Question>();
+
         UserController obj = new UserController();
         List<Question> newListQuestion = new ArrayList<Question>();
+
+
+        for(int i = 0; i< listTopic.size();i++)
+        {
+            listQuestionyByTopic.addAll(quizService.listQuestionByTopic(listTopic.get(i).getId().toString()));
+        }
+
         for(int i = 0; i < 10; i++){
-            Question a = getRandomList(listQuestion);
+            Question a = getRandomList(listQuestionyByTopic);
             newListQuestion.add(a);
-            listQuestion.remove(a);
+            listQuestionyByTopic.remove(a);
         }
         model.addAttribute("listQuestion", newListQuestion);
         List<String> listQuestion_id = new ArrayList<String>();

@@ -30,13 +30,13 @@ public class Question {
         this.question_desc = question_desc;
     }
 
-    public String getTopic_id() {
-        return topicId;
+    public ObjectId getTopic_id() {
+        return topic_id;
     }
 
-    public void setTopic_id(String topic_id) {
-        this.topicId = topic_id;
+    public void setTopic_id(ObjectId topic_id) {
+        this.topic_id = topic_id;
     }
 
-    String topicId;
+    ObjectId topic_id;
 }
