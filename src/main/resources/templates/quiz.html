@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5 ">
+      xsi:schemaLocation="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5 "
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -29,11 +30,14 @@
         <div class="card" th:each="question, state : ${listQuestion}">
             <div>
                 <h2 th:utext="Question + ${state.count}"></h2>
-                <img th:src="@{${'/images/image_question/' + question.question_desc }}" width="40%" height="40%"/>
+                <div th:remove="tag" th:utext="${question.question_desc}"></div>
+
+<!--                <img th:src="@{${'/images/image_question/' + question.question_desc }}" width="40%" height="40%"/>-->
                 <div class="radio" th:each="choice :${listChoice}" th:if="${question.id.equals(choice.question_id)}">
                     <label>
                     <input  th:value="${choice.id}" type="radio" th:name="${question.id}"  th:text="${choice.choice_desc}">
                     </label>
+
                     <br>
                     <br>
                 </div>
