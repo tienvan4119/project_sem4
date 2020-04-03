@@ -36,8 +36,6 @@
         <form autocomplete="off" action="#" th:action="@{/register}"
               th:object="${user}" method="post" class="m-t" role="form"
               data-toggle="validator">
-
-
             <div th:if="${confirmationMessage}" class="alert alert-success"
                  role="alert" th:text="${confirmationMessage}"></div>
 
@@ -97,8 +95,6 @@
                       aria-hidden="true"></span>
 
             </div>
-
-
             <button type="submit"
                     class="btn btn-primary block full-width m-b">Register</button>
 
