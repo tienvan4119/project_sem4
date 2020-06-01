@@ -43,6 +43,7 @@ public class AdminController {
     public String DeleteUser(HttpServletRequest request)
     {
         String user_id = request.getParameter("user_id");
-        return "abc";
+        userService.Delete_User(user_id);
+        return "Xong";
     }
 }

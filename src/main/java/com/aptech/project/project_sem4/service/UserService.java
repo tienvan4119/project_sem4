@@ -90,5 +90,8 @@ private ResultRepository resultRepository;
     {
         return userRepository.save(user);
     }
-
+    public void Delete_User(String user_id)
+    {
+        userRepository.delete(userRepository.findUserById(user_id));
+    }
 }

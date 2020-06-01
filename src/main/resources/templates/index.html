@@ -121,19 +121,23 @@
 
             $('.delete').on('click', e => {
                 $('#deleteModal').modal('show');
-                console.log($(e.target).context.id)
                 var user_id = $(e.target).context.id;
+                $('#save_delete').on('click', function() {
+                    console.log("in here")
+                    console.log(user_id)
+                    $.ajax({type: "POST",url: "/api/admin/DeleteUser",dataType : 'json',
+                        data : {
+                            user_id : user_id
+                        }, success: function(result){
+                            $('#deleteModal').modal('hide');
+                        }})
+                        .done(function( data ) {
+                            console.log("Yeah")
+                        });
+                    $('#deleteModal').modal('hide');
 
-                $.ajax({type: "POST",url: "/api/admin/DeleteUser",dataType : 'json',
-                    data : {
-                        user_id : user_id
-                    }, success: function(result){
-
-                    }})
-                    .done(function( data ) {
-
-
-                    });
+                    $(e.target)[0].parentNode.closest("tr").remove()
+                })
             })
 
             $('#saveChanges').on('click', e => {
@@ -157,6 +161,8 @@
                         // $('#datatable .userEmail').val(data.userEmail)
                     });
             });
+
+
 
             $('[data-toggle="tooltip"]').tooltip();
 
@@ -230,7 +236,7 @@
                                         <td>
                                             <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
                                             <a class="edit"  title="Edit" th:id="${user.id}" ><i th:id="${user.id}" class="material-icons">&#xE254;</i></a>
-                                            <a class="delete" title="Delete" data-toggle="tooltip"><i th:id="${user.id}" class="material-icons">&#xE872;</i></a>
+                                            <a th:id="${user.id}" class="delete" title="Delete" data-toggle="tooltip"><i th:id="${user.id}" class="material-icons">&#xE872;</i></a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -254,8 +260,8 @@
                                                 <p>Do you want to delete this person ? </p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary">Yes, delete this one</button>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button id="save_delete" type="button" class="btn btn-primary">Yes, delete this one</button>
+                                                <button type="button" class="btn btn-secondary save_delete" data-dismiss="modal">Close</button>
                                             </div>
                                         </div>
                                     </div>
