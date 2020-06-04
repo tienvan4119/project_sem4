@@ -1,5 +1,6 @@
 package com.aptech.project.project_sem4.controller;
 
+import com.aptech.project.project_sem4.model.Question;
 import com.aptech.project.project_sem4.model.Role;
 import com.aptech.project.project_sem4.model.User;
 import com.aptech.project.project_sem4.repository.RoleRepository;
@@ -164,14 +165,45 @@ public class RegisterController {
         return modelAndView;
     }
     @RequestMapping(value = {"/index"})
-    public String userView(Model model)
+    public String UserView(Model model)
     {
-        List <User> listUser = userService.listAll();
+        List <User> list_AllUser = userService.listAll();
         List <Role> listRole = userService.listAllRole();
-
+        List<User> listUser = new ArrayList<User>();
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("ADMIN"))
+            {
+                listUser.add(list_AllUser.get(i));
+            }
+        }
         model.addAttribute("listUser", listUser);
         model.addAttribute("userRole", listRole);
         return "index";
+    }
+
+    @RequestMapping(value = {"/index2"})
+    public String listUser(Model model)
+    {
+        List <User> list_AllUser = userService.listAll();
+        List <Role> listRole = userService.listAllRole();
+        List<User> listUser = new ArrayList<User>();
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("USER"))
+            {
+                listUser.add(list_AllUser.get(i));
+            }
+        }
+        model.addAttribute("listUser", listUser);
+        model.addAttribute("userRole", listRole);
+        return "index2";
     }
 }
 

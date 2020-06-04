@@ -25,6 +25,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		registry.addViewController("/login").setViewName("login");
 		registry.addViewController("/register").setViewName("register");
 		registry.addViewController("/index").setViewName("index");
+		registry.addViewController("/index2").setViewName("index2");
 	}
 	@Bean
 	public TemplateEngine template_Engine() {
