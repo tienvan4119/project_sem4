@@ -14,4 +14,6 @@ public interface TopicRepository extends MongoRepository<Topic, String> {
     public List<Topic> findTopicsBySectionId(String section_id);
     @Query("{_id : ObjectId(\"?0\")}")
     public Topic findSectionByTopicId(String topic_id);
+    @Query("{title : \"?0\", section_id : ObjectId(\"?1\")}")
+    public Topic findTopicByTitleAndSectionId(String title, String section_id);
 }

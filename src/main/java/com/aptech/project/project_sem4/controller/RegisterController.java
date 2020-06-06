@@ -2,9 +2,12 @@ package com.aptech.project.project_sem4.controller;
 
 import com.aptech.project.project_sem4.model.Question;
 import com.aptech.project.project_sem4.model.Role;
+import com.aptech.project.project_sem4.model.Section;
 import com.aptech.project.project_sem4.model.User;
 import com.aptech.project.project_sem4.repository.RoleRepository;
+import com.aptech.project.project_sem4.repository.SectionRepository;
 import com.aptech.project.project_sem4.repository.UserRepository;
+import com.aptech.project.project_sem4.service.AdminService;
 import com.aptech.project.project_sem4.service.EmailService;
 import com.aptech.project.project_sem4.service.UserService;
 import com.nulabinc.zxcvbn.Strength;
@@ -35,7 +38,8 @@ public class RegisterController {
     private EmailService emailService;
     private RoleRepository roleRepository;
     private UserRepository userRepository;
-
+    @Autowired
+    private AdminService adminService;
     @Autowired
     public RegisterController(BCryptPasswordEncoder bCryptPasswordEncoder, UserService userService, EmailService emailService) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -205,5 +209,21 @@ public class RegisterController {
         model.addAttribute("userRole", listRole);
         return "index2";
     }
+    @RequestMapping(value = {"/form"})
+    public String addQuestion(Model model)
+    {
+        List<Section> listSection = adminService.getAllSection();
+        model.addAttribute("listSection", listSection);
+
+        return "form";
+    }
+
+    @RequestMapping(value = {"/form2"})
+    public String updateQuestion(Model model)
+    {
+
+        return "form2";
+    }
+
 }
 

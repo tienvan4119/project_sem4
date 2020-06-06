@@ -16,4 +16,7 @@ public interface ChoiceRepository extends MongoRepository<Choice, Long> {
 
     @Query("{ _id : ObjectId(\"?0\" )}")
     public Choice findChoiceById(String choice_id);
+
+    @Query("{ choice_desc : \"?0\" }")
+    public Choice findChoiceByChoice_desc(String choice_desc);
 }

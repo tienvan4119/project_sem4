@@ -35,12 +35,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-protected void configure(HttpSecurity http)  throws Exception{
+    protected void configure(HttpSecurity http)  throws Exception{
     http
             .authorizeRequests()
             .antMatchers("/","/login").permitAll()
             .antMatchers("/register").permitAll()
             .antMatchers("/confirm").permitAll()
+            .antMatchers("/form/**").hasAuthority("ADMIN")
             .antMatchers("/index/**").hasAuthority("ADMIN").anyRequest()
             .authenticated().and().csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler)
             .loginPage("/login").failureUrl("/login?error=true")

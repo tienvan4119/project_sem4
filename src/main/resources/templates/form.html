@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{fragments/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5">>
+<head>
+
+    <title>home </title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
+    <style type="text/css">
+        body {
+            color: #404E67;
+            background: #F5F7FA;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .table-wrapper {
+            width: 700px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+        }
+        .table-title h2 {
+            margin: 6px 0 0;
+            font-size: 22px;
+        }
+        .table-title .add-new {
+            float: right;
+            height: 30px;
+            font-weight: bold;
+            font-size: 12px;
+            text-shadow: none;
+            min-width: 100px;
+            border-radius: 50px;
+            line-height: 13px;
+        }
+        .table-title .add-new i {
+            margin-right: 4px;
+        }
+        table.table {
+            table-layout: fixed;
+        }
+        table.table tr th, table.table tr td {
+            border-color: #e9e9e9;
+        }
+        table.table th i {
+            font-size: 13px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        table.table th:last-child {
+            width: 100px;
+        }
+        table.table td a {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 5px;
+            min-width: 24px;
+        }
+        table.table td a.add {
+            color: #27C46B;
+        }
+        table.table td a.edit {
+            color: #FFC107;
+        }
+        table.table td a.delete {
+            color: #E34724;
+        }
+        table.table td i {
+            font-size: 19px;
+        }
+        table.table td a.add i {
+            font-size: 24px;
+            margin-right: -1px;
+            position: relative;
+            top: 3px;
+        }
+        table.table .form-control {
+            height: 32px;
+            line-height: 32px;
+            box-shadow: none;
+            border-radius: 2px;
+        }
+        table.table .form-control.error {
+            border-color: #f50000;
+        }
+        table.table td .add {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#add').on('click', e => {
+                var question_desc =  $('textarea[name="editor1"]').val()
+                var choice1 = $('#Choice1').val()
+                var choice2 = $('#Choice2').val()
+                var choice3 = $('#Choice3').val()
+                var choice4 = $('#Choice4').val()
+                var answer = $('input[name="optradio"]:checked').prev().val();
+                var section_id = $('#listSection option:selected').val();
+                var topic_title = $('#listTopic option:selected').val();
+                console.log(question_desc + '  ' +  choice1 + '  ' + choice2 + '    ' + choice3 + '    ' +choice4 + '    ' + answer + '      ' + section_id + '    '  + topic_title )
+
+                $.ajax({type: "POST", url: "/api/admin/addQuestion", dataType: 'json',
+                    data : {
+                        question_desc : question_desc,
+                        choice1 : choice1,
+                        choice2 : choice2,
+                        choice3 : choice3,
+                        choice4 : choice4,
+                        answer : answer,
+                        section_id : section_id,
+                        topic_title : topic_title
+                    },success: function(result){
+
+                    }})
+                    .done(function (data) {
+
+                    })
+
+            })
+
+            $('#listSection').on('change', e => {
+                var section_id_value =  $('#listSection option:selected').val();
+                console.log(section_id_value)
+                $.ajax({type: "POST", url: "/api/admin/getTopic", dataType: 'json',
+                    data : {
+                        section_id : section_id_value
+                    }, success: function(result){
+                        console.log(result)
+                        $('#listTopic').find('option').remove();
+                        var i;
+
+                        for (i = 0; i < result.length; i++) {
+                            data = result[i].title
+                            console.log(data)
+                            $('#listTopic').append("<option value= "+data+" >" + data + "</option>");
+                            var x = document.getElementById("mySelect")
+                        }
+
+                    }})
+                    .done(function (data) {
+
+                    })
+            })
+        })
+    </script>
+
+</head>
+
+<body>
+        <!-- page content -->
+        <div class="right_col" role="main" data-layout-fragment="content">
+            <div class="">
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12  ">
+                        <div class="x_panel">
+
+                            <div class="x_title">
+                                <h2>Add Question Page</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                            <a class="dropdown-item" href="#">Settings 2</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <form name="ckeditor" th:action="@{/api/admin/addQuestion}">
+                                <h2>Question</h2>
+                                <select class="custom-select" id="listSection">
+                                    <option selected>Choose...</option>
+                                    <option th:each="section :${listSection}" th:value="${section.id}" th:text="${section.title}"/>
+                                </select>
+                                <select class="custom-select" id="listTopic">
+                                    <option selected>Choose...</option>
+
+                                </select>
+                                <br>
+                                <textarea name="editor1" id="editor1" rows="12" cols="350" style="width: 550px">
+                                </textarea>
+                                <script>
+                                    // Replace the <textarea id="editor1"> with a CKEditor
+                                    // instance, using default configuration.
+                                    CKEDITOR.replace( 'editor1' );
+                                </script>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput">First Choice</label>
+                                    <input type="text" class="form-control" id="Choice1" placeholder="First choice">
+                                    <input type="radio" class="form-check-input" name="optradio" value="1">This is the right Choice
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput2">Second Choice</label>
+                                    <input type="text" class="form-control" id="Choice2" placeholder="Second Choice">
+                                    <input type="radio" class="form-check-input" name="optradio" value="2">This is the right Choice
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput2">Third Choice</label>
+                                    <input type="text" class="form-control" id="Choice3" placeholder="Third choice">
+                                    <input type="radio" class="form-check-input" name="optradio" value="3">This is the right Choice
+                                </div>
+                                <div class="form-group">
+                                    <label for="formGroupExampleInput2">Fourth choice</label>
+                                    <input type="text" class="form-control" id="Choice4" placeholder="Fourth choice">
+                                    <input type="radio" class="form-check-input" name="optradio" value="4">This is the right Choice
+                                </div>
+
+                            </form>
+                            <button id="add" class="btn btn-primary">Add</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /page content -->
+
+
+</body>
+
+
+</html>
