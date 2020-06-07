@@ -3,22 +3,18 @@ package com.aptech.project.project_sem4.controller;
 import com.aptech.project.project_sem4.model.*;
 import com.aptech.project.project_sem4.service.QuizService;
 import com.aptech.project.project_sem4.service.UserService;
-import org.apache.catalina.SessionIdGenerator;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.Null;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -50,6 +46,53 @@ public class UserController {
         model.addAttribute("listUser", listUser);
         model.addAttribute("listSection", listSection);
         return "section";
+    }
+
+    @RequestMapping(value = {"/userProfile"})
+    public String userProfile(Model model)
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        User current_user = userService.findByEmail(userName);
+        model.addAttribute("current_user", current_user);
+        return "userProfile";
+    }
+
+    @RequestMapping(value = {"/changeUserProfile"}, method = RequestMethod.POST)
+    public String changeUserProfile(Model model, HttpServletRequest request)
+    {
+        BCryptPasswordEncoder bCryptPasswordEncoder  = new BCryptPasswordEncoder();
+        String lastName = request.getParameter("lastName");
+        String firstName = request.getParameter("firstName");
+        String userEmail = request.getParameter("email");
+        String userPass = request.getParameter("password");
+        String re_pass = request.getParameter("re_password");
+        if(userPass.equals(re_pass)) {
+            String pass = bCryptPasswordEncoder.encode(userPass);
+            System.out.println(pass);
+            User new_user = userService.findByEmail(userEmail);
+            new_user.setFirstName(firstName);
+            new_user.setLastName(lastName);
+            new_user.setPassword(pass);
+            userService.saveUser(new_user);
+            return "Yes";
+        }
+        else {
+            return "NO";
+        }
+    }
+
+    @RequestMapping(value = {"/userResult"})
+    public String userResult(Model model)
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        User current_user = userService.findByEmail(userName);
+        List<Result> listResult = userService.getListSection_Result(current_user.getId().toString());
+        List<Section> listSection = userService.listAllSection();
+        model.addAttribute("listResult", listResult);
+        model.addAttribute("listSection", listSection);
+        return "userResult";
     }
 
     @RequestMapping(value = {"/createQuiz"})

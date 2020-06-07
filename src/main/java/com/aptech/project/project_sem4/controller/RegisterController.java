@@ -47,6 +47,7 @@ public class RegisterController {
         this.emailService = emailService;
 
     }
+
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login( ModelAndView modelAndView, User user) {
         modelAndView.addObject("user", user);
@@ -150,6 +151,7 @@ public class RegisterController {
 
         return modelAndView;
     }
+
     @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
     public ModelAndView dashboard() {
         ModelAndView modelAndView = new ModelAndView();
@@ -168,6 +170,7 @@ public class RegisterController {
         modelAndView.setViewName("home");
         return modelAndView;
     }
+
     @RequestMapping(value = {"/index"})
     public String UserView(Model model)
     {
@@ -209,6 +212,7 @@ public class RegisterController {
         model.addAttribute("userRole", listRole);
         return "index2";
     }
+
     @RequestMapping(value = {"/form"})
     public String addQuestion(Model model)
     {

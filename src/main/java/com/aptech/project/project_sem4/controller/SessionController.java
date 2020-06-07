@@ -70,7 +70,7 @@ public class SessionController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
         ObjectId user_id = userService.findByEmail(userName).getId();
-        List<Session> listChoice = quizService.getListChoice(section_id);
+        List<Session> listChoice = quizService.getListChoice(section_id, user_id.toString());
         int mark = 0;
         try {
             for(int i = 0; i< 10; i++)

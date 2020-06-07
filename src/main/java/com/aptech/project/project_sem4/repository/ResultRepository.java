@@ -11,4 +11,5 @@ import java.util.List;
 public interface ResultRepository extends MongoRepository<Result, Long> {
     @Query("{ user_id: ObjectId(\"?0\" )}")
     public List<Result> getListSection_Result(String User_id);
+
 }
