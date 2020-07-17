@@ -40,5 +40,15 @@ public class Section {
     public void setTopics(List<Topic> topics) {
         this.topics = topics;
     }
+
+    public ObjectId getFaculty_id() {
+        return faculty_id;
+    }
+
+    public void setFaculty_id(ObjectId faculty_id) {
+        this.faculty_id = faculty_id;
+    }
+
     private List<Topic> topics;
+    ObjectId faculty_id;
 }

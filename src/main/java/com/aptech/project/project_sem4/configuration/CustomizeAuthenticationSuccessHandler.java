@@ -27,11 +27,15 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
         response.setStatus(HttpServletResponse.SC_OK);
 
         for (GrantedAuthority auth : authentication.getAuthorities()) {
+            System.out.println("No");
             if ("ADMIN".equals(auth.getAuthority())) {
-                response.sendRedirect("/index");
+                response.sendRedirect("/admin");
             }
             else if ("USER".equals(auth.getAuthority())){
                 response.sendRedirect("/userProfile");
+            }
+            else if ("TEACHER".equals(auth.getAuthority())){
+                response.sendRedirect("/class");
             }
            /* if("USER".equals(auth.getAuthority())){
                 response.sendRedirect("/index");

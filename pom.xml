@@ -13,7 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>project_sem4</name>
     <description>Demo project for Spring Boot</description>
-
+'
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -132,8 +132,14 @@
             <artifactId>webjars-locator</artifactId>
             <version>0.30</version>
         </dependency>
-    </dependencies>
 
+
+    </dependencies>
+    <distributionManagement>
+        <relocation>
+            <groupId>org.apache.poi</groupId>
+        </relocation>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>

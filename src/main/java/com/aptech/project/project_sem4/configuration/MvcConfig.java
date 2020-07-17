@@ -61,12 +61,14 @@ public class MvcConfig implements WebMvcConfigurer {
 				"/webjars/**",
 				"/images/**",
 				"/css/**",
-				"/js/**")
+				"/js/**",
+				"/vendor/**")
 				.addResourceLocations(
 						"classpath:/META-INF/resources/webjars/",
 						"classpath:/static/images/",
 						"classpath:/static/css/",
-						"classpath:/static/js/");
+						"classpath:/static/js/",
+						"classpath:/static/vendor/");
 	}
 
 

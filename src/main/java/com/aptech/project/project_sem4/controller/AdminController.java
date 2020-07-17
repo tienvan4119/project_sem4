@@ -69,7 +69,6 @@ public class AdminController {
         String pass = bCryptPasswordEncoder.encode(userPass);
         System.out.println(pass);
         User new_Admin = new User();
-        new_Admin.setConfirmationToken(UUID.randomUUID().toString());
         new_Admin.setFirstName(firstName);
         new_Admin.setLastName(lastName);
         new_Admin.setPassword(pass);
@@ -79,6 +78,32 @@ public class AdminController {
 
         return "Yes";
     }
+
+    @RequestMapping(value = "/AddNewTeacher", method = RequestMethod.POST)
+    public String AddNewTeacher(HttpServletRequest request, ModelAndView modelAndView, @RequestParam Map<String, String> requestParams)
+    {
+        BCryptPasswordEncoder bCryptPasswordEncoder  = new BCryptPasswordEncoder();
+        String lastName = request.getParameter("lastName");
+        String firstName = request.getParameter("firstName");
+        String userEmail = request.getParameter("userEmail");
+        String userPass = request.getParameter("userPass");
+        String classID = request.getParameter("userClassID");
+        ObjectId classID_convert = new ObjectId(classID);
+//        User userExits = userService.findByEmail(userEmail);
+        String pass = bCryptPasswordEncoder.encode(userPass);
+        System.out.println(pass);
+        User new_Admin = new User();
+        new_Admin.setFirstName(firstName);
+        new_Admin.setLastName(lastName);
+        new_Admin.setPassword(pass);
+        new_Admin.setEmail(userEmail);
+        new_Admin.setClassID(classID_convert);
+        adminService.saveAdmin(new_Admin);
+//        String pass = bCryptPasswordEncoder.encode(request.getParameter("userPass"));
+
+        return "Yes";
+    }
+
 
     @RequestMapping(value = "/AddNewUser", method = RequestMethod.POST)
 
@@ -93,7 +118,7 @@ public class AdminController {
         String pass = bCryptPasswordEncoder.encode(userPass);
         System.out.println(pass);
         User new_user = new User();
-        new_user.setConfirmationToken(UUID.randomUUID().toString());
+
         new_user.setFirstName(firstName);
         new_user.setLastName(lastName);
         new_user.setPassword(pass);
@@ -110,6 +135,14 @@ public class AdminController {
         List<Topic> listTopic = quizService.listAllTopicBySection_id(section_id);
         //model.addAttribute("listTopic", listTopic);
         return listTopic;
+    }
+    @RequestMapping(value= "/getListSubject",  method = RequestMethod.POST)
+    public List<Section> getListSubject(Model model, HttpServletRequest request)
+    {
+        String faculty_id = request.getParameter("faculty_id");
+        List<Section> listSection = adminService.getListSubject(faculty_id);
+        return listSection;
+
     }
 
     @RequestMapping(value = "/addQuestion", method = RequestMethod.POST)
@@ -167,4 +200,6 @@ public class AdminController {
         newQuestion.setTopic_id(adminService.getTopicByTitleAndSectionId(topic_title, section_id).getId());
         return newQuestion;
     }
+
+
 }

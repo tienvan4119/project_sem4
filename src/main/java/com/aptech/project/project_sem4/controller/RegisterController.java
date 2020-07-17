@@ -1,9 +1,7 @@
 package com.aptech.project.project_sem4.controller;
 
-import com.aptech.project.project_sem4.model.Question;
-import com.aptech.project.project_sem4.model.Role;
-import com.aptech.project.project_sem4.model.Section;
-import com.aptech.project.project_sem4.model.User;
+import com.aptech.project.project_sem4.model.*;
+import com.aptech.project.project_sem4.model.Class;
 import com.aptech.project.project_sem4.repository.RoleRepository;
 import com.aptech.project.project_sem4.repository.SectionRepository;
 import com.aptech.project.project_sem4.repository.UserRepository;
@@ -35,6 +33,7 @@ public class RegisterController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private UserService userService;
+    @Autowired
     private EmailService emailService;
     private RoleRepository roleRepository;
     private UserRepository userRepository;
@@ -76,79 +75,17 @@ public class RegisterController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("register");
         } else {
-            user.setEnabled(false);
+
             user.setPassword("abc");
-            user.setConfirmationToken(UUID.randomUUID().toString());
+
 
             userService.saveUser(user);
             String appUrl = request.getScheme() + "://" + request.getServerName();
 
-            SimpleMailMessage registrationEmail = new SimpleMailMessage();
-            registrationEmail.setTo(user.getEmail());
-            registrationEmail.setSubject("Registration Confirmation");
-            registrationEmail.setText("To confirm your e-mail address, please click the link below:\n"
-                    + appUrl + ":8080/confirm?token=" + user.getConfirmationToken());
-            registrationEmail.setFrom("NguyenTienVan@domain.com");
-
-            emailService.sendEmail(registrationEmail);
 
             modelAndView.addObject("confirmationMessage", "A confirmation e-mail has been sent to " + user.getEmail());
             modelAndView.setViewName("register");
         }
-        return modelAndView;
-    }
-
-    //Process confirmation Link
-    @RequestMapping(value = "/confirm", method = RequestMethod.GET)
-    public ModelAndView confirmRegistration(ModelAndView modelAndView, @RequestParam("token") String token) {
-
-        User user = userService.findByConfirmationToken(token);
-
-        if (user == null) { // No token found in DB
-            modelAndView.addObject("invalidToken", "Oops!  This is an invalid confirmation link.");
-        } else { // Token found
-            modelAndView.addObject("confirmationToken", user.getConfirmationToken());
-        }
-
-        modelAndView.setViewName("confirm");
-        return modelAndView;
-    }
-
-    // Process confirmation link
-    @RequestMapping(value = "/confirm", method = RequestMethod.POST)
-    public ModelAndView confirmRegistration(ModelAndView modelAndView, BindingResult bindingResult, @RequestParam Map<String, String> requestParams, RedirectAttributes redir, User user) {
-
-        Zxcvbn passwordCheck = new Zxcvbn();
-
-        Strength strength = passwordCheck.measure(requestParams.get("password"));
-
-        if (strength.getScore() < 3) {
-            //modelAndView.addObject("errorMessage", "Your password is too weak.  Choose a stronger one.");
-            bindingResult.reject("password");
-
-            redir.addFlashAttribute("errorMessage", "Your password is too weak.  Choose a stronger one.");
-
-            modelAndView.setViewName("redirect:confirm?token=" + requestParams.get("token"));
-            System.out.println(requestParams.get("token"));
-            return modelAndView;
-        }
-        modelAndView.addObject("setPassword", user);
-        modelAndView.setViewName("confirm");
-         // Find the user associated with the reset token
-        user = userService.findByConfirmationToken(requestParams.get("token"));
-
-        // Set new password
-        String pass = bCryptPasswordEncoder.encode(requestParams.get("password"));
-        user.setPassword(pass);
-
-        // Set user to enabled
-        user.setEnabled(true);
-
-        // Save user
-        userService.saveUser(user);
-
-        modelAndView.addObject("successMessage", "Your password has been set!");
-
         return modelAndView;
     }
 
@@ -171,25 +108,12 @@ public class RegisterController {
         return modelAndView;
     }
 
-    @RequestMapping(value = {"/index"})
+    @RequestMapping(value = {"/admin"})
     public String UserView(Model model)
     {
-        List <User> list_AllUser = userService.listAll();
-        List <Role> listRole = userService.listAllRole();
-        List<User> listUser = new ArrayList<User>();
-        for(int i = 0; i < list_AllUser.size(); i++)
-        {
-            Set role = list_AllUser.get(i).getRoles();
-            Object[] roles = role.toArray();
-            Role role_name = (Role) roles[0];
-            if(role_name.getRole().equals("ADMIN"))
-            {
-                listUser.add(list_AllUser.get(i));
-            }
-        }
-        model.addAttribute("listUser", listUser);
-        model.addAttribute("userRole", listRole);
-        return "index";
+        List<Faculty> listFaculty = adminService.getAllFaculty();
+        model.addAttribute("listFaculty", listFaculty);
+        return "admin";
     }
 
     @RequestMapping(value = {"/index2"})
@@ -222,12 +146,61 @@ public class RegisterController {
         return "form";
     }
 
+    @RequestMapping(value = {"/khoa"})
+    public String Khoa_Page(Model model)
+    {
+        List<Faculty> listFaculty = adminService.getAllFaculty();
+        model.addAttribute("listFaculty", listFaculty);
+
+        return "khoa";
+    }
+
     @RequestMapping(value = {"/form2"})
     public String updateQuestion(Model model)
     {
+        List<Faculty> listFaculty = adminService.getAllFaculty();
 
+        model.addAttribute("listFaculty", listFaculty);
         return "form2";
     }
 
+    @RequestMapping(value = {"/teacher"})
+    public String teacherPage()
+    {
+        return "teacher";
+    }
+
+    @RequestMapping(value = {"/addQuiz"})
+    public String addQuizPage()
+    {
+        return "addQuiz";
+    }
+
+    @RequestMapping(value = {"/updateQuiz"})
+    public String updateQuizQuizPage()
+    {
+        return "updateQuiz";
+    }
+
+    @RequestMapping(value = {"/class"})
+    public String classPage(Model model)
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List<Course> listCourseOfTeacher = adminService.getListCourseOfTeacher(user.getId().toString());
+        model.addAttribute("listCourse", listCourseOfTeacher);
+        return "class";
+    }
+    @RequestMapping(value = {"/userProfile"})
+    public String userProfile(Model model)  
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        User current_user = userService.findByEmail(userName);
+        Class user_class = userService.findClassByID(current_user.getClassID().toString());
+        model.addAttribute("current_user", current_user);
+        model.addAttribute("user_class", user_class);
+        return "userProfile";
+    }
 }
 

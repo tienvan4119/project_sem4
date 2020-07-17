@@ -25,6 +25,10 @@ public class AdminService {
     private ChoiceRepository choiceRepository;
     @Autowired
     private AnswerRepository answerRepository;
+    @Autowired
+    private FacultyRepository facultyRepository;
+    @Autowired
+    private CourseRepository courseRepository;
     public User findUserbyId(String id)
     {
         return userRepository.findUserById(id);
@@ -32,6 +36,12 @@ public class AdminService {
 
     public void saveAdmin(User user) {
         Role userRole = roleRepository.findByRole("ADMIN");
+        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+        userRepository.save(user);
+    }
+
+    public void saveTeacher(User user) {
+        Role userRole = roleRepository.findByRole("TEACHER");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
@@ -65,5 +75,17 @@ public class AdminService {
     public Choice findChoiceByChoiceDesc(String choice_desc)
     {
         return choiceRepository.findChoiceByChoice_desc(choice_desc);
+    }
+    public List<Faculty> getAllFaculty()
+    {
+        return facultyRepository.findAll();
+    }
+    public List<Section> getListSubject(String faculty_id)
+    {
+        return sectionRepository.getListSubject(faculty_id);
+    }
+    public List<Course> getListCourseOfTeacher(String teacherID)
+    {
+        return courseRepository.findCoursesByTeacherID(teacherID);
     }
 }

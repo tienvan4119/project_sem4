@@ -37,11 +37,6 @@ public class User{
     @Field(value = "password")
     String password;
 
-    @Field(name = "enabled")
-    boolean enabled;
-
-    @Field(name = "confirmation_token")
-    String confirmationToken;
 
     @Field(name = "")
 
@@ -96,19 +91,33 @@ public class User{
         this.password = password;
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public ObjectId getClassID() {
+        return class_id;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setClassID(ObjectId classID) {
+        this.class_id = classID;
     }
 
-    public String getConfirmationToken() {
-        return confirmationToken;
+    ObjectId class_id;
+    String MSSV;
+
+    public String getMSSV() {
+        return MSSV;
     }
 
-    public void setConfirmationToken(String confirmationToken) {
-        this.confirmationToken = confirmationToken;
+    public void setMSSV(String MSSV) {
+        this.MSSV = MSSV;
     }
+
+    public String getLocation() {
+        return Location;
+    }
+
+    public void setLocation(String location) {
+        Location = location;
+    }
+
+    String Location;
+
 }

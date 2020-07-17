@@ -1,6 +1,8 @@
 package com.aptech.project.project_sem4.controller;
 
 import com.aptech.project.project_sem4.model.*;
+import com.aptech.project.project_sem4.model.Class;
+import com.aptech.project.project_sem4.repository.UserRepository;
 import com.aptech.project.project_sem4.service.QuizService;
 import com.aptech.project.project_sem4.service.UserService;
 import org.bson.types.ObjectId;
@@ -22,7 +24,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private QuizService quizService;
-
+@Autowired
+    private UserRepository userRepository;
     private Random random = new Random();
 
     @RequestMapping(value = {"/", "/section"}, method = RequestMethod.GET)
@@ -48,15 +51,6 @@ public class UserController {
         return "section";
     }
 
-    @RequestMapping(value = {"/userProfile"})
-    public String userProfile(Model model)
-    {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userName = authentication.getName();
-        User current_user = userService.findByEmail(userName);
-        model.addAttribute("current_user", current_user);
-        return "userProfile";
-    }
 
     @RequestMapping(value = {"/changeUserProfile"}, method = RequestMethod.POST)
     public String changeUserProfile(Model model, HttpServletRequest request)

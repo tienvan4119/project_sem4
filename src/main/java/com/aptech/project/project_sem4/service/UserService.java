@@ -1,6 +1,7 @@
 package com.aptech.project.project_sem4.service;
 
 import com.aptech.project.project_sem4.model.*;
+import com.aptech.project.project_sem4.model.Class;
 import com.aptech.project.project_sem4.repository.*;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("userService")
 public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
@@ -27,15 +28,18 @@ public class UserService implements UserDetailsService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private SectionRepository sectionRepository;
+    @Autowired
+    private ClassRepository classRepository;
 @Autowired
 private ResultRepository resultRepository;
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
-
-    public User findByConfirmationToken(String confirmationToken) {
-        return userRepository.findByConfirmationToken(confirmationToken);
+    public Class findClassByID(String classID)
+    {
+        return classRepository.findClasByID(classID);
     }
+
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }

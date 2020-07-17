@@ -11,6 +11,7 @@ import java.util.List;
 public interface SectionRepository extends MongoRepository<Section, Long> {
     @Query("{ _id: ObjectId(\"?0\" )}")
     public Section isDone(String section_id);
-    @Query("{isDone: false}")
-    public List<Section> getAllSectionUnDone();
+
+    @Query("{faculty_id : ObjectId(\"?0\" )}")
+    List<Section> getListSubject(String faculty_id);
 }
