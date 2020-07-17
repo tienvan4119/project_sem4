@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  },
+  "name": "Khoa Dien Tu Vien Thong"
+},{
+  "_id": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  },
+  "name": "Khoa Cong Nghe Thong Tin"
+},{
+  "_id": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  },
+  "name": "Khoa Dien"
+}]

@@ -1,0 +1,217 @@
+[{
+  "_id": {
+    "$oid": "5f0dd857eacb490b39ceaa08"
+  },
+  "className": "17TCLC1",
+  "facultyId": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd8d1eacb490b39ceaa09"
+  },
+  "className": "17TCLC2",
+  "facultyId": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd8d6eacb490b39ceaa0a"
+  },
+  "className": "17T1",
+  "facultyId": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd8daeacb490b39ceaa0b"
+  },
+  "className": "17T2",
+  "facultyId": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd8ddeacb490b39ceaa0c"
+  },
+  "className": "17T3",
+  "facultyId": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd8e5eacb490b39ceaa0d"
+  },
+  "className": "15T1",
+  "facultyId": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd8efeacb490b39ceaa0e"
+  },
+  "className": "15T2",
+  "facultyId": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd8f2eacb490b39ceaa0f"
+  },
+  "className": "15T3",
+  "facultyId": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd95aeacb490b39ceaa10"
+  },
+  "className": "15DTVT1",
+  "facultyId": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd95eeacb490b39ceaa11"
+  },
+  "className": "15DTVT2",
+  "facultyId": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd967eacb490b39ceaa12"
+  },
+  "className": "16DTVT2",
+  "facultyId": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd96ceacb490b39ceaa13"
+  },
+  "className": "16DTVT1",
+  "facultyId": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd975eacb490b39ceaa14"
+  },
+  "className": "16DTVT_CLC",
+  "facultyId": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd97aeacb490b39ceaa15"
+  },
+  "className": "17DTVT_CLC",
+  "facultyId": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd980eacb490b39ceaa16"
+  },
+  "className": "17DTVT1",
+  "facultyId": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd985eacb490b39ceaa17"
+  },
+  "className": "17DTVT2",
+  "facultyId": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd992eacb490b39ceaa18"
+  },
+  "className": "17DT1",
+  "facultyId": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd99aeacb490b39ceaa19"
+  },
+  "className": "17DT2",
+  "facultyId": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd9a0eacb490b39ceaa1a"
+  },
+  "className": "17DT3",
+  "facultyId": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd9a8eacb490b39ceaa1b"
+  },
+  "className": "15DT1",
+  "facultyId": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd9adeacb490b39ceaa1c"
+  },
+  "className": "15DT2",
+  "facultyId": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd9b3eacb490b39ceaa1d"
+  },
+  "className": "16DT1",
+  "facultyId": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd9b8eacb490b39ceaa1e"
+  },
+  "className": "16DT2",
+  "facultyId": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  }
+},{
+  "_id": {
+    "$oid": "5f0dd9bfeacb490b39ceaa1f"
+  },
+  "className": "17DT_CLC",
+  "facultyId": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  }
+},{
+  "_id": {
+    "$oid": "5f0f24806513e7018c33d120"
+  },
+  "className": "Van Phong Khoa CNTT",
+  "facultyId": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  }
+},{
+  "_id": {
+    "$oid": "5f0f24986513e7018c33d121"
+  },
+  "className": "Van Phong Khoa DT",
+  "facultyId": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  }
+},{
+  "_id": {
+    "$oid": "5f0f24aa6513e7018c33d122"
+  },
+  "className": "Van Phong Khoa Dien Tu Vien Thong",
+  "facultyId": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  }
+}]

@@ -1,0 +1,334 @@
+[{
+  "_id": {
+    "$oid": "5f0de45aeacb490b39ceaa23"
+  },
+  "name": "17Nh14",
+  "sub_name": "Xu Ly Tin hieu so",
+  "teacherID": {
+    "$oid": "5f0edf9388a5bf1c04e7331f"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fcf7f5850a60344922158"
+  },
+  "name": "17Nh10",
+  "sub_name": "Lap Trinh Huong Doi Tuong",
+  "teacherID": {
+    "$oid": "5f0ebe6360b5b35aa118057b"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fcf925850a60344922159"
+  },
+  "name": "17Nh11",
+  "sub_name": "Lap Trinh NET",
+  "teacherID": {
+    "$oid": "5f0ebe6360b5b35aa118057b"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fcfa65850a6034492215a"
+  },
+  "name": "17Nh12",
+  "sub_name": "Thiet Ke Huong Doi Tuong",
+  "teacherID": {
+    "$oid": "5f0ebe6360b5b35aa118057b"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fcfb65850a6034492215b"
+  },
+  "name": "17Nh15",
+  "sub_name": "Vi Dieu Khien",
+  "teacherID": {
+    "$oid": "5f0edf9388a5bf1c04e7331f"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fcfcd5850a6034492215c"
+  },
+  "name": "17Nh16",
+  "sub_name": "Co So Du Lieu",
+  "teacherID": {
+    "$oid": "5f0eddc888a5bf1c04e73315"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fcfd85850a6034492215d"
+  },
+  "name": "17Nh17",
+  "sub_name": "Co So Du Lieu",
+  "teacherID": {
+    "$oid": "5f0ede3688a5bf1c04e73318"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fcfe15850a6034492215e"
+  },
+  "name": "17Nh18",
+  "sub_name": "Co So Du Lieu",
+  "teacherID": {
+    "$oid": "5f0ede9688a5bf1c04e7331a"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fcff85850a6034492215f"
+  },
+  "name": "17Nh19",
+  "sub_name": "Vat Ly 1",
+  "teacherID": {
+    "$oid": "5f0fce235850a60344922153"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd0015850a60344922160"
+  },
+  "name": "17Nh20",
+  "sub_name": "Vat Ly 1",
+  "teacherID": {
+    "$oid": "5f0fcdfc5850a60344922151"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd0105850a60344922161"
+  },
+  "name": "17Nh21",
+  "sub_name": "Vat Ly 1",
+  "teacherID": {
+    "$oid": "5f0fce465850a60344922154"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd0205850a60344922162"
+  },
+  "name": "17Nh22",
+  "sub_name": "Vat Ly 2",
+  "teacherID": {
+    "$oid": "5f0fcdfc5850a60344922151"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd02a5850a60344922163"
+  },
+  "name": "17Nh23",
+  "sub_name": "Vat Ly 2",
+  "teacherID": {
+    "$oid": "5f0fce235850a60344922153"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd0355850a60344922164"
+  },
+  "name": "17Nh24",
+  "sub_name": "Vat Ly 2",
+  "teacherID": {
+    "$oid": "5f0fce465850a60344922154"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd0465850a60344922165"
+  },
+  "name": "17Nh25",
+  "sub_name": "Ky Thuat Dien",
+  "teacherID": {
+    "$oid": "5f0fce685850a60344922156"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd04f5850a60344922166"
+  },
+  "name": "17Nh26",
+  "sub_name": "Ky Thuat Dien Tu ",
+  "teacherID": {
+    "$oid": "5f0fce685850a60344922156"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd0615850a60344922167"
+  },
+  "name": "17Nh27",
+  "sub_name": "Thuc Hanh Ky Thuat Dien Tu ",
+  "teacherID": {
+    "$oid": "5f0ee11588a5bf1c04e73326"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd06a5850a60344922168"
+  },
+  "name": "17Nh28",
+  "sub_name": "Thuc Hanh Ky Thuat Dien",
+  "teacherID": {
+    "$oid": "5f0ee13d88a5bf1c04e73327"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd08c5850a60344922169"
+  },
+  "name": "17Nh29",
+  "sub_name": "Vat ly 3",
+  "teacherID": {
+    "$oid": "5f0ee17388a5bf1c04e73328"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd0975850a6034492216a"
+  },
+  "name": "17Nh30",
+  "sub_name": "Vat ly 3",
+  "teacherID": {
+    "$oid": "5f0ee1a488a5bf1c04e73329"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd18b5850a6034492216b"
+  },
+  "name": "17Nh31",
+  "sub_name": "Ky Thuat So Ung Dung",
+  "teacherID": {
+    "$oid": "5f0edf7988a5bf1c04e7331e"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd1955850a6034492216c"
+  },
+  "name": "17Nh32",
+  "sub_name": "Ky Thuat So Ung Dung",
+  "teacherID": {
+    "$oid": "5f0edf2288a5bf1c04e7331c"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd19d5850a6034492216d"
+  },
+  "name": "17Nh33",
+  "sub_name": "Ky Thuat So Ung Dung",
+  "teacherID": {
+    "$oid": "5f0edf6088a5bf1c04e7331d"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd1af5850a6034492216e"
+  },
+  "name": "17Nh34",
+  "sub_name": "Kien Truc May tinh va VXL",
+  "teacherID": {
+    "$oid": "5f0edf2288a5bf1c04e7331c"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd1b75850a6034492216f"
+  },
+  "name": "17Nh35",
+  "sub_name": "Kien Truc May tinh va VXL",
+  "teacherID": {
+    "$oid": "5f0edf6088a5bf1c04e7331d"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd1c05850a60344922170"
+  },
+  "name": "17Nh36",
+  "sub_name": "Kien Truc May tinh va VXL",
+  "teacherID": {
+    "$oid": "5f0edf7988a5bf1c04e7331e"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd1d25850a60344922171"
+  },
+  "name": "17Nh37",
+  "sub_name": "Lap Trinh He Thong Nhung",
+  "teacherID": {
+    "$oid": "5f0edf7988a5bf1c04e7331e"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd1dc5850a60344922172"
+  },
+  "name": "17Nh38",
+  "sub_name": "Lap Trinh He Thong Nhung",
+  "teacherID": {
+    "$oid": "5f0edfcd88a5bf1c04e73320"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd1eb5850a60344922173"
+  },
+  "name": "17Nh39",
+  "sub_name": "Lap Trinh He Thong Nhung",
+  "teacherID": {
+    "$oid": "5f0edfec88a5bf1c04e73321"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd1ff5850a60344922174"
+  },
+  "name": "17Nh40",
+  "sub_name": "Thuc hanh VDK",
+  "teacherID": {
+    "$oid": "5f0edfec88a5bf1c04e73321"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd2075850a60344922175"
+  },
+  "name": "17Nh41",
+  "sub_name": "Thuc hanh VDK",
+  "teacherID": {
+    "$oid": "5f0ee00688a5bf1c04e73322"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd2115850a60344922176"
+  },
+  "name": "17Nh42",
+  "sub_name": "Thuc hanh VDK",
+  "teacherID": {
+    "$oid": "5f0ee05388a5bf1c04e73325"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd2545850a60344922177"
+  },
+  "name": "17Nh43",
+  "sub_name": "Lap Trinh He Thong",
+  "teacherID": {
+    "$oid": "5f0edecf88a5bf1c04e7331b"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd25d5850a60344922178"
+  },
+  "name": "17Nh44",
+  "sub_name": "Lap Trinh He Thong",
+  "teacherID": {
+    "$oid": "5f0ede9688a5bf1c04e7331a"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd2715850a60344922179"
+  },
+  "name": "17Nh45",
+  "sub_name": "Lap Trinh Java",
+  "teacherID": {
+    "$oid": "5f0eddeb88a5bf1c04e73316"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd2815850a6034492217a"
+  },
+  "name": "17Nh46",
+  "sub_name": "Lap Trinh Java",
+  "teacherID": {
+    "$oid": "5f0ede4f88a5bf1c04e73319"
+  }
+},{
+  "_id": {
+    "$oid": "5f0fd2905850a6034492217b"
+  },
+  "name": "17Nh47",
+  "sub_name": "Lap Trinh Java",
+  "teacherID": {
+    "$oid": "5f0ede9688a5bf1c04e7331a"
+  }
+}]

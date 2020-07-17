@@ -3,23 +3,80 @@
     "$oid": "5e22bd4f0cfb642ae4106b6a"
   },
   "title": "C plus - plus",
+  "faculty_id": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  },
   "_class": "com.aptech.project.project_sem4.model.Section"
 },{
   "_id": {
     "$oid": "5e22bd860cfb642ae4106b6b"
   },
   "title": "Java",
+  "faculty_id": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  },
   "_class": "com.aptech.project.project_sem4.model.Section"
 },{
   "_id": {
     "$oid": "5e22bd980cfb642ae4106b6c"
   },
   "title": "Python",
+  "faculty_id": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  },
   "_class": "com.aptech.project.project_sem4.model.Section"
 },{
   "_id": {
     "$oid": "5e22bdb80cfb642ae4106b6d"
   },
   "title": "Data Structures",
+  "faculty_id": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  },
+  "_class": "com.aptech.project.project_sem4.model.Section"
+},{
+  "_id": {
+    "$oid": "5f0eafab0b856702a0b2c6c3"
+  },
+  "title": "Arduino",
+  "faculty_id": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  },
+  "_class": "com.aptech.project.project_sem4.model.Section"
+},{
+  "_id": {
+    "$oid": "5f0eafb60b856702a0b2c6c4"
+  },
+  "title": "Assembly",
+  "faculty_id": {
+    "$oid": "5f0dd40ceacb490b39ceaa05"
+  },
+  "_class": "com.aptech.project.project_sem4.model.Section"
+},{
+  "_id": {
+    "$oid": "5f0eafc90b856702a0b2c6c5"
+  },
+  "title": "Ky Thuat Dien",
+  "faculty_id": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  },
+  "_class": "com.aptech.project.project_sem4.model.Section"
+},{
+  "_id": {
+    "$oid": "5f0eafd10b856702a0b2c6c6"
+  },
+  "title": "Vat Ly 1",
+  "faculty_id": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  },
+  "_class": "com.aptech.project.project_sem4.model.Section"
+},{
+  "_id": {
+    "$oid": "5f0eafd70b856702a0b2c6c7"
+  },
+  "title": "Vat Ly 2",
+  "faculty_id": {
+    "$oid": "5f0dd433eacb490b39ceaa07"
+  },
   "_class": "com.aptech.project.project_sem4.model.Section"
 }]

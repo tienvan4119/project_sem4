@@ -10,4 +10,10 @@
   },
   "role": "USER",
   "_class": "com.aptech.project.project_sem4.model.Role"
+},{
+  "_id": {
+    "$oid": "5f0ddd17eacb490b39ceaa20"
+  },
+  "role": "TEACHER",
+  "_class": "com.aptech.project.project_sem4.model.Role"
 }]
