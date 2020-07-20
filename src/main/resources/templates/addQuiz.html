@@ -53,6 +53,7 @@
             $('#listSection').on('change', e => {
                 var section_id_value = $('#listSection option:selected').val();
                 console.log(section_id_value);
+                var topic_id_value = $('#listSection option:selected').val();
                 if (section_id_value === 'C plus - plus') {
                     console.log("Done!");
                     $('#listTopic').empty();
@@ -164,6 +165,8 @@
                     <h6 class="collapse-header">Custom QUIZ:</h6>
                     <a class="collapse-item" href="addQuiz.html">Thêm quiz mới</a>
                     <a class="collapse-item" href="updateQuiz.html">Cập nhật quiz</a>
+                    <a class="collapse-item" href="addBaiLam.html">Thêm Bài Test</a>
+
                 </div>
             </div>
         </li>

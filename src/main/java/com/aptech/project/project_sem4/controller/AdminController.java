@@ -279,7 +279,7 @@ public class AdminController {
         return listClassofTeacher;
     }
 
-    @RequestMapping(value = "/addQuizTest", method = RequestMethod.POST)
+    @RequestMapping(value = "/addQuizTest", method = RequestMethod.GET)
     public List<Test> AddTestQuiz(Model model, HttpServletRequest request)
     {
         String className = request.getParameter("Class");
@@ -302,7 +302,7 @@ public class AdminController {
         return adminService.getListTest();
     }
 
-    @RequestMapping(value = "/getClassTest", method = RequestMethod.POST)
+    @RequestMapping(value = "/getClassTest", method = RequestMethod.GET)
     public List<Course> getFullCourseTest()
     {
         List<Test> listTest = adminService.getListTest();
@@ -314,6 +314,17 @@ public class AdminController {
         return listCourse;
     }
 
+    @RequestMapping(value = "/getIDTest", method = RequestMethod.GET)
+    public List<String> getIDTest()
+    {
+        List<Test> listTest = adminService.getListTest();
+        List<String> listID = new ArrayList<>();
+        for(int i = 0; i<listTest.size(); i++)
+        {
+            listID.add(listTest.get(i).getId().toString());
+        }
+        return listID;
+    }
 //    @RequestMapping(value = "/api/admin/getListTeacher", method = RequestMethod.POST)
 //    public List<User> getListTeacher(Model model, HttpServletRequest request)
 //    {

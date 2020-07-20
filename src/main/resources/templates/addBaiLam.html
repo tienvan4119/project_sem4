@@ -400,37 +400,54 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+
         $.ajax({type: "POST", url: "/api/admin/getFullTest", dataType: 'json',
             data : {
 
             },success: function(result){
 
-                $.ajax({type: "POST", url: "/api/admin/getClassTest", dataType: 'json',
+
+                $.ajax({type: "GET", url: "/api/admin/getClassTest", dataType: 'json',
                     data : {
 
                     },success: function(dataClass){
+                        $.ajax({type: "GET", url: "/api/admin/getIDTest", dataType: 'json',
+                            data : {
 
-                        var i = 0
-                        var j = 1
-                        for(i; i< result.length; i++)
-                        {
-                            $("#dataTest").append("<tr>" +
-                                "<td class=\"text-center\">"+j+"</td>"+
-                                "<td class=\"text-center\">"+ dataClass[i].name + "</td>"+
-                                "<td class=\"text-center\"><span class=\"label label-danger\">" + result[i].numberQuestion +" cau</span></td>"+
-                                "<td class=\"text-center\"><span class=\"label label-danger\">"+ result[i].time +" phut</span></td>"+
-                                "<td>"+
-                                "<button type=\"button\" class=\"btn btn-warning btn-sm\">Edit</button>"+
-                                " <button type=\"button\" class=\"btn btn-danger btn-sm\">Delete</button>"+
-                                "</td>"+
-                                "</tr>"
-                            )
-                            j++;
-                        }
+                            },success: function(dataID){
+                                console.log(dataID)
+                                var i = 0
+                                var j = 1
+                                for(i; i< result.length; i++)
+                                {
+                                    let id = dataID[i]
+                                    $("#dataTest").append("<tr>" +
+                                        "<td class=\"text-center\">"+j+"</td>"+
+                                        "<td class=\"text-center\">"+ dataClass[i].name + "</td>"+
+                                        "<td class=\"text-center\"><span class=\"label label-danger\">" + result[i].numberQuestion +" cau</span></td>"+
+                                        "<td class=\"text-center\"><span class=\"label label-danger\">"+ result[i].time +" phut</span></td>"+
+                                        "<td id="+dataID[i]+">"+
+                                        "<button onclick='myFunction("+dataID[i]+")' value="+dataID[i]+" type=\"button\" class=\"btn btn-warning btn-sm edit\">Edit</button>"+
+                                        "<button value="+dataID[i]+" type=\"button\" class=\"btn btn-danger btn-sm delete\">Delete</button>"+
+                                        "</td>"+
+                                        "</tr>"
+                                    )
+                                    j++;
+                                }
+                            }})
                     }})
         }})
+        $('.btn.btn-warning.btn-sm.edit').click (()=>  {
+            console.log ('abc');
+            let a = $(this).val();
+            console.log(a);
+        })
 
     })
+
+    function myFunction(dataID) {
+        console.log(dataID)
+    }
 
     function addBaiLam() {
         // Lay STT on tbody, FUCK ME
@@ -440,14 +457,14 @@
         let SoCau = $("#numberQuestion").val();
         let ThoiGian = $("#Timer").val();
         console.log(Class, SoCau, ThoiGian)
-        $.ajax({type: "POST", url: "/api/admin/addQuizTest", dataType: 'json',
+        $.ajax({type: "GET", url: "/api/admin/addQuizTest", dataType: 'json',
             data : {
                 Class : Class,
                 SoCau : SoCau,
                 ThoiGian : ThoiGian
             },success: function(result){
 
-                $.ajax({type: "POST", url: "/api/admin/getClassTest", dataType: 'json',
+                $.ajax({type: "GET", url: "/api/admin/getClassTest", dataType: 'json',
                     data : {
                         Class : Class,
                         SoCau : SoCau,
@@ -458,13 +475,14 @@
                         var j = 1
                         for(i; i< result.length; i++)
                         {
+
                             $("#dataTest").append("<tr>" +
                                 "<td class=\"text-center\">"+j+"</td>"+
                                 "<td class=\"text-center\">"+ dataClass[i].name + "</td>"+
                                 "<td class=\"text-center\"><span class=\"label label-danger\">" + result[i].numberQuestion +" cau</span></td>"+
                                 "<td class=\"text-center\"><span class=\"label label-danger\">"+ result[i].time +" phut</span></td>"+
                                 "<td>"+
-                                "<button type=\"button\" class=\"btn btn-warning btn-sm\">Edit</button>"+
+                                "<button type=\"button\" class=\"btn btn-warning btn-sm edit\">Edit</button>"+
                                 " <button type=\"button\" class=\"btn btn-danger btn-sm\">Delete</button>"+
                                 "</td>"+
                                 "</tr>"

@@ -33,9 +33,7 @@ public class SessionController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         ObjectId topic_id = quizService.getTopicId(question_id.toString()).getTopic_id();
         ObjectId section_id = quizService.getSectionId(topic_id.toString()).getSectionId();
-        //        User user = (User) authentication.getPrincipal();
-      //  ObjectId userId = user.getId();
-    //    System.out.println(userId);
+
         ObjectId choice_id_conver = new ObjectId(choice_id);
         System.out.println(authentication.getName());
         String userName = authentication.getName();
