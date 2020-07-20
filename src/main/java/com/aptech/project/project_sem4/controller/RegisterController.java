@@ -241,7 +241,7 @@ public class RegisterController {
         String userName = authentication.getName();
         User current_user = userService.findByEmail(userName);
         Class user_class = userService.findClassByID(current_user.getClassId().toString());
-        List<RelationStudentCourse> listCourseofStudent = adminService.getListCourseAndStudent(current_user.getId().toString());
+        List<RelationStudentCourse> listCourseofStudent = adminService.getListCourseofStudent(current_user.getId().toString());
         List<Course> listCourse = new ArrayList<>();
         for(int i = 0; i < listCourseofStudent.size();i++)
         {

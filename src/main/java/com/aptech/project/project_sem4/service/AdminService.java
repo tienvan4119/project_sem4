@@ -134,7 +134,7 @@ public class AdminService {
     }
     public List<RelationStudentCourse> getListCourseAndStudent(String courseID)
     {
-        return relationStudentCourseRepository.getListCourseByStudentID(courseID);
+        return relationStudentCourseRepository.getListCourseWithStudent(courseID);
     }
     public Course getCoursebyName(String course_name)
     {
@@ -145,5 +145,9 @@ public class AdminService {
     }
     public void saveTopic(Topic topic) {
         topicRepository.save(topic);
+    }
+    public List<RelationStudentCourse> getListCourseofStudent(String student_id)
+    {
+        return relationStudentCourseRepository.getListCourseByStudentID(student_id);
     }
 }
