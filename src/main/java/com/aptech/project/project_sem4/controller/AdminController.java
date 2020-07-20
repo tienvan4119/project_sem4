@@ -1,6 +1,7 @@
 package com.aptech.project.project_sem4.controller;
 
 import com.aptech.project.project_sem4.model.*;
+import com.aptech.project.project_sem4.model.Class;
 import com.aptech.project.project_sem4.service.AdminService;
 import com.aptech.project.project_sem4.service.QuizService;
 import com.aptech.project.project_sem4.service.UserService;
@@ -15,9 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -97,7 +96,7 @@ public class AdminController {
         new_Admin.setLastName(lastName);
         new_Admin.setPassword(pass);
         new_Admin.setEmail(userEmail);
-        new_Admin.setClassID(classID_convert);
+        new_Admin.setClassId(classID_convert);
         adminService.saveAdmin(new_Admin);
 //        String pass = bCryptPasswordEncoder.encode(request.getParameter("userPass"));
 
@@ -132,22 +131,166 @@ public class AdminController {
     public List<Topic> display_Topic(Model model, HttpServletRequest request)
     {
         String section_id = request.getParameter("section_id");
-        List<Topic> listTopic = quizService.listAllTopicBySection_id(section_id);
         //model.addAttribute("listTopic", listTopic);
-        return listTopic;
+        return quizService.listAllTopicBySection_id(section_id);
     }
-    @RequestMapping(value= "/getListSubject",  method = RequestMethod.POST)
-    public List<Section> getListSubject(Model model, HttpServletRequest request)
+    @RequestMapping(value= "/getListCourses",  method = RequestMethod.POST)
+    public List<Course> getListSubject(Model model, HttpServletRequest request)
+    {
+        String teacher_email = request.getParameter("teacher_email");
+        String teacher_id = adminService.getUserbyEmail(teacher_email).getId().toString();
+
+        return adminService.getListCourseOfTeacher(teacher_id);
+    }
+
+    @RequestMapping(value = "/getListStudentofCourse", method = RequestMethod.POST)
+    public List<User> getListStudentofCourse(Model model, HttpServletRequest request)
+    {
+        String course_name = request.getParameter("course_name");
+        String course_id = adminService.getCoursebyName(course_name).getId().toString();
+        List<User> listUser = new ArrayList<>();
+        List<RelationStudentCourse> listCourseStudent  = adminService.getListCourseAndStudent(course_id);
+        for(int i = 0; i< listCourseStudent.size(); i++)
+        {
+            listUser.add(adminService.findUserbyId(listCourseStudent.get(i).getStudentID().toString()));
+        }
+        return listUser;
+    }
+
+    @RequestMapping(value = "/getListStudentofCourseClass", method = RequestMethod.POST)
+    public List<Class> getListClassStudent(Model model, HttpServletRequest request)
+    {
+        String course_name = request.getParameter("course_name");
+        String course_id = adminService.getCoursebyName(course_name).getId().toString();
+        List<User> listUser = new ArrayList<>();
+        List<RelationStudentCourse> listCourseStudent  = adminService.getListCourseAndStudent(course_id);
+        for(int i = 0; i< listCourseStudent.size(); i++)
+        {
+            listUser.add(adminService.findUserbyId(listCourseStudent.get(i).getStudentID().toString()));
+        }
+        List<Class> listClassofStudent = new ArrayList<>();
+        for(int j = 0; j< listUser.size(); j++) {
+            listClassofStudent.add(adminService.findClassById(listUser.get(j).getClassId().toString()));
+        }
+        return listClassofStudent;
+    }
+
+    @RequestMapping(value = "/getListTeacherofFaculty", method = RequestMethod.POST)
+    public List<User> getListTeacherofFaculty(Model model, HttpServletRequest request)
     {
         String faculty_id = request.getParameter("faculty_id");
-        List<Section> listSection = adminService.getListSubject(faculty_id);
-        return listSection;
-
+        List<Class> listClassofFaculty = adminService.findClassesByFaculty(faculty_id);
+        List <User> list_AllUser = userService.listAll();
+        List <Role> listRole = userService.listAllRole();
+        List<User> listUser = new ArrayList<User>();
+        List<User> listTeacher = new ArrayList<User>();
+        List<Class> listClassofTeacher = new ArrayList<>();
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("TEACHER"))
+            {
+                for(int j = 0; j< listClassofFaculty.size(); j++) {
+                    if (list_AllUser.get(i).getClassId().equals(listClassofFaculty.get(j).getId())) {
+                        listTeacher.add(list_AllUser.get(i));
+                        break;
+                    }
+                }
+            }
+        }
+        return listTeacher;
     }
+
+    @RequestMapping(value = "/getClassofFaculty", method = RequestMethod.POST)
+    public List<Class> getListClassofFaculty(Model model, HttpServletRequest request)
+    {
+        String faculty_id = request.getParameter("faculty_id");
+        List<Class> listClassofFaculty = adminService.findClassesByFaculty(faculty_id);
+        List <User> list_AllUser = userService.listAll();
+        List <Role> listRole = userService.listAllRole();
+        List<User> listUser = new ArrayList<User>();
+        List<User> listTeacher = new ArrayList<User>();
+        List<Class> listClassofTeacher = new ArrayList<>();
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("TEACHER"))
+            {
+                for(int j = 0; j< listClassofFaculty.size(); j++) {
+                    if (list_AllUser.get(i).getClassId().equals(listClassofFaculty.get(j).getId())) {
+                        listTeacher.add(list_AllUser.get(i));
+                        break;
+                    }
+                }
+            }
+        }
+        for(int i = 0; i<listTeacher.size();i++)
+        {
+            listClassofTeacher.add(adminService.findClassById(listTeacher.get(i).getClassId().toString()));
+        }
+        return listClassofTeacher;
+    }
+
+    @RequestMapping(value = "/GetFullTeacher", method = RequestMethod.POST)
+    public List<User> getTeacherFull(Model model, HttpServletRequest request)
+    {
+        List <User> list_AllUser = userService.listAll();
+        List <Role> listRole = userService.listAllRole();
+        List<User> listUser = new ArrayList<User>();
+        List<User> listTeacher = new ArrayList<User>();
+        List<Class> listClassofTeacher = new ArrayList<>();
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("TEACHER"))
+            {
+                listTeacher.add(list_AllUser.get(i));
+            }
+        }
+        return listTeacher;
+    }
+
+    @RequestMapping(value = "/GetFullClass", method = RequestMethod.POST)
+    public List<Class> getClassFull(Model model, HttpServletRequest request)
+    {
+        List <User> list_AllUser = userService.listAll();
+        List <Role> listRole = userService.listAllRole();
+        List<User> listUser = new ArrayList<User>();
+        List<User> listTeacher = new ArrayList<User>();
+        List<Class> listClassofTeacher = new ArrayList<>();
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("TEACHER"))
+            {
+                listTeacher.add(list_AllUser.get(i));
+                String classID = list_AllUser.get(i).getClassId().toString();
+                listClassofTeacher.add(adminService.findClassById(list_AllUser.get(i).getClassId().toString()));
+            }
+        }
+        return listClassofTeacher;
+    }
+
+
+//    @RequestMapping(value = "/api/admin/getListTeacher", method = RequestMethod.POST)
+//    public List<User> getListTeacher(Model model, HttpServletRequest request)
+//    {
+//        String section_id_value = request.getParameter("section_id_value");
+//
+//    }
 
     @RequestMapping(value = "/addQuestion", method = RequestMethod.POST)
     public void addQuestion(Model model, HttpServletRequest request)
     {
+
         String question_desc = request.getParameter("question_desc");
         String choice1 = request.getParameter("choice1");
         String choice2 = request.getParameter("choice2");
@@ -200,6 +343,7 @@ public class AdminController {
         newQuestion.setTopic_id(adminService.getTopicByTitleAndSectionId(topic_title, section_id).getId());
         return newQuestion;
     }
+
 
 
 }

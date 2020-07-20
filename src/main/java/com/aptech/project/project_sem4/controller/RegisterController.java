@@ -132,6 +132,18 @@ public class RegisterController {
                 listUser.add(list_AllUser.get(i));
             }
         }
+        List<User> listTeacher = new ArrayList<User>();
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("TEACHER"))
+            {
+                listTeacher.add(list_AllUser.get(i));
+            }
+        }
+
         model.addAttribute("listUser", listUser);
         model.addAttribute("userRole", listRole);
         return "index2";
@@ -150,8 +162,27 @@ public class RegisterController {
     public String Khoa_Page(Model model)
     {
         List<Faculty> listFaculty = adminService.getAllFaculty();
-        model.addAttribute("listFaculty", listFaculty);
+        List <User> list_AllUser = userService.listAll();
+        List <Role> listRole = userService.listAllRole();
+        List<User> listUser = new ArrayList<User>();
+        List<User> listTeacher = new ArrayList<User>();
+        List<Class> listClassofTeacher = new ArrayList<>();
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("TEACHER"))
+            {
+                listTeacher.add(list_AllUser.get(i));
+                String classID = list_AllUser.get(i).getClassId().toString();
+                listClassofTeacher.add(adminService.findClassById(list_AllUser.get(i).getClassId().toString()));
+            }
+        }
 
+        model.addAttribute("listFaculty", listFaculty);
+//        model.addAttribute("listTeacher", listTeacher);
+//        model.addAttribute("listClass", listClassofTeacher);
         return "khoa";
     }
 
@@ -197,7 +228,7 @@ public class RegisterController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
         User current_user = userService.findByEmail(userName);
-        Class user_class = userService.findClassByID(current_user.getClassID().toString());
+        Class user_class = userService.findClassByID(current_user.getClassId().toString());
         model.addAttribute("current_user", current_user);
         model.addAttribute("user_class", user_class);
         return "userProfile";

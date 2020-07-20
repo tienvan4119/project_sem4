@@ -25,30 +25,112 @@
 
   <!-- Custom styles for this template-->
   <link th:href="@{/css/admin.min.css}" rel="stylesheet">
+  <style type="text/css">
+
+        table.table td a {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 5px;
+            min-width: 24px;
+        }
+        table.table td a.edit {
+            color: #FFC107;
+        }
+        table.table td a.delete {
+            color: #E34724;
+        }
+        table.table td i {
+            font-size: 19px;
+        }
+    </style>
   <script type="text/javascript">
 
     // select choice a field and a subject
   $(document).ready(function () {
+    $.ajax({type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
+      data : {
+
+      },success: function(result){
+        console.log(result)
+        var k = 0;
+        for(k ; k<result.length;k++)
+        {
+          $('#listTeachers').append("<option  value= "+result[k].email+" >" +result[k].firstName+" "+result[k].lastName+ "</option>");
+        }
+
+        $.ajax({type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
+          data : {
+
+          },success: function(dataClass){
+            console.log(result)
+
+            var i;
+            for (i = 0; i < result.length; i++) {
+              console.log(result[i].firstName+ result[i].lastName)
+              console.log(result[i].email)
+              console.log(result[i].location)
+              console.log(dataClass[i].className)
+
+              $('#teachers').append("<tr>" +
+                      "<td>"+result[i].firstName+" "+result[i].lastName+"</td>" +
+                      "<td>"+result[i].location+"</td>" +
+                      "<td>"+result[i].email+"</td>" +
+                      "<td>"+dataClass[i].className+"</td>" +
+                      "<td>" +
+                      "<a class='edit' title='Edit' id='iconedit1' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                      "<a id='icondelete1' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                      "</td>" +
+                      "</tr>")
+            }
+          }})
+      }})
+
+
 
     $('#listKhoa').on('change', e=>{
+      $('#teachers').empty()
       var faculty_id =  $('#listKhoa option:selected').val();
       console.log(faculty_id);
-      $.ajax({type: "POST", url: "/api/admin/getListSubject", dataType: 'json',
+
+      $.ajax({type: "POST", url: "/api/admin/getListTeacherofFaculty", dataType: 'json',
         data : {
           faculty_id : faculty_id
         },success: function(result){
-          console.log(result)
-          $('#listMonHoc').find('option').remove();
-          var i;
-
-          for (i = 0; i < result.length; i++) {
-            data = result[i].title
-            console.log(data)
-            $('#listMonHoc').append("<option value= "+data+" >" + data + "</option>");
-            var x = document.getElementById("mySelect")
+          $('#listTeachers').empty()
+          $('#listTeachers').append("<option disabled selected>" + "Teacher..." + "</option>");
+          var k = 0;
+          for(k ; k<result.length;k++)
+          {
+            $('#listTeachers').append("<option  value= "+result[k].email+" >" +result[k].firstName+" "+result[k].lastName+ "</option>");
           }
-          $('#listMonHoc').append("<option value=" + '"AddMonHoc"' + ">" + "Add more..." + "</option>");
+          $('#teachers').empty()
+          $.ajax({type: "POST", url: "/api/admin/getClassofFaculty", dataType: 'json',
+            data : {
+              faculty_id : faculty_id
+            },success: function(dataClass){
+
+
+              var i;
+              for (i = 0; i < result.length; i++) {
+                console.log(result[i].firstName+ result[i].lastName)
+                console.log(result[i].email)
+                console.log(result[i].location)
+                console.log(dataClass[i].className)
+                $('#teachers').append("<tr>" +
+                        "<td>"+result[i].firstName+" "+result[i].lastName+"</td>" +
+                        "<td>"+result[i].location+"</td>" +
+                        "<td>"+result[i].email+"</td>" +
+                        "<td>"+dataClass[i].className+"</td>" +
+                        "<td>" +
+                        "<a class='edit' title='Edit' id='iconedit1' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                        "<a id='icondelete1' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                        "</td>" +
+                        "</tr>")
+              }
+            }})
+
         }})
+
       if (faculty_id == 'Khoa'){
         $('#listMonHoc').empty();
         $('#listMonHoc').append("<option selected>" + "Subjects..." + "</option>");
@@ -59,27 +141,68 @@
         $('#ThemMotKhoa').modal('show');
       }
     })
+    $('#listTeachers').on('change', e=>{
+      var teacher_email =  $('#listTeachers option:selected').val();
+      console.log(teacher_email);
+      $.ajax({type: "POST", url: "/api/admin/getListCourses", dataType: 'json',
+        data : {
+          teacher_email : teacher_email
+        },success: function(result){
+          console.log(result)
+
+          $('#listMonHoc').find('option').remove();
+          var i;
+          $('#listMonHoc').append("<option selected>" + "Course..." + "</option>");
+          for (i = 0; i < result.length; i++) {
+            title = result[i].name
+            $('#listMonHoc').append("<option  value= "+title+" >" + title + "</option>");
+
+            var x = document.getElementById("mySelect")
+          }
+          $('#listMonHoc').append("<option value=" + '"AddMonHoc"' + ">" + "Add more..." + "</option>");
+        }})
+    })
     //Show DataTable
     $('#listMonHoc').on('change', e => {
-      var section_id_value =  $('#listMonHoc option:selected').val();
-      console.log(section_id_value);
+      var course_name =  $('#listMonHoc option:selected').text();
+      console.log(course_name);
 
-      if(section_id_value == 'JAVA'){
+
+      $.ajax({type: "POST", url: "/api/admin/getListStudentofCourse", dataType: 'json',
+        data : {
+          course_name : course_name
+        },success: function(result){
+          console.log(result)
+          $.ajax({type: "POST", url: "/api/admin/getListStudentofCourseClass", dataType: 'json',
+            data : {
+              course_name : course_name
+            },success: function(dataClass){
+              $('#teachers').empty()
+
+              var i;
+              for (i = 0; i < result.length; i++) {
+                console.log(result[i].firstName+ result[i].lastName)
+                console.log(result[i].email)
+                console.log(result[i].location)
+                console.log(dataClass[i].className)
+                $('#teachers').append("<tr>" +
+                        "<td>"+result[i].firstName+" "+result[i].lastName+"</td>" +
+                        "<td>"+result[i].location+"</td>" +
+                        "<td>"+result[i].email+"</td>" +
+                        "<td>"+dataClass[i].className+"</td>" +
+                        "<td>" +
+                        "<a class='edit' title='Edit' id='iconedit1' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                        "<a id='icondelete1' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                        "</td>" +
+                        "</tr>")
+              }
+            }})
+
+        }})
+
+      if(course_name == "Data"){
         $('#teachers').empty()
-        $('#teachers').append("<tr>" +
-                "<td id='teacher1' value='mvh'>Mai Van Ha</td>" +
-                "<td id='addr1' value='danang'>Da Nang</td>" +
-                "<td id='user1' value='mvh@gmail.com'>mvh@gmail.com</td>" +
-                "<td id='number1' value='20'>20</td>" +
-                "<td>" +
-                  "<a title='Edit' id='iconedit1'>" +
-                    "<i class='material-icons'>&#xE254;</i>" +
-                  "</a>" +
-                  "<a title='Delete' id='icondel1'>" +
-                    "<i class='material-icons'>&#xE872;</i>" +
-                  "</a>" +
-                "</td>" +
-                "</tr>")
+
       }else {
         //Them mon hoc
         if(section_id_value == 'AddMonHoc'){
@@ -88,7 +211,19 @@
           $('#teachers').empty()
         }
       }
+      //Click edit button DEMO
+      $('#iconedit1').on('click', e => {
+        $('#editModal').modal('show');
+        //Đổ thông tin giáo viên theo id giáo viên tương ứng
+      });
+      //Click delete button DEMO
+      $('#icondelete1').on('click', e => {
+        $('#deleteModal').modal('show');
+        //Xử lí nút Có: id: save_delete
+
+      });
     })
+
     //Them teacher
     $('#AddNewTeacher').on('click', e=>{
       $('#AddNewModal').modal('show');
@@ -255,13 +390,17 @@
                 <div class="card-header py-3">
                   <form>
                     <select class="custom-select" style="width: 30%" id="listKhoa">
-                      <option id="Khoa" value="Khoa" selected>Khoa...</option>
+                      <option id="Khoa" value="Khoa" disabled selected>Khoa...</option>
                       <option th:each="faculty :  ${listFaculty}" th:value="${faculty.id}" th:text="${faculty.name}"/>
                       <option id="AddField" value="ThemKhoa">Add more...</option>
                     </select>
 
+                    <select class="custom-select" style="width: 30%" id="listTeachers">
+                      <option selected>Teacher...</option>
+                    </select>
+
                     <select class="custom-select" style="width: 30%" id="listMonHoc">
-                      <option selected>Subjects...</option>
+                      <option selected value="allTeachers">Course...</option>
                     </select>
 
                   </form>
@@ -271,13 +410,13 @@
 
                 <!--Table Quản Lý-->
                 <div class="card-body">
-                  <table id="datatable" class="table table-bordered table-striped" style="width: 100%">
+                  <table id="datatable" class="table table-bordered table-striped" style="width: 100%" >
                     <thead>
                       <tr>
                         <th>Full Name</th>
                         <th>Address</th>
                         <th>User's email</th>
-                        <th>The Number of Student</th>
+                        <th>Class_ID</th>
                         <th>Setting</th>
                       </tr>
                     </thead>
@@ -375,6 +514,59 @@
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       <button id="addNewSubject_SaveChanges" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Table EDIT Teachers-->
+              <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="editModal_title">Sửa thông tin giáo viên</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="Name">FULL Name</label>
+                        <input type="text" class="form-control" id="editName" >
+                      </div>
+                      <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input type="text" class="form-control" id="editAddress" >
+                      </div>
+                      <div class="form-group">
+                        <label for="Email">User's email</label>
+                        <input type="text" class="form-control" id="editEmail" >
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button id="saveChanges" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--DIALOG DELETE Teachers-->
+              <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Xóa giáo viên này?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Bạn có muốn xóa giáo viên này ? </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button id="save_delete" type="button" class="btn btn-primary">Có</button>
+                      <button type="button" class="btn btn-secondary save_delete" data-dismiss="modal">Không</button>
                     </div>
                   </div>
                 </div>

@@ -33,9 +33,18 @@ public class Choice {
         this.choice_desc = choice_desc;
     }
 
+    public Boolean getCorrect() {
+        return isCorrect;
+    }
+
+    public void setCorrect(Boolean correct) {
+        isCorrect = correct;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     ObjectId id;
     ObjectId question_id;
     String choice_desc;
+    Boolean isCorrect;
 }

@@ -91,15 +91,17 @@ public class User{
         this.password = password;
     }
 
-    public ObjectId getClassID() {
-        return class_id;
+
+    ObjectId classId;
+
+    public ObjectId getClassId() {
+        return classId;
     }
 
-    public void setClassID(ObjectId classID) {
-        this.class_id = classID;
+    public void setClassId(ObjectId classId) {
+        this.classId = classId;
     }
 
-    ObjectId class_id;
     String MSSV;
 
     public String getMSSV() {

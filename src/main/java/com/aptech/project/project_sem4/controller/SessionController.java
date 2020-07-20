@@ -76,13 +76,20 @@ public class SessionController {
             for(int i = 0; i< 10; i++)
             {
                 String choice_can_check = listChoice.get(i).getChoice_id().toString();
-                Answer correct_answer = quizService.checkChoice(listChoice.get(i).getQuestion_id().toString());
-
-                String correct_answer_id = correct_answer.getAnswer_id().toString();
-                if (choice_can_check.equals(correct_answer_id))
+//                Answer correct_answer = quizService.checkChoice(listChoice.get(i).getQuestion_id().toString());
+                if(quizService.choice_chosen(choice_can_check) == null)
+                {
+                    System.out.println("abc");
+                }
+                else if(quizService.choice_chosen(choice_can_check).getCorrect())
                 {
                     mark++;
                 }
+//                String correct_answer_id = correct_answer.getAnswer_id().toString();
+//                if (choice_can_check.equals(correct_answer_id))
+//                {
+//                    mark++;
+//                }
             }
             Result result = new Result();
             result.setUser_id(user_id);

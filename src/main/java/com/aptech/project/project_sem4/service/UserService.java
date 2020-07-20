@@ -37,8 +37,10 @@ private ResultRepository resultRepository;
     }
     public Class findClassByID(String classID)
     {
-        return classRepository.findClasByID(classID);
+        return classRepository.findClassById(classID);
     }
+
+
 
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);

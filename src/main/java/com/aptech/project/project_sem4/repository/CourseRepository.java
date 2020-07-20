@@ -12,4 +12,6 @@ import java.util.List;
 public interface CourseRepository extends MongoRepository<Course, Long> {
     @Query("{ teacherID: ObjectId(\"?0\" )}")
     public List<Course> findCoursesByTeacherID(String teacherID);
+    @Query("{ name: \"?0\" }")
+    public Course findCourseByName(String course_name);
 }

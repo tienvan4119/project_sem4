@@ -1,6 +1,7 @@
 package com.aptech.project.project_sem4.service;
 
 import com.aptech.project.project_sem4.model.*;
+import com.aptech.project.project_sem4.model.Class;
 import com.aptech.project.project_sem4.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,11 +30,18 @@ public class AdminService {
     private FacultyRepository facultyRepository;
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private ClassRepository classRepository;
+    @Autowired
+    private RelationStudentCourseRepository relationStudentCourseRepository;
     public User findUserbyId(String id)
     {
         return userRepository.findUserById(id);
     }
-
+    public Class findClassById(String id)
+    {
+        return classRepository.findClassById(id);
+    }
     public void saveAdmin(User user) {
         Role userRole = roleRepository.findByRole("ADMIN");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
@@ -87,5 +95,22 @@ public class AdminService {
     public List<Course> getListCourseOfTeacher(String teacherID)
     {
         return courseRepository.findCoursesByTeacherID(teacherID);
+    }
+
+    public List<Class> findClassesByFaculty(String facultyID)
+    {
+        return classRepository.findClassesByFacultyId(facultyID);
+    }
+    public User getUserbyEmail(String email)
+    {
+        return  userRepository.findByEmail(email);
+    }
+    public List<RelationStudentCourse> getListCourseAndStudent(String courseID)
+    {
+        return relationStudentCourseRepository.getListCourseWithStudent(courseID);
+    }
+    public Course getCoursebyName(String course_name)
+    {
+        return courseRepository.findCourseByName(course_name);
     }
 }

@@ -14,8 +14,7 @@ import java.util.List;
 public class QuizService {
     @Autowired
     private TopicRepository topicRepository;
-    @Autowired
-    MongoTemplate mongoTemplate = null;
+
     @Autowired
     private QuestionRepository questionRepository;
     @Autowired
@@ -80,7 +79,10 @@ public class QuizService {
 //    public Session getChoice_inSession(String Question_id) {
 //        return sessionRepository.findChoiceId_inSession(Question_id);
 //    }
-
+    public Choice choice_chosen(String choice_id)
+    {
+        return choiceRepository.findChoiceById(choice_id);
+    }
     public Section isDone(String section_id) {
         return sectionRepository.isDone(section_id);
     }
