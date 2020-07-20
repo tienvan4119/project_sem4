@@ -279,6 +279,40 @@ public class AdminController {
         return listClassofTeacher;
     }
 
+    @RequestMapping(value = "/addQuizTest", method = RequestMethod.POST)
+    public List<Test> AddTestQuiz(Model model, HttpServletRequest request)
+    {
+        String className = request.getParameter("Class");
+        String soCau = request.getParameter("SoCau");
+        String time = request.getParameter("ThoiGian");
+        int timeTest = Integer.parseInt(time);
+        Course currentCourse = adminService.getCoursebyName(className);
+        Test newTestQuiz = new Test();
+        newTestQuiz.setTime(timeTest);
+        newTestQuiz.setCourseID(currentCourse.getId());
+        int numberQuestion = Integer.parseInt(soCau);
+        newTestQuiz.setNumberQuestion(numberQuestion);
+        adminService.saveQuizTest(newTestQuiz);
+        return adminService.getListTest();
+    }
+
+    @RequestMapping(value = "/getFullTest", method = RequestMethod.POST)
+    public List<Test> getListTest(Model model, HttpServletRequest request)
+    {
+        return adminService.getListTest();
+    }
+
+    @RequestMapping(value = "/getClassTest", method = RequestMethod.POST)
+    public List<Course> getFullCourseTest()
+    {
+        List<Test> listTest = adminService.getListTest();
+        List<Course> listCourse = new ArrayList<>();
+        for(int i = 0; i<listTest.size(); i++)
+        {
+            listCourse.add(adminService.findCoursebyID(listTest.get(i).getCourseID().toString()));
+        }
+        return listCourse;
+    }
 
 //    @RequestMapping(value = "/api/admin/getListTeacher", method = RequestMethod.POST)
 //    public List<User> getListTeacher(Model model, HttpServletRequest request)

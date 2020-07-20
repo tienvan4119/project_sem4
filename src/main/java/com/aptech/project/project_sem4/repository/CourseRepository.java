@@ -14,4 +14,6 @@ public interface CourseRepository extends MongoRepository<Course, Long> {
     public List<Course> findCoursesByTeacherID(String teacherID);
     @Query("{ name: \"?0\" }")
     public Course findCourseByName(String course_name);
+    @Query("{ _id: \"?0\" }")
+    public Course findCourseByID(String course_id);
 }

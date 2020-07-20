@@ -34,6 +34,8 @@ public class AdminService {
     private ClassRepository classRepository;
     @Autowired
     private RelationStudentCourseRepository relationStudentCourseRepository;
+    @Autowired
+    private TestRepository testRepository;
     public User findUserbyId(String id)
     {
         return userRepository.findUserById(id);
@@ -52,6 +54,20 @@ public class AdminService {
         Role userRole = roleRepository.findByRole("TEACHER");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(user);
+    }
+
+    public void saveQuizTest(Test test) {
+        testRepository.save(test);
+    }
+
+    public List<Test> getListTest()
+    {
+        return testRepository.findAll();
+    }
+
+    public Course findCoursebyID(String course_id)
+    {
+        return courseRepository.findCourseByID(course_id);
     }
 
     public void saveUser(User user) {

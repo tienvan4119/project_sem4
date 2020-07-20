@@ -17,12 +17,12 @@ public class Test {
         this.id = id;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public ObjectId getCourseID() {
+        return courseID;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public void setCourseID(ObjectId courseID) {
+        this.courseID = courseID;
     }
 
     public int getNumberQuestion() {
@@ -44,7 +44,7 @@ public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     ObjectId id;
-    String courseName;
+    ObjectId courseID;
     int numberQuestion;
     int time;
 }

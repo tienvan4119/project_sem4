@@ -233,5 +233,16 @@ public class RegisterController {
         model.addAttribute("user_class", user_class);
         return "userProfile";
     }
+
+    @RequestMapping(value = {"/addBaiLam"})
+    public String AddBaiLam(Model model)
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        User current_user = userService.findByEmail(userName);
+        List<Course> listCourse = adminService.getListCourseOfTeacher(current_user.getId().toString());
+        model.addAttribute("listCourse", listCourse);
+        return "addBaiLam";
+    }
 }
 
