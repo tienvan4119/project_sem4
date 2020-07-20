@@ -86,7 +86,7 @@ public class AdminService {
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
-
+    public  List<Class> getAllClass(){ return classRepository.findAll();}
     public List<Section> getAllSection()
     {
         return sectionRepository.findAll();
@@ -139,5 +139,11 @@ public class AdminService {
     public Course getCoursebyName(String course_name)
     {
         return courseRepository.findCourseByName(course_name);
+    }
+    public void saveSection(Section section) {
+        sectionRepository.save(section);
+    }
+    public void saveTopic(Topic topic) {
+        topicRepository.save(topic);
     }
 }

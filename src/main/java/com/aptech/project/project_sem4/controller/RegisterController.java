@@ -196,20 +196,32 @@ public class RegisterController {
     }
 
     @RequestMapping(value = {"/teacher"})
-    public String teacherPage()
+    public String teacherPage(Model model)
     {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List<Course> listClass = adminService.getListCourseOfTeacher(user.getId().toString());
+        model.addAttribute("listClass", listClass);
         return "teacher";
     }
-
     @RequestMapping(value = {"/addQuiz"})
-    public String addQuizPage()
+    public String addQuizPage(Model model)
     {
+        List<Faculty> listFaculty = adminService.getAllFaculty();
+        List<Section> listSection = adminService.getAllSection();
+        model.addAttribute("listFaculty", listFaculty);
+        model.addAttribute("listSection", listSection);
         return "addQuiz";
     }
 
     @RequestMapping(value = {"/updateQuiz"})
-    public String updateQuizQuizPage()
+    public String updateQuizQuizPage(Model model)
     {
+        List<Faculty> listFaculty = adminService.getAllFaculty();
+        List<Section> listSection = adminService.getAllSection();
+        model.addAttribute("listFaculty", listFaculty);
+        model.addAttribute("listSection", listSection);
+
         return "updateQuiz";
     }
 

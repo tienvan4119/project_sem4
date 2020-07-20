@@ -51,33 +51,49 @@
         $(document).ready(function () {
             //Show DataTable
             $('#listSection').on('change', e => {
-                var section_id = $('#listSection option:selected').val();
-                console.log(section_id);
-                $.ajax({type: "POST", url: "/api/admin/getTopic", dataType: 'json',
-                    data : {
-                        section_id : section_id
-                    },success: function(result){
-                        console.log(result)
-                        $('#listTopic').find('option').remove();
-                        var i;
-                        for (i = 0; i < result.length; i++) {
-                            data = result[i].title
-                            console.log(data)
-                            $('#listTopic').append("<option value= "+data+" >" + data + "</option>");
-                            var x = document.getElementById("mySelect")
-                        }
-
-                    }})
-                if (section_id == 'Section'){
+                var section_id_value = $('#listSection option:selected').val();
+                console.log(section_id_value);
+                if (section_id_value === 'C plus - plus') {
+                    console.log("Done!");
                     $('#listTopic').empty();
-                    $('#listTopic').append("<option selected>" + "Topic..." + "</option>");
+                    $('#listTopic').append("<option selected>" + "Topics..." + "</option>");
+                    $('#listTopic').append("<option value=" + '"Constructors"' + ">" + "Constructors" + "</option>");
+                    $('#listTopic').append("<option value=" + '"This Pointer"' + ">" + "This Pointer" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Inheritance"' + ">" + "Inheritance" + "</option>");
+                    $('#listTopic').append("<option value=" + '"New and Delete"' + ">" + "New and Delete" + "</option>");
                 }
+                if (section_id_value === 'Java') {
+                    $('#listTopic').empty();
+                    $('#listTopic').append("<option selected>" + "Topics..." + "</option>");
+                    $('#listTopic').append("<option value=" + '"Functions"' + ">" + "Functions" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Inheritance"' + ">" + "Inheritance" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Constructors"' + ">" + "Constructors" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Arrays"' + ">" + "Arrays" + "</option>");
 
+                }
+                if (section_id_value === 'Python') {
+                    $('#listTopic').empty();
+                    $('#listTopic').append("<option selected>" + "Topics..." + "</option>");
+                    $('#listTopic').append("<option value=" + '"Functions"' + ">" + "Functions" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Miscellaneous"' + ">" + "Miscellaneous" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Data Type"' + ">" + "Data Type" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Output"' + ">" + "Output" + "</option>");
+                }
+                if (section_id_value === 'Data Structures') {
+                    $('#listTopic').empty();
+                    $('#listTopic').append("<option selected>" + "Topics..." + "</option>");
+                    $('#listTopic').append("<option value=" + '"Linked List"' + ">" + "Linked List" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Stack"' + ">" + "Stack" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Binary Trees"' + ">" + "Binary Trees" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Graph"' + ">" + "Graph" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Hash"' + ">" + "Hash" + "</option>");
+                    $('#listTopic').append("<option value=" + '"Misc"' + ">" + "Misc" + "</option>");
+                }
             })
             $('#listTopic').on('change', e => {
-                var topic_id_value = $('#listTopic option:selected').text();
-                console.log(topic_id_value);
-                if (topic_id_value === 'Constructors') {
+                var section_id_value = $('#listTopic option:selected').val();
+                console.log(section_id_value);
+                if (section_id_value === 'Constructors') {
                     $('#quizs').empty()
                     $('#quizs').append("<tr>" +
                         "<td id='ID1' value='1'>1</td>" +
@@ -90,7 +106,7 @@
                         "</td>" +
                         "</tr>")
                 }
-                if (topic_id_value === 'This Pointer') {
+                if (section_id_value === 'This Pointer') {
                     $('#quizs').empty()
                     $('#quizs').append("<tr>" +
                         "<td id='ID2' value='2'>2</td>" +
@@ -103,7 +119,7 @@
                         "</td>" +
                         "</tr>")
                 }
-                if (topic_id_value === 'Inheritance') {
+                if (section_id_value === 'Inheritance') {
                     $('#quizs').empty()
                     $('#quizs').append("<tr>" +
                         "<td id='ID3' value='3'>3</td>" +
@@ -117,7 +133,7 @@
                         "</tr>")
 
                 }
-                if (topic_id_value === 'New and Delete') {
+                if (section_id_value === 'Inheritance') {
                     $('#quizs').empty()
                     $('#quizs').append("<tr>" +
                         "<td id='ID4' value='4'>4</td>" +
@@ -131,7 +147,7 @@
                         "</tr>")
 
                 }
-                if (topic_id_value === 'Section') {
+                if (section_id_value === 'Section') {
                     $('#quizs').empty();
                 }
                 $('.edit').on('click', e => {
@@ -270,6 +286,7 @@
                     <a class="collapse-item" href="addQuiz.html">Thêm quiz mới</a>
                     <a class="collapse-item" href="updateQuiz.html">Cập nhật quiz</a>
                     <a class="collapse-item" href="addBaiLam.html">Thêm Bài Test</a>
+
                 </div>
             </div>
         </li>
@@ -345,7 +362,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${#authentication.getPrincipal().getUsername()}"></span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Huynh Huu Phuoc</span>
                             <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                         </a>
                         <!-- Dropdown - User Information -->
@@ -390,7 +407,10 @@
                                 <form>
                                     <select class="custom-select" style="width: 30%" id="listSection">
                                         <option id="Section" value="Section" selected>Section...</option>
-                                        <option th:each="section :  ${listSection}" th:value="${section.id}" th:text="${section.title}"/>
+                                        <option id="C plus - plus" value="C plus - plus">C plus - plus</option>
+                                        <option id="Java" value="Java">Java</option>
+                                        <option id="Python" value="Python">Python</option>
+                                        <option id="Data Structures" value="Data Structures">Data Structures</option>
                                     </select>
                                     <select class="custom-select" style="width: 30%" id="listTopic">
                                         <option selected>Topics...</option>

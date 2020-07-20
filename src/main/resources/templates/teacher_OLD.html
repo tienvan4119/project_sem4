@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Teacher - Update Quiz</title>
+    <title>Teacher - Class</title>
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
@@ -30,15 +30,12 @@
             margin: 0 5px;
             min-width: 24px;
         }
-
         table.table td a.edit {
             color: #FFC107;
         }
-
         table.table td a.delete {
             color: #E34724;
         }
-
         table.table td i {
             font-size: 19px;
         }
@@ -50,66 +47,48 @@
         // select choice a field and a subject
         $(document).ready(function () {
             //Show DataTable
-            $('#listSection').on('change', e => {
-                var section_id = $('#listSection option:selected').val();
-                console.log(section_id);
-                $.ajax({type: "POST", url: "/api/admin/getTopic", dataType: 'json',
-                    data : {
-                        section_id : section_id
-                    },success: function(result){
-                        console.log(result)
-                        $('#listTopic').find('option').remove();
-                        var i;
-                        for (i = 0; i < result.length; i++) {
-                            data = result[i].title
-                            console.log(data)
-                            $('#listTopic').append("<option value= "+data+" >" + data + "</option>");
-                            var x = document.getElementById("mySelect")
-                        }
-
-                    }})
-                if (section_id == 'Section'){
-                    $('#listTopic').empty();
-                    $('#listTopic').append("<option selected>" + "Topic..." + "</option>");
-                }
-
-            })
-            $('#listTopic').on('change', e => {
-                var topic_id_value = $('#listTopic option:selected').text();
-                console.log(topic_id_value);
-                if (topic_id_value === 'Constructors') {
-                    $('#quizs').empty()
-                    $('#quizs').append("<tr>" +
-                        "<td id='ID1' value='1'>1</td>" +
-                        "<td id='section1' value='C plus - plus'>C plus - plus</td>" +
-                        "<td id='topic1' value='Constructors'>Constructors</td>" +
-                        "<td id='question1' value='question1'>Question 1 ....</td>" +
+            $('#listClass').on('change', e => {
+                var section_id_value =  $('#listClass option:selected').val();
+                console.log(section_id_value);
+                if(section_id_value === '17Nh14'){
+                    $('#students').empty()
+                    $('#students').append("<tr>" +
+                        "<td id='mssv1' value='001'>001</td>" +
+                        "<td id='ho1' value='Nguyen'>Nguyen</td>" +
+                        "<td id='ten1' value='Van A'>Van A</td>" +
+                        "<td id='class1' value='17TCLC1'>17TCLC1</td>" +
+                        "<td id='dob1' value='1/1/1999'>1/1/1999</td>" +
+                        "<td id='pob1' value='Da Nang'>Da Nang</td>" +
                         "<td>" +
                         "<a class='edit' title='Edit' th:id='${user.id}' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE254;</i></a>" +
                         "<a th:id='${user.id}' class='delete' title='Delete' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE872;</i></a>" +
                         "</td>" +
                         "</tr>")
                 }
-                if (topic_id_value === 'This Pointer') {
-                    $('#quizs').empty()
-                    $('#quizs').append("<tr>" +
-                        "<td id='ID2' value='2'>2</td>" +
-                        "<td id='section2' value='C plus - plus'>C plus - plus</td>" +
-                        "<td id='topic2' value='This Pointer'>This Pointer</td>" +
-                        "<td id='question2' value='question2'>Question 2 ....</td>" +
+                if(section_id_value === '17Nh16'){
+                    $('#students').empty()
+                    $('#students').append("<tr>" +
+                        "<td id='mssv2' value='002'>002</td>" +
+                        "<td id='ho2' value='Nguyen'>Nguyen</td>" +
+                        "<td id='ten2' value='Van B'>Van B</td>" +
+                        "<td id='class2' value='17TCLC1'>17TCLC1</td>" +
+                        "<td id='dob2' value='1/1/1999'>1/1/1999</td>" +
+                        "<td id='pob2' value='Quang Nam'>Quang Nam</td>" +
                         "<td>" +
                         "<a class='edit' title='Edit' th:id='${user.id}' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE254;</i></a>" +
                         "<a th:id='${user.id}' class='delete' title='Delete' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE872;</i></a>" +
                         "</td>" +
                         "</tr>")
                 }
-                if (topic_id_value === 'Inheritance') {
-                    $('#quizs').empty()
-                    $('#quizs').append("<tr>" +
-                        "<td id='ID3' value='3'>3</td>" +
-                        "<td id='section3' value='C plus - plus'>C plus - plus</td>" +
-                        "<td id='topic3' value='Inheritance'>Inheritance</td>" +
-                        "<td id='question3' value='question3'>Question 3 ....</td>" +
+                if(section_id_value === '17Nh18'){
+                    $('#students').empty()
+                    $('#students').append("<tr>" +
+                        "<td id='mssv3' value='003'>003</td>" +
+                        "<td id='ho3' value='Nguyen'>Nguyen</td>" +
+                        "<td id='ten3' value='Van C'>Van C</td>" +
+                        "<td id='class3' value='17TCLC2'>17TCLC2</td>" +
+                        "<td id='dob3' value='1/1/1999'>1/1/1999</td>" +
+                        "<td id='pob3' value='Hue'>Hue</td>" +
                         "<td>" +
                         "<a class='edit' title='Edit' th:id='${user.id}' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE254;</i></a>" +
                         "<a th:id='${user.id}' class='delete' title='Delete' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE872;</i></a>" +
@@ -117,61 +96,43 @@
                         "</tr>")
 
                 }
-                if (topic_id_value === 'New and Delete') {
-                    $('#quizs').empty()
-                    $('#quizs').append("<tr>" +
-                        "<td id='ID4' value='4'>4</td>" +
-                        "<td id='section4' value='C plus - plus'>C plus - plus</td>" +
-                        "<td id='topic4' value='New and Delete'>New and Delete</td>" +
-                        "<td id='question4' value='question4'>Question 4 ....</td>" +
-                        "<td>" +
-                        "<a class='edit' title='Edit' th:id='${user.id}' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE254;</i></a>" +
-                        "<a th:id='${user.id}' class='delete' title='Delete' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE872;</i></a>" +
-                        "</td>" +
-                        "</tr>")
-
-                }
-                if (topic_id_value === 'Section') {
-                    $('#quizs').empty();
+                if (section_id_value === 'Class'){
+                    $('#students').empty();
                 }
                 $('.edit').on('click', e => {
                     $('#editModal').modal('show');
                     console.log($(e.target).context.id)
                     var user_id = $(e.target).context.id;
 
-                    $.ajax({
-                        type: "POST", url: "/api/admin/getUser", dataType: 'json',
-                        data: {
-                            user_id: user_id
-                        }, success: function (result) {
+                    $.ajax({type: "POST",url: "/api/admin/getUser",dataType : 'json',
+                        data : {
+                            user_id : user_id
+                        }, success: function(result){
                             console.log(result);
-                        }
-                    })
-                        .done(function (data) {
+                        }})
+                        .done(function( data ) {
                             var lastname = data.lastName
                             var firstname = data.firstName
                             console.log(lastname + '   ' + firstname);
                             var userEmail = data.email;
-                            $("#editModal #editLastName").val(lastname);
-                            $("#editModal #editFirstName").val(firstname);
-                            $("#editModal #editUserEmail").val(userEmail);
+                            $("#editModal #editLastName").val( lastname );
+                            $("#editModal #editFirstName").val( firstname );
+                            $("#editModal #editUserEmail").val( userEmail );
                         });
                 })
                 $('.delete').on('click', e => {
                     $('#deleteModal').modal('show');
                     var user_id = $(e.target).context.id;
-                    $('#save_delete').on('click', function () {
+                    $('#save_delete').on('click', function() {
                         console.log("in here")
                         console.log(user_id)
-                        $.ajax({
-                            type: "POST", url: "/api/admin/DeleteUser", dataType: 'json',
-                            data: {
-                                user_id: user_id
-                            }, success: function (result) {
+                        $.ajax({type: "POST",url: "/api/admin/DeleteUser",dataType : 'json',
+                            data : {
+                                user_id : user_id
+                            }, success: function(result){
                                 $('#deleteModal').modal('hide');
-                            }
-                        })
-                            .done(function (data) {
+                            }})
+                            .done(function( data ) {
                                 console.log("Yeah")
                             });
                         $('#deleteModal').modal('hide');
@@ -184,17 +145,15 @@
                     var firstname = $("#editModal #editFirstName").val().trim()
                     var useremail = $("#editModal #editUserEmail").val().trim()
 
-                    $.ajax({
-                        type: 'POST', url: "/api/admin/changeProfile", dataType: 'json',
-                        data: {
-                            lastName: lastname,
+                    $.ajax({type: 'POST',url: "/api/admin/changeProfile",dataType : 'json',
+                        data : {
+                            lastName : lastname,
                             firstName: firstname,
-                            userEmail: useremail
-                        }, success: function (result) {
+                            userEmail:useremail
+                        }, success: function(result){
 
-                        }
-                    })
-                        .done(function (data) {
+                        }})
+                        .done(function( data ) {
                             $('#editModal').modal('hide');
                             location.reload();
                             // $('#datatable .lastName').val(data.lastName)
@@ -203,6 +162,32 @@
                         });
                 });
             });
+            $('#AddNewStudent').on('click', e=> {
+                $('#AddNewModal').modal('show');
+                $('#addNew_saveChanges').on('click', e=>{
+                    var mssv = $("#AddNewModal #addMSSV").val().trim()
+                    var lastName = $("#AddNewModal #addLastName").val().trim()
+                    var firstName = $("#AddNewModal #addFirstName").val().trim()
+                    var classSH = $("#AddNewModal #addClassSH").val().trim()
+                    var DoB = $("#AddNewModal #addDoB").val().trim()
+                    var PoB = $("#AddNewModal #addPoB").val().trim()
+                    // $.ajax({type: 'POST',url: "/api/admin/AddNewStudent",dataType : 'json',
+                    //     data : {
+                    //         lastName : lastName,
+                    //         firstName: firstName,
+                    //         userEmail: userEmail,
+                    //         userPass : userPass
+                    //     }, success: function(result){
+                    //
+                    //     }})
+                        .done(function( data ) {
+
+                        });
+
+                    $('#AddNewModal').modal('hide');
+                    location.reload();
+                })
+            })
         })
     </script>
 </head>
@@ -220,7 +205,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Update Quiz</div>
+            <div class="sidebar-brand-text mx-3">Teacher</div>
         </a>
 
         <!-- Divider -->
@@ -230,7 +215,7 @@
         <li class="nav-item">
             <a class="nav-link" href="class.html">
                 <i class="fas fa-fw fa-table"></i>
-                <span>CẬP NHẬT QUIZ</span></a>
+                <span>DANH SÁCH LỚP</span></a>
         </li>
 
         <!-- Divider -->
@@ -243,8 +228,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item active">
-            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-               aria-controls="collapseTwo">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-user-edit"></i>
                 <span>QUẢN LÝ</span>
             </a>
@@ -258,18 +242,17 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-               aria-expanded="true" aria-controls="collapseUtilities">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-edit"></i>
                 <span>QUIZ</span>
             </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                 data-parent="#accordionSidebar">
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom QUIZ:</h6>
                     <a class="collapse-item" href="addQuiz.html">Thêm quiz mới</a>
                     <a class="collapse-item" href="updateQuiz.html">Cập nhật quiz</a>
                     <a class="collapse-item" href="addBaiLam.html">Thêm Bài Test</a>
+
                 </div>
             </div>
         </li>
@@ -302,8 +285,7 @@
                 <!-- Topbar Search -->
                 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                               aria-label="Search" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button">
                                 <i class="fas fa-search fa-sm"></i>
@@ -317,17 +299,13 @@
 
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                     <li class="nav-item dropdown no-arrow d-sm-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                             aria-labelledby="searchDropdown">
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                             <form class="form-inline mr-auto w-100 navbar-search">
                                 <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small"
-                                           placeholder="Search for..." aria-label="Search"
-                                           aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">
                                             <i class="fas fa-search fa-sm"></i>
@@ -343,14 +321,12 @@
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${#authentication.getPrincipal().getUsername()}"></span>
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Huynh Huu Phuoc</span>
                             <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                         </a>
                         <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown">
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
@@ -380,36 +356,42 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Cập nhật Quiz</h1>
+                <h1 class="h3 mb-4 text-gray-800">QUẢN LÝ LỚP HỌC PHẦN</h1>
 
                 <div class="row">
 
                     <div class="col-lg-12">
+
+                        <!-- nội dung QUẢN LÝ LỚP HỌC PHẦN -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <form>
-                                    <select class="custom-select" style="width: 30%" id="listSection">
-                                        <option id="Section" value="Section" selected>Section...</option>
-                                        <option th:each="section :  ${listSection}" th:value="${section.id}" th:text="${section.title}"/>
-                                    </select>
-                                    <select class="custom-select" style="width: 30%" id="listTopic">
-                                        <option selected>Topics...</option>
+                                    <select class="custom-select" style="width: 30%" id="listClass">
+                                        <option id="Class" value="Class" selected>Class...</option>
+                                        <option id="17Nh14" value="17Nh14">17Nh14</option>
+                                        <option id="17Nh16" value="17Nh16">17Nh16</option>
+                                        <option id="17Nh18" value="17Nh18">17Nh18</option>
                                     </select>
                                 </form>
+                                <button id="AddNewStudent" type="button" class="btn btn-primary" style="margin-top: 1em">Add A New Student</button>
+
                             </div>
 
+                            <!--Table Quản Lý-->
                             <div class="card-body">
                                 <table id="datatable" class="table table-bordered table-striped" style="width: 100%">
                                     <thead>
                                     <tr>
-                                        <th>Số thứ tự</th>
-                                        <th>Môn</th>
-                                        <th>Phần</th>
-                                        <th>Nội dung câu hỏi</th>
+                                        <th>MSSV</th>
+                                        <th>Họ</th>
+                                        <th>Tên</th>
+                                        <th>Lớp sinh hoạt</th>
+                                        <th>Ngày sinh</th>
+                                        <th>Nơi sinh</th>
                                         <th>Cài đặt</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="quizs">
+                                    <tbody id="students">
 
                                     </tbody>
                                 </table>
@@ -418,89 +400,110 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Xóa sinh viên này ?</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Bạn có muốn xóa câu hỏi này ? </p>
+                                                <p>Bạn có muốn xóa sinh viên này ? </p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button id="save_delete" type="button" class="btn btn-primary">Có, hãy
-                                                    xóa câu hỏi này
-                                                </button>
-                                                <button type="button" class="btn btn-secondary save_delete"
-                                                        data-dismiss="modal">Đóng
-                                                </button>
+                                                <button id="save_delete" type="button" class="btn btn-primary">Có, hãy xóa sinh viên này</button>
+                                                <button type="button" class="btn btn-secondary save_delete" data-dismiss="modal">Đóng</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+
+
                                 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
+                                    <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="editModal_title">Sửa câu hỏi</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
+                                                <h5 class="modal-title" id="editModal_title">Sửa thông tin sinh viên</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form name="ckeditor" th:action="@{/api/admin/addQuestion}">
-                                                    <br>
-                                                    <textarea name="editor1" id="editor1" rows="12" cols="350"
-                                                              style="width: 770px">
-                                                    </textarea>
-                                                    <script>
-                                                        // Replace the <textarea id="editor1"> with a CKEditor
-                                                        // instance, using default configuration.
-                                                        CKEDITOR.replace('editor1');
-                                                    </script>
-                                                    <div class="form-group">
-                                                        <label for="formGroupExampleInput">First Choice</label>
-                                                        <input type="text" class="form-control" id="Choice1"
-                                                               placeholder="First choice">
-                                                        <input type="radio" class="form-check-input" name="optradio"
-                                                               value="1" style="margin-left: -0.9rem; margin-top: 0.3rem">This is the right Choice
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="formGroupExampleInput2">Second Choice</label>
-                                                        <input type="text" class="form-control" id="Choice2"
-                                                               placeholder="Second Choice">
-                                                        <input type="radio" class="form-check-input" name="optradio"
-                                                               value="2" style="margin-left: -0.9rem; margin-top: 0.3rem" >This is the right Choice
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="formGroupExampleInput2">Third Choice</label>
-                                                        <input type="text" class="form-control" id="Choice3"
-                                                               placeholder="Third choice">
-                                                        <input type="radio" class="form-check-input" name="optradio"
-                                                               value="3" style="margin-left: -0.9rem; margin-top: 0.3rem">This is the right Choice
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="formGroupExampleInput2">Fourth choice</label>
-                                                        <input type="text" class="form-control" id="Choice4"
-                                                               placeholder="Fourth choice">
-                                                        <input type="radio" class="form-check-input" name="optradio"
-                                                               value="4" style="margin-left: -0.9rem; margin-top: 0.3rem">This is the right Choice
-                                                    </div>
-                                                </form>
+                                                <div class="form-group">
+                                                    <label for="mssv">MSSV</label>
+                                                    <input type="text" class="form-control" id="editMSSV" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="LastName">Họ</label>
+                                                    <input type="text" class="form-control" id="editLastName" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="FirstName">Tên</label>
+                                                    <input type="text" class="form-control" id="editFirstName" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ClassSH">Lớp Sinh Hoạt</label>
+                                                    <input type="text" class="form-control" id="editClassSH" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="DoB">Ngày Sinh</label>
+                                                    <input type="text" class="form-control" id="editDoB" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="PoB">Nơi Sinh</label>
+                                                    <input type="text" class="form-control" id="editPoB" >
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    Đóng
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button id="saveChanges" type="button" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="AddNewModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="AddNewModal_title">Thêm sinh viên mới</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
                                                 </button>
-                                                <button id="saveChanges" type="button" class="btn btn-primary">Lưu thay
-                                                    đổi
-                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="mssv">MSSV</label>
+                                                    <input type="text" class="form-control" id="addMSSV" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="LastName">Họ</label>
+                                                    <input type="text" class="form-control" id="addLastName" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="FirstName">Tên</label>
+                                                    <input type="text" class="form-control" id="addFirstName" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ClassSH">Lớp Sinh Hoạt</label>
+                                                    <input type="text" class="form-control" id="addClassSH" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="DoB">Ngày Sinh</label>
+                                                    <input type="text" class="form-control" id="addDoB" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="PoB">Nơi Sinh</label>
+                                                    <input type="text" class="form-control" id="addPoB" >
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button id="addNew_saveChanges" type="button" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                 </div>
@@ -533,8 +536,7 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

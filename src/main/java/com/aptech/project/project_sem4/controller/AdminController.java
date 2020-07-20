@@ -463,4 +463,28 @@ public class AdminController {
         List<Test> listTest = adminService.getListTest(user.getId().toString());
         return listTest;
     }
+    @RequestMapping(value = "/addSection", method = RequestMethod.POST)
+    public String addNewSection(HttpServletRequest request)
+    {
+        String sectionName = request.getParameter("sectionName");
+        String facultyID = request.getParameter("facultyID");
+        ObjectId facultyID_Convert = new ObjectId(facultyID);
+        Section new_Section = new Section();
+        new_Section.setTitle(sectionName);
+        new_Section.setFaculty_id(facultyID_Convert);
+        adminService.saveSection(new_Section);
+        return "Yes";
+    }
+    @RequestMapping(value = "/addTopic", method = RequestMethod.POST)
+    public String addNewTopic(HttpServletRequest request)
+    {
+        String topicName = request.getParameter("topicName");
+        String sectionID = request.getParameter("sectionID");
+        ObjectId sectionID_Convert = new ObjectId(sectionID);
+        Topic new_Topic = new Topic();
+        new_Topic.setTitle(topicName);
+        new_Topic.setSectionId(sectionID_Convert);
+        adminService.saveTopic(new_Topic);
+        return "Yes";
+    }
 }
