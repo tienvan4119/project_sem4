@@ -12,4 +12,7 @@ import java.util.List;
 public interface RelationStudentCourseRepository extends MongoRepository<RelationStudentCourse, Long> {
     @Query("{ courseID: ObjectId(\"?0\" )}")
     public List<RelationStudentCourse> getListCourseWithStudent(String courseID);
+
+    @Query("{ studentID: ObjectId(\"?0\" )}")
+    public List<RelationStudentCourse> getListCourseByStudentID(String student_id);
 }

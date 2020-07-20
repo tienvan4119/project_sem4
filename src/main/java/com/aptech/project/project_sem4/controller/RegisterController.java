@@ -241,6 +241,13 @@ public class RegisterController {
         String userName = authentication.getName();
         User current_user = userService.findByEmail(userName);
         Class user_class = userService.findClassByID(current_user.getClassId().toString());
+        List<RelationStudentCourse> listCourseofStudent = adminService.getListCourseAndStudent(current_user.getId().toString());
+        List<Course> listCourse = new ArrayList<>();
+        for(int i = 0; i < listCourseofStudent.size();i++)
+        {
+            listCourse.add(adminService.findCoursebyID(listCourseofStudent.get(i).getCourseID().toString()));
+        }
+        model.addAttribute("listCourse", listCourse);
         model.addAttribute("current_user", current_user);
         model.addAttribute("user_class", user_class);
         return "userProfile";

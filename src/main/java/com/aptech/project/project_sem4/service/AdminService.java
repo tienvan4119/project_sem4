@@ -134,7 +134,7 @@ public class AdminService {
     }
     public List<RelationStudentCourse> getListCourseAndStudent(String courseID)
     {
-        return relationStudentCourseRepository.getListCourseWithStudent(courseID);
+        return relationStudentCourseRepository.getListCourseByStudentID(courseID);
     }
     public Course getCoursebyName(String course_name)
     {

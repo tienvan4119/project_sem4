@@ -28,10 +28,8 @@
 
             <li class="nav-item dropdown">
                 <label class="nav-link">Take a quiz</label>
-                <div class="dropdown-content">
-                    <a href="#">Lập trình java</a>
-                    <a href="#">Lập trình oop</a>
-                    <a href="#">Lập trình python</a>
+                <div class="dropdown-content" >
+                    <a th:each="course : ${listCourse}" th:text="${course.name}" th:value="${course.name}" href="#"/>
                 </div>
                 <style>
                     label{
