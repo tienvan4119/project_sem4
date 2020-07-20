@@ -61,9 +61,19 @@ public class AdminService {
         testRepository.save(test);
     }
 
-    public List<Test> getListTest()
+    public void DeleteTest(String test_id)
     {
-        return testRepository.findAll();
+        testRepository.delete(testRepository.getTestById(test_id));
+    }
+
+    public Test getTestbyId(String test_id)
+    {
+        return testRepository.getTestById(test_id);
+    }
+
+    public List<Test> getListTest(String teacherID)
+    {
+        return testRepository.findAllTest(teacherID);
     }
 
     public Course findCoursebyID(String course_id)

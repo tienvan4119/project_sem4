@@ -337,6 +337,57 @@
                             </div>
                         </div>
                     </div>
+                    <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Delete this Test ?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Do you want to delete this Test ? </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="save_delete" type="button" class="btn btn-primary">Yes, delete this one</button>
+                                    <button type="button" class="btn btn-secondary save_delete" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editModal_title">Sửa thông tin bài Test</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <select id="editListClass" class="form-control" >
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="NumberQuestion">Number of Question</label>
+                                        <input type="text" class="form-control" id="editNumberQuestion" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Time">Time</label>
+                                        <input type="text" class="form-control" id="editTime" >
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button id="saveChanges" type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
 
@@ -381,7 +432,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="/logout" value="/logout">Logout</a>
             </div>
         </div>
     </div>
@@ -400,7 +451,9 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-
+        $(".btn.btn-warning.btn-sm.edit").on('click',  e=> {
+            console.log("abc")
+        })
         $.ajax({type: "POST", url: "/api/admin/getFullTest", dataType: 'json',
             data : {
 
@@ -422,13 +475,13 @@
                                 {
                                     let id = dataID[i]
                                     $("#dataTest").append("<tr>" +
-                                        "<td class=\"text-center\">"+j+"</td>"+
-                                        "<td class=\"text-center\">"+ dataClass[i].name + "</td>"+
-                                        "<td class=\"text-center\"><span class=\"label label-danger\">" + result[i].numberQuestion +" cau</span></td>"+
-                                        "<td class=\"text-center\"><span class=\"label label-danger\">"+ result[i].time +" phut</span></td>"+
+                                        "<td class='text-center'>"+j+"</td>"+
+                                        "<td class='text-center'>"+ dataClass[i].name + "</td>"+
+                                        "<td class='text-center'><span class='label label-danger'>" + result[i].numberQuestion +" cau</span></td>"+
+                                        "<td class='text-center'><span class='label label-danger'>"+ result[i].time +" phut</span></td>"+
                                         "<td id="+dataID[i]+">"+
-                                        "<button onclick='myFunction("+dataID[i]+")' value="+dataID[i]+" type=\"button\" class=\"btn btn-warning btn-sm edit\">Edit</button>"+
-                                        "<button value="+dataID[i]+" type=\"button\" class=\"btn btn-danger btn-sm delete\">Delete</button>"+
+                                        "<button onclick='editTest(this.id)' id='"+dataID[i]+"' type='button' class='btn btn-warning btn-sm edit'>Edit</button>"+
+                                        "<button onclick='deleteTest(this.id)' id='"+dataID[i]+"' type='button' class='btn btn-danger btn-sm delete'>Delete</button>"+
                                         "</td>"+
                                         "</tr>"
                                     )
@@ -437,17 +490,148 @@
                             }})
                     }})
         }})
-        $('.btn.btn-warning.btn-sm.edit').click (()=>  {
-            console.log ('abc');
-            let a = $(this).val();
-            console.log(a);
-        })
 
     })
 
-    function myFunction(dataID) {
-        console.log(dataID)
+    function editTest(clicked) {
+        console.log("abc")
+        // console.log(clicked)
+        let test_id = clicked
+        console.log(test_id)
+        $('#editModal').modal('show');
+        $.ajax({type: "POST",url: "/api/admin/getTest",dataType : 'json',
+            data : {
+                test_id : test_id
+            }, success: function(result){
+                console.log(result)
+                console.log("duoi result")
+                $.ajax({type: "GET", url: "/api/admin/getClassTestEdit", dataType: 'json',
+                    data : {
+                        test_id : test_id
+                    },success: function(dataClass){
+                        console.log(dataClass)
+                        console.log("duoi dataClass")
+                        $.ajax({type: "GET", url: "/api/admin/getClassName", dataType: 'json',
+                            data : {
+                                test_id : test_id
+                            },success: function(dataClassName){
+                                console.log(dataClassName)
+                                console.log("duoi dataClassName")
+                                let soCau = result.numberQuestion
+                                let time = result.time
+                                let className
+                                $('#editListClass').empty()
+                                $('#editListClass').append("<option selected>"+dataClassName.name+"</option>")
+                                for(i = 0; i< dataClass.length; i++)
+                                {
+                                    $('#editListClass').append("<option>"+dataClass[i].name+"</option>")
+                                }
+                                $('#editNumberQuestion').val(soCau)
+                                $('#editTime').val(time)
+                            }})
+                    }})
+            }})
+        $('#saveChanges').on('click', e => {
+            let ClassName = $("#editListClass").children("option").filter(":selected").text();
+            let SoCau = $("#editNumberQuestion").val();
+            let ThoiGian = $("#editTime").val();
+            $.ajax({type: 'POST',url: "/api/admin/editTest",dataType : 'json',
+                data : {
+                    test_id:test_id,
+                    ClassName : ClassName,
+                    SoCau: SoCau,
+                    ThoiGian:ThoiGian
+                }, success: function(result){
+                    $('#editModal').modal('hide');
+
+                    $("#dataTest").empty()
+                    $.ajax({type: "GET", url: "/api/admin/getClassTest", dataType: 'json',
+                        data : {
+
+                        },success: function(dataClass){
+                            $.ajax({type: "GET", url: "/api/admin/getIDTest", dataType: 'json',
+                                data : {
+
+                                },success: function(dataID){
+                                    $("#dataTest").empty()
+                                    var i = 0
+                                    var j = 1
+                                    for(i; i< result.length; i++)
+                                    {
+                                        $("#dataTest").append("<tr>" +
+                                            "<td class=\"text-center\">"+j+"</td>"+
+                                            "<td class=\"text-center\">"+ dataClass[i].name + "</td>"+
+                                            "<td class=\"text-center\"><span class=\"label label-danger\">" + result[i].numberQuestion +" cau</span></td>"+
+                                            "<td class=\"text-center\"><span class=\"label label-danger\">"+ result[i].time +" phut</span></td>"+
+                                            "<td>"+
+                                            "<button onclick='editTest(this.id)' id='"+dataID[i]+"' type='button' class='btn btn-warning btn-sm edit'>Edit</button>"+
+                                            " <button onclick='deleteTest(this.id)' id='"+dataID[i]+"' type='button' class='btn btn-danger btn-sm delete'>Delete</button>"+
+                                            "</td>"+
+                                            "</tr>"
+                                        )
+                                        j++;
+                                    }
+                                }})
+
+                        }})
+
+                }})
+                .done(function( data ) {
+
+                    location.reload();
+                    // $('#datatable .lastName').val(data.lastName)
+                    // $('#datatable .firstNName').val(data.firstName)
+                    // $('#datatable .userEmail').val(data.userEmail)
+                });
+        });
     }
+
+    function deleteTest(clicked) {
+        $('#deleteModal').modal('show');
+        $('#save_delete').on('click', function() {
+            console.log("in here")
+            console.log(clicked)
+            let Test_id = clicked
+            $.ajax({type: "POST",url: "/api/admin/DeleteTest",dataType : 'json',
+                data : {
+                    Test_id : Test_id
+                }, success: function(result){
+                    $('#deleteModal').modal('hide');
+                    $("#dataTest").empty()
+                    $.ajax({type: "GET", url: "/api/admin/getClassTest", dataType: 'json',
+                        data : {
+
+                        },success: function(dataClass){
+                            $.ajax({type: "GET", url: "/api/admin/getIDTest", dataType: 'json',
+                                data : {
+
+                                },success: function(dataID){
+                                    $("#dataTest").empty()
+                                    var i = 0
+                                    var j = 1
+                                    for(i; i< result.length; i++)
+                                    {
+                                        $("#dataTest").append("<tr>" +
+                                            "<td class=\"text-center\">"+j+"</td>"+
+                                            "<td class=\"text-center\">"+ dataClass[i].name + "</td>"+
+                                            "<td class=\"text-center\"><span class=\"label label-danger\">" + result[i].numberQuestion +" cau</span></td>"+
+                                            "<td class=\"text-center\"><span class=\"label label-danger\">"+ result[i].time +" phut</span></td>"+
+                                            "<td>"+
+                                            "<button onclick='editTest(this.id)' id='"+dataID[i]+"' type='button' class='btn btn-warning btn-sm edit'>Edit</button>"+
+                                            " <button onclick='deleteTest(this.id)' id='"+dataID[i]+"' type='button' class='btn btn-danger btn-sm delete'>Delete</button>"+
+                                            "</td>"+
+                                            "</tr>"
+                                        )
+                                        j++;
+                                    }
+                                }})
+
+                        }})
+                }})
+
+        })
+    }
+
 
     function addBaiLam() {
         // Lay STT on tbody, FUCK ME
@@ -466,29 +650,32 @@
 
                 $.ajax({type: "GET", url: "/api/admin/getClassTest", dataType: 'json',
                     data : {
-                        Class : Class,
-                        SoCau : SoCau,
-                        ThoiGian : ThoiGian
-                    },success: function(dataClass){
-                        $("#dataTest").empty()
-                        var i = 0
-                        var j = 1
-                        for(i; i< result.length; i++)
-                        {
 
-                            $("#dataTest").append("<tr>" +
-                                "<td class=\"text-center\">"+j+"</td>"+
-                                "<td class=\"text-center\">"+ dataClass[i].name + "</td>"+
-                                "<td class=\"text-center\"><span class=\"label label-danger\">" + result[i].numberQuestion +" cau</span></td>"+
-                                "<td class=\"text-center\"><span class=\"label label-danger\">"+ result[i].time +" phut</span></td>"+
-                                "<td>"+
-                                "<button type=\"button\" class=\"btn btn-warning btn-sm edit\">Edit</button>"+
-                                " <button type=\"button\" class=\"btn btn-danger btn-sm\">Delete</button>"+
-                                "</td>"+
-                                "</tr>"
-                            )
-                            j++;
-                        }
+                    },success: function(dataClass){
+                        $.ajax({type: "GET", url: "/api/admin/getIDTest", dataType: 'json',
+                            data : {
+
+                            },success: function(dataID){
+                                $("#dataTest").empty()
+                                var i = 0
+                                var j = 1
+                                for(i; i< result.length; i++)
+                                {
+                                    $("#dataTest").append("<tr>" +
+                                        "<td class=\"text-center\">"+j+"</td>"+
+                                        "<td class=\"text-center\">"+ dataClass[i].name + "</td>"+
+                                        "<td class=\"text-center\"><span class=\"label label-danger\">" + result[i].numberQuestion +" cau</span></td>"+
+                                        "<td class=\"text-center\"><span class=\"label label-danger\">"+ result[i].time +" phut</span></td>"+
+                                        "<td>"+
+                                        "<button onclick='editTest(this.id)' id='"+dataID[i]+"' type='button' class='btn btn-warning btn-sm edit'>Edit</button>"+
+                                        " <button onclick='deleteTest(this.id)' id='"+dataID[i]+"' type='button' class='btn btn-danger btn-sm delete'>Delete</button>"+
+                                        "</td>"+
+                                        "</tr>"
+                                    )
+                                    j++;
+                                }
+                            }})
+
                     }})
             }})
         //         let text = "<tr>" +

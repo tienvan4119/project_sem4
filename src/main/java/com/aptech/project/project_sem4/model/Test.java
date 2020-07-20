@@ -45,6 +45,16 @@ public class Test {
     @GeneratedValue(strategy = GenerationType.AUTO)
     ObjectId id;
     ObjectId courseID;
+
+    public ObjectId getTeacherID() {
+        return teacherID;
+    }
+
+    public void setTeacherID(ObjectId teacherID) {
+        this.teacherID = teacherID;
+    }
+
     int numberQuestion;
     int time;
+    ObjectId teacherID;
 }

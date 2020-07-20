@@ -7,6 +7,8 @@ import com.aptech.project.project_sem4.service.QuizService;
 import com.aptech.project.project_sem4.service.UserService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -285,27 +287,35 @@ public class AdminController {
         String className = request.getParameter("Class");
         String soCau = request.getParameter("SoCau");
         String time = request.getParameter("ThoiGian");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
         int timeTest = Integer.parseInt(time);
         Course currentCourse = adminService.getCoursebyName(className);
         Test newTestQuiz = new Test();
         newTestQuiz.setTime(timeTest);
         newTestQuiz.setCourseID(currentCourse.getId());
+        newTestQuiz.setTeacherID(user.getId());
         int numberQuestion = Integer.parseInt(soCau);
         newTestQuiz.setNumberQuestion(numberQuestion);
         adminService.saveQuizTest(newTestQuiz);
-        return adminService.getListTest();
+
+        return adminService.getListTest(user.getId().toString());
     }
 
     @RequestMapping(value = "/getFullTest", method = RequestMethod.POST)
     public List<Test> getListTest(Model model, HttpServletRequest request)
     {
-        return adminService.getListTest();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        return adminService.getListTest(user.getId().toString());
     }
 
     @RequestMapping(value = "/getClassTest", method = RequestMethod.GET)
     public List<Course> getFullCourseTest()
     {
-        List<Test> listTest = adminService.getListTest();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List<Test> listTest = adminService.getListTest(user.getId().toString());
         List<Course> listCourse = new ArrayList<>();
         for(int i = 0; i<listTest.size(); i++)
         {
@@ -317,7 +327,9 @@ public class AdminController {
     @RequestMapping(value = "/getIDTest", method = RequestMethod.GET)
     public List<String> getIDTest()
     {
-        List<Test> listTest = adminService.getListTest();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List<Test> listTest = adminService.getListTest(user.getId().toString());
         List<String> listID = new ArrayList<>();
         for(int i = 0; i<listTest.size(); i++)
         {
@@ -389,6 +401,66 @@ public class AdminController {
         return newQuestion;
     }
 
+    @RequestMapping(value = "/DeleteTest", method = RequestMethod.POST)
+    public List<Test> deleteTest(Model model, HttpServletRequest request)
+    {
+        String test_id  = request.getParameter("Test_id");
+        adminService.DeleteTest(test_id);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List<Test> listTest = adminService.getListTest(user.getId().toString());
+        return listTest;
+    }
 
+    @RequestMapping(value = "/getTest", method = RequestMethod.POST)
+    public Test dataTest(Model model, HttpServletRequest request)
+    {
+        String test_id  = request.getParameter("test_id");
+        return adminService.getTestbyId(test_id);
+    }
+    @RequestMapping(value = "/getClassName", method = RequestMethod.GET)
+    public Course getClassName(Model model, HttpServletRequest request)
+    {
+        String test_id  = request.getParameter("test_id");
+        return adminService.findCoursebyID(adminService.getTestbyId(test_id).getCourseID().toString());
+    }
+    @RequestMapping(value = "/getClassTestEdit", method = RequestMethod.GET)
+    public List<Course> getListEdit(Model model, HttpServletRequest request)
+    {
+        String test_id  = request.getParameter("test_id");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List<Course> listCourse = adminService.getListCourseOfTeacher(user.getId().toString());
 
+        Course dataCurrentCourse = adminService.findCoursebyID(adminService.getTestbyId(test_id).getCourseID().toString());
+        for (int i = 0; i<listCourse.size(); i++)
+        {
+            if(listCourse.get(i).getId().equals(dataCurrentCourse.getId()))
+            {
+                listCourse.remove(listCourse.get(i));
+                break;
+            }
+        }
+        return listCourse;
+    }
+    @RequestMapping(value = "/editTest", method = RequestMethod.POST)
+    public List<Test> listTest(Model model, HttpServletRequest request)
+    {
+        String test_id  = request.getParameter("test_id");
+        String className  = request.getParameter("ClassName");
+        String numberQuestion  = request.getParameter("SoCau");
+        String time  = request.getParameter("ThoiGian");
+        Test testEdit = adminService.getTestbyId(test_id);
+        int timeTest = Integer.parseInt(time);
+        int soCau = Integer.parseInt(numberQuestion);
+        Course currentCourse = adminService.getCoursebyName(className);
+        testEdit.setNumberQuestion(soCau);
+        testEdit.setCourseID(currentCourse.getId());
+        testEdit.setTime(timeTest);
+        adminService.saveQuizTest(testEdit);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List<Test> listTest = adminService.getListTest(user.getId().toString());
+        return listTest;
+    }
 }
