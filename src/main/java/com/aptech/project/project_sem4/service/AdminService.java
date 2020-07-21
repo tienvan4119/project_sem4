@@ -56,9 +56,19 @@ public class AdminService {
         userRepository.save(user);
     }
 
+    public void saveTeacherEdit(User user)
+    {
+        userRepository.save(user);
+    }
+
     public void saveQuizTest(Test test) {
 
         testRepository.save(test);
+    }
+
+    public void DeleteTeacher(User user)
+    {
+        userRepository.delete(user);
     }
 
     public void DeleteTest(String test_id)
@@ -149,5 +159,9 @@ public class AdminService {
     public List<RelationStudentCourse> getListCourseofStudent(String student_id)
     {
         return relationStudentCourseRepository.getListCourseByStudentID(student_id);
+    }
+    public Class findClassByName(String className)
+    {
+        return classRepository.findClassByClassName(className);
     }
 }

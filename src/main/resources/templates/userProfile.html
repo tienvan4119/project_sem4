@@ -15,6 +15,43 @@
             right:0!important;
         }
     </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#save').on('click', e => {
+                console.log("click")
+                let firstName = $('#firstName').val()
+                let lastName = $('#lastName').val()
+                let MSSV = $('#MSSV').val()
+                let location = $('#location').val()
+                let email = $('#email').val()
+                let password = $('#password').val()
+                let re_password = $('#re-password').val()
+                console.log(firstName + lastName + email + password + ' ' + re_password + '  ' + location + '  ' + MSSV)
+                if (password == re_password)
+                {
+                    $.ajax({
+                        type: "POST", url: "/changeUserProfile", dataType: 'json',
+                        data: {
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: email,
+                            password: password,
+                            re_password: re_password
+                        }, success: function (result) {
+                        }
+                    })
+                    $('#Success').modal('show');
+                }
+
+            })
+            $('.save_user').on('click', e =>{
+                console.log("abc")
+                $('#Success').modal('hide');
+                location.reload()
+            })
+
+        })
+    </script>
 </head>
 <div class="profile clearfix">
     <div class="navbar bg-dark ">
@@ -187,24 +224,24 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="modal" id="Success" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Delete this person ?</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">×</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>Your profile has been updated</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary save_user" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                <div class="modal" id="Success" tabindex="-1" role="dialog">-->
+<!--                                    <div class="modal-dialog" role="document">-->
+<!--                                        <div class="modal-content">-->
+<!--                                            <div class="modal-header">-->
+<!--                                                <h5 class="modal-title">Delete this person ?</h5>-->
+<!--                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--                                                    <span aria-hidden="true">×</span>-->
+<!--                                                </button>-->
+<!--                                            </div>-->
+<!--                                            <div class="modal-body">-->
+<!--                                                <p>Your profile has been updated</p>-->
+<!--                                            </div>-->
+<!--                                            <div class="modal-footer">-->
+<!--                                                <button type="button" class="btn btn-secondary save_user" data-dismiss="modal">Close</button>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </form>

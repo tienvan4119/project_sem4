@@ -47,6 +47,101 @@
 
     // select choice a field and a subject
   $(document).ready(function () {
+    $("#SearchFilter").on("keyup", function() {
+      console.log("abc")
+      var value = $(this).val().toLowerCase();
+      $("#teachers tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+
+    $('#iconedit1').on('click', e => {
+      $('#editModal').modal('show');
+      //Đổ thông tin giáo viên theo id giáo viên tương ứng
+    });
+    $('#iconedit2').on('click', e => {
+      $('#editModal').modal('show');
+      //Đổ thông tin giáo viên theo id giáo viên tương ứng
+    });
+
+    //Click delete button DEMO
+    $('#icondelete1').on('click', e => {
+      $('#deleteModal').modal('show');
+      //Xử lí nút Có: id: save_delete
+
+    });
+    $('#icondelete2').on('click', e => {
+      $('#deleteModal').modal('show');
+      //Xử lí nút Có: id: save_delete
+
+    });
+
+    // $('.edit').on('click', e => {
+    //   $('#editModal').modal('show');
+    //   console.log($(e.target).context.id)
+    //   var user_id = $(e.target).context.id;
+    //
+    //   $.ajax({type: "POST",url: "/api/admin/getUser",dataType : 'json',
+    //     data : {
+    //       user_id : user_id
+    //     }, success: function(result){
+    //       console.log(result);
+    //     }})
+    //           .done(function( data ) {
+    //             var lastname = data.lastName
+    //             var firstname = data.firstName
+    //             console.log(lastname + '   ' + firstname);
+    //             var userEmail = data.email;
+    //             $("#editModal #editLastName").val( lastname );
+    //             $("#editModal #editFirstName").val( firstname );
+    //             $("#editModal #editUserEmail").val( userEmail );
+    //           });
+    // })
+    //
+    // $('#saveChanges').on('click', e => {
+    //   var lastname = $("#editModal #editLastName").val().trim()
+    //   var firstname = $("#editModal #editFirstName").val().trim()
+    //   var useremail = $("#editModal #editUserEmail").val().trim()
+    //
+    //   $.ajax({type: 'POST',url: "/api/admin/changeProfile",dataType : 'json',
+    //     data : {
+    //       lastName : lastname,
+    //       firstName: firstname,
+    //       userEmail:useremail
+    //     }, success: function(result){
+    //
+    //     }})
+    //           .done(function( data ) {
+    //             $('#editModal').modal('hide');
+    //             location.reload();
+    //             // $('#datatable .lastName').val(data.lastName)
+    //             // $('#datatable .firstNName').val(data.firstName)
+    //             // $('#datatable .userEmail').val(data.userEmail)
+    //           });
+    // });
+    //
+    // $('.delete').on('click', e => {
+    //   $('#deleteModal').modal('show');
+    //   var user_id = $(e.target).context.id;
+    //   $('#save_delete').on('click', function() {
+    //     console.log("in here")
+    //     console.log(user_id)
+    //     $.ajax({type: "POST",url: "/api/admin/DeleteUser",dataType : 'json',
+    //       data : {
+    //         user_id : user_id
+    //       }, success: function(result){
+    //         $('#deleteModal').modal('hide');
+    //       }})
+    //             .done(function( data ) {
+    //               console.log("Yeah")
+    //             });
+    //     $('#deleteModal').modal('hide');
+    //
+    //     $(e.target)[0].parentNode.closest("tr").remove()
+    //   })
+    // })
+
+
     $.ajax({type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
       data : {
 
@@ -77,8 +172,8 @@
                       "<td>"+result[i].email+"</td>" +
                       "<td>"+dataClass[i].className+"</td>" +
                       "<td>" +
-                      "<a class='edit' title='Edit' id='iconedit1' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
-                      "<a id='icondelete1' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                      "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='"+result[i].email+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                      "<a onclick='deleteTeacher(this.id)' id='"+result[i].email+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
                       "</td>" +
                       "</tr>")
             }
@@ -167,7 +262,6 @@
       var course_name =  $('#listMonHoc option:selected').text();
       console.log(course_name);
 
-
       $.ajax({type: "POST", url: "/api/admin/getListStudentofCourse", dataType: 'json',
         data : {
           course_name : course_name
@@ -191,8 +285,8 @@
                         "<td>"+result[i].email+"</td>" +
                         "<td>"+dataClass[i].className+"</td>" +
                         "<td>" +
-                        "<a class='edit' title='Edit' id='iconedit1' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
-                        "<a id='icondelete1' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                        "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='"+result[i].email+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                        "<a onclick='deleteTeacher(this.id)' id='"+result[i].email+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
                         "</td>" +
                         "</tr>")
               }
@@ -212,16 +306,6 @@
         }
       }
       //Click edit button DEMO
-      $('#iconedit1').on('click', e => {
-        $('#editModal').modal('show');
-        //Đổ thông tin giáo viên theo id giáo viên tương ứng
-      });
-      //Click delete button DEMO
-      $('#icondelete1').on('click', e => {
-        $('#deleteModal').modal('show');
-        //Xử lí nút Có: id: save_delete
-
-      });
     })
 
     //Them teacher
@@ -229,6 +313,148 @@
       $('#AddNewModal').modal('show');
     })
   })
+    function editTeacher(teacher_email) {
+      console.log(teacher_email)
+      $('#editModal').modal('show');
+      $.ajax({type: "POST", url: "/api/admin/getTeacherByEmail", dataType: 'json',
+        data : {
+          teacher_email : teacher_email
+        },success: function(teacher){
+          $.ajax({type: "POST", url: "/api/admin/getTeacherClassByEmail", dataType: 'json',
+            data : {
+              teacher_email : teacher_email
+            },success: function(teacherClass){
+              $.ajax({type: "POST", url: "/api/admin/getTeacherOtherClass", dataType: 'json',
+                data : {
+                  teacher_email : teacher_email
+                },success: function(dataClass){
+                  $('#editFirstName').val(teacher.firstName)
+                  $('#editLastName').val(teacher.lastName)
+                  $('#editAddress').val(teacher.location)
+                  $('#editEmail').val(teacher.email)
+
+                  console.log(dataClass)
+                  console.log("duoi dataClass")
+                  $('#editUserClass').empty()
+                  $('#editUserClass').append("<option selected>"+teacherClass.className+"</option>")
+                  for(i = 0; i< dataClass.length; i++)
+                  {
+                    $('#editUserClass').append("<option>"+dataClass[i].className+"</option>")
+                  }
+                }})
+            }})
+        }})
+      $('#saveChanges').on('click', e => {
+        let className = $("#editUserClass").children("option").filter(":selected").text();
+        let firstName = $("#editFirstName").val();
+        let lastName = $("#editLastName").val();
+        let email = $("#editEmail").val();
+        let location = $("#editAddress").val();
+
+        $.ajax({type: 'POST',url: "/api/admin/editTeacher",dataType : 'json',
+          data : {
+            className:className,
+            firstName : firstName,
+            lastName: lastName,
+            email:email,
+            location:location
+          }, success: function(NonUseresult){
+            $.ajax({type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
+              data : {
+
+              },success: function(result){
+                console.log(result)
+                var k = 0;
+                for(k ; k<result.length;k++)
+                {
+                  $('#listTeachers').append("<option  value= "+result[k].email+" >" +result[k].firstName+" "+result[k].lastName+ "</option>");
+                }
+
+                $.ajax({type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
+                  data : {
+
+                  },success: function(dataClass){
+                    console.log(result)
+                    $('#editModal').modal('hide');
+                    $('#teachers').empty()
+                    var i;
+                    for (i = 0; i < result.length; i++) {
+                      console.log(result[i].firstName+ result[i].lastName)
+                      console.log(result[i].email)
+                      console.log(result[i].location)
+                      console.log(dataClass[i].className)
+
+                      $('#teachers').append("<tr>" +
+                              "<td>"+result[i].firstName+" "+result[i].lastName+"</td>" +
+                              "<td>"+result[i].location+"</td>" +
+                              "<td>"+result[i].email+"</td>" +
+                              "<td>"+dataClass[i].className+"</td>" +
+                              "<td>" +
+                              "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='"+result[i].email+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                              "<a onclick='deleteTeacher(this.id)' id='"+result[i].email+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                              "</td>" +
+                              "</tr>")
+                    }
+                  }})
+              }})
+
+          }})
+      });
+    }
+    function deleteTeacher(teacher_email) {
+      console.log(teacher_email)
+      $('#deleteModal').modal('show');
+
+      $('#save_delete').on('click', e => {
+        console.log("in here")
+        $.ajax({type: "POST",url: "/api/admin/DeleteTeacher",dataType : 'json',
+          data : {
+            teacher_email : teacher_email
+          }, success: function(dataSomething){
+            console.log(dataSomething)
+            $('#deleteModal').modal('hide');
+            $.ajax({type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
+              data : {
+
+              },success: function(result){
+
+                var k = 0;
+                for(k ; k<result.length;k++)
+                {
+                  $('#listTeachers').append("<option  value= "+result[k].email+" >" +result[k].firstName+" "+result[k].lastName+ "</option>");
+                }
+
+                $.ajax({type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
+                  data : {
+
+                  },success: function(dataClass){
+                    console.log(result)
+
+                    $('#teachers').empty()
+                    var i;
+                    for (i = 0; i < result.length; i++) {
+                      console.log(result[i].firstName+ result[i].lastName)
+                      console.log(result[i].email)
+                      console.log(result[i].location)
+                      console.log(dataClass[i].className)
+
+                      $('#teachers').append("<tr>" +
+                              "<td>"+result[i].firstName+" "+result[i].lastName+"</td>" +
+                              "<td>"+result[i].location+"</td>" +
+                              "<td>"+result[i].email+"</td>" +
+                              "<td>"+dataClass[i].className+"</td>" +
+                              "<td>" +
+                              "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='"+result[i].email+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                              "<a onclick='deleteTeacher(this.id)' id='"+result[i].email+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                              "</td>" +
+                              "</tr>")
+                    }
+                  }})
+              }})
+          }})
+
+      })
+    }
   </script>
 </head>
 
@@ -308,11 +534,9 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input id="SearchFilter" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
+
               </div>
             </div>
           </form>
@@ -531,16 +755,27 @@
                     </div>
                     <div class="modal-body">
                       <div class="form-group">
-                        <label for="Name">FULL Name</label>
-                        <input type="text" class="form-control" id="editName" >
+                        <label for="firstName">first Name</label>
+                        <input type="text" class="form-control" id="editFirstName" >
                       </div>
+
+                      <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="editLastName" >
+                      </div>
+
                       <div class="form-group">
                         <label for="Address">Address</label>
                         <input type="text" class="form-control" id="editAddress" >
                       </div>
                       <div class="form-group">
                         <label for="Email">User's email</label>
-                        <input type="text" class="form-control" id="editEmail" >
+                        <input readonly type="text" class="form-control" id="editEmail" >
+                      </div>
+                      <div class="form-group">
+                        <select id="editUserClass" class="form-control" >
+
+                        </select>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -573,6 +808,9 @@
               </div>
 
             </div>
+
+            </div>
+
 
           </div>
 

@@ -9,6 +9,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -486,5 +487,59 @@ public class AdminController {
         new_Topic.setSectionId(sectionID_Convert);
         adminService.saveTopic(new_Topic);
         return "Yes";
+    }
+    @RequestMapping(value = "/getTeacherByEmail", method = RequestMethod.POST)
+    public User getTeacherByEmail(Model model, HttpServletRequest request)
+    {
+        String userEmail = request.getParameter("teacher_email");
+        return adminService.getUserbyEmail(userEmail);
+    }
+    @RequestMapping(value = "/getTeacherClassByEmail", method = RequestMethod.POST)
+    public Class getTeacherClassByEmail(Model model, HttpServletRequest request)
+    {
+        String userEmail = request.getParameter("teacher_email");
+        return adminService.findClassById(adminService.getUserbyEmail(userEmail).getClassId().toString());
+    }
+    @RequestMapping(value = "/getTeacherOtherClass", method = RequestMethod.POST)
+    public List<Class> getListotherClass(Model model, HttpServletRequest request)
+    {
+        String userEmail = request.getParameter("teacher_email");
+        Class userClass = adminService.findClassById(adminService.getUserbyEmail(userEmail).getClassId().toString());
+        List<Class> listClass = adminService.getAllClass();
+        for(int i=0; i<listClass.size();i++)
+        {
+            if(listClass.get(i).getId().equals(userClass.getId()))
+            {
+                listClass.remove(listClass.get(i));
+                break;
+            }
+        }
+        return listClass;
+    }
+
+    @RequestMapping(value = "/editTeacher", method = RequestMethod.POST)
+    public Class editTeacher(HttpServletRequest request)
+    {
+        String user_email = request.getParameter("email");
+        String firstName = request.getParameter("firstName");
+        String lastName = request.getParameter("lastName");
+        String className = request.getParameter("className");
+        String location = request.getParameter("location");
+        User choice_user = adminService.getUserbyEmail(user_email);
+        choice_user.setClassId(adminService.findClassByName(className).getId());
+        choice_user.setFirstName(firstName);
+        choice_user.setLastName(lastName);
+        choice_user.setLocation(location);
+        adminService.saveTeacherEdit(choice_user);
+        return adminService.findClassById(adminService.getUserbyEmail(user_email).getClassId().toString());
+    }
+
+    @RequestMapping(value = "/DeleteTeacher", method = RequestMethod.POST)
+    public List<Faculty> deleteTeacher(HttpServletRequest request)
+    {
+        String user_email = request.getParameter("teacher_email");
+        User choice_user = adminService.getUserbyEmail(user_email);
+        adminService.DeleteTeacher(choice_user);
+        return adminService.getAllFaculty();
     }
 }

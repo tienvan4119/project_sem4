@@ -14,4 +14,8 @@ public interface ClassRepository extends MongoRepository<Class, Long> {
     public Class findClassById(String classID);
     @Query("{ facultyId : ObjectId(\"?0\" )}")
     public List<Class> findClassesByFacultyId(String facultyId);
+
+    @Query("{ className : \"?0\" }")
+    public Class findClassByClassName(String className);
+
 }

@@ -136,9 +136,6 @@
   "lastName": "Dang Hoai",
   "email": "danghoaiphuong@gmail.com",
   "password": "$2a$10$aq.KJvKSM2qFPYiN6/BTYuSAdVAWF2uZvZ2Dzf9Gn.6.vWOQEHMFO",
-  "classId": {
-    "$oid": "5f0dd857eacb490b39ceaa08"
-  },
   "roles": [
     {
       "$ref": "role",
@@ -147,6 +144,9 @@
       }
     }
   ],
+  "classId": {
+    "$oid": "5f0dd857eacb490b39ceaa08"
+  },
   "_class": "com.aptech.project.project_sem4.model.User"
 },{
   "_id": {
@@ -2056,9 +2056,6 @@
   "lastName": "Ha",
   "email": "maivanha@gmail.com",
   "password": "$2a$10$aq.KJvKSM2qFPYiN6/BTYuSAdVAWF2uZvZ2Dzf9Gn.6.vWOQEHMFO",
-  "classId": {
-    "$oid": "5f0dd8d6eacb490b39ceaa0a"
-  },
   "roles": [
     {
       "$ref": "role",
@@ -2067,6 +2064,9 @@
       }
     }
   ],
+  "classId": {
+    "$oid": "5f0dd8d6eacb490b39ceaa0a"
+  },
   "_class": "com.aptech.project.project_sem4.model.User"
 },{
   "_id": {
@@ -2096,9 +2096,6 @@
   "lastName": "Hoang",
   "email": "hominhoang@gmail.com",
   "password": "$2a$10$aq.KJvKSM2qFPYiN6/BTYuSAdVAWF2uZvZ2Dzf9Gn.6.vWOQEHMFO",
-  "classId": {
-    "$oid": "5f0dd8ddeacb490b39ceaa0c"
-  },
   "roles": [
     {
       "$ref": "role",
@@ -2107,6 +2104,9 @@
       }
     }
   ],
+  "classId": {
+    "$oid": "5f0dd8ddeacb490b39ceaa0c"
+  },
   "_class": "com.aptech.project.project_sem4.model.User"
 },{
   "_id": {
@@ -2156,9 +2156,6 @@
   "lastName": "Hung",
   "email": "huynhhuuhung@gmail.com",
   "password": "$2a$10$aq.KJvKSM2qFPYiN6/BTYuSAdVAWF2uZvZ2Dzf9Gn.6.vWOQEHMFO",
-  "classId": {
-    "$oid": "5f0dd8f2eacb490b39ceaa0f"
-  },
   "roles": [
     {
       "$ref": "role",
@@ -2167,6 +2164,9 @@
       }
     }
   ],
+  "classId": {
+    "$oid": "5f0dd8f2eacb490b39ceaa0f"
+  },
   "_class": "com.aptech.project.project_sem4.model.User"
 },{
   "_id": {
