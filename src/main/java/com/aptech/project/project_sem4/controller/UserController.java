@@ -3,6 +3,7 @@ package com.aptech.project.project_sem4.controller;
 import com.aptech.project.project_sem4.model.*;
 import com.aptech.project.project_sem4.model.Class;
 import com.aptech.project.project_sem4.repository.UserRepository;
+import com.aptech.project.project_sem4.service.AdminService;
 import com.aptech.project.project_sem4.service.QuizService;
 import com.aptech.project.project_sem4.service.UserService;
 import org.bson.types.ObjectId;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -24,7 +26,9 @@ public class UserController {
     private UserService userService;
     @Autowired
     private QuizService quizService;
-@Autowired
+    @Autowired
+    private AdminService adminService;
+    @Autowired
     private UserRepository userRepository;
     private Random random = new Random();
 
@@ -33,24 +37,62 @@ public class UserController {
         List<User> listUser = userService.listAll();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        ObjectId user_id = userService.findByEmail(userName).getId();
-        List<Section> listSection = userService.listAllSection();
-        List<Result> listSection_Result = userService.getListSection_Result(user_id.toString());
-        for(int i = 0; i< listSection.size(); i++)
+        User current_user = userService.findByEmail(userName);
+        Class user_class = userService.findClassByID(current_user.getClassId().toString());
+        List<RelationStudentCourse> listCourseofStudent = adminService.getListCourseofStudent(current_user.getId().toString());
+        List<Course> listCourse = new ArrayList<>();
+        for(int i = 0; i < listCourseofStudent.size();i++)
         {
-            for(int j = 0; j < listSection_Result.size(); j++)
+            listCourse.add(adminService.findCoursebyID(listCourseofStudent.get(i).getCourseID().toString()));
+        }
+        List<Test> listTest = new ArrayList<>();
+        for (int i = 0; i<listCourse.size();i++)
+        {
+            List<Test> test = adminService.getListTestOfCourse(listCourse.get(i).getId().toString());
+            for(int j=0;j<test.size();j++)
             {
-                if(listSection.get(i).getId().equals(listSection_Result.get(j).getSection_id()))
-                {
-                    listSection.remove(i);
-                }
+                listTest.add(test.get(i));
             }
         }
-        model.addAttribute("listUser", listUser);
-        model.addAttribute("listSection", listSection);
+        List<Course> listCourseOfTest = new ArrayList<>();
+        for(int i = 0; i< listTest.size(); i++)
+        {
+            listCourseOfTest.add( adminService.findCoursebyID(listTest.get(i).getCourseID().toString()));
+        }
+
+        model.addAttribute("current_user", current_user);
+        model.addAttribute("courseOfTest", listCourseOfTest);
+        model.addAttribute("listTest", listTest);
+        model.addAttribute("user_class", user_class);
+        model.addAttribute("listCourse", listCourse);
         return "section";
     }
 
+    @RequestMapping(value = "/user/getSection", method = RequestMethod.POST)
+    public List<Test> getListTestForSection(HttpServletRequest request)
+    {
+        String courseName = request.getParameter("userCourse");
+        Course currentCourse = adminService.getCoursebyName(courseName);
+        List<Test> listTest = adminService.getListTestOfCourse(currentCourse.getId().toString());
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        User current_user = userService.findByEmail(userName);
+        Class user_class = userService.findClassByID(current_user.getClassId().toString());
+        List<RelationStudentCourse> listCourseofStudent = adminService.getListCourseofStudent(current_user.getId().toString());
+        List<Course> listCourse = new ArrayList<>();
+        for(int i = 0; i < listCourseofStudent.size();i++)
+        {
+            listCourse.add(adminService.findCoursebyID(listCourseofStudent.get(i).getCourseID().toString()));
+        }
+
+//        model.addAttribute("listTest", listTest);
+//        model.addAttribute("currentCourse", currentCourse);
+//        model.addAttribute("current_user", current_user);
+//        model.addAttribute("user_class", user_class);
+//        model.addAttribute("listCourse", listCourse);
+        return listTest;
+    }
 
     @RequestMapping(value = {"/changeUserProfile"}, method = RequestMethod.POST)
     public String changeUserProfile(Model model, HttpServletRequest request)

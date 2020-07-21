@@ -55,91 +55,6 @@
       });
     });
 
-    $('#iconedit1').on('click', e => {
-      $('#editModal').modal('show');
-      //Đổ thông tin giáo viên theo id giáo viên tương ứng
-    });
-    $('#iconedit2').on('click', e => {
-      $('#editModal').modal('show');
-      //Đổ thông tin giáo viên theo id giáo viên tương ứng
-    });
-
-    //Click delete button DEMO
-    $('#icondelete1').on('click', e => {
-      $('#deleteModal').modal('show');
-      //Xử lí nút Có: id: save_delete
-
-    });
-    $('#icondelete2').on('click', e => {
-      $('#deleteModal').modal('show');
-      //Xử lí nút Có: id: save_delete
-
-    });
-
-    // $('.edit').on('click', e => {
-    //   $('#editModal').modal('show');
-    //   console.log($(e.target).context.id)
-    //   var user_id = $(e.target).context.id;
-    //
-    //   $.ajax({type: "POST",url: "/api/admin/getUser",dataType : 'json',
-    //     data : {
-    //       user_id : user_id
-    //     }, success: function(result){
-    //       console.log(result);
-    //     }})
-    //           .done(function( data ) {
-    //             var lastname = data.lastName
-    //             var firstname = data.firstName
-    //             console.log(lastname + '   ' + firstname);
-    //             var userEmail = data.email;
-    //             $("#editModal #editLastName").val( lastname );
-    //             $("#editModal #editFirstName").val( firstname );
-    //             $("#editModal #editUserEmail").val( userEmail );
-    //           });
-    // })
-    //
-    // $('#saveChanges').on('click', e => {
-    //   var lastname = $("#editModal #editLastName").val().trim()
-    //   var firstname = $("#editModal #editFirstName").val().trim()
-    //   var useremail = $("#editModal #editUserEmail").val().trim()
-    //
-    //   $.ajax({type: 'POST',url: "/api/admin/changeProfile",dataType : 'json',
-    //     data : {
-    //       lastName : lastname,
-    //       firstName: firstname,
-    //       userEmail:useremail
-    //     }, success: function(result){
-    //
-    //     }})
-    //           .done(function( data ) {
-    //             $('#editModal').modal('hide');
-    //             location.reload();
-    //             // $('#datatable .lastName').val(data.lastName)
-    //             // $('#datatable .firstNName').val(data.firstName)
-    //             // $('#datatable .userEmail').val(data.userEmail)
-    //           });
-    // });
-    //
-    // $('.delete').on('click', e => {
-    //   $('#deleteModal').modal('show');
-    //   var user_id = $(e.target).context.id;
-    //   $('#save_delete').on('click', function() {
-    //     console.log("in here")
-    //     console.log(user_id)
-    //     $.ajax({type: "POST",url: "/api/admin/DeleteUser",dataType : 'json',
-    //       data : {
-    //         user_id : user_id
-    //       }, success: function(result){
-    //         $('#deleteModal').modal('hide');
-    //       }})
-    //             .done(function( data ) {
-    //               console.log("Yeah")
-    //             });
-    //     $('#deleteModal').modal('hide');
-    //
-    //     $(e.target)[0].parentNode.closest("tr").remove()
-    //   })
-    // })
 
 
     $.ajax({type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
@@ -821,13 +736,13 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
-          </div>
-        </div>
-      </footer>
+<!--      <footer class="sticky-footer bg-white">-->
+<!--        <div class="container my-auto">-->
+<!--          <div class="copyright text-center my-auto">-->
+<!--            <span>Copyright &copy; Your Website 2020</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </footer>-->
       <!-- End of Footer -->
 
     </div>

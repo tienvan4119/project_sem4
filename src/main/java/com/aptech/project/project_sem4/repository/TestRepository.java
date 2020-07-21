@@ -15,4 +15,7 @@ public interface TestRepository extends MongoRepository<Test, Long> {
 
     @Query("{teacherID : ObjectId(\"?0\" )}")
     List<Test> findAllTest(String teacher_id);
+
+    @Query("{courseID : ObjectId(\"?0\" )}")
+    List<Test> findTestByCourseID(String courseID);
 }

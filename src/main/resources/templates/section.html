@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Section</title>
+    <link rel="stylesheet" href = "/css/2.55d347ce.chunk.css">
+    <link rel="stylesheet" href = "/css/main.25f14734.chunk.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -11,26 +13,117 @@
 
 </head>
 <body>
-<div data-th-replace="user/user_top_nav :: user_top_nav"/></div>
-<div class="container-fluid">
-    <div  class="row" sec:authorize="isAuthenticated()" >
-        <div class="col-sm-3" th:each="section : ${listSection}" >
-            <form th:action="@{/createQuiz}">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="${section.title}">t</h5>
-                            <img th:src="@{${'/images/' + section.title + '.jpg'}}" th:width="280px" th:height="220px"/>
-                        </a>
-                        <br>
-                        <button  style="text-align: center; margin-left: 100px; margin-top: 10px" name="section_id" th:value="${section.id}" class="btn btn-primary">Test Now</button>
-                    </div>
+<div class="profile clearfix">
+    <div class="navbar bg-dark ">
+        <!-- Brand -->
+        <!-- Links -->
+
+        <div class="navbar-nav"  style="
+    width: 20%;
+    align-items: flex-end;
+">
+
+            <li class="nav-item dropdown">
+                <label class="nav-link">Take a quiz</label>
+                <div class="dropdown-content" >
+                    <a onclick="toSectionPage(this.id)" th:each="course : ${listCourse}" th:text="${course.name}" th:value="${course.name}" th:id="${course.name}"/>
                 </div>
-            </form>
+                <style>
+                    label{
+                        color: #377AB7;
+                        font-size: large;
+                    }
+                    .dropdown {
+                        position: relative;
+                        display: inline-block;
+                    }
+                    .dropdown-content {
+                        display: none;
+                        position: absolute;
+                        right: 0;
+                        background-color: #f9f9f9;
+                        min-width: 160px;
+                        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                        z-index: 1;
+                    }
+                    .dropdown-content a {
+                        color: black;
+                        padding: 12px 16px;
+                        text-decoration: none;
+                        display: block;
+                    }
+
+                    .dropdown-content a:hover {background-color: #337AB7;}
+                    .dropdown:hover .dropdown-content {display: block;}
+                </style>
+            </li>
+
+        </div>
+
+        <div class="d-flex"  style="
+    width: 80%;
+    justify-content: flex-end;
+">
+            <div>
+                <a class="nav-link" href="../userProfile.html">Profile</a>
+            </div>
+            <div>
+                <a class="nav-link" href="../userResult.html">User result</a>
+            </div>
+            <div>
+                <a style="margin-right: 10px" href="/logout" class="btn btn-info btn-lg" value="/logout">
+                    <span class="glyphicon glyphicon-log-out"></span> Log out
+                </a>
+            </div>
+        </div>
+
+
+
+        <!--        <form class="form-inline my-2 my-lg-0">-->
+        <!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+        <!--        </form>-->
+    </div>
+</div>
+<div class = "sc-AxiKw eSbheu">
+<div class="ant-row container">
+    <div class="ant-col content ant-col-xs-24">
+        <h1 style="text-align: center;">Tên Bài Thi</h1>
+        <div class = "contentTable">
+            <table class = "table">
+                <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên Bài Thi</th>
+                    <th>Nhóm Học Phần</th>
+                    <th>Số Câu</th>
+                    <th>Thời gian làm bài(Phút)</th>
+                    <th style="text-align: right;"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--Đổ Data bắt đầu từ đây, phần trên là cái tiêu đề -->
+                <tr th:each="test, state : ${listTest}">
+                    <td th:text="${state.count}"></td>
+                    <td th:each="course : ${listCourse}" th:if="${course.id == test.courseID}" th:text="${course.subName}"></td>
+                    <td th:each="course : ${listCourse}" th:if="${course.id == test.courseID}" th:text="${course.name}"></td>
+                    <td th:text="${test.numberQuestion}"></td>
+                    <td th:text="${test.time}"></td>
+                    <td class="sc-AxhCb eSwYtm">
+                        <div class="sc-AxhUy fxWvvr" style="text-align: right;">
+                            <button type="button" class="ant-btn ant-btn-link ant-btn-sm">
+                                <span>Kết quả: 71/77 (93%)</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+</div>
 </body>
-<script th:inline="javascript">
-    // location.reload();
+<script type="text/javascript">
+
 </script>
 </html>

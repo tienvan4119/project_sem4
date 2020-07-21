@@ -71,6 +71,11 @@ public class AdminService {
         userRepository.delete(user);
     }
 
+    public List<Test> getListTestOfCourse(String courseID)
+    {
+        return testRepository.findTestByCourseID(courseID);
+    }
+
     public void DeleteTest(String test_id)
     {
         testRepository.delete(testRepository.getTestById(test_id));

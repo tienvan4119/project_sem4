@@ -30,12 +30,12 @@ public class Course {
         this.name = name;
     }
 
-    public String getSub_name() {
-        return sub_name;
+    public String getSubName() {
+        return subName;
     }
 
-    public void setSub_name(String sub_name) {
-        this.sub_name = sub_name;
+    public void setSubName(String subName) {
+        this.subName = subName;
     }
 
     public ObjectId getTeacherID() {
@@ -46,6 +46,6 @@ public class Course {
         this.teacherID = teacherID;
     }
 
-    String sub_name;
+    String subName;
     ObjectId teacherID;
 }
