@@ -51,16 +51,15 @@
             })
 
         })
-        // function toSectionPage(userCourse) {
-        //     console.log(userCourse)
-        //     $.ajax({type: "POST", url: "/user/getSection", dataType: 'json',
-        //         data : {
-        //             userCourse : userCourse
-        //         },success: function(result){
-        //             console.log(result)
-        //
-        //         }})
-        // }
+        function toSectionPage(userCourse) {
+            console.log(userCourse)
+            $.ajax({type: "GET", url: "/section", dataType: 'json',
+                data : {
+                    userCourse : userCourse
+                },success: function(result){
+
+                }})
+        }
     </script>
 </head>
 <div class="profile clearfix">
@@ -76,7 +75,7 @@
             <li class="nav-item dropdown">
                 <label class="nav-link">Take a quiz</label>
                 <div class="dropdown-content" >
-<!--                    <a onclick="toSectionPage(this.id)" th:each="course : ${listCourse}" th:text="${course.name}" th:value="${course.name}" th:id="${course.name}"/>-->
+                    <a href="/section" onclick="toSectionPage(this.id)" th:each="course : ${listCourse}" th:text="${course.name}" th:value="${course.name}" th:id="${course.name}"/>
                 </div>
                 <style>
                     label{

@@ -542,4 +542,46 @@ public class AdminController {
         adminService.DeleteTeacher(choice_user);
         return adminService.getAllFaculty();
     }
+
+    @RequestMapping(value = "/getTime", method = RequestMethod.POST)
+    public Test getTest(HttpServletRequest request)
+    {
+        String test_id = request.getParameter("test_id");
+        Test test = adminService.getTestbyId(test_id);
+        return test;
+    }
+
+    @RequestMapping(value = "/getStatisticTeacherAdmin", method = RequestMethod.POST)
+    public List<Integer> listIntTeacher(Model model, HttpServletRequest request)
+    {
+        List<Faculty> listFaculty = adminService.getAllFaculty();
+        List <User> list_AllUser = userService.listAll();
+        List<User> listTeacher = new ArrayList<User>();
+        List<Integer> listIntTeacher = new ArrayList<>();
+        List<Class> listClassofTeacher = new ArrayList<>();
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("TEACHER"))
+            {
+                listTeacher.add(list_AllUser.get(i));
+            }
+        }
+        int number = 0;
+        for(int i = 0; i< listFaculty.size();i++)
+        {
+            for(int k = 0; k<listTeacher.size();k++)
+            {
+                if(adminService.findClassById(listTeacher.get(k).getClassId().toString()).getFacultyId().equals(listFaculty.get(i).getId()))
+                {
+                    number++;
+                }
+            }
+            listIntTeacher.add(number);
+            number = 0;
+        }
+        return listIntTeacher;
+    }
 }

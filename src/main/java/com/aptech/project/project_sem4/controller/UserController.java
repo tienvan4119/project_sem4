@@ -51,7 +51,7 @@ public class UserController {
             List<Test> test = adminService.getListTestOfCourse(listCourse.get(i).getId().toString());
             for(int j=0;j<test.size();j++)
             {
-                listTest.add(test.get(i));
+                listTest.add(test.get(j));
             }
         }
         List<Course> listCourseOfTest = new ArrayList<>();
@@ -69,7 +69,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/getSection", method = RequestMethod.POST)
-    public List<Test> getListTestForSection(HttpServletRequest request)
+    public ModelAndView getListTestForSection(Model model,HttpServletRequest request)
     {
         String courseName = request.getParameter("userCourse");
         Course currentCourse = adminService.getCoursebyName(courseName);
@@ -86,12 +86,12 @@ public class UserController {
             listCourse.add(adminService.findCoursebyID(listCourseofStudent.get(i).getCourseID().toString()));
         }
 
-//        model.addAttribute("listTest", listTest);
-//        model.addAttribute("currentCourse", currentCourse);
-//        model.addAttribute("current_user", current_user);
-//        model.addAttribute("user_class", user_class);
-//        model.addAttribute("listCourse", listCourse);
-        return listTest;
+        model.addAttribute("listTest", listTest);
+        model.addAttribute("currentCourse", currentCourse);
+        model.addAttribute("current_user", current_user);
+        model.addAttribute("user_class", user_class);
+        model.addAttribute("listCourse", listCourse);
+        return new ModelAndView("redirect:/section");
     }
 
     @RequestMapping(value = {"/changeUserProfile"}, method = RequestMethod.POST)
@@ -185,6 +185,7 @@ public class UserController {
         System.out.println("\nIndex :" + index);
         return list.get(index);
     }
+
 
 }
 

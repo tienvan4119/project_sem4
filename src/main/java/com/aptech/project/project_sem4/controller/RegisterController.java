@@ -253,6 +253,7 @@ public class RegisterController {
         return "userProfile";
     }
 
+
     @RequestMapping(value = {"/addBaiLam"})
     public String AddBaiLam(Model model)
     {
