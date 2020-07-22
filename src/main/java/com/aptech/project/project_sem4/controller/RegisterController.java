@@ -200,7 +200,9 @@ public class RegisterController {
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
-        List<Course> listClass = adminService.getListCourseOfTeacher(user.getId().toString());
+        List<Course> listCourse = adminService.getListCourseOfTeacher(user.getId().toString());
+        model.addAttribute("listCourse", listCourse);
+        List<Class> listClass = adminService.getAllClass();
         model.addAttribute("listClass", listClass);
         return "teacher";
     }

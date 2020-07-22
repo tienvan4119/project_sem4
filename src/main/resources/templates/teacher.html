@@ -15,7 +15,8 @@
     <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
     <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
 
-    <link th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}"
+          rel="stylesheet">
     <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js}"></script>
     <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
     <script th:src='@{https://kit.fontawesome.com/a076d05399.js}'></script>
@@ -30,12 +31,15 @@
             margin: 0 5px;
             min-width: 24px;
         }
+
         table.table td a.edit {
             color: #FFC107;
         }
+
         table.table td a.delete {
             color: #E34724;
         }
+
         table.table td i {
             font-size: 19px;
         }
@@ -46,14 +50,14 @@
 
         // select choice a field and a subject
         $(document).ready(function () {
-
-            $("#SearchFilter").on("keyup", function() {
+            $("#SearchFilter").on("keyup", function () {
                 console.log("abc")
                 var value = $(this).val().toLowerCase();
-                $("#students tr").filter(function() {
+                $("#students tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
+
             //Show DataTable
             // $('#listClass').on('change', e => {
             //     var section_id_value =  $('#listClass option:selected').val();
@@ -170,68 +174,75 @@
             //             });
             //     });
             // });
-            $('#AddNewStudent').on('click', e=> {
+            $('#AddNewStudent').on('click', e => {
                 $('#AddNewModal').modal('show');
-                $('#addNew_saveChanges').on('click', e=>{
+
+                $('#addNew_saveChanges').on('click', e => {
                     var mssv = $("#AddNewModal #addMSSV").val().trim()
                     var lastName = $("#AddNewModal #addLastName").val().trim()
                     var firstName = $("#AddNewModal #addFirstName").val().trim()
-                    var classSH = $("#AddNewModal #addClassSH").val().trim()
-                    var DoB = $("#AddNewModal #addDoB").val().trim()
-                    var PoB = $("#AddNewModal #addPoB").val().trim()
-                    // $.ajax({type: 'POST',url: "/api/admin/AddNewStudent",dataType : 'json',
-                    //     data : {
-                    //         lastName : lastName,
-                    //         firstName: firstName,
-                    //         userEmail: userEmail,
-                    //         userPass : userPass
-                    //     }, success: function(result){
-                    //
-                    //     }})
-                        .done(function( data ) {
+                    var userEmail = $("#AddNewModal #addEmail").val().trim()
+                    var userClassID = $("#AddNewModal #addClassID").val().trim()
+                    var userCourseID = $("#AddNewModal #addCourseID").val().trim()
+                    var address = $("#AddNewModal #addAddress").val().trim()
+                    $.ajax({
+                        type: 'POST', url: "/api/admin/AddNewStudent", dataType: 'json',
+                        data: {
+                            lastName: lastName,
+                            firstName: firstName,
+                            userEmail: userEmail,
+                            address: address,
+                            userClassID: userClassID,
+                            userCourseID: userCourseID
+                        }, success: function (result) {
 
-                        });
+                        }
+                    })
 
                     $('#AddNewModal').modal('hide');
                     location.reload();
                 })
             })
-            $('#listClass').on('change', e => {
-                var course_name =  $('#listClass option:selected').text();
+            $('#listCourse').on('change', e => {
+                var course_name = $('#listCourse option:selected').text();
                 console.log(course_name);
 
-                $.ajax({type: "POST", url: "/api/admin/getListStudentofCourse", dataType: 'json',
-                    data : {
-                        course_name : course_name
-                    },success: function(result){
+                $.ajax({
+                    type: "POST", url: "/api/admin/getListStudentofCourse", dataType: 'json',
+                    data: {
+                        course_name: course_name
+                    }, success: function (result) {
                         console.log(result)
-                        $.ajax({type: "POST", url: "/api/admin/getListStudentofCourseClass", dataType: 'json',
-                            data : {
-                                course_name : course_name
-                            },success: function(dataClass){
+                        $.ajax({
+                            type: "POST", url: "/api/admin/getListStudentofCourseClass", dataType: 'json',
+                            data: {
+                                course_name: course_name
+                            }, success: function (dataClass) {
                                 $('#students').empty()
 
                                 var i;
                                 for (i = 0; i < result.length; i++) {
-                                    console.log(result[i].firstName+ result[i].lastName)
+                                    console.log(result[i].firstName + result[i].lastName)
                                     console.log(result[i].email)
                                     console.log(result[i].location)
                                     console.log(dataClass[i].className)
                                     $('#students').append("<tr>" +
-                                        "<td>"+result[i].MSSV+"</td>" +
-                                        "<td>"+result[i].firstName+" "+result[i].lastName+"</td>" +
-                                        "<td>"+result[i].location+"</td>" +
-                                        "<td>"+result[i].email+"</td>" +
-                                        "<td>"+dataClass[i].className+"</td>" +
+                                        "<td>" + result[i].MSSV + "</td>" +
+                                        "<td>" + result[i].firstName + " " + result[i].lastName + "</td>" +
+                                        "<td>" + result[i].location + "</td>" +
+                                        "<td>" + result[i].email + "</td>" +
+                                        "<td>" + dataClass[i].className + "</td>" +
                                         "<td>" +
-                                        "<a class='edit' title='Edit' id='iconedit1' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
-                                        "<a id='icondelete1' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                        "<a onclick='editStudent(this.id)' class='edit' title='Edit' id='" + result[i].email + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                        "<a onclick='deleteStudent(this.id)' id='" + result[i].email + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
                                         "</td>" +
                                         "</tr>")
                                 }
-                            }})
+                            }
+                        })
 
-                    }})
+                    }
+                })
 
                 //Click edit button DEMO
                 $('#iconedit1').on('click', e => {
@@ -246,6 +257,156 @@
                 });
             })
         })
+        function editStudent(student_email) {
+            let courseName;
+            console.log(student_email)
+            $('#editModal').modal('show');
+            $.ajax({
+                type: "POST", url: "/api/admin/getStudentByEmail", dataType: 'json',
+                data: {
+                    student_email: student_email
+                }, success: function (student) {
+                    $.ajax({
+                        type: "POST", url: "/api/admin/getStudentClassByEmail", dataType: 'json',
+                        data: {
+                            student_email: student_email
+                        }, success: function (studentClass) {
+                            $('#editFirstName').val(student.firstName)
+                            $('#editLastName').val(student.lastName)
+                            $('#editAddress').val(student.location)
+                            $('#editEmail').val(student.email)
+                            $('#editClass').val(studentClass.className)
+
+                        }
+                    })
+
+                }
+            })
+
+            $('#saveChanges').on('click', e => {
+                let courseName = $("#editCourse").children("option").filter(":selected").text();
+                let firstName = $("#editFirstName").val();
+                let lastName = $("#editLastName").val();
+                let email = $("#editEmail").val();
+                let location = $("#editAddress").val();
+                let className = $("#editClass").val();
+                let preCourseName =  $("#listCourse").children("option").filter(":selected").text();
+                console.log(preCourseName)
+                $.ajax({
+                    type: 'POST', url: "/api/admin/editStudent", dataType: 'json',
+                    data: {
+                        className: className,
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        location: location,
+                        courseName : courseName,
+                        preCourseName : preCourseName
+
+                        //CHUA XU LI LOC LAI BANG MOI SAU KHI UPDATE
+                    }, success: function (NonUseresult) {
+                        $.ajax({
+                            type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
+                            data: {}, success: function (result) {
+                                console.log(result)
+                                var k = 0;
+                                for (k; k < result.length; k++) {
+                                    $('#listTeachers').append("<option  value= " + result[k].email + " >" + result[k].firstName + " " + result[k].lastName + "</option>");
+                                }
+
+                                $.ajax({
+                                    type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
+                                    data: {}, success: function (dataClass) {
+                                        console.log(result)
+                                        $('#editModal').modal('hide');
+                                        $('#teachers').empty()
+                                        var i;
+                                        for (i = 0; i < result.length; i++) {
+                                            console.log(result[i].firstName + result[i].lastName)
+                                            console.log(result[i].email)
+                                            console.log(result[i].location)
+                                            console.log(dataClass[i].className)
+
+                                            $('#teachers').append("<tr>" +
+                                                "<td>" + result[i].firstName + " " + result[i].lastName + "</td>" +
+                                                "<td>" + result[i].location + "</td>" +
+                                                "<td>" + result[i].email + "</td>" +
+                                                "<td>" + dataClass[i].className + "</td>" +
+                                                "<td>" +
+                                                "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='" + result[i].email + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                                "<a onclick='deleteTeacher(this.id)' id='" + result[i].email + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                                "</td>" +
+                                                "</tr>")
+                                        }
+                                    }
+                                })
+                            }
+                        })
+
+                    }
+                })
+            });
+        }
+        function deleteStudent(student_email) {
+            console.log(student_email)
+            $('#deleteModal').modal('show');
+            let preCourseName =  $("#listCourse").children("option").filter(":selected").text();
+
+            $('#save_delete').on('click', e => {
+                console.log("in here")
+                $.ajax({
+                    type: "POST", url: "/api/admin/DeleteStudent", dataType: 'json',
+                    data: {
+                        student_email: student_email,
+                        preCourseName: preCourseName
+
+                        //CHUA XU LI LOC LAI BANG MOI SAU KHI DELETE
+                    }, success: function (dataSomething) {
+                        console.log(dataSomething)
+                        $('#deleteModal').modal('hide');
+                        $.ajax({
+                            type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
+                            data: {}, success: function (result) {
+
+                                var k = 0;
+                                for (k; k < result.length; k++) {
+                                    $('#listTeachers').append("<option  value= " + result[k].email + " >" + result[k].firstName + " " + result[k].lastName + "</option>");
+                                }
+
+                                $.ajax({
+                                    type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
+                                    data: {}, success: function (dataClass) {
+                                        console.log(result)
+
+                                        $('#teachers').empty()
+                                        var i;
+                                        for (i = 0; i < result.length; i++) {
+                                            console.log(result[i].firstName + result[i].lastName)
+                                            console.log(result[i].email)
+                                            console.log(result[i].location)
+                                            console.log(dataClass[i].className)
+
+                                            $('#teachers').append("<tr>" +
+                                                "<td>" + result[i].firstName + " " + result[i].lastName + "</td>" +
+                                                "<td>" + result[i].location + "</td>" +
+                                                "<td>" + result[i].email + "</td>" +
+                                                "<td>" + dataClass[i].className + "</td>" +
+                                                "<td>" +
+                                                "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='" + result[i].email + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                                "<a onclick='deleteTeacher(this.id)' id='" + result[i].email + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                                "</td>" +
+                                                "</tr>")
+                                        }
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+
+            })
+        }
+
     </script>
 </head>
 
@@ -285,7 +446,8 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item active">
-            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+               aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-user-edit"></i>
                 <span>QUẢN LÝ</span>
             </a>
@@ -299,11 +461,13 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+               aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-edit"></i>
                 <span>QUIZ</span>
             </a>
-            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom QUIZ:</h6>
                     <a class="collapse-item" href="addQuiz.html">Thêm quiz mới</a>
@@ -341,11 +505,12 @@
                 <!-- Topbar Search -->
                 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
-                        <input id="SearchFilter" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                        <input id="SearchFilter" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                               aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-<!--                            <button class="btn btn-primary" type="button">-->
-<!--                                <i class="fas fa-search fa-sm"></i>-->
-<!--                            </button>-->
+                            <!--                            <button class="btn btn-primary" type="button">-->
+                            <!--                                <i class="fas fa-search fa-sm"></i>-->
+                            <!--                            </button>-->
                         </div>
                     </div>
                 </form>
@@ -355,13 +520,17 @@
 
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                     <li class="nav-item dropdown no-arrow d-sm-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-search fa-fw"></i>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                             aria-labelledby="searchDropdown">
                             <form class="form-inline mr-auto w-100 navbar-search">
                                 <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control bg-light border-0 small"
+                                           placeholder="Search for..." aria-label="Search"
+                                           aria-describedby="basic-addon2">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">
                                             <i class="fas fa-search fa-sm"></i>
@@ -377,12 +546,15 @@
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${#authentication.getPrincipal().getUsername()}"></span>
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                  th:text="${#authentication.getPrincipal().getUsername()}"></span>
                             <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                         </a>
                         <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
@@ -422,13 +594,17 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <form>
-                                    <select class="custom-select" style="width: 30%" id="listClass">
-                                        <option id="Class"disabled value="Class" selected>Class...</option>
-                                        <option th:each="class :  ${listClass}" th:value="${class.id}" th:text="${class.name}"/>
+                                    <select class="custom-select" style="width: 30%" id="listCourse">
+                                        <option id="Course" disabled value="Course" selected>Course...
+                                        </option>
+                                        <option th:each="course :  ${listCourse}" th:value="${course.id}"
+                                                th:text="${course.name}"/>
 
                                     </select>
                                 </form>
-                                <button id="AddNewStudent" type="button" class="btn btn-primary" style="margin-top: 1em">Add A New Student</button>
+                                <button id="AddNewStudent" type="button" class="btn btn-primary"
+                                        style="margin-top: 1em">Add A New Student
+                                </button>
 
                             </div>
 
@@ -454,7 +630,8 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title">Xóa sinh viên này ?</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -462,53 +639,71 @@
                                                 <p>Bạn có muốn xóa sinh viên này ? </p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button id="save_delete" type="button" class="btn btn-primary">Có, hãy xóa sinh viên này</button>
-                                                <button type="button" class="btn btn-secondary save_delete" data-dismiss="modal">Đóng</button>
+                                                <button id="save_delete" type="button" class="btn btn-primary">Có, hãy
+                                                    xóa sinh viên này
+                                                </button>
+                                                <button type="button" class="btn btn-secondary save_delete"
+                                                        data-dismiss="modal">Đóng
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
 
-
                                 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="editModal_title">Sửa thông tin sinh viên</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <h5 class="modal-title" id="editModal_title">Sửa thông tin sinh
+                                                    viên</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label for="mssv">MSSV</label>
-                                                    <input type="text" class="form-control" id="editMSSV" >
+                                                    <input type="text" class="form-control" id="editMSSV">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="LastName">Họ</label>
-                                                    <input type="text" class="form-control" id="editLastName" >
+                                                    <input type="text" class="form-control" id="editLastName">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="FirstName">Tên</label>
-                                                    <input type="text" class="form-control" id="editFirstName" >
+                                                    <input type="text" class="form-control" id="editFirstName">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="ClassSH">Lớp Sinh Hoạt</label>
-                                                    <input type="text" class="form-control" id="editClassSH" >
+                                                    <label for="Email">Email</label>
+                                                    <input readonly type="text" class="form-control" id="editEmail">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="DoB">Ngày Sinh</label>
-                                                    <input type="text" class="form-control" id="editDoB" >
+                                                    <label for="Address">Địa chỉ</label>
+                                                    <input type="text" class="form-control" id="editPoB">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="PoB">Nơi Sinh</label>
-                                                    <input type="text" class="form-control" id="editPoB" >
+                                                    <label for="ClassName">Lớp Sinh Hoạt</label>
+                                                    <input readonly type="text" class="form-control" id="editClass">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ClassName">Lớp Học Phần</label>
+                                                    <select class="custom-select" style="width: 30%" id="editCourse">
+                                                        <option id="CourseEdit" disabled value="Course" selected>Course...
+                                                        </option>
+                                                        <option th:each="course :  ${listCourse}" th:value="${course.id}"
+                                                                th:text="${course.name}"/>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button id="saveChanges" type="button" class="btn btn-primary">Save changes</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button id="saveChanges" type="button" class="btn btn-primary">Save
+                                                    changes
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -518,39 +713,59 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="AddNewModal_title">Thêm sinh viên mới</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label for="mssv">MSSV</label>
-                                                    <input type="text" class="form-control" id="addMSSV" >
+                                                    <input type="text" class="form-control" id="addMSSV">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="LastName">Họ</label>
-                                                    <input type="text" class="form-control" id="addLastName" >
+                                                    <input type="text" class="form-control" id="addLastName">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="FirstName">Tên</label>
-                                                    <input type="text" class="form-control" id="addFirstName" >
+                                                    <input type="text" class="form-control" id="addFirstName">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="ClassSH">Lớp Sinh Hoạt</label>
-                                                    <input type="text" class="form-control" id="addClassSH" >
+                                                    <label for="Email">Email</label>
+                                                    <input type="text" class="form-control" id="addEmail">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="DoB">Ngày Sinh</label>
-                                                    <input type="text" class="form-control" id="addDoB" >
+                                                    <label for="Address">Nơi Sinh</label>
+                                                    <input type="text" class="form-control" id="addAddress">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="PoB">Nơi Sinh</label>
-                                                    <input type="text" class="form-control" id="addPoB" >
+                                                    <label for="CourseName">Lớp học phần</label>
+                                                    <select class="custom-select" style="width: 30%" id="addCourseID">
+                                                        <option id="CourseAdd" disabled value="Course" selected>Course...
+                                                        </option>
+                                                        <option th:each="course :  ${listCourse}" th:value="${course.id}"
+                                                                th:text="${course.name}"/>
+                                                    </select>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="ClassName">Lớp sinh hoạt</label>
+                                                    <select class="custom-select" style="width: 30%" id="addClassID">
+                                                        <option id="ClassAdd" disabled value="Class" selected>Class...
+                                                        </option>
+                                                        <option th:each="class :  ${listClass}" th:value="${class.id}"
+                                                                th:text="${class.className}"/>
+                                                    </select>
+                                                </div>
+
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button id="addNew_saveChanges" type="button" class="btn btn-primary">Save changes</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button id="addNew_saveChanges" type="button" class="btn btn-primary">
+                                                    Save changes
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -590,7 +805,8 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

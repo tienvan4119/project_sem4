@@ -122,6 +122,10 @@ public class AdminService {
     {
         answerRepository.save(answer);
     }
+    public void saveStudentCourse(RelationStudentCourse studentCourse)
+    {
+        relationStudentCourseRepository.save(studentCourse);
+    }
     public Choice findChoiceByChoiceDesc(String choice_desc)
     {
         return choiceRepository.findChoiceByChoice_desc(choice_desc);
@@ -161,6 +165,24 @@ public class AdminService {
     public void saveTopic(Topic topic) {
         topicRepository.save(topic);
     }
+
+    public void saveStudentEdit(User user)
+    {
+        userRepository.save(user);
+    }
+    public void DeleteStudent(User user)
+    {
+        userRepository.delete(user);
+    }
+    public void DeleteRelationCourseStudent(RelationStudentCourse studentCourse)
+    {
+        relationStudentCourseRepository.delete(studentCourse);
+    }
+    public RelationStudentCourse getRelationCourseStudent(String course_id, String student_id)
+    {
+        return relationStudentCourseRepository.getCourseWithStudent(course_id,student_id);
+    }
+
     public List<RelationStudentCourse> getListCourseofStudent(String student_id)
     {
         return relationStudentCourseRepository.getListCourseByStudentID(student_id);

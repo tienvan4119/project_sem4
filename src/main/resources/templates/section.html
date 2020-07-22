@@ -25,7 +25,11 @@
             <li class="nav-item dropdown">
                 <label class="nav-link">Take a quiz</label>
                 <div class="dropdown-content" >
-                    <a onclick="toSectionPage(this.id)" th:each="course : ${listCourse}" th:text="${course.name}" th:value="${course.name}" th:id="${course.name}"/>
+                    <div th:each="course : ${listCourse}">
+                        <form th:id="${course.id}" th:action="@{/getSection}">
+                            <a th:name="courseID" onclick="document.getElementById(this.id).submit();" th:text="${course.name}" th:value="${course.name}" th:id="${course.id}" ></a>
+                        </form>
+                    </div>
                 </div>
                 <style>
                     label{
@@ -88,51 +92,45 @@
     <div class="ant-col content ant-col-xs-24">
         <h1 style="text-align: center;">Tên Bài Thi</h1>
         <div class = "contentTable">
-            <table class = "table">
-                <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Tên Bài Thi</th>
-                    <th>Nhóm Học Phần</th>
-                    <th>Số Câu</th>
-                    <th>Thời gian làm bài(Phút)</th>
-                    <th style="text-align: right;"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <!--Đổ Data bắt đầu từ đây, phần trên là cái tiêu đề -->
-                <tr th:each="test, state : ${listTest}">
-                    <td th:text="${state.count}"></td>
-                    <td th:each="course : ${listCourse}" th:if="${course.id == test.courseID}" th:text="${course.subName}"></td>
-                    <td th:each="course : ${listCourse}" th:if="${course.id == test.courseID}" th:text="${course.name}"></td>
-                    <td th:text="${test.numberQuestion}"></td>
-                    <td th:text="${test.time}"></td>
-                    <td class="sc-AxhCb eSwYtm">
-                        <div class="sc-AxhUy fxWvvr" style="text-align: right;">
-                            <button onclick="getId(this.id)" th:id="${test.id}" type="button" class="ant-btn ant-btn-link ant-btn-sm">
-                                <span>Kết quả: 71/77 (93%)</span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+
+                <table class = "table">
+                    <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên Bài Thi</th>
+                        <th>Nhóm Học Phần</th>
+                        <th>Số Câu</th>
+                        <th>Thời gian làm bài(Phút)</th>
+                        <th style="text-align: right;"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--Đổ Data bắt đầu từ đây, phần trên là cái tiêu đề -->
+                    <tr th:each="test, state : ${listTest}">
+                        <form th:action="@{/createQuiz}">
+                            <td th:text="${state.count}"></td>
+                            <td th:each="course : ${listCourse}" th:if="${course.id == test.courseID}" th:text="${course.subName}"></td>
+                            <td th:each="course : ${listCourse}" th:if="${course.id == test.courseID}" th:text="${course.name}"></td>
+                            <td th:text="${test.numberQuestion}"></td>
+                            <td th:text="${test.time}"></td>
+                            <td class="sc-AxhCb eSwYtm">
+                                <div class="sc-AxhUy fxWvvr" style="text-align: right;">
+                                    <button  th:id="${test.id}" class="ant-btn ant-btn-link ant-btn-sm">
+                                        <span>Kết quả: 71/77 (93%)</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </form>
+                    </tr>
+                    </tbody>
+                </table>
+®
         </div>
     </div>
 </div>
 </div>
 </body>
 <script type="text/javascript">
-   function getId(test_id) {
-       console.log(test_id);
-       $.ajax({
-           type: "POST", url: "/api/admin/getTime", dataType: 'json',
-           data: {
-               test_id: test_id
-           }, success: function (result) {
-                console.log(result.time)
-           }
-       });
-   }
+
 </script>
 </html>

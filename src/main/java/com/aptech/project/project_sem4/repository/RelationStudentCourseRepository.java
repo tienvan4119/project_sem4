@@ -15,4 +15,8 @@ public interface RelationStudentCourseRepository extends MongoRepository<Relatio
 
     @Query("{ studentID: ObjectId(\"?0\" )}")
     public List<RelationStudentCourse> getListCourseByStudentID(String student_id);
+
+    @Query("{ courseID: ObjectId(\"?0\" ), studentID: ObjectId(\"?1\" )}")
+    public RelationStudentCourse getCourseWithStudent(String courseID, String student_id);
+
 }

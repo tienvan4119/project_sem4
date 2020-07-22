@@ -75,7 +75,11 @@
             <li class="nav-item dropdown">
                 <label class="nav-link">Take a quiz</label>
                 <div class="dropdown-content" >
-                    <a href="/section" onclick="toSectionPage(this.id)" th:each="course : ${listCourse}" th:text="${course.name}" th:value="${course.name}" th:id="${course.name}"/>
+                    <div th:each="course : ${listCourse}">
+                        <form th:id="${course.id}" th:action="@{/getSection}">
+                           <a th:name="courseID" onclick="document.getElementById(this.id).submit();" th:text="${course.name}" th:value="${course.name}" th:id="${course.id}" ></a>
+                        </form>
+                    </div>
                 </div>
                 <style>
                     label{

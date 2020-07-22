@@ -32,6 +32,8 @@ public class UserService implements UserDetailsService {
     private ClassRepository classRepository;
 @Autowired
 private ResultRepository resultRepository;
+@Autowired
+private  RelationCourseSectionRepository relationCourseSectionRepository;
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
@@ -40,7 +42,10 @@ private ResultRepository resultRepository;
         return classRepository.findClassById(classID);
     }
 
-
+    public RelationCourseSection getCourseSection(String course_id)
+    {
+        return relationCourseSectionRepository.findbyCourseId(course_id);
+    }
 
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
