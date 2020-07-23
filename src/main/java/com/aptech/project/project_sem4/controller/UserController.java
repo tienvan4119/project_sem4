@@ -33,47 +33,46 @@ public class UserController {
     private UserRepository userRepository;
     private Random random = new Random();
 
-//    @RequestMapping(value = {"/", "/section"}, method = RequestMethod.GET)
-//    public String section(Model model) {
-//        List<User> listUser = userService.listAll();
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String userName = authentication.getName();
-//        User current_user = userService.findByEmail(userName);
-//        Class user_class = userService.findClassByID(current_user.getClassId().toString());
-//        List<RelationStudentCourse> listCourseofStudent = adminService.getListCourseofStudent(current_user.getId().toString());
-//        List<Course> listCourse = new ArrayList<>();
-//        for(int i = 0; i < listCourseofStudent.size();i++)
-//        {
-//            listCourse.add(adminService.findCoursebyID(listCourseofStudent.get(i).getCourseID().toString()));
-//        }
-//        List<Test> listTest = new ArrayList<>();
-//        for (int i = 0; i<listCourse.size();i++)
-//        {
-//            List<Test> test = adminService.getListTestOfCourse(listCourse.get(i).getId().toString());
-//            for(int j=0;j<test.size();j++)
-//            {
-//                listTest.add(test.get(j));
-//            }
-//        }
-//        List<Course> listCourseOfTest = new ArrayList<>();
-//        for(int i = 0; i< listTest.size(); i++)
-//        {
-//            listCourseOfTest.add( adminService.findCoursebyID(listTest.get(i).getCourseID().toString()));
-//        }
-//
-//        model.addAttribute("current_user", current_user);
-//        model.addAttribute("courseOfTest", listCourseOfTest);
-//        model.addAttribute("listTest", listTest);
-//        model.addAttribute("user_class", user_class);
-//        model.addAttribute("listCourse", listCourse);
-//        return "section";
-//    }
+    @RequestMapping(value = {"/", "/section"}, method = RequestMethod.GET)
+    public String section(Model model) {
+        List<User> listUser = userService.listAll();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        User current_user = userService.findByEmail(userName);
+        Class user_class = userService.findClassByID(current_user.getClassId().toString());
+        List<RelationStudentCourse> listCourseofStudent = adminService.getListCourseofStudent(current_user.getId().toString());
+        List<Course> listCourse = new ArrayList<>();
+        for(int i = 0; i < listCourseofStudent.size();i++)
+        {
+            listCourse.add(adminService.findCoursebyID(listCourseofStudent.get(i).getCourseID().toString()));
+        }
+        List<Test> listTest = new ArrayList<>();
+        for (int i = 0; i<listCourse.size();i++)
+        {
+            List<Test> test = adminService.getListTestOfCourse(listCourse.get(i).getId().toString());
+            for(int j=0;j<test.size();j++)
+            {
+                listTest.add(test.get(j));
+            }
+        }
+        List<Course> listCourseOfTest = new ArrayList<>();
+        for(int i = 0; i< listTest.size(); i++)
+        {
+            listCourseOfTest.add( adminService.findCoursebyID(listTest.get(i).getCourseID().toString()));
+        }
 
-    @RequestMapping(value = {"/getSection"})
-    public String getListTestForSection(Model model, HttpServletRequest request, @RequestParam(value = "courseID", required = false) String name)
+        model.addAttribute("current_user", current_user);
+        model.addAttribute("courseOfTest", listCourseOfTest);
+        model.addAttribute("listTest", listTest);
+        model.addAttribute("user_class", user_class);
+        model.addAttribute("listCourse", listCourse);
+        return "section";
+    }
+
+    @RequestMapping ("/getSection")
+    public String getListTestForSection(Model model, HttpServletRequest request, @RequestParam  Integer id)
     {
 
-        System.out.println(name);
         String params = request.getQueryString();
         String[] test_id = params.split("=");
         System.out.println(test_id[1]);
@@ -108,20 +107,15 @@ public class UserController {
         String firstName = request.getParameter("firstName");
         String userEmail = request.getParameter("email");
         String userPass = request.getParameter("password");
-        String re_pass = request.getParameter("re_password");
-        if(userPass.equals(re_pass)) {
-            String pass = bCryptPasswordEncoder.encode(userPass);
-            System.out.println(pass);
-            User new_user = userService.findByEmail(userEmail);
-            new_user.setFirstName(firstName);
-            new_user.setLastName(lastName);
-            new_user.setPassword(pass);
-            userService.saveUser(new_user);
-            return "Yes";
-        }
-        else {
-            return "NO";
-        }
+
+        String pass = bCryptPasswordEncoder.encode(userPass);
+        System.out.println(pass);
+        User new_user = userService.findByEmail(userEmail);
+        new_user.setFirstName(firstName);
+        new_user.setLastName(lastName);
+        new_user.setPassword(pass);
+        userService.saveUser(new_user);
+        return "Yes";
     }
 
     @RequestMapping(value = {"/userResult"})
@@ -195,6 +189,13 @@ public class UserController {
         return list.get(index);
     }
 
-
+    @RequestMapping(value = "/getNumberOfTest", method = RequestMethod.POST)
+    public Integer getNumber(HttpServletRequest request)
+    {
+        String params = request.getQueryString();
+        String[] test_id = params.split("=");
+        System.out.println(test_id[1]);
+        return adminService.getTestbyId(test_id[1]).getNumberQuestion();
+    }
 }
 

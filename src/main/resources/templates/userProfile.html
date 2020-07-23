@@ -21,33 +21,66 @@
                 console.log("click")
                 let firstName = $('#firstName').val()
                 let lastName = $('#lastName').val()
-                let MSSV = $('#MSSV').val()
+                let mssv = $('#MSSV').val()
                 let location = $('#location').val()
                 let email = $('#email').val()
                 let password = $('#password').val()
-                let re_password = $('#re-password').val()
-                console.log(firstName + lastName + email + password + ' ' + re_password + '  ' + location + '  ' + MSSV)
-                if (password == re_password)
-                {
-                    $.ajax({
-                        type: "POST", url: "/changeUserProfile", dataType: 'json',
-                        data: {
-                            firstName: firstName,
-                            lastName: lastName,
-                            email: email,
-                            password: password,
-                            re_password: re_password
-                        }, success: function (result) {
-                        }
-                    })
-                    $('#Success').modal('show');
-                }
+                console.log(firstName + lastName + email + password + '   ' + location + '  ' + mssv)
+
+                $.ajax({
+                    type: "POST", url: "/changeUserProfile", dataType: 'json',
+                    data: {
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        password: password,
+                        mssv : mssv,
+                        location : location
+                    }, success: function (result) {
+
+                    }
+                })
+                $('#Success').modal('show');
 
             })
             $('.save_user').on('click', e =>{
                 console.log("abc")
                 $('#Success').modal('hide');
                 location.reload()
+            })
+            $(':input[type="button"]').prop('disabled', true);
+            let firstName = $('#firstName').val()
+            let lastName = $('#lastName').val()
+            let mssv = $('#MSSV').val()
+            let location = $('#location').val()
+            let Password = $('#password').val()
+            let RePassword = $('#re-password').val()
+            console.log(firstName + lastName + " MSSV :" + mssv + "LOCATION : " + location)
+            $('.form-control').on('keyup', e => {
+                let newFirstName = $('#firstName').val()
+                let newLastName = $('#lastName').val()
+                let newMssv = $('#MSSV').val()
+                let newLocation = $('#location').val()
+                let newPassword = $('#password').val()
+                let newRePassword = $('#re-password').val()
+
+                console.log(newFirstName + "  " + newLastName + "   "+" MSSV :" + newMssv + "LOCATION : " + newLocation)
+                if(firstName == newFirstName && lastName == newLastName && mssv == newMssv && location == newLocation && newPassword == "" && newRePassword == "")
+                {
+                    $(':input[type="button"]').prop('disabled', true);
+                }
+                else
+                {
+                    if(newPassword != newRePassword)
+                    {
+                        $(':input[type="button"]').prop('disabled', true);
+                    }
+                    else
+                    {
+                        $(':input[type="button"]').prop('disabled', false);
+                    }
+                }
+
             })
 
         })
@@ -60,6 +93,7 @@
 
                 }})
         }
+
     </script>
 </head>
 <div class="profile clearfix">
@@ -76,9 +110,7 @@
                 <label class="nav-link">Take a quiz</label>
                 <div class="dropdown-content" >
                     <div th:each="course : ${listCourse}">
-                        <form th:id="${course.id}" th:action="@{/getSection}">
-                           <a th:name="courseID" onclick="document.getElementById(this.id).submit();" th:text="${course.name}" th:value="${course.name}" th:id="${course.id}" ></a>
-                        </form>
+                        <a href="/section" th:name="courseID" th:text="${course.name}" th:value="${course.name}" th:id="${course.id}" ></a>
                     </div>
                 </div>
                 <style>
@@ -184,49 +216,49 @@
                                     <h3>Personal info</h3>
 
                                     <form class="form-horizontal" role="form">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom: 40px">
                                             <label class="col-lg-3 control-label">First name:</label>
                                             <div class="col-lg-8">
                                                 <input id="firstName" class="form-control" type="text" th:value=" ${user.firstName}">
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom: 30px">
                                             <label class="col-lg-3 control-label">Last name:</label>
                                             <div class="col-lg-8">
                                                 <input id="lastName" class="form-control" type="text" th:value=" ${user.lastName}">
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom: 30px">
                                             <label class="col-lg-3 control-label">MSSV:</label>
                                             <div class="col-lg-8">
-                                                <input id="MSSV" class="form-control" type="text" th:value=" ${user.MSSV}">
+                                                <input id="MSSV" class="form-control" type="number" th:value=" ${user.MSSV}">
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom: 30px">
                                             <label class="col-lg-3 control-label">Nơi sinh:</label>
                                             <div class="col-lg-8">
                                                 <input id="location" class="form-control" type="text" th:value=" ${user.Location}">
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom: 30px">
                                             <label class="col-lg-3 control-label">Email:</label>
                                             <div class="col-lg-8">
                                                 <input id="email" class="form-control" type="text" th:value="${user.email}" readonly="">
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom: 30px">
                                             <label class="col-md-3 control-label">Password:</label>
                                             <div class="col-md-8">
                                                 <input id="password" class="form-control" type="password">
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-bottom: 30px">
                                             <label class="col-md-3 control-label">Confirm password:</label>
                                             <div class="col-md-8">
                                                 <input id="re-password" class="form-control" type="password">
@@ -236,7 +268,7 @@
                                         <div class="form-group">
                                             <label class="col-md-3 control-label"></label>
                                             <div class="col-md-8">
-                                                <input type="button" id="save" class="btn btn-primary edit" value="Save Changes">
+                                                <input type="button" id="save" class="btn btn-primary edit" value="Save Changes" >
                                                 <span></span>
                                                 <input type="reset" class="btn btn-default" value="Cancel">
                                             </div>
