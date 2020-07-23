@@ -82,25 +82,26 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/AddNewTeacher", method = RequestMethod.POST)
-    public String AddNewTeacher(HttpServletRequest request, ModelAndView modelAndView, @RequestParam Map<String, String> requestParams)
+    public String AddNewTeacher(HttpServletRequest request, ModelAndView modelAndView)
     {
         BCryptPasswordEncoder bCryptPasswordEncoder  = new BCryptPasswordEncoder();
         String lastName = request.getParameter("lastName");
         String firstName = request.getParameter("firstName");
         String userEmail = request.getParameter("userEmail");
-        String userPass = request.getParameter("userPass");
+        String userFaculty = request.getParameter("userFaculty");
         String classID = request.getParameter("userClassID");
         ObjectId classID_convert = new ObjectId(classID);
 //        User userExits = userService.findByEmail(userEmail);
-        String pass = bCryptPasswordEncoder.encode(userPass);
+
+        String pass = bCryptPasswordEncoder.encode("Van@411209");
         System.out.println(pass);
-        User new_Admin = new User();
-        new_Admin.setFirstName(firstName);
-        new_Admin.setLastName(lastName);
-        new_Admin.setPassword(pass);
-        new_Admin.setEmail(userEmail);
-        new_Admin.setClassId(classID_convert);
-        adminService.saveAdmin(new_Admin);
+        User new_teacher = new User();
+        new_teacher.setFirstName(firstName);
+        new_teacher.setLastName(lastName);
+        new_teacher.setPassword(pass);
+        new_teacher.setEmail(userEmail);
+        new_teacher.setClassId(classID_convert);
+        adminService.saveTeacher(new_teacher);
 //        String pass = bCryptPasswordEncoder.encode(request.getParameter("userPass"));
 
         return "Yes";
@@ -206,6 +207,90 @@ public class AdminController {
         return listTeacher;
     }
 
+    @RequestMapping(value = "/getListResultofCourse", method = RequestMethod.POST)
+    public List<Result> getListResultofCourse(HttpServletRequest request)
+    {
+        String course_name = request.getParameter("course_name");
+        List<Result> listResult = adminService.getFullResultofCourse(adminService.getCoursebyName(course_name).getId().toString());
+        return listResult;
+    }
+
+    @RequestMapping(value = "/getListStudentbyResultofCourse", method = RequestMethod.POST)
+    public List<User> getListStudentbyResultofCourse(HttpServletRequest request)
+    {
+        String course_name = request.getParameter("course_name");
+        List<Result> listResult = adminService.getFullResultofCourse(adminService.getCoursebyName(course_name).getId().toString());
+        List<User> listUser = new ArrayList<>();
+        for(int i = 0; i<listResult.size();i++)
+        {
+            listUser.add(adminService.findUserbyId(listResult.get(i).getUser_id().toString()));
+        }
+        return listUser;
+    }
+
+    @RequestMapping(value = "/getListClassbyResultofCourse", method = RequestMethod.POST)
+    public List<Class> getListClassbyResultofCourse(HttpServletRequest request)
+    {
+        String course_name = request.getParameter("course_name");
+        List<Result> listResult = adminService.getFullResultofCourse(adminService.getCoursebyName(course_name).getId().toString());
+        List<User> listUser = new ArrayList<>();
+        for(int i = 0; i<listResult.size();i++)
+        {
+            listUser.add(adminService.findUserbyId(listResult.get(i).getUser_id().toString()));
+        }
+        List<Class> listClass = new ArrayList<>();
+        for(int j = 0; j< listUser.size(); j++) {
+            listClass.add(adminService.findClassById(listUser.get(j).getClassId().toString()));
+        }
+        return listClass;
+    }
+
+    @RequestMapping(value = "/getListTestbyResultofCourse", method = RequestMethod.POST)
+    public List<Test> getListTestbyResultofCourse(HttpServletRequest request)
+    {
+        String course_name = request.getParameter("course_name");
+        List<Result> listResult = adminService.getFullResultofCourse(adminService.getCoursebyName(course_name).getId().toString());
+        List<Test> listTest = new ArrayList<>();
+        for(int i = 0;i < listResult.size();i++)
+        {
+            listTest.add(adminService.getTestbyId(listResult.get(i).getTestId().toString()));
+        }
+
+        return listTest;
+    }
+
+    @RequestMapping(value = "/getListStringTest", method = RequestMethod.POST)
+    public List<String> getListStringTest(HttpServletRequest request)
+    {
+        String course_name = request.getParameter("course_name");
+        List<Result> listResult = adminService.getFullResultofCourse(adminService.getCoursebyName(course_name).getId().toString());
+        List<Test> listTest = new ArrayList<>();
+        for(int i = 0;i < listResult.size();i++)
+        {
+            listTest.add(adminService.getTestbyId(listResult.get(i).getTestId().toString()));
+        }
+        List<String> listString = new ArrayList<>();
+        for(int i = 0; i< listTest.size();i++)
+        {
+            listString.add(listTest.get(i).getId().toString());
+        }
+        return listString;
+    }
+
+    @RequestMapping(value = "/setTestAgain", method = RequestMethod.POST)
+    public List<Result> getListResultAfterTestAgain(HttpServletRequest request)
+    {
+        String student_email = request.getParameter("student_email");
+        String course_name = request.getParameter("course_name");
+        String[] dataTest = student_email.split("/");
+        Result result = adminService.getResultbyTestAndUser(dataTest[1],adminService.getUserbyEmail(dataTest[0]).getId().toString());
+        result.setDone(false);
+        result.setTestAgain(true);
+        quizService.saveResult(result);
+        List<Result> listResult = adminService.getFullResultofCourse(adminService.getCoursebyName(course_name).getId().toString());
+        return listResult;
+    }
+
     @RequestMapping(value = "/getClassofFaculty", method = RequestMethod.POST)
     public List<Class> getListClassofFaculty(Model model, HttpServletRequest request)
     {
@@ -288,6 +373,7 @@ public class AdminController {
         String className = request.getParameter("Class");
         String soCau = request.getParameter("SoCau");
         String time = request.getParameter("ThoiGian");
+        String typeTest = request.getParameter("testType");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         int timeTest = Integer.parseInt(time);
@@ -298,8 +384,25 @@ public class AdminController {
         newTestQuiz.setTeacherID(user.getId());
         int numberQuestion = Integer.parseInt(soCau);
         newTestQuiz.setNumberQuestion(numberQuestion);
+        newTestQuiz.setTestType(typeTest);
         adminService.saveQuizTest(newTestQuiz);
-
+        List<User> listUser = new ArrayList<>();
+        List<RelationStudentCourse> listCourseStudent  = adminService.getListCourseAndStudent(currentCourse.getId().toString());
+        for(int i = 0; i< listCourseStudent.size(); i++)
+        {
+            listUser.add(adminService.findUserbyId(listCourseStudent.get(i).getStudentID().toString()));
+        }
+        for(int i = 0; i<listUser.size(); i++)
+        {
+            Result result = new Result();
+            result.setMark(0);
+            result.setCourseId(currentCourse.getId());
+            result.setTestId(newTestQuiz.getId());
+            result.setUser_id(listUser.get(i).getId());
+            result.setDone(false);
+            result.setTestAgain(false);
+            quizService.saveResult(result);
+        }
         return adminService.getListTest(user.getId().toString());
     }
 
@@ -534,136 +637,7 @@ public class AdminController {
         String userEmail = request.getParameter("teacher_email");
         return adminService.findClassById(adminService.getUserbyEmail(userEmail).getClassId().toString());
     }
-//    @RequestMapping(value = "/getTeacherOtherClass", method = RequestMethod.POST)
-//    public List<Class> getListotherClass(Model model, HttpServletRequest request)
-//    {
-//        String userEmail = request.getParameter("teacher_email");
-//        Class userClass = adminService.findClassById(adminService.getUserbyEmail(userEmail).getClassId().toString());
-//        List<Class> listClass = adminService.getAllClass();
-//        for(int i=0; i<listClass.size();i++)
-//        {
-//            if(listClass.get(i).getId().equals(userClass.getId()))
-//            {
-//                listClass.remove(listClass.get(i));
-//                break;
-//            }
-//        }
-//        return listClass;
-//    }
 
-//    @RequestMapping(value = "/editTeacher", method = RequestMethod.POST)
-//    public Class editTeacher(HttpServletRequest request)
-//    {
-//        String user_email = request.getParameter("email");
-//        String firstName = request.getParameter("firstName");
-//        String lastName = request.getParameter("lastName");
-//        String className = request.getParameter("className");
-//        String location = request.getParameter("location");
-//        User choice_user = adminService.getUserbyEmail(user_email);
-//        choice_user.setClassId(adminService.findClassByName(className).getId());
-//        choice_user.setFirstName(firstName);
-//        choice_user.setLastName(lastName);
-//        choice_user.setLocation(location);
-//        adminService.saveTeacherEdit(choice_user);
-//        return adminService.findClassById(adminService.getUserbyEmail(user_email).getClassId().toString());
-//    }
-
-//    @RequestMapping(value = "/DeleteTeacher", method = RequestMethod.POST)
-//    public List<Faculty> deleteTeacher(HttpServletRequest request)
-//    {
-//        String user_email = request.getParameter("teacher_email");
-//        User choice_user = adminService.getUserbyEmail(user_email);
-//        adminService.DeleteTeacher(choice_user);
-//        return adminService.getAllFaculty();
-//    }
-
-//    @RequestMapping(value = "/getTest", method = RequestMethod.POST)
-//    public Test dataTest(Model model, HttpServletRequest request)
-//    {
-//        String test_id  = request.getParameter("test_id");
-//        return adminService.getTestbyId(test_id);
-//    }
-//    @RequestMapping(value = "/getClassName", method = RequestMethod.GET)
-//    public Course getClassName(Model model, HttpServletRequest request)
-//    {
-//        String test_id  = request.getParameter("test_id");
-//        return adminService.findCoursebyID(adminService.getTestbyId(test_id).getCourseID().toString());
-//    }
-//    @RequestMapping(value = "/getClassTestEdit", method = RequestMethod.GET)
-//    public List<Course> getListEdit(Model model, HttpServletRequest request)
-//    {
-//        String test_id  = request.getParameter("test_id");
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        User user = userService.findUserByEmail(auth.getName());
-//        List<Course> listCourse = adminService.getListCourseOfTeacher(user.getId().toString());
-//
-//        Course dataCurrentCourse = adminService.findCoursebyID(adminService.getTestbyId(test_id).getCourseID().toString());
-//        for (int i = 0; i<listCourse.size(); i++)
-//        {
-//            if(listCourse.get(i).getId().equals(dataCurrentCourse.getId()))
-//            {
-//                listCourse.remove(listCourse.get(i));
-//                break;
-//            }
-//        }
-//        return listCourse;
-//    }
-//    @RequestMapping(value = "/editTest", method = RequestMethod.POST)
-//    public List<Test> listTest(Model model, HttpServletRequest request)
-//    {
-//        String test_id  = request.getParameter("test_id");
-//        String className  = request.getParameter("ClassName");
-//        String numberQuestion  = request.getParameter("SoCau");
-//        String time  = request.getParameter("ThoiGian");
-//        Test testEdit = adminService.getTestbyId(test_id);
-//        int timeTest = Integer.parseInt(time);
-//        int soCau = Integer.parseInt(numberQuestion);
-//        Course currentCourse = adminService.getCoursebyName(className);
-//        testEdit.setNumberQuestion(soCau);
-//        testEdit.setCourseID(currentCourse.getId());
-//        testEdit.setTime(timeTest);
-//        adminService.saveQuizTest(testEdit);
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        User user = userService.findUserByEmail(auth.getName());
-//        List<Test> listTest = adminService.getListTest(user.getId().toString());
-//        return listTest;
-//    }
-//    @RequestMapping(value = "/addSection", method = RequestMethod.POST)
-//    public String addNewSection(HttpServletRequest request)
-//    {
-//        String sectionName = request.getParameter("sectionName");
-//        String facultyID = request.getParameter("facultyID");
-//        ObjectId facultyID_Convert = new ObjectId(facultyID);
-//        Section new_Section = new Section();
-//        new_Section.setTitle(sectionName);
-//        new_Section.setFaculty_id(facultyID_Convert);
-//        adminService.saveSection(new_Section);
-//        return "Yes";
-//    }
-//    @RequestMapping(value = "/addTopic", method = RequestMethod.POST)
-//    public String addNewTopic(HttpServletRequest request)
-//    {
-//        String topicName = request.getParameter("topicName");
-//        String sectionID = request.getParameter("sectionID");
-//        ObjectId sectionID_Convert = new ObjectId(sectionID);
-//        Topic new_Topic = new Topic();
-//        new_Topic.setTitle(topicName);
-//        new_Topic.setSectionId(sectionID_Convert);
-//        adminService.saveTopic(new_Topic);
-//        return "Yes";
-//    }
-//    @RequestMapping(value = "/getTeacherByEmail", method = RequestMethod.POST)
-//    public User getTeacherByEmail(Model model, HttpServletRequest request)
-//    {
-//        String userEmail = request.getParameter("teacher_email");
-//        return adminService.getUserbyEmail(userEmail);
-//    }
-//    @RequestMapping(value = "/getTeacherClassByEmail", method = RequestMethod.POST)
-//    public Class getTeacherClassByEmail(Model model, HttpServletRequest request)
-//    {
-//        String userEmail = request.getParameter("teacher_email");
-//        return adminService.findClassById(adminService.getUserbyEmail(userEmail).getClassId().toString());
-//    }
     @RequestMapping(value = "/getTeacherOtherClass", method = RequestMethod.POST)
     public List<Class> getListotherClass(Model model, HttpServletRequest request)
     {
@@ -727,10 +701,12 @@ public class AdminController {
         String location = request.getParameter("location");
         String courseName = request.getParameter("courseName");
         String preCourseName = request.getParameter("preCourseName");
+        String mssv = request.getParameter("mssv");
         User choice_user = adminService.getUserbyEmail(user_email);
         choice_user.setFirstName(firstName);
         choice_user.setLastName(lastName);
         choice_user.setLocation(location);
+        choice_user.setMSSV(mssv);
         adminService.saveStudentEdit(choice_user);
 
         RelationStudentCourse studentCourse = adminService.getRelationCourseStudent(adminService.getCoursebyName(preCourseName).getId().toString(),choice_user.getId().toString());
@@ -790,4 +766,40 @@ public class AdminController {
         }
         return listIntTeacher;
     }
+    @RequestMapping(value = "/getNumberOfTest", method = RequestMethod.POST)
+    public Test getNumber(HttpServletRequest request)
+    {
+        String params = request.getParameter("current_url");
+        String[] test_id = params.split("=");
+        System.out.println(test_id[1]);
+        return adminService.getTestbyId(test_id[1]);
+    }
+    @RequestMapping(value = "/getUserByEmail", method = RequestMethod.POST)
+    public User getUserByEmail(HttpServletRequest request)
+    {
+        String email = request.getParameter("email");
+        return adminService.getUserbyEmail(email);
+    }
+    @RequestMapping(value = {"/changeUserProfile"}, method = RequestMethod.POST)
+    public User changeUserProfile(Model model, HttpServletRequest request)
+    {
+        BCryptPasswordEncoder bCryptPasswordEncoder  = new BCryptPasswordEncoder();
+        String lastName = request.getParameter("lastName");
+        String firstName = request.getParameter("firstName");
+        String userEmail = request.getParameter("email");
+        String userPass = request.getParameter("password");
+        String mssv = request.getParameter("mssv");
+        String location = request.getParameter("location");
+        String pass = bCryptPasswordEncoder.encode(userPass);
+        System.out.println(pass);
+        User new_user = userService.findByEmail(userEmail);
+        new_user.setFirstName(firstName);
+        new_user.setLastName(lastName);
+        new_user.setPassword(pass);
+        new_user.setLocation(location);
+        new_user.setMSSV(mssv);
+        userService.saveUser(new_user);
+        return new_user;
+    }
+
 }

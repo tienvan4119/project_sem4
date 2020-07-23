@@ -55,6 +55,16 @@ public class Test {
     }
 
     int numberQuestion;
+
+    public String getTestType() {
+        return testType;
+    }
+
+    public void setTestType(String testType) {
+        this.testType = testType;
+    }
+
     int time;
     ObjectId teacherID;
+    String testType;
 }

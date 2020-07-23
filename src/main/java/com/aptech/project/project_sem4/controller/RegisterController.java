@@ -163,10 +163,9 @@ public class RegisterController {
     {
         List<Faculty> listFaculty = adminService.getAllFaculty();
         List <User> list_AllUser = userService.listAll();
-        List <Role> listRole = userService.listAllRole();
-        List<User> listUser = new ArrayList<User>();
+
         List<User> listTeacher = new ArrayList<User>();
-        List<Class> listClassofTeacher = new ArrayList<>();
+
         for(int i = 0; i < list_AllUser.size(); i++)
         {
             Set role = list_AllUser.get(i).getRoles();
@@ -175,11 +174,10 @@ public class RegisterController {
             if(role_name.getRole().equals("TEACHER"))
             {
                 listTeacher.add(list_AllUser.get(i));
-                String classID = list_AllUser.get(i).getClassId().toString();
-                listClassofTeacher.add(adminService.findClassById(list_AllUser.get(i).getClassId().toString()));
             }
         }
-
+        List<Class> listClass = adminService.getAllClass();
+        model.addAttribute("listClass", listClass);
         model.addAttribute("listFaculty", listFaculty);
 //        model.addAttribute("listTeacher", listTeacher);
 //        model.addAttribute("listClass", listClassofTeacher);
@@ -205,6 +203,17 @@ public class RegisterController {
         List<Class> listClass = adminService.getAllClass();
         model.addAttribute("listClass", listClass);
         return "teacher";
+    }
+    @RequestMapping(value = {"/DetailsStudents"})
+    public String detailStudentPage(Model model)
+    {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        List<Course> listCourse = adminService.getListCourseOfTeacher(user.getId().toString());
+        model.addAttribute("listCourse", listCourse);
+        List<Class> listClass = adminService.getAllClass();
+        model.addAttribute("listClass", listClass);
+        return "DetailsStudents";
     }
     @RequestMapping(value = {"/addQuiz"})
     public String addQuizPage(Model model)

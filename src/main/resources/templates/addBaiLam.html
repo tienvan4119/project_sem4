@@ -43,63 +43,6 @@
             font-size: 19px;
         }
     </style>
-
-
-    <script type="text/javascript">
-
-        // select choice a field and a subject
-        $(document).ready(function () {
-            //Show DataTable
-            $('#listSection').on('change', e => {
-                var section_id_value = $('#listSection option:selected').val();
-                console.log(section_id_value);
-                if (section_id_value === 'C plus - plus') {
-                    console.log("Done!");
-                    $('#listTopic').empty();
-                    $('#listTopic').append("<option selected>" + "Topics..." + "</option>");
-                    $('#listTopic').append("<option value=" + '"Constructors"' + ">" + "Constructors" + "</option>");
-                    $('#listTopic').append("<option value=" + '"This Pointer"' + ">" + "This Pointer" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Inheritance"' + ">" + "Inheritance" + "</option>");
-                    $('#listTopic').append("<option value=" + '"New and Delete"' + ">" + "New and Delete" + "</option>");
-                }
-                if (section_id_value === 'Java') {
-                    $('#listTopic').empty();
-                    $('#listTopic').append("<option selected>" + "Topics..." + "</option>");
-                    $('#listTopic').append("<option value=" + '"Functions"' + ">" + "Functions" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Inheritance"' + ">" + "Inheritance" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Constructors"' + ">" + "Constructors" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Arrays"' + ">" + "Arrays" + "</option>");
-
-                }
-                if (section_id_value === 'Python') {
-                    $('#listTopic').empty();
-                    $('#listTopic').append("<option selected>" + "Topics..." + "</option>");
-                    $('#listTopic').append("<option value=" + '"Functions"' + ">" + "Functions" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Miscellaneous"' + ">" + "Miscellaneous" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Data Type"' + ">" + "Data Type" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Output"' + ">" + "Output" + "</option>");
-                }
-                if (section_id_value === 'Data Structures') {
-                    $('#listTopic').empty();
-                    $('#listTopic').append("<option selected>" + "Topics..." + "</option>");
-                    $('#listTopic').append("<option value=" + '"Linked List"' + ">" + "Linked List" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Stack"' + ">" + "Stack" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Binary Trees"' + ">" + "Binary Trees" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Graph"' + ">" + "Graph" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Hash"' + ">" + "Hash" + "</option>");
-                    $('#listTopic').append("<option value=" + '"Misc"' + ">" + "Misc" + "</option>");
-                }
-            })
-            $('#addChoice').on('click', e => {
-                $('#listChoice').append("<div class='form-group'>\n" +
-                    "                                        <label for='formGroupExampleInput'>Next Choice</label>\n" +
-                    "                                        <input type='text' class='form-control' th:id='${user.id}' placeholder='Next choice'>\n" +
-                    "                                        <input type='radio' class='form-check-input' name='optradio' value='1' style='margin-left: -0.9'>This is the right Choice\n" +
-                    "                                    </div>")
-
-            })
-        })
-    </script>
 </head>
 
 <body id="page-top">
@@ -147,6 +90,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">QUẢN LÝ:</h6>
                     <a class="collapse-item active" href="teacher.html">LỚP</a>
+                    <a class="collapse-item" href="DetailsStudents.html.html">Quản lý điểm</a>
                 </div>
             </div>
         </li>
@@ -284,7 +228,7 @@
                             <div class="card-header py-3">
                                 <form>
                                     <div class="form-row">
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-3">
                                             <label for="listClass">Class</label>
                                             <select id="listClass" class="form-control" >
                                                 <option disabled selected>Class...</option>
@@ -292,13 +236,22 @@
                                                         th:text="${course.name}"/>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="Timer">So Cau</label>
-                                            <input type="text" class="form-control" id="numberQuestion">
+                                        <div class="form-group col-md-3">
+                                            <label for="listTestType">Loại bài</label>
+                                            <select id="listTestType" class="form-control" >
+                                                <option disabled selected>Test....</option>
+                                                <option >Bài Tập</option>
+                                                <option >Giữa Kỳ</option>
+                                                <option >Cuối Kỳ</option>
+                                            </select>
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-3">
+                                            <label for="numberQuestion">Số Câu</label>
+                                            <input type="number" class="form-control" id="numberQuestion">
+                                        </div>
+                                        <div class="form-group col-md-3">
                                             <label for="Timer">Time</label>
-                                            <input type="text" class="form-control" id="Timer">
+                                            <input type="number" class="form-control" id="Timer">
                                         </div>
                                     </div>
                                 </form>
@@ -639,6 +592,7 @@
         let rows = document.getElementsByTagName('tbody')[0].rows;
         let STT = rows.length+1;
         let Class = $("#listClass").children("option").filter(":selected").text();
+        let testType = $("#listTestType").children("option").filter(":selected").text();
         let SoCau = $("#numberQuestion").val();
         let ThoiGian = $("#Timer").val();
         console.log(Class, SoCau, ThoiGian)
@@ -646,7 +600,8 @@
             data : {
                 Class : Class,
                 SoCau : SoCau,
-                ThoiGian : ThoiGian
+                ThoiGian : ThoiGian,
+                testType : testType
             },success: function(result){
 
                 $.ajax({type: "GET", url: "/api/admin/getClassTest", dataType: 'json',

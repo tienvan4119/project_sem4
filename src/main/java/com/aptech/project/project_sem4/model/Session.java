@@ -15,14 +15,23 @@ public class Session {
     ObjectId id;
     ObjectId question_id;
     ObjectId choice_id;
-    ObjectId section_id;
+    ObjectId courseId;
+    ObjectId testId;
 
-    public ObjectId getSection_id() {
-        return section_id;
+    public ObjectId getCourseId() {
+        return courseId;
     }
 
-    public void setSection_id(ObjectId section_id) {
-        this.section_id = section_id;
+    public void setCourseId(ObjectId courseId) {
+        this.courseId = courseId;
+    }
+
+    public ObjectId getTestId() {
+        return testId;
+    }
+
+    public void setTestId(ObjectId testId) {
+        this.testId = testId;
     }
 
     public Session(){

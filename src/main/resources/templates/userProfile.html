@@ -28,7 +28,7 @@
                 console.log(firstName + lastName + email + password + '   ' + location + '  ' + mssv)
 
                 $.ajax({
-                    type: "POST", url: "/changeUserProfile", dataType: 'json',
+                    type: "POST", url: "/api/admin/changeUserProfile", dataType: 'json',
                     data: {
                         firstName: firstName,
                         lastName: lastName,
@@ -37,16 +37,28 @@
                         mssv : mssv,
                         location : location
                     }, success: function (result) {
-
+                        $('#Success').modal('show');
                     }
                 })
-                $('#Success').modal('show');
+
 
             })
-            $('.save_user').on('click', e =>{
-                console.log("abc")
-                $('#Success').modal('hide');
-                location.reload()
+            $('#doneChange').on('click', e=>{
+                let email = $('#email').val()
+                $.ajax({
+                    type: "POST", url: "/api/admin/getUserByEmail", dataType: 'json',
+                    data: {
+                        email:email
+                    }, success: function (result) {
+                        console.log(result)
+                        $('#firstName').val(result.firstName)
+                        $('#lastName').val(result.lastName)
+                         $('#MSSV').val(result.mssv)
+                        $('#location').val(result.location)
+                        $('#password').val("")
+                        $('#re-password').val("")
+                    }
+                })
             })
             $(':input[type="button"]').prop('disabled', true);
             let firstName = $('#firstName').val()
@@ -84,15 +96,7 @@
             })
 
         })
-        function toSectionPage(userCourse) {
-            console.log(userCourse)
-            $.ajax({type: "GET", url: "/section", dataType: 'json',
-                data : {
-                    userCourse : userCourse
-                },success: function(result){
 
-                }})
-        }
 
     </script>
 </head>
@@ -109,9 +113,13 @@
             <li class="nav-item dropdown">
                 <label class="nav-link">Take a quiz</label>
                 <div class="dropdown-content" >
-                    <div th:each="course : ${listCourse}">
-                        <a href="/section" th:name="courseID" th:text="${course.name}" th:value="${course.name}" th:id="${course.id}" ></a>
+                    <form th:action="@{/getSection}">
+                    <div>
+                        <button class="btn btn-outline-secondary waves-effect" th:each="course : ${listCourse}" name="courseID" th:text="${course.name}" th:value="${course.id}" th:id="${course.id}" ></button>
+                        <br>
+
                     </div>
+                    </form>
                 </div>
                 <style>
                     label{
@@ -153,9 +161,6 @@
                 <a class="nav-link" href="../userProfile.html">Profile</a>
             </div>
             <div>
-                <a class="nav-link" href="../userResult.html">User result</a>
-            </div>
-            <div>
                 <a style="margin-right: 10px" href="/logout" class="btn btn-info btn-lg" value="/logout">
                     <span class="glyphicon glyphicon-log-out"></span> Log out
                 </a>
@@ -186,11 +191,10 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h4>About</h4>
-                            <p th:text="'Name : ' + ${user.firstName + user.lastName}">
+                            <p th:text="'Name : ' + ${user.firstName} + ' '+${user.lastName}">
                             <p th:text="'Class : '+ ${class.className}"></p>
                             <p th:text="'Email : ' + ${user.email}">
                             <p th:text="'Location : ' + ${user.Location}">
-
                         </div>
 
                     </div>
@@ -275,24 +279,18 @@
                                         </div>
                                     </form>
                                 </div>
-<!--                                <div class="modal" id="Success" tabindex="-1" role="dialog">-->
-<!--                                    <div class="modal-dialog" role="document">-->
-<!--                                        <div class="modal-content">-->
-<!--                                            <div class="modal-header">-->
-<!--                                                <h5 class="modal-title">Delete this person ?</h5>-->
-<!--                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                                                    <span aria-hidden="true">×</span>-->
-<!--                                                </button>-->
-<!--                                            </div>-->
-<!--                                            <div class="modal-body">-->
-<!--                                                <p>Your profile has been updated</p>-->
-<!--                                            </div>-->
-<!--                                            <div class="modal-footer">-->
-<!--                                                <button type="button" class="btn btn-secondary save_user" data-dismiss="modal">Close</button>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
+                                <div class="modal" id="Success" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <p>Your profile has been updated</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button id="doneChange" type="button" class="btn btn-secondary save_user" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </form>

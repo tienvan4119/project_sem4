@@ -25,9 +25,11 @@
             <li class="nav-item dropdown">
                 <label class="nav-link">Take a quiz</label>
                 <div class="dropdown-content" >
-                    <div th:each="course : ${listCourse}">
-                            <a href="/section" th:text="${course.name}" th:value="${course.name}" th:id="${course.id}" ></a>
-                    </div>
+                    <form th:action="@{/getSection}">
+                        <div>
+                            <button th:each="course : ${listCourse}" name="courseID" th:text="${course.name}" th:value="${course.id}" th:id="${course.id}" ></button>
+                        </div>
+                    </form>
                 </div>
                 <style>
                     label{
@@ -69,9 +71,6 @@
                 <a class="nav-link" href="../userProfile.html">Profile</a>
             </div>
             <div>
-                <a class="nav-link" href="../userResult.html">User result</a>
-            </div>
-            <div>
                 <a style="margin-right: 10px" href="/logout" class="btn btn-info btn-lg" value="/logout">
                     <span class="glyphicon glyphicon-log-out"></span> Log out
                 </a>
@@ -104,17 +103,18 @@
                     </thead>
                     <tbody>
                     <!--Đổ Data bắt đầu từ đây, phần trên là cái tiêu đề -->
-                    <tr th:each="test, state : ${listTest}">
-                        <form th:action="@{/createQuiz}">
+                    <tr th:each="result, state : ${listResult}">
+                        <form th:action="@{/createQuiz}" >
                             <td th:text="${state.count}"></td>
-                            <td th:each="course : ${listCourse}" th:if="${course.id == test.courseID}" th:text="${course.subName}"></td>
-                            <td th:each="course : ${listCourse}" th:if="${course.id == test.courseID}" th:text="${course.name}"></td>
-                            <td th:text="${test.numberQuestion}"></td>
-                            <td th:text="${test.time}"></td>
-                            <td class="sc-AxhCb eSwYtm">
+                            <td th:each="test : ${listTest}" th:if="${test.id == result.testId}" th:text="${test.testType}"></td>
+                            <td th:each="course : ${listCourse}" th:if="${course.id == result.courseId}" th:text="${course.name}"></td>
+                            <td th:each="test : ${listTest}" th:if="${test.id == result.testId}" th:text="${test.numberQuestion}"></td>
+                            <td th:each="test : ${listTest}" th:if="${test.id == result.testId}" th:text="${test.time}"></td>
+                            <td th:if="${result.done == true && result.testAgain == false}" th:text="${result.mark}"></td>
+                            <td th:unless="${result.done == true && result.testAgain == false}" class="sc-AxhCb eSwYtm">
                                 <div class="sc-AxhUy fxWvvr" style="text-align: right;">
-                                    <button type="submit" name="testID" th:value="${test.id}" class="ant-btn ant-btn-link ant-btn-sm">
-                                        <span>Kết quả: 71/77 (93%)</span>
+                                    <button th:each="test : ${listTest}" th:if="${test.id == result.testId}" type="submit" name="testID" th:value="${test.id}" class="ant-btn ant-btn-link ant-btn-sm">
+                                        <span>Bắt đầu làm bài</span>
                                     </button>
                                 </div>
                             </td>

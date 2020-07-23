@@ -7,117 +7,116 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel = "stylesheet" href = "/css/quiz.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <title>Title</title>
 </head>
 <body>
 <div class="container">
     <h2>Quiz Online</h2>
+    <div id = "count"> Time Start </div>
     <div id="exTab2" class="container" th:each="section : ${section}">
-        <form th:action="@{/api/quiz/Result}">
-            <ul class="nav nav-tabs pagination">
+        <form name="quizForm" th:action="@{/api/quiz/Result}">
+            <ul id="pagination" class="nav nav-tabs pagination">
                 <li class="page-item"><a id="prev" class="page-link" href="#">Previous</a></li>
-                <li class="page-item active"> <a  data-toggle="tab" th:href="@{#1}">1</a ></li>
-                <li class="page-item"><a data-toggle="tab" href="#2">2</a></li>
-                <li class="page-item"><a data-toggle="tab" href="#3">3</a></li>
-                <li class="page-item"><a data-toggle="tab" href="#4">4</a></li>
-                <li class="page-item"><a data-toggle="tab" href="#5">5</a></li>
-                <li class="page-item"><a data-toggle="tab" href="#6">6</a></li>
-                <li class="page-item"><a data-toggle="tab" href="#7">7</a></li>
-                <li class="page-item"><a data-toggle="tab" href="#8">8</a></li>
-                <li class="page-item"><a data-toggle="tab" href="#9">9</a></li>
-                <li class="page-item"><a data-toggle="tab" href="#10">10</a></li>
-                <li class="page-item"><a id="next" class="page-link" href="#">Next</a></li>
+<!--                <li class="page-item active"> <a id="button" data-toggle="tab" th:href="@{#1}">1</a ></li>-->
+
             </ul>
-            <button  id="done" th:value="${section}" style="margin-left: 50px; margin-top: -65px" type="submit" class="btn btn-success">Finish</button>
+            <button onclick="appearFunction()" id="done" th:value="${section}" style="margin-left: 50px; margin-top: -65px" type="submit" class="btn btn-success">Finish</button>
             <div class="tab-content" >
                 <div class="tab-pane" th:each="question, state : ${listQuestion}" th:id="${state.count}">
-                    <div>
-                        <h2 th:value="${question.id}" th:text="Question+' ' + ${state.count}"></h2>
+                    <h2 th:value="${question.id}" th:text="Question+' ' + ${state.count}"></h2>
+                    <div id = "questions" >
                         <div th:value="${question.id}" th:remove="tag" th:utext="${question.question_desc}"></div>
-                        <div class="radio" th:each="choice :${listChoice}" th:if="${question.id.equals(choice.question_id)}">
+                    </div>
+                    <div id="answers">
+                        <div  class="radio" th:each="choice :${listChoice}" th:if="${question.id.equals(choice.question_id)}">
                             <label>
-                               <input class="choice_id" th:value="${choice.id}" type="radio" th:name="${question.id}" name="choice_id" th:text="${choice.choice_desc}">
-                           </label>
-                           <br>
-                           <br>
-                       </div>
-                   </div>
+                                <input class="choice_id" th:value="${choice.id}" type="radio" th:name="${question.id}" name="choice_id" th:text="${choice.choice_desc}">
+                            </label>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </form>
     </div>
-    <hr>
+    </form>
 </div>
+<hr>
+</div>
+<script src="/js/quiz.js"></script>
 <script th:inline="javascript">
     $( document ).ready(function() {
-        $( ".tab-pane" ).first().addClass( "active" );
-    $(function() {
-        var nextBtn = $("#next"),
-            prevBtn = $("#prev");
-        nextBtn.on('click', function(e) {
-            var active = $(".active");
-            var next = active.next('.tab-pane');
-            var next_li = active.next('.page-item')
-
-            if (next.length) {
-                active.removeClass('active');
-                next.addClass('active');
-                next_li.addClass('active');
+        current_url = window.location.href
+        $.ajax({
+            type: "POST", url: "/api/admin/getNumberOfTest", dataType: 'json',
+            data: {
+                current_url: current_url
+            }, success: function (result) {
+                window.value = result.numberQuestion;
+                createPagination(result.numberQuestion);
+                HienThiThoiGianThi(result.time*60);
             }
-        });
-        prevBtn.on('click', function(e) {
-            var active = $(".active");
-            var prev = active.prev('.tab-pane');
-            var prev_li = active.prev('.page-item')
-            if (prev.length) {
-                active.removeClass('active');
-                prev.addClass('active');
-                prev_li.addClass('active');
-            }
-        });
-    });
-         $(function() {
-             $('.choice_id').click(function () {
-                 console.log("abc");
-                 console.log($(this).val());
-                 var getChoiceId = $(this).val();
-                 console.log(getChoiceId);
-                 $.ajax({
-                     type: "POST",
-                     url: "/api/quiz/addChoice",
-                     dataType : 'json',
-                     data : {
-                         getChoiceId : getChoiceId
-                     },
-                     success: function (data) {
+        })
+        $(".tab-pane").first().addClass("active");
+        $(function () {
+            var nextBtn = $("#next"),
+                prevBtn = $("#prev");
+            nextBtn.on('click', function (e) {
+                var active = $(".active");
+                var next = active.next('.tab-pane');
+                var next_li = active.next('.page-item')
 
-                     },
-                 });
-             })
-         });
-        $(function() {
-            $('#done').click(function () {
-                //console.log("abc");
-                console.log($(this).val());
-                var getSectionId = $(this).val();
-                console.log(getSectionId);
+                if (next.length) {
+                    active.removeClass('active');
+                    next.addClass('active');
+                    next_li.addClass('active');
+                }
+            });
+            prevBtn.on('click', function (e) {
+                var active = $(".active");
+                var prev = active.prev('.tab-pane');
+                var prev_li = active.prev('.page-item')
+                if (prev.length) {
+                    active.removeClass('active');
+                    prev.addClass('active');
+                    prev_li.addClass('active');
+                }
+            });
+        });
+        $(function () {
+            $('.choice_id').click(function () {
+                var getChoiceId = $(this).val();
+                $('.page-item.active > .button').removeClass("button").addClass("highlightLITag");
+                console.log(getChoiceId);
                 $.ajax({
                     type: "POST",
-                    url: "/api/quiz/finishTest",
-                    dataType : 'json',
-                    data : {
-                        getSectionId : getSectionId
+                    url: "/api/quiz/addChoice",
+                    dataType: 'json',
+                    data: {
+                        getChoiceId: getChoiceId,
+                        current_url:current_url
                     },
                     success: function (data) {
-
                     },
                 });
-
             })
-        })
+        });
+
+        // slight update to account for browsers not supporting e.which
+        function disableF5(e) {
+            if ((e.which || e.keyCode) == 116) e.preventDefault();
+        };
+        $(document).on("keydown", disableF5);
     });
+    window.onbeforeunload = closingCode;
+    function closingCode(){
+        SubmitForm();
+        return null; //<-- this prevents the dialog confirm box
+    }
 
 </script>
 </body>

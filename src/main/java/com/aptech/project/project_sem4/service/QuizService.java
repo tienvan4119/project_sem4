@@ -68,8 +68,8 @@ public class QuizService {
         return topicRepository.findSectionByTopicId(topic_id);
     }
 
-    public List<Session> getListChoice(String section_id, String user_id) {
-        return sessionRepository.findAllSessionBySectionId(section_id, user_id);
+    public List<Session> getListChoice(String test_id, String user_id) {
+        return sessionRepository.findAllSessionBySectionId(test_id, user_id);
     }
 
     public Result saveResult(Result result) {

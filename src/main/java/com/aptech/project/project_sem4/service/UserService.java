@@ -97,6 +97,10 @@ private  RelationCourseSectionRepository relationCourseSectionRepository;
     {
         return resultRepository.getListSection_Result(user_id);
     }
+    public Result getResult(String user_id, String testId)
+    {
+        return resultRepository.getResult(user_id, testId);
+    }
     public User saveUserProfile(User user)
     {
         return userRepository.save(user);
@@ -104,5 +108,9 @@ private  RelationCourseSectionRepository relationCourseSectionRepository;
     public void Delete_User(String user_id)
     {
         userRepository.delete(userRepository.findUserById(user_id));
+    }
+    public List<Result> getListResultofStudent(String course_id, String user_id)
+    {
+        return resultRepository.getListResultofStudent(course_id, user_id);
     }
 }

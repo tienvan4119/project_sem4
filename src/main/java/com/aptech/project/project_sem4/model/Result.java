@@ -13,7 +13,8 @@ public class Result {
     @GeneratedValue(strategy = GenerationType.AUTO)
     ObjectId id;
     ObjectId user_id;
-    ObjectId section_id;
+    ObjectId testId;
+    ObjectId courseId;
 
     public ObjectId getId() {
         return id;
@@ -21,6 +22,22 @@ public class Result {
 
     public void setId(ObjectId id) {
         this.id = id;
+    }
+
+    public ObjectId getTestId() {
+        return testId;
+    }
+
+    public void setTestId(ObjectId testId) {
+        this.testId = testId;
+    }
+
+    public ObjectId getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(ObjectId courseId) {
+        this.courseId = courseId;
     }
 
     public ObjectId getUser_id() {
@@ -31,21 +48,32 @@ public class Result {
         this.user_id = user_id;
     }
 
-    public ObjectId getSection_id() {
-        return section_id;
-    }
-
-    public void setSection_id(ObjectId section_id) {
-        this.section_id = section_id;
-    }
-
-    public int getMark() {
+    public double getMark() {
         return mark;
     }
 
-    public void setMark(int mark) {
+    public void setMark(double mark) {
         this.mark = mark;
     }
 
-    int mark;
+    double mark;
+
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
+    }
+
+    public boolean isTestAgain() {
+        return testAgain;
+    }
+
+    public void setTestAgain(boolean testAgain) {
+        this.testAgain = testAgain;
+    }
+
+    boolean isDone;
+    boolean testAgain;
 }

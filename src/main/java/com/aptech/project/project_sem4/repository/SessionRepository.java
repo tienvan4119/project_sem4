@@ -12,8 +12,8 @@ import java.util.List;
 public interface SessionRepository extends MongoRepository<Session, Long> {
     @Query("{ question_id: ObjectId(\"?0\" )}")
     public Session findAllSessionByQuestionId(String Question_id);
-    @Query("{section_id : ObjectId(\"?0\"), user_id : ObjectId(\"?1\")}")
-    public List<Session> findAllSessionBySectionId(String section_id, String user_id);
+    @Query("{testId : ObjectId(\"?0\"), user_id : ObjectId(\"?1\")}")
+    public List<Session> findAllSessionBySectionId(String testId, String user_id);
 
 
 

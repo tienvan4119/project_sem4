@@ -1,6 +1,8 @@
 package com.aptech.project.project_sem4.controller;
 
 import com.aptech.project.project_sem4.model.*;
+import com.aptech.project.project_sem4.model.Class;
+import com.aptech.project.project_sem4.service.AdminService;
 import com.aptech.project.project_sem4.service.QuizService;
 import com.aptech.project.project_sem4.service.UserService;
 import org.bson.types.ObjectId;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,9 +29,15 @@ public class SessionController {
     private QuizService quizService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private AdminService adminService;
     @RequestMapping(value = "/addChoice", method = RequestMethod.POST)
     public @ResponseBody String addChoice(HttpServletRequest request) {
         String choice_id = request.getParameter("getChoiceId");
+        String param = request.getParameter("current_url");
+        String[] test_id = param.split("=");
+        String testId = test_id[1];
+
         ObjectId question_id = quizService.getChoiceById(choice_id).getQuestion_id();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         ObjectId topic_id = quizService.getTopicId(question_id.toString()).getTopic_id();
@@ -38,7 +47,7 @@ public class SessionController {
         System.out.println(authentication.getName());
         String userName = authentication.getName();
         ObjectId user_id = userService.findByEmail(userName).getId();
-
+        Test test = adminService.getTestbyId(testId);
         Session sessionOfQues_exited = quizService.getSessionExit(question_id.toString());
         if(sessionOfQues_exited == null)
         {
@@ -46,7 +55,8 @@ public class SessionController {
             session.setUser_id(user_id);
             session.setQuestion_id(question_id);
             session.setChoice_id(choice_id_conver);
-            session.setSection_id(section_id);
+            session.setTestId(new ObjectId(testId));
+            session.setCourseId(test.getCourseID());
             quizService.saveSession(session);
             System.out.println("choice id: "+choice_id +"   question id:   " + question_id + "     user id :   " + user_id);
         }
@@ -62,16 +72,19 @@ public class SessionController {
     public @ResponseBody void finishTest(HttpServletRequest request)
     {
         String section_id = request.getParameter("getSectionId");
-
+        String param = request.getParameter("current_url");
+        String[] test_id = param.split("=");
+        String testId = test_id[1];
+        Test test = adminService.getTestbyId(testId);
         ObjectId section_id_conver = new ObjectId(section_id);
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
         ObjectId user_id = userService.findByEmail(userName).getId();
-        List<Session> listChoice = quizService.getListChoice(section_id, user_id.toString());
-        int mark = 0;
+        List<Session> listChoice = quizService.getListChoice(testId, user_id.toString());
+        double mark = 0;
         try {
-            for(int i = 0; i< 10; i++)
+            for(int i = 0; i< test.getNumberQuestion(); i++)
             {
                 String choice_can_check = listChoice.get(i).getChoice_id().toString();
 //                Answer correct_answer = quizService.checkChoice(listChoice.get(i).getQuestion_id().toString());
@@ -89,10 +102,13 @@ public class SessionController {
 //                    mark++;
 //                }
             }
+            double rightMark = mark/test.getNumberQuestion();
             Result result = new Result();
             result.setUser_id(user_id);
-            result.setSection_id(section_id_conver);
-            result.setMark(mark);
+            result.setTestId(test.getId());
+            result.setCourseId(test.getCourseID());
+            result.setDone(true);
+            result.setMark(rightMark);
             quizService.saveResult(result);
         }catch (Exception e) {
             e.getMessage();
@@ -102,24 +118,36 @@ public class SessionController {
 
     @RequestMapping(value = {"/Result"}, method = RequestMethod.GET)
     public ModelAndView afterTest(Model model) {
-        List<User> listUser = userService.listAll();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        ObjectId user_id = userService.findByEmail(userName).getId();
-        List<Section> listSection = userService.listAllSection();
-        List<Result> listSection_Result = userService.getListSection_Result(user_id.toString());
-        for(int i = 0; i< listSection.size(); i++)
+        User current_user = userService.findByEmail(userName);
+        Class user_class = userService.findClassByID(current_user.getClassId().toString());
+        List<RelationStudentCourse> listCourseofStudent = adminService.getListCourseofStudent(current_user.getId().toString());
+        List<Course> listCourse = new ArrayList<>();
+        for(int i = 0; i < listCourseofStudent.size();i++)
         {
-            for(int j = 0; j < listSection_Result.size(); j++)
+            listCourse.add(adminService.findCoursebyID(listCourseofStudent.get(i).getCourseID().toString()));
+        }
+        List<Test> listTest = new ArrayList<>();
+        for (int i = 0; i<listCourse.size();i++)
+        {
+            List<Test> test = adminService.getListTestOfCourse(listCourse.get(i).getId().toString());
+            for(int j=0;j<test.size();j++)
             {
-                if(listSection.get(i).getId().equals(listSection_Result.get(j).getSection_id()))
-                {
-                    listSection.remove(i);
-                }
+                listTest.add(test.get(j));
             }
         }
-        model.addAttribute("listUser", listUser);
-        model.addAttribute("listSection", listSection);
+        List<Course> listCourseOfTest = new ArrayList<>();
+        for(int i = 0; i< listTest.size(); i++)
+        {
+            listCourseOfTest.add( adminService.findCoursebyID(listTest.get(i).getCourseID().toString()));
+        }
+
+        model.addAttribute("current_user", current_user);
+        model.addAttribute("courseOfTest", listCourseOfTest);
+        model.addAttribute("listTest", listTest);
+        model.addAttribute("user_class", user_class);
+        model.addAttribute("listCourse", listCourse);
         return new ModelAndView("redirect:/section");
     }
 }

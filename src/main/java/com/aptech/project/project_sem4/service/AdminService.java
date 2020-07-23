@@ -36,6 +36,8 @@ public class AdminService {
     private RelationStudentCourseRepository relationStudentCourseRepository;
     @Autowired
     private TestRepository testRepository;
+    @Autowired
+    private ResultRepository resultRepository;
     public User findUserbyId(String id)
     {
         return userRepository.findUserById(id);
@@ -74,6 +76,16 @@ public class AdminService {
     public List<Test> getListTestOfCourse(String courseID)
     {
         return testRepository.findTestByCourseID(courseID);
+    }
+
+    public List<Result> getFullResultofCourse(String course_id)
+    {
+        return resultRepository.getListResultofCourse(course_id);
+    }
+
+    public Result getResultbyTestAndUser(String test_id, String user_id)
+    {
+        return resultRepository.getResultByTestAndUser(test_id, user_id);
     }
 
     public void DeleteTest(String test_id)

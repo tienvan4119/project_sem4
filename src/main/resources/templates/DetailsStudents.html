@@ -208,36 +208,58 @@
                 console.log(course_name);
 
                 $.ajax({
-                    type: "POST", url: "/api/admin/getListStudentofCourse", dataType: 'json',
+                    type: "POST", url: "/api/admin/getListResultofCourse", dataType: 'json',
                     data: {
                         course_name: course_name
                     }, success: function (result) {
                         console.log(result)
                         $.ajax({
-                            type: "POST", url: "/api/admin/getListStudentofCourseClass", dataType: 'json',
+                            type: "POST", url: "/api/admin/getListStudentbyResultofCourse", dataType: 'json',
                             data: {
                                 course_name: course_name
-                            }, success: function (dataClass) {
-                                $('#students').empty()
+                            }, success: function (dataStudent) {
+                                $.ajax({
+                                    type: "POST", url: "/api/admin/getListClassbyResultofCourse", dataType: 'json',
+                                    data: {
+                                        course_name: course_name
+                                    }, success: function (dataClass) {
+                                        $.ajax({
+                                            type: "POST", url: "/api/admin/getListTestbyResultofCourse", dataType: 'json',
+                                            data: {
+                                                course_name: course_name
+                                            }, success: function (dataTest) {
+                                                $.ajax({
+                                                    type: "POST", url: "/api/admin/getListStringTest", dataType: 'json',
+                                                    data: {
+                                                        course_name: course_name
+                                                    }, success: function (listStringTest) {
+                                                        $('#students').empty()
 
-                                var i;
-                                for (i = 0; i < result.length; i++) {
-                                    console.log(result[i].firstName + result[i].lastName)
-                                    console.log(result[i].email)
-                                    console.log(result[i].location)
-                                    console.log(dataClass[i].className)
-                                    $('#students').append("<tr>" +
-                                        "<td>" + result[i].mssv + "</td>" +
-                                        "<td>" + result[i].firstName + " " + result[i].lastName + "</td>" +
-                                        "<td>" + result[i].location + "</td>" +
-                                        "<td>" + result[i].email + "</td>" +
-                                        "<td>" + dataClass[i].className + "</td>" +
-                                        "<td>" +
-                                        "<a onclick='editStudent(this.id)' class='edit' title='Edit' id='" + result[i].email + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
-                                        "<a onclick='deleteStudent(this.id)' id='" + result[i].email + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
-                                        "</td>" +
-                                        "</tr>")
-                                }
+                                                        console.log(dataStudent)
+                                                        console.log(dataClass)
+                                                        var i;
+                                                        for (i = 0; i < result.length; i++) {
+
+                                                            $('#students').append("<tr>" +
+                                                                "<td>" + dataStudent[i].mssv + "</td>" +
+                                                                "<td>" + dataStudent[i].firstName + " " + dataStudent[i].lastName + "</td>" +
+                                                                "<td>" + dataTest[i].testType + "</td>" +
+                                                                "<td>" + result[i].done + "</td>" +
+                                                                "<td>" + result[i].mark + "</td>" +
+                                                                "<td>" +
+                                                                "<a onclick='testAgain(this.id)' class='edit' title='Edit' id='" + dataStudent[i].email + "/" + listStringTest[i] +"' data-toggle='tooltip'><i class='fa fa-refresh' aria-hidden='true'></i></a>" +
+                                                                "</td>" +
+                                                                "</tr>")
+                                                        }
+                                                    }
+                                                })
+
+                                            }
+                                        })
+
+                                    }
+                                })
+
                             }
                         })
 
@@ -257,117 +279,21 @@
                 });
             })
         })
-        function editStudent(student_email) {
-            let courseName;
+
+
+        function testAgain(student_email) {
             console.log(student_email)
-            $('#editModal').modal('show');
-            $.ajax({
-                type: "POST", url: "/api/admin/getStudentByEmail", dataType: 'json',
-                data: {
-                    student_email: student_email
-                }, success: function (student) {
-                    $.ajax({
-                        type: "POST", url: "/api/admin/getStudentClassByEmail", dataType: 'json',
-                        data: {
-                            student_email: student_email
-                        }, success: function (studentClass) {
-                            console.log(student)
-                            $('#editFirstName').val(student.firstName)
-                            $('#editLastName').val(student.lastName)
-                            $('#editLocation').val(student.location)
-                            $('#editEmail').val(student.email)
-                            $('#editClass').val(studentClass.className)
-                            $('#location').val(studentClass.className)
-                            $('#editMSSV').val(student.mssv)
-                        }
-                    })
-
-                }
-            })
-
-            $('#saveChanges').on('click', e => {
-                let courseName = $("#editCourse").children("option").filter(":selected").text();
-                let firstName = $("#editFirstName").val();
-                let lastName = $("#editLastName").val();
-                let email = $("#editEmail").val();
-                let location = $("#editLocation").val();
-                let className = $("#editClass").val();
-                let mssv = $("#editMSSV").val();
-                let preCourseName =  $("#listCourse").children("option").filter(":selected").text();
-                console.log(preCourseName)
-                $.ajax({
-                    type: 'POST', url: "/api/admin/editStudent", dataType: 'json',
-                    data: {
-                        className: className,
-                        firstName: firstName,
-                        lastName: lastName,
-                        email: email,
-                        location: location,
-                        mssv : mssv,
-                        courseName : courseName,
-                        preCourseName : preCourseName
-
-                        //CHUA XU LI LOC LAI BANG MOI SAU KHI UPDATE
-                    }, success: function (NonUseresult) {
-                        $.ajax({
-                            type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
-                            data: {}, success: function (result) {
-                                console.log(result)
-                                var k = 0;
-                                for (k; k < result.length; k++) {
-                                    $('#listTeachers').append("<option  value= " + result[k].email + " >" + result[k].firstName + " " + result[k].lastName + "</option>");
-                                }
-
-                                $.ajax({
-                                    type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
-                                    data: {}, success: function (dataClass) {
-                                        console.log(result)
-                                        $('#editModal').modal('hide');
-                                        $('#students').empty()
-                                        var i;
-                                        for (i = 0; i < result.length; i++) {
-                                            console.log(result[i].firstName + result[i].lastName)
-                                            console.log(result[i].email)
-                                            console.log(result[i].location)
-                                            console.log(dataClass[i].className)
-
-                                            $('#students').append("<tr>" +
-                                                "<td>" + result[i].mssv + "</td>" +
-                                                "<td>" + result[i].firstName + " " + result[i].lastName + "</td>" +
-                                                "<td>" + result[i].location + "</td>" +
-                                                "<td>" + result[i].email + "</td>" +
-                                                "<td>" + dataClass[i].className + "</td>" +
-                                                "<td>" +
-                                                "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='" + result[i].email + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
-                                                "<a onclick='deleteTeacher(this.id)' id='" + result[i].email + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
-                                                "</td>" +
-                                                "</tr>")
-                                        }
-                                    }
-                                })
-                            }
-                        })
-
-                    }
-                })
-                $('#AddNewModal').modal('hide');
-                location.reload();
-            });
-        }
-        function deleteStudent(student_email) {
-            console.log(student_email)
-            $('#deleteModal').modal('show');
+            var course_name = $('#listCourse option:selected').text();
+            $('#testAgainModal').modal('show');
             let preCourseName =  $("#listCourse").children("option").filter(":selected").text();
 
-            $('#save_delete').on('click', e => {
+            $('#save_testAgain').on('click', e => {
                 console.log("in here")
                 $.ajax({
-                    type: "POST", url: "/api/admin/DeleteStudent", dataType: 'json',
+                    type: "POST", url: "/api/admin/setTestAgain", dataType: 'json',
                     data: {
-                        student_email: student_email,
-                        preCourseName: preCourseName
-
-                        //CHUA XU LI LOC LAI BANG MOI SAU KHI DELETE
+                        student_email : student_email,
+                        course_name : course_name
                     }, success: function (dataSomething) {
                         console.log(dataSomething)
                         $('#deleteModal').modal('hide');
@@ -623,9 +549,9 @@
                                     <tr>
                                         <th>MSSV</th>
                                         <th>Full Name</th>
-                                        <th>Address</th>
-                                        <th>User's email</th>
-                                        <th>ClassName</th>
+                                        <th>Type of Test</th>
+                                        <th>Status</th>
+                                        <th>Mark</th>
                                         <th>Setting</th>
                                     </tr>
                                     </thead>
@@ -633,22 +559,22 @@
 
                                     </tbody>
                                 </table>
-                                <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+                                <div class="modal" id="testAgainModal" tabindex="-1" role="dialog">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Xóa sinh viên này ?</h5>
+                                                <h5 class="modal-title">Cho Phép làm lại bài thi</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Bạn có muốn xóa sinh viên này ? </p>
+                                                <p>Bạn có muốn cho phép sinh viên này làm lại bài thi Không? </p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button id="save_delete" type="button" class="btn btn-primary">Có, hãy
-                                                    xóa sinh viên này
+                                                <button id="save_testAgain" type="button" class="btn btn-primary">Có, hãy
+                                                    cho sinh viên này làm lại
                                                 </button>
                                                 <button type="button" class="btn btn-secondary save_delete"
                                                         data-dismiss="modal">Đóng
