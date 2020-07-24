@@ -58,7 +58,7 @@ public class Result {
 
     double mark;
 
-    public boolean isDone() {
+    public boolean isDoneisDone() {
         return isDone;
     }
 
@@ -66,8 +66,20 @@ public class Result {
         isDone = done;
     }
 
+    public boolean isDone() {
+        return isDone;
+    }
+
     public boolean isTestAgain() {
         return testAgain;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 
     public void setTestAgain(boolean testAgain) {
@@ -76,4 +88,6 @@ public class Result {
 
     boolean isDone;
     boolean testAgain;
+    int time;
+
 }

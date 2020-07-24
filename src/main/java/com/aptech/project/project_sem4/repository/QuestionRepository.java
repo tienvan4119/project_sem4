@@ -16,5 +16,4 @@ public interface QuestionRepository  extends MongoRepository<Question, Long> {
     public List<Question> findQuestionByTopicId(String topic_id);
     @Query("{ id: ObjectId(\"?0\" )}")
     public Question findTopicByQuestionId(String question_id);
-
 }

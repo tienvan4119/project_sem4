@@ -119,50 +119,80 @@ public class UserController {
         String params = request.getQueryString();
         String[] test_id = params.split("=");
         System.out.println(test_id[1]);
-        Section current_section = quizService.isDone(userService.getCourseSection(adminService.getTestbyId(test_id[1]).getCourseID().toString()).getSectionId().toString());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        Result result = adminService.getResultbyTestAndUser(test_id[1],  userService.findByEmail(userName).getId().toString());
+        if(!result.isDone() && !result.isTestAgain())
+        {
+            Section current_section = quizService.isDone(userService.getCourseSection(adminService.getTestbyId(test_id[1]).getCourseID().toString()).getSectionId().toString());
 
-        List<Topic> listTopic = quizService.listAllTopicBySection_id(current_section.getId().toString());
-        // model.addAttribute("listTopic", listTopic);
+            List<Topic> listTopic = quizService.listAllTopicBySection_id(current_section.getId().toString());
+            // model.addAttribute("listTopic", listTopic);
 
-        List<Question> listQuestion = quizService.listAllQuestion();
-        List<Question> listQuestionyByTopic = new ArrayList<Question>();
+            List<Question> listQuestion = quizService.listAllQuestion();
+            List<Question> listQuestionyByTopic = new ArrayList<Question>();
 
-        UserController obj = new UserController();
-        List<Question> newListQuestion = new ArrayList<Question>();
-        Test test = adminService.getTestbyId(test_id[1]);
-        int numberOfQuestion = test.getNumberQuestion();
-        for (int i = 0; i < listTopic.size(); i++) {
-            listQuestionyByTopic.addAll(quizService.listQuestionByTopic(listTopic.get(i).getId().toString()));
-        }
+            UserController obj = new UserController();
+            List<Question> newListQuestion = new ArrayList<Question>();
+            Test test = adminService.getTestbyId(test_id[1]);
+            List<Test> listTest = adminService.getListTestByID(test_id[1]);
+            int numberOfQuestion = test.getNumberQuestion();
+            for (int i = 0; i < listTopic.size(); i++) {
+                listQuestionyByTopic.addAll(quizService.listQuestionByTopic(listTopic.get(i).getId().toString()));
+            }
 
-        for (int i = 0; i < numberOfQuestion; i++) {
-            Question a = getRandomList(listQuestionyByTopic);
-            newListQuestion.add(a);
-            listQuestionyByTopic.remove(a);
+            for (int i = 0; i < numberOfQuestion; i++) {
+                Question a = getRandomList(listQuestionyByTopic);
+                newListQuestion.add(a);
+                listQuestionyByTopic.remove(a);
+            }
+            model.addAttribute("listQuestion", newListQuestion);
+            List<Choice> listChoice = new ArrayList<Choice>();
+            for (int i = 0; i < numberOfQuestion; i++) {
+                String question_id = newListQuestion.get(i).getId().toString();
+                listChoice.addAll(quizService.listChoiceByQuestion_id(question_id));
+                System.out.println(question_id);
+            }
+            for (int i = 0; i < numberOfQuestion; i++) {
+                Session session_question = new Session();
+                session_question.setQuestion_id(newListQuestion.get(i).getId());
+                ObjectId choice_Pre = new ObjectId();
+                session_question.setChoice_id(choice_Pre);
+                ObjectId sectionId = new ObjectId(current_section.getId().toString());
+                session_question.setTestId(test.getId());
+                session_question.setCourseId(test.getCourseID());
+                ObjectId user_id = userService.findByEmail(userName).getId();
+                session_question.setUser_id(user_id);
+                quizService.saveSession(session_question);
+            }
+            model.addAttribute("listChoice", listChoice);
+            model.addAttribute("listTest", listTest);
+            model.addAttribute("section", current_section.getId().toString());
         }
-        model.addAttribute("listQuestion", newListQuestion);
-        List<Choice> listChoice = new ArrayList<Choice>();
-        for (int i = 0; i < numberOfQuestion; i++) {
-            String question_id = newListQuestion.get(i).getId().toString();
-            listChoice.addAll(quizService.listChoiceByQuestion_id(question_id));
-            System.out.println(question_id);
+        else if (!result.isDone() && result.isTestAgain())
+        {
+            Section current_section = quizService.isDone(userService.getCourseSection(adminService.getTestbyId(test_id[1]).getCourseID().toString()).getSectionId().toString());
+
+            List<Session> getListSessionTestAgain = userService.getListSessionTestAgain(test_id[1], userService.findByEmail(userName).getId().toString());
+            List<Question> listQuestion = new ArrayList<>();
+            for(int i = 0; i< getListSessionTestAgain.size();i++)
+            {
+                listQuestion.add(quizService.getTopicId(getListSessionTestAgain.get(i).getQuestion_id().toString()));
+            }
+            List<Choice> listChoice = new ArrayList<Choice>();
+            for (int i = 0; i < listQuestion.size(); i++) {
+                String question_id = listQuestion.get(i).getId().toString();
+                List<Choice> listChoiceOfEachQuestion = quizService.listChoiceByQuestion_id(question_id);
+                listChoice.addAll(listChoiceOfEachQuestion);
+                System.out.println(question_id);
+            }
+            Test test = adminService.getTestbyId(test_id[1]);
+            List<Test> listTest = adminService.getListTestByID(test_id[1]);
+            model.addAttribute("listChoice", listChoice);
+            model.addAttribute("listTest", listTest);
+            model.addAttribute("listQuestion", listQuestion);
+            model.addAttribute("section", current_section.getId().toString());
         }
-        for (int i = 0; i < numberOfQuestion; i++) {
-            Session session_question = new Session();
-            session_question.setQuestion_id(newListQuestion.get(i).getId());
-            ObjectId choice_Pre = new ObjectId();
-            session_question.setChoice_id(choice_Pre);
-            ObjectId sectionId = new ObjectId(current_section.getId().toString());
-            session_question.setTestId(test.getId());
-            session_question.setCourseId(test.getCourseID());
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            String userName = authentication.getName();
-            ObjectId user_id = userService.findByEmail(userName).getId();
-            session_question.setUser_id(user_id);
-            quizService.saveSession(session_question);
-        }
-        model.addAttribute("listChoice", listChoice);
-        model.addAttribute("section", current_section.getId().toString());
         return "quiz";
     }
 

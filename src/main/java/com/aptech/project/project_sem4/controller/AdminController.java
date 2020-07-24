@@ -401,6 +401,7 @@ public class AdminController {
             result.setUser_id(listUser.get(i).getId());
             result.setDone(false);
             result.setTestAgain(false);
+            result.setTime(timeTest*60);
             quizService.saveResult(result);
         }
         return adminService.getListTest(user.getId().toString());
@@ -767,11 +768,12 @@ public class AdminController {
         return listIntTeacher;
     }
     @RequestMapping(value = "/getNumberOfTest", method = RequestMethod.POST)
-    public Test getNumber(HttpServletRequest request)
+    public Result getNumber(HttpServletRequest request)
     {
         String params = request.getParameter("current_url");
         String[] test_id = params.split("=");
         System.out.println(test_id[1]);
+
         return adminService.getTestbyId(test_id[1]);
     }
     @RequestMapping(value = "/getUserByEmail", method = RequestMethod.POST)
@@ -801,5 +803,10 @@ public class AdminController {
         userService.saveUser(new_user);
         return new_user;
     }
-
+    @RequestMapping(value = "/getSectionByTestId", method = RequestMethod.POST)
+    public Test getSectionIdByTest(HttpServletRequest request)
+    {
+        String testId = request.getParameter("testID");
+        return adminService.getTestbyId(testId);
+    }
 }

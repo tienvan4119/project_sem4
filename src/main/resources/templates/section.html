@@ -111,7 +111,14 @@
                             <td th:each="test : ${listTest}" th:if="${test.id == result.testId}" th:text="${test.numberQuestion}"></td>
                             <td th:each="test : ${listTest}" th:if="${test.id == result.testId}" th:text="${test.time}"></td>
                             <td th:if="${result.done == true && result.testAgain == false}" th:text="${result.mark}"></td>
-                            <td th:unless="${result.done == true && result.testAgain == false}" class="sc-AxhCb eSwYtm">
+                            <td th:if="${result.done == false && result.testAgain == false}" class="sc-AxhCb eSwYtm">
+                                <div class="sc-AxhUy fxWvvr" style="text-align: right;">
+                                    <button th:each="test : ${listTest}" th:if="${test.id == result.testId}" type="submit" name="testID" th:value="${test.id}" class="ant-btn ant-btn-link ant-btn-sm">
+                                        <span>Bắt đầu làm bài</span>
+                                    </button>
+                                </div>
+                            </td>
+                            <td th:if="${result.done == false && result.testAgain == true}" class="sc-AxhCb eSwYtm">
                                 <div class="sc-AxhUy fxWvvr" style="text-align: right;">
                                     <button th:each="test : ${listTest}" th:if="${test.id == result.testId}" type="submit" name="testID" th:value="${test.id}" class="ant-btn ant-btn-link ant-btn-sm">
                                         <span>Bắt đầu làm bài</span>

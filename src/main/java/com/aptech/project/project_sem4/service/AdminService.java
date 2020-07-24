@@ -88,6 +88,8 @@ public class AdminService {
         return resultRepository.getResultByTestAndUser(test_id, user_id);
     }
 
+
+
     public void DeleteTest(String test_id)
     {
         testRepository.delete(testRepository.getTestById(test_id));
@@ -153,6 +155,11 @@ public class AdminService {
     public List<Course> getListCourseOfTeacher(String teacherID)
     {
         return courseRepository.findCoursesByTeacherID(teacherID);
+    }
+
+    public List<Test> getListTestByID(String test_id)
+    {
+        return testRepository.getListTestById(test_id);
     }
 
     public List<Class> findClassesByFaculty(String facultyID)

@@ -15,7 +15,8 @@ public interface SessionRepository extends MongoRepository<Session, Long> {
     @Query("{testId : ObjectId(\"?0\"), user_id : ObjectId(\"?1\")}")
     public List<Session> findAllSessionBySectionId(String testId, String user_id);
 
-
+    @Query("{ question_id: ObjectId(\"?0\" ), testId: ObjectId(\"?1\" ), userId: ObjectId(\"?2\" )}")
+    public List<Session> findAllSessionByQuestionAndTestAndUser(String Question_id, String test_id, String user_id);
 
 //    @Query("{ question_id: ObjectId(\"?0\" )}")
 //    public Session findChoiceId_inSession(String Question_id);

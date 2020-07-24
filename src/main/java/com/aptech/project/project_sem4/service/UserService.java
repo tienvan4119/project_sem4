@@ -33,6 +33,8 @@ public class UserService implements UserDetailsService {
 @Autowired
 private ResultRepository resultRepository;
 @Autowired
+private SessionRepository sessionRepository;
+@Autowired
 private  RelationCourseSectionRepository relationCourseSectionRepository;
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
@@ -112,5 +114,13 @@ private  RelationCourseSectionRepository relationCourseSectionRepository;
     public List<Result> getListResultofStudent(String course_id, String user_id)
     {
         return resultRepository.getListResultofStudent(course_id, user_id);
+    }
+    public List<Session> getListSessionTestAgain(String test_id, String user_id)
+    {
+        return sessionRepository.findAllSessionBySectionId(test_id, user_id);
+    }
+    public List<Session> findAllSessionByQuestionAndTestAndUser(String question_id, String test_id, String user_id)
+    {
+        return sessionRepository.findAllSessionByQuestionAndTestAndUser(question_id, test_id,user_id);
     }
 }
