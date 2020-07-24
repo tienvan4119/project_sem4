@@ -15,7 +15,8 @@
     <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
     <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
 
-    <link th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}"
+          rel="stylesheet">
     <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js}"></script>
     <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
     <script th:src='@{https://kit.fontawesome.com/a076d05399.js}'></script>
@@ -50,13 +51,14 @@
         // select choice a field and a subject
         $(document).ready(function () {
             //Show DataTable
-            $('#listKhoa').on('change', e=>{
-                var faculty_id =  $('#listKhoa option:selected').val();
+            $('#listKhoa').on('change', e => {
+                var faculty_id = $('#listKhoa option:selected').val();
                 console.log(faculty_id);
-                $.ajax({type: "POST", url: "/api/admin/getListSubject", dataType: 'json',
-                    data : {
-                        faculty_id : faculty_id
-                    },success: function(result){
+                $.ajax({
+                    type: "POST", url: "/api/admin/getListSubject", dataType: 'json',
+                    data: {
+                        faculty_id: faculty_id
+                    }, success: function (result) {
                         console.log(result)
                         $('#listMonHoc').find('option').remove();
                         var i;
@@ -64,12 +66,13 @@
                         for (i = 0; i < result.length; i++) {
                             data = result[i].title
                             console.log(data)
-                            $('#listMonHoc').append("<option value= "+data+" >" + data + "</option>");
+                            $('#listMonHoc').append("<option value= " + data + " >" + data + "</option>");
                             var x = document.getElementById("mySelect")
                         }
 
-                    }})
-                if (faculty_id == 'Khoa'){
+                    }
+                })
+                if (faculty_id == 'Khoa') {
                     $('#listMonHoc').empty();
                     $('#listMonHoc').append("<option selected>" + "Subjects..." + "</option>");
                 }
@@ -77,22 +80,24 @@
             $('#listSection').on('change', e => {
                 var section_id = $('#listSection option:selected').val();
                 console.log(section_id);
-                $.ajax({type: "POST", url: "/api/admin/getTopic", dataType: 'json',
-                    data : {
-                        section_id : section_id
-                    },success: function(result){
+                $.ajax({
+                    type: "POST", url: "/api/admin/getTopic", dataType: 'json',
+                    data: {
+                        section_id: section_id
+                    }, success: function (result) {
                         console.log(result)
                         $('#listTopic').find('option').remove();
                         var i;
                         for (i = 0; i < result.length; i++) {
                             data = result[i].title
                             console.log(data)
-                            $('#listTopic').append("<option value= "+data+" >" + data + "</option>");
+                            $('#listTopic').append("<option value= " + data + " >" + data + "</option>");
                             var x = document.getElementById("mySelect")
                         }
                         $('#listTopic').append("<option value=" + '"AddTopic"' + ">" + "Add more..." + "</option>");
-                    }})
-                if (section_id == 'Section'){
+                    }
+                })
+                if (section_id == 'Section') {
                     $('#listTopic').empty();
                     $('#listTopic').append("<option selected>" + "Topic..." + "</option>");
                 }
@@ -114,7 +119,6 @@
                 $('#listChoice').append("<div class='form-group'>\n" +
                     "                                        <label for='formGroupExampleInput'>Next Choice</label>\n" +
                     "                                        <input type='text' class='form-control' th:id='${user.id}' placeholder='Next choice'>\n" +
-                    "                                        <input type='radio' class='form-check-input' name='optradio' value='1' style='margin-left: -0.9'>This is the right Choice\n" +
                     "                                    </div>")
 
             })
@@ -123,14 +127,16 @@
                 var sectionName = $("#ThemSection #addSectionName").val().trim();
                 var facultyID = $("#ThemSection #listKhoaAddSection").val().trim();
 
-                $.ajax({type: 'POST',url: "/api/admin/addSection",dataType : 'json',
-                    data : {
-                        sectionName : sectionName,
+                $.ajax({
+                    type: 'POST', url: "/api/admin/addSection", dataType: 'json',
+                    data: {
+                        sectionName: sectionName,
                         facultyID: facultyID,
-                    }, success: function(result){
+                    }, success: function (result) {
 
-                    }})
-                    .done(function( data ) {
+                    }
+                })
+                    .done(function (data) {
                         $('#ThemSection').modal('hide');
                         location.reload();
                     });
@@ -139,21 +145,60 @@
             $('#addNewTopic_SaveChanges').on('click', e => {
                 $('#ThemTopic #addTopicNameName').empty();
                 var topicName = $("#ThemTopic #addTopicName").val().trim();
-                var sectionID = $("#ThemTopic #listKhoaAddTopic").val().trim();
+                var sectionID = $("#ThemTopic #listSectionAddTopic").val().trim();
 
-                $.ajax({type: 'POST',url: "/api/admin/addTopic",dataType : 'json',
-                    data : {
-                        topicName : topicName,
-                        sectionID : sectionID,
-                    }, success: function(result){
+                $.ajax({
+                    type: 'POST', url: "/api/admin/addTopic", dataType: 'json',
+                    data: {
+                        topicName: topicName,
+                        sectionID: sectionID,
+                    }, success: function (result) {
 
-                    }})
-                    .done(function( data ) {
+                    }
+                })
+                    .done(function (data) {
                         $('#ThemTopic').modal('hide');
                         location.reload();
                     });
                 $('#ThemTopic').modal('hide');
             });
+            $('#addQuesToQuiz').on('click', e => {
+                var topicName = $("#listTopic").children("option").filter(":selected").text();
+                var sectionID = $('#listSection option:selected').val();
+                var questionDesc = $("#questionDesc").val().trim();
+                var rightChoice = $("#rightChoice").val().trim();
+                var choice = []
+                $('#listChoice .form-control').each(function (index, obj) {
+                    choice.push($(this).val().trim())
+                })
+                var choiceString = choice.join(',')
+                // var choice = $('#listChoice .form-control').map(function() {
+                //     return $(this).val().trim();
+                // }).get();
+                console.log(topicName)
+                console.log(questionDesc)
+                console.log(rightChoice)
+                console.log(choiceString)
+                console.log(sectionID)
+
+                $.ajax({
+                    type: 'POST', url: "/api/admin/createQuestion", dataType: 'json',
+                    data: {
+                        topicName: topicName,
+                        sectionID: sectionID,
+                        questionDesc: questionDesc,
+                        rightChoice: rightChoice,
+                        choiceString: choiceString
+                    }, success: function (result) {
+
+                    }
+                })
+                    .done(function (data) {
+                        $("#questionDesc").empty();
+                        location.reload();
+                    })
+
+            })
         })
     </script>
 </head>
@@ -203,7 +248,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">QUẢN LÝ:</h6>
                     <a class="collapse-item active" href="teacher.html">LỚP</a>
-                    <a class="collapse-item" href="DetailsStudents.html.html">Quản lý điểm</a>
+                    <a class="collapse-item" href="DetailsStudents.html">Quản lý điểm</a>
                 </div>
             </div>
         </li>
@@ -297,7 +342,8 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${#authentication.getPrincipal().getUsername()}"></span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                  th:text="${#authentication.getPrincipal().getUsername()}"></span>
                             <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                         </a>
                         <!-- Dropdown - User Information -->
@@ -342,7 +388,8 @@
                                 <form>
                                     <select class="custom-select" style="width: 30%" id="listSection">
                                         <option id="Section" value="Section" selected>Section...</option>
-                                        <option th:each="section :  ${listSection}" th:value="${section.id}" th:text="${section.title}"/>
+                                        <option th:each="section :  ${listSection}" th:value="${section.id}"
+                                                th:text="${section.title}"/>
                                         <option id="AddField" value="ThemSection">Add more...</option>
                                     </select>
                                     <select class="custom-select" style="width: 30%" id="listTopic">
@@ -352,7 +399,8 @@
 
                                 <form name="ckeditor" th:action="@{/api/admin/addQuestion}">
                                     <br>
-                                    <textarea name="editor1" id="editor1" rows="12" cols="350" style="width: 550px">
+                                    <textarea name="questionDesc" id="questionDesc" rows="12" cols="350"
+                                              style="width: 550px">
                                 </textarea>
                                     <script>
                                         // Replace the <textarea id="editor1"> with a CKEditor
@@ -360,10 +408,9 @@
                                         CKEDITOR.replace('editor1');
                                     </script>
                                     <div class="form-group">
-                                        <label for="formGroupExampleInput">First Choice</label>
-                                        <input type="text" class="form-control" id="Choice1" placeholder="First choice">
-                                        <input type="radio" class="form-check-input" name="optradio" value="1"
-                                               style="margin-left: -0.9rem">This is the right Choice
+                                        <label for="formGroupExampleInput">Right Choice</label>
+                                        <input type="text" class="form-control" id="rightChoice" placeholder="Right choice">
+
                                     </div>
                                 </form>
                                 <table id="datatable" class="table table-bordered table-striped" style="width: 100%">
@@ -373,7 +420,7 @@
                                 </table>
 
                                 <button id="addChoice" class="btn btn-primary">Add Choice</button>
-                                <button id="add" class="btn btn-primary">Add Question to Quiz</button>
+                                <button id="addQuesToQuiz" class="btn btn-primary">Add Question to Quiz</button>
 
                             </div>
                         </div>
@@ -392,15 +439,19 @@
                                             <label for="FieldName">Faculty</label>
                                             <select class="custom-select" style="width: 30%" id="listKhoaAddSection">
                                                 <option id="KhoaAddSection" value="Khoa" selected>Khoa...</option>
-                                                <option th:each="faculty :  ${listFaculty}" th:value="${faculty.id}" th:text="${faculty.name}"/>
+                                                <option th:each="faculty :  ${listFaculty}" th:value="${faculty.id}"
+                                                        th:text="${faculty.name}"/>
                                             </select>
                                             <label for="FieldName">Section Name</label>
-                                            <input type="text" class="form-control" id="addSectionName" >
+                                            <input type="text" class="form-control" id="addSectionName">
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button id="addNewSection_SaveChanges" type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button id="addNewSection_SaveChanges" type="button" class="btn btn-primary">
+                                            Save changes
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -416,20 +467,25 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <label for="FieldName">Faculty</label>
-                                            <select class="custom-select" style="width: 30%" id="listKhoaAddTopic">
-                                                <option id="sectionAddTopic" value="Section" selected>Section...</option>
-                                                <option th:each="section :  ${listSection}" th:value="${section.id}" th:text="${section.title}"/>
+                                            <label for="FieldName">Section</label>
+                                            <select class="custom-select" style="width: 30%" id="listSectionAddTopic">
+                                                <option id="sectionAddTopic" value="Section" selected>Section...
+                                                </option>
+                                                <option th:each="section :  ${listSection}" th:value="${section.id}"
+                                                        th:text="${section.title}"/>
 
                                             </select>
                                             <label for="FieldName">Topic Name</label>
-                                            <input type="text" class="form-control" id="addTopicName" >
+                                            <input type="text" class="form-control" id="addTopicName">
 
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button id="addNewTopic_SaveChanges" type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button id="addNewTopic_SaveChanges" type="button" class="btn btn-primary">Save
+                                            changes
+                                        </button>
                                     </div>
                                 </div>
                             </div>

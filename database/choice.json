@@ -2,8 +2,8 @@
   "_id": {
     "$oid": "5e5ca040ab622d0fc8fd3e53"
   },
-   "isCorrect": false,
-    "choice_desc": "20",
+  "isCorrect": false,
+  "choice_desc": "20",
   "question_id": {
     "$oid": "5e5c8afbab622d0fc8fd3e4e"
   }
@@ -11,8 +11,8 @@
   "_id": {
     "$oid": "5e5ca051ab622d0fc8fd3e54"
   },
-   "isCorrect": true,
-    "choice_desc": "Compiler error",
+  "isCorrect": true,
+  "choice_desc": "Compiler error",
   "question_id": {
     "$oid": "5e5c8afbab622d0fc8fd3e4e"
   }
@@ -20,8 +20,8 @@
   "_id": {
     "$oid": "5e5ca05aab622d0fc8fd3e55"
   },
-   "isCorrect": false,
-    "choice_desc": "0",
+  "isCorrect": false,
+  "choice_desc": "0",
   "question_id": {
     "$oid": "5e5c8afbab622d0fc8fd3e4e"
   }
@@ -29,8 +29,8 @@
   "_id": {
     "$oid": "5e5ca066ab622d0fc8fd3e56"
   },
-   "isCorrect": false,
-    "choice_desc": "garbage value",
+  "isCorrect": false,
+  "choice_desc": "garbage value",
   "question_id": {
     "$oid": "5e5c8afbab622d0fc8fd3e4e"
   }
@@ -38,8 +38,8 @@
   "_id": {
     "$oid": "5e620d98faaf5940fc4903e7"
   },
-   "isCorrect": true,
-    "choice_desc": "i = 10, j = 20",
+  "isCorrect": true,
+  "choice_desc": "i = 10, j = 20",
   "question_id": {
     "$oid": "5e5c8df0ab622d0fc8fd3e50"
   }
@@ -47,8 +47,8 @@
   "_id": {
     "$oid": "5e620da7faaf5940fc4903e8"
   },
-   "isCorrect": false,
-    "choice_desc": "i = 20, j = 10",
+  "isCorrect": false,
+  "choice_desc": "i = 20, j = 10",
   "question_id": {
     "$oid": "5e5c8df0ab622d0fc8fd3e50"
   }
@@ -56,8 +56,8 @@
   "_id": {
     "$oid": "5e620db3faaf5940fc4903e9"
   },
-   "isCorrect": false,
-    "choice_desc": "i = 10, j = 10",
+  "isCorrect": false,
+  "choice_desc": "i = 10, j = 10",
   "question_id": {
     "$oid": "5e5c8df0ab622d0fc8fd3e50"
   }
@@ -65,8 +65,8 @@
   "_id": {
     "$oid": "5e620dbdfaaf5940fc4903ea"
   },
-   "isCorrect": false,
-    "choice_desc": "i = 20, j = 20",
+  "isCorrect": false,
+  "choice_desc": "i = 20, j = 20",
   "question_id": {
     "$oid": "5e5c8df0ab622d0fc8fd3e50"
   }
@@ -74,8 +74,8 @@
   "_id": {
     "$oid": "5e62397cfaaf5940fc4903ec"
   },
-   "isCorrect": true,
-    "choice_desc": "i.x = 20, j.x = 10 ",
+  "isCorrect": true,
+  "choice_desc": "i.x = 20, j.x = 10 ",
   "question_id": {
     "$oid": "5e5c8df8ab622d0fc8fd3e51"
   }
@@ -83,8 +83,8 @@
   "_id": {
     "$oid": "5e62398ffaaf5940fc4903ed"
   },
-   "isCorrect": false,
-    "choice_desc": "i.x = 10, j.x = 20 ",
+  "isCorrect": false,
+  "choice_desc": "i.x = 10, j.x = 20 ",
   "question_id": {
     "$oid": "5e5c8df8ab622d0fc8fd3e51"
   }
@@ -92,8 +92,8 @@
   "_id": {
     "$oid": "5e623998faaf5940fc4903ee"
   },
-   "isCorrect": false,
-    "choice_desc": "i.x = 10, j.x = 10 ",
+  "isCorrect": false,
+  "choice_desc": "i.x = 10, j.x = 10 ",
   "question_id": {
     "$oid": "5e5c8df8ab622d0fc8fd3e51"
   }
@@ -101,8 +101,8 @@
   "_id": {
     "$oid": "5e6239a0faaf5940fc4903ef"
   },
-   "isCorrect": false,
-    "choice_desc": "i.x = 20, j.x = 20 ",
+  "isCorrect": false,
+  "choice_desc": "i.x = 20, j.x = 20 ",
   "question_id": {
     "$oid": "5e5c8df8ab622d0fc8fd3e51"
   }
@@ -110,8 +110,8 @@
   "_id": {
     "$oid": "5e624610faaf5940fc4903f0"
   },
-   "isCorrect": false,
-    "choice_desc": "0 ",
+  "isCorrect": false,
+  "choice_desc": "0 ",
   "question_id": {
     "$oid": "5e5c8e39ab622d0fc8fd3e52"
   }
@@ -119,8 +119,8 @@
   "_id": {
     "$oid": "5e624625faaf5940fc4903f1"
   },
-   "isCorrect": false,
-    "choice_desc": "Garbage Value",
+  "isCorrect": false,
+  "choice_desc": "Garbage Value",
   "question_id": {
     "$oid": "5e5c8e39ab622d0fc8fd3e52"
   }
@@ -128,8 +128,8 @@
   "_id": {
     "$oid": "5e624630faaf5940fc4903f2"
   },
-   "isCorrect": true,
-    "choice_desc": "Compiler Error",
+  "isCorrect": true,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5e5c8e39ab622d0fc8fd3e52"
   }
@@ -137,8 +137,8 @@
   "_id": {
     "$oid": "5e62463bfaaf5940fc4903f3"
   },
-   "isCorrect": false,
-    "choice_desc": "Runtime Error",
+  "isCorrect": false,
+  "choice_desc": "Runtime Error",
   "question_id": {
     "$oid": "5e5c8e39ab622d0fc8fd3e52"
   }
@@ -146,8 +146,8 @@
   "_id": {
     "$oid": "5e660863db752434e0b1e435"
   },
-   "isCorrect": true,
-    "choice_desc": "Derived::show() called",
+  "isCorrect": true,
+  "choice_desc": "Derived::show() called",
   "question_id": {
     "$oid": "5e66065f8c3fc83164fe95bd"
   }
@@ -155,8 +155,8 @@
   "_id": {
     "$oid": "5e660871db752434e0b1e436"
   },
-   "isCorrect": false,
-    "choice_desc": "Base::show() called",
+  "isCorrect": false,
+  "choice_desc": "Base::show() called",
   "question_id": {
     "$oid": "5e66065f8c3fc83164fe95bd"
   }
@@ -164,8 +164,8 @@
   "_id": {
     "$oid": "5e660941db752434e0b1e439"
   },
-   "isCorrect": false,
-    "choice_desc": "Base::show() called",
+  "isCorrect": false,
+  "choice_desc": "Base::show() called",
   "question_id": {
     "$oid": "5e66066b8c3fc83164fe95be"
   }
@@ -173,8 +173,8 @@
   "_id": {
     "$oid": "5e660951db752434e0b1e43a"
   },
-   "isCorrect": false,
-    "choice_desc": "Derived::show() called",
+  "isCorrect": false,
+  "choice_desc": "Derived::show() called",
   "question_id": {
     "$oid": "5e66066b8c3fc83164fe95be"
   }
@@ -182,8 +182,8 @@
   "_id": {
     "$oid": "5e66095ddb752434e0b1e43b"
   },
-   "isCorrect": true,
-    "choice_desc": "Compiler Error",
+  "isCorrect": true,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5e66066b8c3fc83164fe95be"
   }
@@ -191,8 +191,8 @@
   "_id": {
     "$oid": "5e66096adb752434e0b1e43c"
   },
-   "isCorrect": false,
-    "choice_desc": "Runtime Error",
+  "isCorrect": false,
+  "choice_desc": "Runtime Error",
   "question_id": {
     "$oid": "5e66066b8c3fc83164fe95be"
   }
@@ -200,8 +200,8 @@
   "_id": {
     "$oid": "5e660a838c3fc83164fe95c6"
   },
-   "isCorrect": true,
-    "choice_desc": "1, 2 and 4",
+  "isCorrect": true,
+  "choice_desc": "1, 2 and 4",
   "question_id": {
     "$oid": "5e6606788c3fc83164fe95c0"
   }
@@ -209,8 +209,8 @@
   "_id": {
     "$oid": "5e660a948c3fc83164fe95c7"
   },
-   "isCorrect": false,
-    "choice_desc": "Only 1 and 2",
+  "isCorrect": false,
+  "choice_desc": "Only 1 and 2",
   "question_id": {
     "$oid": "5e6606788c3fc83164fe95c0"
   }
@@ -218,8 +218,8 @@
   "_id": {
     "$oid": "5e660aa08c3fc83164fe95c8"
   },
-   "isCorrect": false,
-    "choice_desc": "1,2 and 3",
+  "isCorrect": false,
+  "choice_desc": "1,2 and 3",
   "question_id": {
     "$oid": "5e6606788c3fc83164fe95c0"
   }
@@ -227,8 +227,8 @@
   "_id": {
     "$oid": "5e660aac8c3fc83164fe95c9"
   },
-   "isCorrect": false,
-    "choice_desc": "2,3 and 4",
+  "isCorrect": false,
+  "choice_desc": "2,3 and 4",
   "question_id": {
     "$oid": "5e6606788c3fc83164fe95c0"
   }
@@ -236,8 +236,8 @@
   "_id": {
     "$oid": "5e660cc88c3fc83164fe95ca"
   },
-   "isCorrect": true,
-    "choice_desc": "Base Derived Derived",
+  "isCorrect": true,
+  "choice_desc": "Base Derived Derived",
   "question_id": {
     "$oid": "5e66067e8c3fc83164fe95c1"
   }
@@ -245,8 +245,8 @@
   "_id": {
     "$oid": "5e660cd18c3fc83164fe95cb"
   },
-   "isCorrect": false,
-    "choice_desc": "Base Base Derived",
+  "isCorrect": false,
+  "choice_desc": "Base Base Derived",
   "question_id": {
     "$oid": "5e66067e8c3fc83164fe95c1"
   }
@@ -254,8 +254,8 @@
   "_id": {
     "$oid": "5e660cde8c3fc83164fe95cc"
   },
-   "isCorrect": false,
-    "choice_desc": "Base Derived Base ",
+  "isCorrect": false,
+  "choice_desc": "Base Derived Base ",
   "question_id": {
     "$oid": "5e66067e8c3fc83164fe95c1"
   }
@@ -263,8 +263,8 @@
   "_id": {
     "$oid": "5e660cf08c3fc83164fe95cd"
   },
-   "isCorrect": false,
-    "choice_desc": "Compiler Error",
+  "isCorrect": false,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5e66067e8c3fc83164fe95c1"
   }
@@ -272,8 +272,8 @@
   "_id": {
     "$oid": "5e660d55db752434e0b1e442"
   },
-   "isCorrect": false,
-    "choice_desc": "Base",
+  "isCorrect": false,
+  "choice_desc": "Base",
   "question_id": {
     "$oid": "5e6606848c3fc83164fe95c2"
   }
@@ -281,8 +281,8 @@
   "_id": {
     "$oid": "5e660d5fdb752434e0b1e443"
   },
-   "isCorrect": false,
-    "choice_desc": "Derived",
+  "isCorrect": false,
+  "choice_desc": "Derived",
   "question_id": {
     "$oid": "5e6606848c3fc83164fe95c2"
   }
@@ -290,8 +290,8 @@
   "_id": {
     "$oid": "5e660d6bdb752434e0b1e444"
   },
-   "isCorrect": true,
-    "choice_desc": "Compiler error",
+  "isCorrect": true,
+  "choice_desc": "Compiler error",
   "question_id": {
     "$oid": "5e6606848c3fc83164fe95c2"
   }
@@ -299,8 +299,8 @@
   "_id": {
     "$oid": "5e660d73db752434e0b1e445"
   },
-   "isCorrect": false,
-    "choice_desc": "Runtime error",
+  "isCorrect": false,
+  "choice_desc": "Runtime error",
   "question_id": {
     "$oid": "5e6606848c3fc83164fe95c2"
   }
@@ -308,8 +308,8 @@
   "_id": {
     "$oid": "5e69f7ee43760d274428d975"
   },
-   "isCorrect": true,
-    "choice_desc": "20",
+  "isCorrect": true,
+  "choice_desc": "20",
   "question_id": {
     "$oid": "5e69f7a7da5dcb22cc3fc8b1"
   }
@@ -317,8 +317,8 @@
   "_id": {
     "$oid": "5e69f7f543760d274428d976"
   },
-   "isCorrect": false,
-    "choice_desc": "0",
+  "isCorrect": false,
+  "choice_desc": "0",
   "question_id": {
     "$oid": "5e69f7a7da5dcb22cc3fc8b1"
   }
@@ -326,8 +326,8 @@
   "_id": {
     "$oid": "5e69f7fe43760d274428d977"
   },
-   "isCorrect": false,
-    "choice_desc": "Compiler Error",
+  "isCorrect": false,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5e69f7a7da5dcb22cc3fc8b1"
   }
@@ -335,8 +335,8 @@
   "_id": {
     "$oid": "5e6a029bda5dcb22cc3fc8b4"
   },
-   "isCorrect": false,
-    "choice_desc": "Compiler Error",
+  "isCorrect": false,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5e6a0279da5dcb22cc3fc8b3"
   }
@@ -344,8 +344,8 @@
   "_id": {
     "$oid": "5e6a02a8da5dcb22cc3fc8b5"
   },
-   "isCorrect": false,
-    "choice_desc": "20",
+  "isCorrect": false,
+  "choice_desc": "20",
   "question_id": {
     "$oid": "5e6a0279da5dcb22cc3fc8b3"
   }
@@ -353,8 +353,8 @@
   "_id": {
     "$oid": "5e6a02b5da5dcb22cc3fc8b6"
   },
-   "isCorrect": true,
-    "choice_desc": "40",
+  "isCorrect": true,
+  "choice_desc": "40",
   "question_id": {
     "$oid": "5e6a0279da5dcb22cc3fc8b3"
   }
@@ -362,8 +362,8 @@
   "_id": {
     "$oid": "5e6a032143760d274428d97a"
   },
-   "isCorrect": false,
-    "choice_desc": "1",
+  "isCorrect": false,
+  "choice_desc": "1",
   "question_id": {
     "$oid": "5e6a02f843760d274428d979"
   }
@@ -371,8 +371,8 @@
   "_id": {
     "$oid": "5e6a032a43760d274428d97b"
   },
-   "isCorrect": false,
-    "choice_desc": "1, 2",
+  "isCorrect": false,
+  "choice_desc": "1, 2",
   "question_id": {
     "$oid": "5e6a02f843760d274428d979"
   }
@@ -380,8 +380,8 @@
   "_id": {
     "$oid": "5e6a033643760d274428d97c"
   },
-   "isCorrect": false,
-    "choice_desc": "1, 2 and 3",
+  "isCorrect": false,
+  "choice_desc": "1, 2 and 3",
   "question_id": {
     "$oid": "5e6a02f843760d274428d979"
   }
@@ -389,8 +389,8 @@
   "_id": {
     "$oid": "5e6a034043760d274428d97d"
   },
-   "isCorrect": true,
-    "choice_desc": "1, 2, 3 and 4",
+  "isCorrect": true,
+  "choice_desc": "1, 2, 3 and 4",
   "question_id": {
     "$oid": "5e6a02f843760d274428d979"
   }
@@ -398,8 +398,8 @@
   "_id": {
     "$oid": "5e6a0750da5dcb22cc3fc8ba"
   },
-   "isCorrect": true,
-    "choice_desc": "Yes",
+  "isCorrect": true,
+  "choice_desc": "Yes",
   "question_id": {
     "$oid": "5e6a072dda5dcb22cc3fc8b8"
   }
@@ -407,8 +407,8 @@
   "_id": {
     "$oid": "5e6a0756da5dcb22cc3fc8bb"
   },
-   "isCorrect": false,
-    "choice_desc": "No",
+  "isCorrect": false,
+  "choice_desc": "No",
   "question_id": {
     "$oid": "5e6a072dda5dcb22cc3fc8b8"
   }
@@ -416,8 +416,8 @@
   "_id": {
     "$oid": "5e6a079d43760d274428d97f"
   },
-   "isCorrect": true,
-    "choice_desc": "10",
+  "isCorrect": true,
+  "choice_desc": "10",
   "question_id": {
     "$oid": "5e6a0734da5dcb22cc3fc8b9"
   }
@@ -425,8 +425,8 @@
   "_id": {
     "$oid": "5e6a07a343760d274428d980"
   },
-   "isCorrect": false,
-    "choice_desc": "0",
+  "isCorrect": false,
+  "choice_desc": "0",
   "question_id": {
     "$oid": "5e6a0734da5dcb22cc3fc8b9"
   }
@@ -434,8 +434,8 @@
   "_id": {
     "$oid": "5e6a07af43760d274428d981"
   },
-   "isCorrect": false,
-    "choice_desc": "Compiler Error",
+  "isCorrect": false,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5e6a0734da5dcb22cc3fc8b9"
   }
@@ -443,8 +443,8 @@
   "_id": {
     "$oid": "5e84cb567490b8179a42801a"
   },
-   "isCorrect": true,
-    "choice_desc": "Base::show()called",
+  "isCorrect": true,
+  "choice_desc": "Base::show()called",
   "question_id": {
     "$oid": "5e6606728c3fc83164fe95bf"
   }
@@ -452,8 +452,8 @@
   "_id": {
     "$oid": "5e84cb647490b8179a42801b"
   },
-   "isCorrect": false,
-    "choice_desc": "Derived::show()called",
+  "isCorrect": false,
+  "choice_desc": "Derived::show()called",
   "question_id": {
     "$oid": "5e6606728c3fc83164fe95bf"
   }
@@ -461,8 +461,8 @@
   "_id": {
     "$oid": "5e84cb6f7490b8179a42801c"
   },
-   "isCorrect": false,
-    "choice_desc": "Compiler Error",
+  "isCorrect": false,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5e6606728c3fc83164fe95bf"
   }
@@ -470,8 +470,8 @@
   "_id": {
     "$oid": "5eb2893b139a8e04af155a9b"
   },
-   "isCorrect": false,
-    "choice_desc": "Copy Constructor",
+  "isCorrect": false,
+  "choice_desc": "Copy Constructor",
   "question_id": {
     "$oid": "5eb28913139a8e04af155a9a"
   }
@@ -479,8 +479,8 @@
   "_id": {
     "$oid": "5eb28951139a8e04af155a9c"
   },
-   "isCorrect": false,
-    "choice_desc": "Assignment Operator",
+  "isCorrect": false,
+  "choice_desc": "Assignment Operator",
   "question_id": {
     "$oid": "5eb28913139a8e04af155a9a"
   }
@@ -488,8 +488,8 @@
   "_id": {
     "$oid": "5eb2895b139a8e04af155a9d"
   },
-   "isCorrect": false,
-    "choice_desc": "A constructor without any parameter",
+  "isCorrect": false,
+  "choice_desc": "A constructor without any parameter",
   "question_id": {
     "$oid": "5eb28913139a8e04af155a9a"
   }
@@ -497,8 +497,8 @@
   "_id": {
     "$oid": "5eb28967139a8e04af155a9e"
   },
-   "isCorrect": true,
-    "choice_desc": "All of the above",
+  "isCorrect": true,
+  "choice_desc": "All of the above",
   "question_id": {
     "$oid": "5eb28913139a8e04af155a9a"
   }
@@ -506,8 +506,8 @@
   "_id": {
     "$oid": "5eb289f5139a8e04af155aa1"
   },
-   "isCorrect": false,
-    "choice_desc": "When an object of the class is returned by value.",
+  "isCorrect": false,
+  "choice_desc": "When an object of the class is returned by value.",
   "question_id": {
     "$oid": "5eb289de139a8e04af155aa0"
   }
@@ -515,8 +515,8 @@
   "_id": {
     "$oid": "5eb28a01139a8e04af155aa2"
   },
-   "isCorrect": false,
-    "choice_desc": "When an object of the class is passed (to a function) by value as an argument.",
+  "isCorrect": false,
+  "choice_desc": "When an object of the class is passed (to a function) by value as an argument.",
   "question_id": {
     "$oid": "5eb289de139a8e04af155aa0"
   }
@@ -524,8 +524,8 @@
   "_id": {
     "$oid": "5eb28a0f139a8e04af155aa3"
   },
-   "isCorrect": false,
-    "choice_desc": "When an object is constructed based on another object of the same class",
+  "isCorrect": false,
+  "choice_desc": "When an object is constructed based on another object of the same class",
   "question_id": {
     "$oid": "5eb289de139a8e04af155aa0"
   }
@@ -533,8 +533,8 @@
   "_id": {
     "$oid": "5eb28a1b139a8e04af155aa4"
   },
-   "isCorrect": false,
-    "choice_desc": "When compiler generates a temporary object.",
+  "isCorrect": false,
+  "choice_desc": "When compiler generates a temporary object.",
   "question_id": {
     "$oid": "5eb289de139a8e04af155aa0"
   }
@@ -542,8 +542,8 @@
   "_id": {
     "$oid": "5eb28a26139a8e04af155aa5"
   },
-   "isCorrect": true,
-    "choice_desc": "All of the above",
+  "isCorrect": true,
+  "choice_desc": "All of the above",
   "question_id": {
     "$oid": "5eb289de139a8e04af155aa0"
   }
@@ -551,8 +551,8 @@
   "_id": {
     "$oid": "5eb28ee4139a8e04af155aa8"
   },
-   "isCorrect": true,
-    "choice_desc": "Compiler Error",
+  "isCorrect": true,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5eb28ec2139a8e04af155aa7"
   }
@@ -560,8 +560,8 @@
   "_id": {
     "$oid": "5eb28eef139a8e04af155aa9"
   },
-   "isCorrect": false,
-    "choice_desc": "Runtime Error",
+  "isCorrect": false,
+  "choice_desc": "Runtime Error",
   "question_id": {
     "$oid": "5eb28ec2139a8e04af155aa7"
   }
@@ -569,8 +569,8 @@
   "_id": {
     "$oid": "5eb28ef8139a8e04af155aaa"
   },
-   "isCorrect": false,
-    "choice_desc": "Constructor called",
+  "isCorrect": false,
+  "choice_desc": "Constructor called",
   "question_id": {
     "$oid": "5eb28ec2139a8e04af155aa7"
   }
@@ -578,8 +578,8 @@
   "_id": {
     "$oid": "5eb29067139a8e04af155aad"
   },
-   "isCorrect": false,
-    "choice_desc": "Compiler Error",
+  "isCorrect": false,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5eb29052139a8e04af155aac"
   }
@@ -587,8 +587,8 @@
   "_id": {
     "$oid": "5eb29083139a8e04af155aae"
   },
-   "isCorrect": false,
-    "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\">Constructor called<br />Constructor called</div> </div>",
+  "isCorrect": false,
+  "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\">Constructor called<br />Constructor called</div> </div>",
   "question_id": {
     "$oid": "5eb29052139a8e04af155aac"
   }
@@ -596,8 +596,8 @@
   "_id": {
     "$oid": "5eb29095139a8e04af155aaf"
   },
-   "isCorrect": true,
-    "choice_desc": "Constructor called",
+  "isCorrect": true,
+  "choice_desc": "Constructor called",
   "question_id": {
     "$oid": "5eb29052139a8e04af155aac"
   }
@@ -605,8 +605,8 @@
   "_id": {
     "$oid": "5eb29159139a8e04af155ab2"
   },
-   "isCorrect": false,
-    "choice_desc": "When local variable’s name is same as member’s name, we can access member using this pointer.",
+  "isCorrect": false,
+  "choice_desc": "When local variable’s name is same as member’s name, we can access member using this pointer.",
   "question_id": {
     "$oid": "5eb2912d139a8e04af155ab1"
   }
@@ -614,8 +614,8 @@
   "_id": {
     "$oid": "5eb2916b139a8e04af155ab3"
   },
-   "isCorrect": false,
-    "choice_desc": "To return reference to the calling object",
+  "isCorrect": false,
+  "choice_desc": "To return reference to the calling object",
   "question_id": {
     "$oid": "5eb2912d139a8e04af155ab1"
   }
@@ -623,8 +623,8 @@
   "_id": {
     "$oid": "5eb29178139a8e04af155ab4"
   },
-   "isCorrect": false,
-    "choice_desc": "Can be used for chained function calls on an object",
+  "isCorrect": false,
+  "choice_desc": "Can be used for chained function calls on an object",
   "question_id": {
     "$oid": "5eb2912d139a8e04af155ab1"
   }
@@ -632,8 +632,8 @@
   "_id": {
     "$oid": "5eb29183139a8e04af155ab5"
   },
-   "isCorrect": true,
-    "choice_desc": "All of the above",
+  "isCorrect": true,
+  "choice_desc": "All of the above",
   "question_id": {
     "$oid": "5eb2912d139a8e04af155ab1"
   }
@@ -641,8 +641,8 @@
   "_id": {
     "$oid": "5eb291d5139a8e04af155ab8"
   },
-   "isCorrect": false,
-    "choice_desc": "x = 5",
+  "isCorrect": false,
+  "choice_desc": "x = 5",
   "question_id": {
     "$oid": "5eb291b9139a8e04af155ab7"
   }
@@ -650,8 +650,8 @@
   "_id": {
     "$oid": "5eb291df139a8e04af155ab9"
   },
-   "isCorrect": false,
-    "choice_desc": "x = 10",
+  "isCorrect": false,
+  "choice_desc": "x = 10",
   "question_id": {
     "$oid": "5eb291b9139a8e04af155ab7"
   }
@@ -659,8 +659,8 @@
   "_id": {
     "$oid": "5eb291e8139a8e04af155aba"
   },
-   "isCorrect": true,
-    "choice_desc": "Compiler Error",
+  "isCorrect": true,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5eb291b9139a8e04af155ab7"
   }
@@ -668,8 +668,8 @@
   "_id": {
     "$oid": "5eb291f3139a8e04af155abb"
   },
-   "isCorrect": false,
-    "choice_desc": "Runtime Error",
+  "isCorrect": false,
+  "choice_desc": "Runtime Error",
   "question_id": {
     "$oid": "5eb291b9139a8e04af155ab7"
   }
@@ -677,8 +677,8 @@
   "_id": {
     "$oid": "5eb292d0139a8e04af155abe"
   },
-   "isCorrect": false,
-    "choice_desc": "Inside fun2() Inside fun1()",
+  "isCorrect": false,
+  "choice_desc": "Inside fun2() Inside fun1()",
   "question_id": {
     "$oid": "5eb292bc139a8e04af155abd"
   }
@@ -686,8 +686,8 @@
   "_id": {
     "$oid": "5eb292da139a8e04af155abf"
   },
-   "isCorrect": false,
-    "choice_desc": "Inside fun2()",
+  "isCorrect": false,
+  "choice_desc": "Inside fun2()",
   "question_id": {
     "$oid": "5eb292bc139a8e04af155abd"
   }
@@ -695,8 +695,8 @@
   "_id": {
     "$oid": "5eb292e3139a8e04af155ac0"
   },
-   "isCorrect": false,
-    "choice_desc": "Inside fun1() Inside fun2()",
+  "isCorrect": false,
+  "choice_desc": "Inside fun1() Inside fun2()",
   "question_id": {
     "$oid": "5eb292bc139a8e04af155abd"
   }
@@ -704,8 +704,8 @@
   "_id": {
     "$oid": "5eb292ed139a8e04af155ac1"
   },
-   "isCorrect": true,
-    "choice_desc": "Compiler Error",
+  "isCorrect": true,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5eb292bc139a8e04af155abd"
   }
@@ -713,8 +713,8 @@
   "_id": {
     "$oid": "5eb296a8139a8e04af155ac4"
   },
-   "isCorrect": false,
-    "choice_desc": "x = 0",
+  "isCorrect": false,
+  "choice_desc": "x = 0",
   "question_id": {
     "$oid": "5eb29697139a8e04af155ac3"
   }
@@ -722,8 +722,8 @@
   "_id": {
     "$oid": "5eb296b3139a8e04af155ac5"
   },
-   "isCorrect": true,
-    "choice_desc": "undefined behavior",
+  "isCorrect": true,
+  "choice_desc": "undefined behavior",
   "question_id": {
     "$oid": "5eb29697139a8e04af155ac3"
   }
@@ -731,8 +731,8 @@
   "_id": {
     "$oid": "5eb296bc139a8e04af155ac6"
   },
-   "isCorrect": false,
-    "choice_desc": "compiler error",
+  "isCorrect": false,
+  "choice_desc": "compiler error",
   "question_id": {
     "$oid": "5eb29697139a8e04af155ac3"
   }
@@ -740,8 +740,8 @@
   "_id": {
     "$oid": "5eb297b2139a8e04af155ac9"
   },
-   "isCorrect": false,
-    "choice_desc": "Compiler Dependent",
+  "isCorrect": false,
+  "choice_desc": "Compiler Dependent",
   "question_id": {
     "$oid": "5eb29726139a8e04af155ac8"
   }
@@ -749,8 +749,8 @@
   "_id": {
     "$oid": "5eb297d7139a8e04af155aca"
   },
-   "isCorrect": true,
-    "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\">Base1&prime;s constructor called<br />Base2&prime;s constructor called<br />Derived&rsquo;s constructor called</div> </div> </div>",
+  "isCorrect": true,
+  "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\">Base1&prime;s constructor called<br />Base2&prime;s constructor called<br />Derived&rsquo;s constructor called</div> </div> </div>",
   "question_id": {
     "$oid": "5eb29726139a8e04af155ac8"
   }
@@ -758,8 +758,8 @@
   "_id": {
     "$oid": "5eb297ea139a8e04af155acb"
   },
-   "isCorrect": false,
-    "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\">Base2&prime;s constructor called<br />Base1&prime;s constructor called<br />Derived&rsquo;s constructor called</div> </div> </div>",
+  "isCorrect": false,
+  "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\">Base2&prime;s constructor called<br />Base1&prime;s constructor called<br />Derived&rsquo;s constructor called</div> </div> </div>",
   "question_id": {
     "$oid": "5eb29726139a8e04af155ac8"
   }
@@ -767,8 +767,8 @@
   "_id": {
     "$oid": "5eb298fb139a8e04af155acc"
   },
-   "isCorrect": false,
-    "choice_desc": "Compiler Error",
+  "isCorrect": false,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5eb29726139a8e04af155ac8"
   }
@@ -776,8 +776,8 @@
   "_id": {
     "$oid": "5eb299f2139a8e04af155acf"
   },
-   "isCorrect": false,
-    "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <pre>Base1's destructor Base2's destructor Derived's destructor</pre> </div> </div> </div> </div>",
+  "isCorrect": false,
+  "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <pre>Base1's destructor Base2's destructor Derived's destructor</pre> </div> </div> </div> </div>",
   "question_id": {
     "$oid": "5eb299d5139a8e04af155ace"
   }
@@ -785,8 +785,8 @@
   "_id": {
     "$oid": "5eb29a11139a8e04af155ad0"
   },
-   "isCorrect": true,
-    "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <pre>Derived's destructor Base2's destructor Base1's destructor</pre> </div> </div> </div> </div>",
+  "isCorrect": true,
+  "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <pre>Derived's destructor Base2's destructor Base1's destructor</pre> </div> </div> </div> </div>",
   "question_id": {
     "$oid": "5eb299d5139a8e04af155ace"
   }
@@ -794,8 +794,8 @@
   "_id": {
     "$oid": "5eb29a36139a8e04af155ad1"
   },
-   "isCorrect": false,
-    "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <pre>Derived's destructor</pre> </div> </div> </div> </div>",
+  "isCorrect": false,
+  "choice_desc": "<div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <div class=\"line number1 index0 alt2\"> <pre>Derived's destructor</pre> </div> </div> </div> </div>",
   "question_id": {
     "$oid": "5eb299d5139a8e04af155ace"
   }
@@ -803,8 +803,8 @@
   "_id": {
     "$oid": "5eb29a47139a8e04af155ad2"
   },
-   "isCorrect": false,
-    "choice_desc": "Compiler Dependent",
+  "isCorrect": false,
+  "choice_desc": "Compiler Dependent",
   "question_id": {
     "$oid": "5eb299d5139a8e04af155ace"
   }
@@ -812,8 +812,8 @@
   "_id": {
     "$oid": "5eb29a9c139a8e04af155ad5"
   },
-   "isCorrect": false,
-    "choice_desc": "40",
+  "isCorrect": false,
+  "choice_desc": "40",
   "question_id": {
     "$oid": "5eb29a8b139a8e04af155ad4"
   }
@@ -821,8 +821,8 @@
   "_id": {
     "$oid": "5eb29aa3139a8e04af155ad6"
   },
-   "isCorrect": true,
-    "choice_desc": "80",
+  "isCorrect": true,
+  "choice_desc": "80",
   "question_id": {
     "$oid": "5eb29a8b139a8e04af155ad4"
   }
@@ -830,8 +830,8 @@
   "_id": {
     "$oid": "5eb29aad139a8e04af155ad7"
   },
-   "isCorrect": false,
-    "choice_desc": "0",
+  "isCorrect": false,
+  "choice_desc": "0",
   "question_id": {
     "$oid": "5eb29a8b139a8e04af155ad4"
   }
@@ -839,8 +839,8 @@
   "_id": {
     "$oid": "5eb29ab4139a8e04af155ad8"
   },
-   "isCorrect": false,
-    "choice_desc": "4",
+  "isCorrect": false,
+  "choice_desc": "4",
   "question_id": {
     "$oid": "5eb29a8b139a8e04af155ad4"
   }
@@ -848,8 +848,8 @@
   "_id": {
     "$oid": "5eb29b47139a8e04af155adb"
   },
-   "isCorrect": false,
-    "choice_desc": "Inside P",
+  "isCorrect": false,
+  "choice_desc": "Inside P",
   "question_id": {
     "$oid": "5eb29b01139a8e04af155ada"
   }
@@ -857,8 +857,8 @@
   "_id": {
     "$oid": "5eb29b50139a8e04af155adc"
   },
-   "isCorrect": true,
-    "choice_desc": "Inside Q",
+  "isCorrect": true,
+  "choice_desc": "Inside Q",
   "question_id": {
     "$oid": "5eb29b01139a8e04af155ada"
   }
@@ -866,8 +866,8 @@
   "_id": {
     "$oid": "5eb29b58139a8e04af155add"
   },
-   "isCorrect": false,
-    "choice_desc": "Compiler Error: Ambiguous call to print()",
+  "isCorrect": false,
+  "choice_desc": "Compiler Error: Ambiguous call to print()",
   "question_id": {
     "$oid": "5eb29b01139a8e04af155ada"
   }
@@ -875,8 +875,8 @@
   "_id": {
     "$oid": "5eb29bda139a8e04af155ae0"
   },
-   "isCorrect": false,
-    "choice_desc": "int *arr = new int *[10];",
+  "isCorrect": false,
+  "choice_desc": "int *arr = new int *[10];",
   "question_id": {
     "$oid": "5eb29bcb139a8e04af155adf"
   }
@@ -884,8 +884,8 @@
   "_id": {
     "$oid": "5eb29be6139a8e04af155ae1"
   },
-   "isCorrect": true,
-    "choice_desc": "int **arr = new int *[10];",
+  "isCorrect": true,
+  "choice_desc": "int **arr = new int *[10];",
   "question_id": {
     "$oid": "5eb29bcb139a8e04af155adf"
   }
@@ -893,8 +893,8 @@
   "_id": {
     "$oid": "5eb29bf2139a8e04af155ae2"
   },
-   "isCorrect": false,
-    "choice_desc": "int *arr = new int [10];",
+  "isCorrect": false,
+  "choice_desc": "int *arr = new int [10];",
   "question_id": {
     "$oid": "5eb29bcb139a8e04af155adf"
   }
@@ -902,8 +902,8 @@
   "_id": {
     "$oid": "5eb29c00139a8e04af155ae3"
   },
-   "isCorrect": false,
-    "choice_desc": "Not Possible",
+  "isCorrect": false,
+  "choice_desc": "Not Possible",
   "question_id": {
     "$oid": "5eb29bcb139a8e04af155adf"
   }
@@ -911,8 +911,8 @@
   "_id": {
     "$oid": "5eb29c49139a8e04af155ae6"
   },
-   "isCorrect": true,
-    "choice_desc": "Compiler Error",
+  "isCorrect": true,
+  "choice_desc": "Compiler Error",
   "question_id": {
     "$oid": "5eb29c3a139a8e04af155ae5"
   }
@@ -920,8 +920,8 @@
   "_id": {
     "$oid": "5eb29c52139a8e04af155ae7"
   },
-   "isCorrect": false,
-    "choice_desc": "5",
+  "isCorrect": false,
+  "choice_desc": "5",
   "question_id": {
     "$oid": "5eb29c3a139a8e04af155ae5"
   }
@@ -929,8 +929,8 @@
   "_id": {
     "$oid": "5eb29c5b139a8e04af155ae8"
   },
-   "isCorrect": false,
-    "choice_desc": "Garbage Value",
+  "isCorrect": false,
+  "choice_desc": "Garbage Value",
   "question_id": {
     "$oid": "5eb29c3a139a8e04af155ae5"
   }
@@ -938,8 +938,8 @@
   "_id": {
     "$oid": "5eb29c63139a8e04af155ae9"
   },
-   "isCorrect": false,
-    "choice_desc": "0",
+  "isCorrect": false,
+  "choice_desc": "0",
   "question_id": {
     "$oid": "5eb29c3a139a8e04af155ae5"
   }
@@ -947,8 +947,8 @@
   "_id": {
     "$oid": "5eb29cdb139a8e04af155aec"
   },
-   "isCorrect": false,
-    "choice_desc": "Yes",
+  "isCorrect": false,
+  "choice_desc": "Yes",
   "question_id": {
     "$oid": "5eb29cbe139a8e04af155aeb"
   }
@@ -956,8 +956,8 @@
   "_id": {
     "$oid": "5eb29ce3139a8e04af155aed"
   },
-   "isCorrect": true,
-    "choice_desc": "No",
+  "isCorrect": true,
+  "choice_desc": "No",
   "question_id": {
     "$oid": "5eb29cbe139a8e04af155aeb"
   }
@@ -965,8 +965,8 @@
   "_id": {
     "$oid": "5eb355a74bf21802ea58d00f"
   },
-   "isCorrect": false,
-    "choice_desc": "type 'int'",
+  "isCorrect": false,
+  "choice_desc": "type 'int'",
   "question_id": {
     "$oid": "5eb355694bf21802ea58d00e"
   }
@@ -974,8 +974,8 @@
   "_id": {
     "$oid": "5eb355bc4bf21802ea58d010"
   },
-   "isCorrect": true,
-    "choice_desc": "type 'type'",
+  "isCorrect": true,
+  "choice_desc": "type 'type'",
   "question_id": {
     "$oid": "5eb355694bf21802ea58d00e"
   }
@@ -983,8 +983,8 @@
   "_id": {
     "$oid": "5eb355df4bf21802ea58d011"
   },
-   "isCorrect": false,
-    "choice_desc": "Error",
+  "isCorrect": false,
+  "choice_desc": "Error",
   "question_id": {
     "$oid": "5eb355694bf21802ea58d00e"
   }
@@ -992,8 +992,8 @@
   "_id": {
     "$oid": "5eb355e64bf21802ea58d012"
   },
-   "isCorrect": false,
-    "choice_desc": "0",
+  "isCorrect": false,
+  "choice_desc": "0",
   "question_id": {
     "$oid": "5eb355694bf21802ea58d00e"
   }
@@ -1001,8 +1001,8 @@
   "_id": {
     "$oid": "5eb3563f4bf21802ea58d015"
   },
-   "isCorrect": true,
-    "choice_desc": "48",
+  "isCorrect": true,
+  "choice_desc": "48",
   "question_id": {
     "$oid": "5eb356264bf21802ea58d014"
   }
@@ -1010,8 +1010,8 @@
   "_id": {
     "$oid": "5eb356454bf21802ea58d016"
   },
-   "isCorrect": false,
-    "choice_desc": "14",
+  "isCorrect": false,
+  "choice_desc": "14",
   "question_id": {
     "$oid": "5eb356264bf21802ea58d014"
   }
@@ -1019,8 +1019,8 @@
   "_id": {
     "$oid": "5eb3564a4bf21802ea58d017"
   },
-   "isCorrect": false,
-    "choice_desc": "64",
+  "isCorrect": false,
+  "choice_desc": "64",
   "question_id": {
     "$oid": "5eb356264bf21802ea58d014"
   }
@@ -1028,8 +1028,8 @@
   "_id": {
     "$oid": "5eb356534bf21802ea58d018"
   },
-   "isCorrect": false,
-    "choice_desc": "None of the above",
+  "isCorrect": false,
+  "choice_desc": "None of the above",
   "question_id": {
     "$oid": "5eb356264bf21802ea58d014"
   }
@@ -1037,8 +1037,8 @@
   "_id": {
     "$oid": "5eb364134bf21802ea58d01b"
   },
-   "isCorrect": false,
-    "choice_desc": "Module",
+  "isCorrect": false,
+  "choice_desc": "Module",
   "question_id": {
     "$oid": "5eb364054bf21802ea58d01a"
   }
@@ -1046,8 +1046,8 @@
   "_id": {
     "$oid": "5eb3641a4bf21802ea58d01c"
   },
-   "isCorrect": false,
-    "choice_desc": "Class",
+  "isCorrect": false,
+  "choice_desc": "Class",
   "question_id": {
     "$oid": "5eb364054bf21802ea58d01a"
   }
@@ -1055,8 +1055,8 @@
   "_id": {
     "$oid": "5eb364234bf21802ea58d01d"
   },
-   "isCorrect": false,
-    "choice_desc": "Another Function",
+  "isCorrect": false,
+  "choice_desc": "Another Function",
   "question_id": {
     "$oid": "5eb364054bf21802ea58d01a"
   }
@@ -1064,8 +1064,8 @@
   "_id": {
     "$oid": "5eb3642a4bf21802ea58d01e"
   },
-   "isCorrect": true,
-    "choice_desc": "Method",
+  "isCorrect": true,
+  "choice_desc": "Method",
   "question_id": {
     "$oid": "5eb364054bf21802ea58d01a"
   }
@@ -1073,8 +1073,8 @@
   "_id": {
     "$oid": "5eb364874bf21802ea58d021"
   },
-   "isCorrect": true,
-    "choice_desc": "{‘animal’: ‘horses’, ‘verb’: ‘are’, ‘adjective’: ‘fast’}",
+  "isCorrect": true,
+  "choice_desc": "{‘animal’: ‘horses’, ‘verb’: ‘are’, ‘adjective’: ‘fast’}",
   "question_id": {
     "$oid": "5eb364724bf21802ea58d020"
   }
@@ -1082,8 +1082,8 @@
   "_id": {
     "$oid": "5eb364914bf21802ea58d022"
   },
-   "isCorrect": false,
-    "choice_desc": "(‘horses’, ‘are’, ‘fast’)",
+  "isCorrect": false,
+  "choice_desc": "(‘horses’, ‘are’, ‘fast’)",
   "question_id": {
     "$oid": "5eb364724bf21802ea58d020"
   }
@@ -1091,8 +1091,8 @@
   "_id": {
     "$oid": "5eb3649c4bf21802ea58d023"
   },
-   "isCorrect": false,
-    "choice_desc": "(‘horses are fast’)",
+  "isCorrect": false,
+  "choice_desc": "(‘horses are fast’)",
   "question_id": {
     "$oid": "5eb364724bf21802ea58d020"
   }
@@ -1100,8 +1100,8 @@
   "_id": {
     "$oid": "5eb364a94bf21802ea58d024"
   },
-   "isCorrect": false,
-    "choice_desc": "(‘are’)",
+  "isCorrect": false,
+  "choice_desc": "(‘are’)",
   "question_id": {
     "$oid": "5eb364724bf21802ea58d020"
   }
@@ -1109,8 +1109,8 @@
   "_id": {
     "$oid": "5eb364f64bf21802ea58d027"
   },
-   "isCorrect": true,
-    "choice_desc": "dlroW olleH",
+  "isCorrect": true,
+  "choice_desc": "dlroW olleH",
   "question_id": {
     "$oid": "5eb364e54bf21802ea58d026"
   }
@@ -1118,8 +1118,8 @@
   "_id": {
     "$oid": "5eb365004bf21802ea58d028"
   },
-   "isCorrect": false,
-    "choice_desc": "Hello Worl",
+  "isCorrect": false,
+  "choice_desc": "Hello Worl",
   "question_id": {
     "$oid": "5eb364e54bf21802ea58d026"
   }
@@ -1127,8 +1127,8 @@
   "_id": {
     "$oid": "5eb365084bf21802ea58d029"
   },
-   "isCorrect": false,
-    "choice_desc": "d",
+  "isCorrect": false,
+  "choice_desc": "d",
   "question_id": {
     "$oid": "5eb364e54bf21802ea58d026"
   }
@@ -1136,8 +1136,8 @@
   "_id": {
     "$oid": "5eb365104bf21802ea58d02a"
   },
-   "isCorrect": false,
-    "choice_desc": "Error",
+  "isCorrect": false,
+  "choice_desc": "Error",
   "question_id": {
     "$oid": "5eb364e54bf21802ea58d026"
   }
@@ -1145,8 +1145,8 @@
   "_id": {
     "$oid": "5eb365654bf21802ea58d02d"
   },
-   "isCorrect": false,
-    "choice_desc": "int",
+  "isCorrect": false,
+  "choice_desc": "int",
   "question_id": {
     "$oid": "5eb365574bf21802ea58d02c"
   }
@@ -1154,8 +1154,8 @@
   "_id": {
     "$oid": "5eb3656b4bf21802ea58d02e"
   },
-   "isCorrect": false,
-    "choice_desc": "bool",
+  "isCorrect": false,
+  "choice_desc": "bool",
   "question_id": {
     "$oid": "5eb365574bf21802ea58d02c"
   }
@@ -1163,8 +1163,8 @@
   "_id": {
     "$oid": "5eb365704bf21802ea58d02f"
   },
-   "isCorrect": false,
-    "choice_desc": "void",
+  "isCorrect": false,
+  "choice_desc": "void",
   "question_id": {
     "$oid": "5eb365574bf21802ea58d02c"
   }
@@ -1172,8 +1172,8 @@
   "_id": {
     "$oid": "5eb365784bf21802ea58d030"
   },
-   "isCorrect": true,
-    "choice_desc": "None",
+  "isCorrect": true,
+  "choice_desc": "None",
   "question_id": {
     "$oid": "5eb365574bf21802ea58d02c"
   }
@@ -1181,8 +1181,8 @@
   "_id": {
     "$oid": "5eb365cf4bf21802ea58d033"
   },
-   "isCorrect": true,
-    "choice_desc": "re",
+  "isCorrect": true,
+  "choice_desc": "re",
   "question_id": {
     "$oid": "5eb365c04bf21802ea58d032"
   }
@@ -1190,8 +1190,8 @@
   "_id": {
     "$oid": "5eb365d74bf21802ea58d034"
   },
-   "isCorrect": false,
-    "choice_desc": "regex",
+  "isCorrect": false,
+  "choice_desc": "regex",
   "question_id": {
     "$oid": "5eb365c04bf21802ea58d032"
   }
@@ -1199,8 +1199,8 @@
   "_id": {
     "$oid": "5eb365de4bf21802ea58d035"
   },
-   "isCorrect": false,
-    "choice_desc": "pyregex",
+  "isCorrect": false,
+  "choice_desc": "pyregex",
   "question_id": {
     "$oid": "5eb365c04bf21802ea58d032"
   }
@@ -1208,8 +1208,8 @@
   "_id": {
     "$oid": "5eb365e64bf21802ea58d036"
   },
-   "isCorrect": false,
-    "choice_desc": "None of the above",
+  "isCorrect": false,
+  "choice_desc": "None of the above",
   "question_id": {
     "$oid": "5eb365c04bf21802ea58d032"
   }
@@ -1217,8 +1217,8 @@
   "_id": {
     "$oid": "5eb366204bf21802ea58d039"
   },
-   "isCorrect": false,
-    "choice_desc": "false",
+  "isCorrect": false,
+  "choice_desc": "false",
   "question_id": {
     "$oid": "5eb3660d4bf21802ea58d038"
   }
@@ -1226,8 +1226,8 @@
   "_id": {
     "$oid": "5eb366274bf21802ea58d03a"
   },
-   "isCorrect": true,
-    "choice_desc": "False",
+  "isCorrect": true,
+  "choice_desc": "False",
   "question_id": {
     "$oid": "5eb3660d4bf21802ea58d038"
   }
@@ -1235,8 +1235,8 @@
   "_id": {
     "$oid": "5eb3662e4bf21802ea58d03b"
   },
-   "isCorrect": false,
-    "choice_desc": "Machine dependent",
+  "isCorrect": false,
+  "choice_desc": "Machine dependent",
   "question_id": {
     "$oid": "5eb3660d4bf21802ea58d038"
   }
@@ -1244,8 +1244,8 @@
   "_id": {
     "$oid": "5eb3663e4bf21802ea58d03c"
   },
-   "isCorrect": false,
-    "choice_desc": "Error",
+  "isCorrect": false,
+  "choice_desc": "Error",
   "question_id": {
     "$oid": "5eb3660d4bf21802ea58d038"
   }
@@ -1253,8 +1253,8 @@
   "_id": {
     "$oid": "5eb3668f4bf21802ea58d03f"
   },
-   "isCorrect": true,
-    "choice_desc": "List",
+  "isCorrect": true,
+  "choice_desc": "List",
   "question_id": {
     "$oid": "5eb366784bf21802ea58d03e"
   }
@@ -1262,8 +1262,8 @@
   "_id": {
     "$oid": "5eb366974bf21802ea58d040"
   },
-   "isCorrect": false,
-    "choice_desc": "Dictionary",
+  "isCorrect": false,
+  "choice_desc": "Dictionary",
   "question_id": {
     "$oid": "5eb366784bf21802ea58d03e"
   }
@@ -1271,8 +1271,8 @@
   "_id": {
     "$oid": "5eb3669d4bf21802ea58d041"
   },
-   "isCorrect": false,
-    "choice_desc": "Tuple",
+  "isCorrect": false,
+  "choice_desc": "Tuple",
   "question_id": {
     "$oid": "5eb366784bf21802ea58d03e"
   }
@@ -1280,8 +1280,8 @@
   "_id": {
     "$oid": "5eb366a24bf21802ea58d042"
   },
-   "isCorrect": false,
-    "choice_desc": "Array",
+  "isCorrect": false,
+  "choice_desc": "Array",
   "question_id": {
     "$oid": "5eb366784bf21802ea58d03e"
   }
@@ -1289,8 +1289,8 @@
   "_id": {
     "$oid": "5eb366e24bf21802ea58d045"
   },
-   "isCorrect": false,
-    "choice_desc": "int(x [,base])",
+  "isCorrect": false,
+  "choice_desc": "int(x [,base])",
   "question_id": {
     "$oid": "5eb366d34bf21802ea58d044"
   }
@@ -1298,8 +1298,8 @@
   "_id": {
     "$oid": "5eb366ea4bf21802ea58d046"
   },
-   "isCorrect": false,
-    "choice_desc": "long(x [,base] )",
+  "isCorrect": false,
+  "choice_desc": "long(x [,base] )",
   "question_id": {
     "$oid": "5eb366d34bf21802ea58d044"
   }
@@ -1307,8 +1307,8 @@
   "_id": {
     "$oid": "5eb366f34bf21802ea58d047"
   },
-   "isCorrect": true,
-    "choice_desc": "float(x)",
+  "isCorrect": true,
+  "choice_desc": "float(x)",
   "question_id": {
     "$oid": "5eb366d34bf21802ea58d044"
   }
@@ -1316,8 +1316,8 @@
   "_id": {
     "$oid": "5eb366fd4bf21802ea58d048"
   },
-   "isCorrect": false,
-    "choice_desc": "str(x)",
+  "isCorrect": false,
+  "choice_desc": "str(x)",
   "question_id": {
     "$oid": "5eb366d34bf21802ea58d044"
   }
@@ -1325,8 +1325,8 @@
   "_id": {
     "$oid": "5eb367484bf21802ea58d04b"
   },
-   "isCorrect": false,
-    "choice_desc": "Lists",
+  "isCorrect": false,
+  "choice_desc": "Lists",
   "question_id": {
     "$oid": "5eb367314bf21802ea58d04a"
   }
@@ -1334,8 +1334,8 @@
   "_id": {
     "$oid": "5eb367504bf21802ea58d04c"
   },
-   "isCorrect": false,
-    "choice_desc": "Dictionary",
+  "isCorrect": false,
+  "choice_desc": "Dictionary",
   "question_id": {
     "$oid": "5eb367314bf21802ea58d04a"
   }
@@ -1343,8 +1343,8 @@
   "_id": {
     "$oid": "5eb3675d4bf21802ea58d04d"
   },
-   "isCorrect": false,
-    "choice_desc": "Tuples",
+  "isCorrect": false,
+  "choice_desc": "Tuples",
   "question_id": {
     "$oid": "5eb367314bf21802ea58d04a"
   }
@@ -1352,8 +1352,8 @@
   "_id": {
     "$oid": "5eb367674bf21802ea58d04e"
   },
-   "isCorrect": true,
-    "choice_desc": "Class",
+  "isCorrect": true,
+  "choice_desc": "Class",
   "question_id": {
     "$oid": "5eb367314bf21802ea58d04a"
   }
@@ -1361,8 +1361,8 @@
   "_id": {
     "$oid": "5eb367d44bf21802ea58d051"
   },
-   "isCorrect": false,
-    "choice_desc": "8",
+  "isCorrect": false,
+  "choice_desc": "8",
   "question_id": {
     "$oid": "5eb367c64bf21802ea58d050"
   }
@@ -1370,8 +1370,8 @@
   "_id": {
     "$oid": "5eb367da4bf21802ea58d052"
   },
-   "isCorrect": false,
-    "choice_desc": "16",
+  "isCorrect": false,
+  "choice_desc": "16",
   "question_id": {
     "$oid": "5eb367c64bf21802ea58d050"
   }
@@ -1379,8 +1379,8 @@
   "_id": {
     "$oid": "5eb367e04bf21802ea58d053"
   },
-   "isCorrect": true,
-    "choice_desc": "Indentation Error",
+  "isCorrect": true,
+  "choice_desc": "Indentation Error",
   "question_id": {
     "$oid": "5eb367c64bf21802ea58d050"
   }
@@ -1388,8 +1388,8 @@
   "_id": {
     "$oid": "5eb367ed4bf21802ea58d054"
   },
-   "isCorrect": false,
-    "choice_desc": "Runtime Error",
+  "isCorrect": false,
+  "choice_desc": "Runtime Error",
   "question_id": {
     "$oid": "5eb367c64bf21802ea58d050"
   }
@@ -1397,8 +1397,8 @@
   "_id": {
     "$oid": "5eb368254bf21802ea58d057"
   },
-   "isCorrect": false,
-    "choice_desc": "27",
+  "isCorrect": false,
+  "choice_desc": "27",
   "question_id": {
     "$oid": "5eb368184bf21802ea58d056"
   }
@@ -1406,8 +1406,8 @@
   "_id": {
     "$oid": "5eb3682b4bf21802ea58d058"
   },
-   "isCorrect": false,
-    "choice_desc": "9",
+  "isCorrect": false,
+  "choice_desc": "9",
   "question_id": {
     "$oid": "5eb368184bf21802ea58d056"
   }
@@ -1415,8 +1415,8 @@
   "_id": {
     "$oid": "5eb368344bf21802ea58d059"
   },
-   "isCorrect": true,
-    "choice_desc": "3",
+  "isCorrect": true,
+  "choice_desc": "3",
   "question_id": {
     "$oid": "5eb368184bf21802ea58d056"
   }
@@ -1424,8 +1424,8 @@
   "_id": {
     "$oid": "5eb3683e4bf21802ea58d05a"
   },
-   "isCorrect": false,
-    "choice_desc": "1",
+  "isCorrect": false,
+  "choice_desc": "1",
   "question_id": {
     "$oid": "5eb368184bf21802ea58d056"
   }
@@ -1433,8 +1433,8 @@
   "_id": {
     "$oid": "5eb368954bf21802ea58d05d"
   },
-   "isCorrect": false,
-    "choice_desc": "0.333333",
+  "isCorrect": false,
+  "choice_desc": "0.333333",
   "question_id": {
     "$oid": "5eb368874bf21802ea58d05c"
   }
@@ -1442,8 +1442,8 @@
   "_id": {
     "$oid": "5eb3689f4bf21802ea58d05e"
   },
-   "isCorrect": true,
-    "choice_desc": "0.33",
+  "isCorrect": true,
+  "choice_desc": "0.33",
   "question_id": {
     "$oid": "5eb368874bf21802ea58d05c"
   }
@@ -1451,8 +1451,8 @@
   "_id": {
     "$oid": "5eb368a74bf21802ea58d05f"
   },
-   "isCorrect": false,
-    "choice_desc": "0.333333:-2",
+  "isCorrect": false,
+  "choice_desc": "0.333333:-2",
   "question_id": {
     "$oid": "5eb368874bf21802ea58d05c"
   }
@@ -1460,8 +1460,8 @@
   "_id": {
     "$oid": "5eb368b04bf21802ea58d060"
   },
-   "isCorrect": false,
-    "choice_desc": "Error",
+  "isCorrect": false,
+  "choice_desc": "Error",
   "question_id": {
     "$oid": "5eb368874bf21802ea58d05c"
   }
@@ -1469,8 +1469,8 @@
   "_id": {
     "$oid": "5eb3690b4bf21802ea58d063"
   },
-   "isCorrect": false,
-    "choice_desc": "0 1 2 3 0",
+  "isCorrect": false,
+  "choice_desc": "0 1 2 3 0",
   "question_id": {
     "$oid": "5eb368fc4bf21802ea58d062"
   }
@@ -1478,8 +1478,8 @@
   "_id": {
     "$oid": "5eb369144bf21802ea58d064"
   },
-   "isCorrect": true,
-    "choice_desc": "0 1 2 0",
+  "isCorrect": true,
+  "choice_desc": "0 1 2 0",
   "question_id": {
     "$oid": "5eb368fc4bf21802ea58d062"
   }
@@ -1487,8 +1487,8 @@
   "_id": {
     "$oid": "5eb3691c4bf21802ea58d065"
   },
-   "isCorrect": false,
-    "choice_desc": "0 1 2",
+  "isCorrect": false,
+  "choice_desc": "0 1 2",
   "question_id": {
     "$oid": "5eb368fc4bf21802ea58d062"
   }
@@ -1496,8 +1496,8 @@
   "_id": {
     "$oid": "5eb369244bf21802ea58d066"
   },
-   "isCorrect": false,
-    "choice_desc": "Error",
+  "isCorrect": false,
+  "choice_desc": "Error",
   "question_id": {
     "$oid": "5eb368fc4bf21802ea58d062"
   }
@@ -1505,8 +1505,8 @@
   "_id": {
     "$oid": "5eb36c124bf21802ea58d069"
   },
-   "isCorrect": false,
-    "choice_desc": "Prints all nodes of linked lists",
+  "isCorrect": false,
+  "choice_desc": "Prints all nodes of linked lists",
   "question_id": {
     "$oid": "5eb36bd04bf21802ea58d068"
   }
@@ -1514,8 +1514,8 @@
   "_id": {
     "$oid": "5eb36c1f4bf21802ea58d06a"
   },
-   "isCorrect": true,
-    "choice_desc": "Prints all nodes of linked list in reverse order",
+  "isCorrect": true,
+  "choice_desc": "Prints all nodes of linked list in reverse order",
   "question_id": {
     "$oid": "5eb36bd04bf21802ea58d068"
   }
@@ -1523,8 +1523,8 @@
   "_id": {
     "$oid": "5eb36c294bf21802ea58d06b"
   },
-   "isCorrect": false,
-    "choice_desc": "Prints alternate nodes of Linked List",
+  "isCorrect": false,
+  "choice_desc": "Prints alternate nodes of Linked List",
   "question_id": {
     "$oid": "5eb36bd04bf21802ea58d068"
   }
@@ -1532,8 +1532,8 @@
   "_id": {
     "$oid": "5eb36c334bf21802ea58d06c"
   },
-   "isCorrect": false,
-    "choice_desc": "Prints alternate nodes in reverse order",
+  "isCorrect": false,
+  "choice_desc": "Prints alternate nodes in reverse order",
   "question_id": {
     "$oid": "5eb36bd04bf21802ea58d068"
   }
@@ -1541,8 +1541,8 @@
   "_id": {
     "$oid": "5eb36c854bf21802ea58d06f"
   },
-   "isCorrect": false,
-    "choice_desc": "Arrays have better cache locality that can make them better in terms of performance.",
+  "isCorrect": false,
+  "choice_desc": "Arrays have better cache locality that can make them better in terms of performance.",
   "question_id": {
     "$oid": "5eb36c704bf21802ea58d06e"
   }
@@ -1550,8 +1550,8 @@
   "_id": {
     "$oid": "5eb36c934bf21802ea58d070"
   },
-   "isCorrect": false,
-    "choice_desc": "It is easy to insert and delete elements in Linked List",
+  "isCorrect": false,
+  "choice_desc": "It is easy to insert and delete elements in Linked List",
   "question_id": {
     "$oid": "5eb36c704bf21802ea58d06e"
   }
@@ -1559,8 +1559,8 @@
   "_id": {
     "$oid": "5eb36c9e4bf21802ea58d071"
   },
-   "isCorrect": false,
-    "choice_desc": "Random access is not allowed in a typical implementation of Linked Lists",
+  "isCorrect": false,
+  "choice_desc": "Random access is not allowed in a typical implementation of Linked Lists",
   "question_id": {
     "$oid": "5eb36c704bf21802ea58d06e"
   }
@@ -1568,8 +1568,8 @@
   "_id": {
     "$oid": "5eb36ca74bf21802ea58d072"
   },
-   "isCorrect": false,
-    "choice_desc": "The size of array has to be pre-decided, linked lists can change their size any time.",
+  "isCorrect": false,
+  "choice_desc": "The size of array has to be pre-decided, linked lists can change their size any time.",
   "question_id": {
     "$oid": "5eb36c704bf21802ea58d06e"
   }
@@ -1577,8 +1577,8 @@
   "_id": {
     "$oid": "5eb36cb04bf21802ea58d073"
   },
-   "isCorrect": true,
-    "choice_desc": "All of the above",
+  "isCorrect": true,
+  "choice_desc": "All of the above",
   "question_id": {
     "$oid": "5eb36c704bf21802ea58d06e"
   }
@@ -1586,8 +1586,8 @@
   "_id": {
     "$oid": "5eb36dc84bf21802ea58d076"
   },
-   "isCorrect": false,
-    "choice_desc": "2 <--> 1 <--> 4 <--> 3 <--> 6 <-->5",
+  "isCorrect": false,
+  "choice_desc": "2 <--> 1 <--> 4 <--> 3 <--> 6 <-->5",
   "question_id": {
     "$oid": "5eb36db64bf21802ea58d075"
   }
@@ -1595,8 +1595,8 @@
   "_id": {
     "$oid": "5eb36dd34bf21802ea58d077"
   },
-   "isCorrect": false,
-    "choice_desc": "5 <--> 4 <--> 3 <--> 2 <--> 1 <-->6.",
+  "isCorrect": false,
+  "choice_desc": "5 <--> 4 <--> 3 <--> 2 <--> 1 <-->6.",
   "question_id": {
     "$oid": "5eb36db64bf21802ea58d075"
   }
@@ -1604,8 +1604,8 @@
   "_id": {
     "$oid": "5eb36dde4bf21802ea58d078"
   },
-   "isCorrect": true,
-    "choice_desc": "6 <--> 5 <--> 4 <--> 3 <--> 2 <--> 1.",
+  "isCorrect": true,
+  "choice_desc": "6 <--> 5 <--> 4 <--> 3 <--> 2 <--> 1.",
   "question_id": {
     "$oid": "5eb36db64bf21802ea58d075"
   }
@@ -1613,8 +1613,8 @@
   "_id": {
     "$oid": "5eb36dee4bf21802ea58d079"
   },
-   "isCorrect": false,
-    "choice_desc": "6 <--> 5 <--> 4 <--> 3 <--> 1 <--> 2",
+  "isCorrect": false,
+  "choice_desc": "6 <--> 5 <--> 4 <--> 3 <--> 1 <--> 2",
   "question_id": {
     "$oid": "5eb36db64bf21802ea58d075"
   }
@@ -1622,8 +1622,8 @@
   "_id": {
     "$oid": "5eb36eca4bf21802ea58d07c"
   },
-   "isCorrect": false,
-    "choice_desc": "Insertion Sort",
+  "isCorrect": false,
+  "choice_desc": "Insertion Sort",
   "question_id": {
     "$oid": "5eb36eba4bf21802ea58d07b"
   }
@@ -1631,8 +1631,8 @@
   "_id": {
     "$oid": "5eb36ed24bf21802ea58d07d"
   },
-   "isCorrect": false,
-    "choice_desc": "Quick Sort",
+  "isCorrect": false,
+  "choice_desc": "Quick Sort",
   "question_id": {
     "$oid": "5eb36eba4bf21802ea58d07b"
   }
@@ -1640,8 +1640,8 @@
   "_id": {
     "$oid": "5eb36ee44bf21802ea58d07e"
   },
-   "isCorrect": false,
-    "choice_desc": "Heap Sort",
+  "isCorrect": false,
+  "choice_desc": "Heap Sort",
   "question_id": {
     "$oid": "5eb36eba4bf21802ea58d07b"
   }
@@ -1649,8 +1649,8 @@
   "_id": {
     "$oid": "5eb36eed4bf21802ea58d07f"
   },
-   "isCorrect": true,
-    "choice_desc": "Merge Sort",
+  "isCorrect": true,
+  "choice_desc": "Merge Sort",
   "question_id": {
     "$oid": "5eb36eba4bf21802ea58d07b"
   }
@@ -1658,8 +1658,8 @@
   "_id": {
     "$oid": "5eb36f8d4bf21802ea58d082"
   },
-   "isCorrect": false,
-    "choice_desc": "Prints binary representation of n in reverse order",
+  "isCorrect": false,
+  "choice_desc": "Prints binary representation of n in reverse order",
   "question_id": {
     "$oid": "5eb36f714bf21802ea58d081"
   }
@@ -1667,8 +1667,8 @@
   "_id": {
     "$oid": "5eb36f9b4bf21802ea58d083"
   },
-   "isCorrect": true,
-    "choice_desc": "Prints binary representation of n",
+  "isCorrect": true,
+  "choice_desc": "Prints binary representation of n",
   "question_id": {
     "$oid": "5eb36f714bf21802ea58d081"
   }
@@ -1676,8 +1676,8 @@
   "_id": {
     "$oid": "5eb36fa44bf21802ea58d084"
   },
-   "isCorrect": false,
-    "choice_desc": "Prints the value of Logn",
+  "isCorrect": false,
+  "choice_desc": "Prints the value of Logn",
   "question_id": {
     "$oid": "5eb36f714bf21802ea58d081"
   }
@@ -1685,8 +1685,8 @@
   "_id": {
     "$oid": "5eb36fad4bf21802ea58d085"
   },
-   "isCorrect": false,
-    "choice_desc": "Prints the value of Logn in reverse order",
+  "isCorrect": false,
+  "choice_desc": "Prints the value of Logn in reverse order",
   "question_id": {
     "$oid": "5eb36f714bf21802ea58d081"
   }
@@ -1694,8 +1694,8 @@
   "_id": {
     "$oid": "5eb370074bf21802ea58d088"
   },
-   "isCorrect": false,
-    "choice_desc": "Managing function calls",
+  "isCorrect": false,
+  "choice_desc": "Managing function calls",
   "question_id": {
     "$oid": "5eb36ff64bf21802ea58d087"
   }
@@ -1703,8 +1703,8 @@
   "_id": {
     "$oid": "5eb370134bf21802ea58d089"
   },
-   "isCorrect": false,
-    "choice_desc": "The stock span problem",
+  "isCorrect": false,
+  "choice_desc": "The stock span problem",
   "question_id": {
     "$oid": "5eb36ff64bf21802ea58d087"
   }
@@ -1712,8 +1712,8 @@
   "_id": {
     "$oid": "5eb370204bf21802ea58d08a"
   },
-   "isCorrect": false,
-    "choice_desc": "Arithmetic expression evaluation",
+  "isCorrect": false,
+  "choice_desc": "Arithmetic expression evaluation",
   "question_id": {
     "$oid": "5eb36ff64bf21802ea58d087"
   }
@@ -1721,8 +1721,8 @@
   "_id": {
     "$oid": "5eb370294bf21802ea58d08b"
   },
-   "isCorrect": true,
-    "choice_desc": "All of the above",
+  "isCorrect": true,
+  "choice_desc": "All of the above",
   "question_id": {
     "$oid": "5eb36ff64bf21802ea58d087"
   }
@@ -1730,8 +1730,8 @@
   "_id": {
     "$oid": "5eb370734bf21802ea58d08e"
   },
-   "isCorrect": false,
-    "choice_desc": "geeksquizgeeksquiz",
+  "isCorrect": false,
+  "choice_desc": "geeksquizgeeksquiz",
   "question_id": {
     "$oid": "5eb370664bf21802ea58d08d"
   }
@@ -1739,8 +1739,8 @@
   "_id": {
     "$oid": "5eb3707a4bf21802ea58d08f"
   },
-   "isCorrect": true,
-    "choice_desc": "ziuqskeeg",
+  "isCorrect": true,
+  "choice_desc": "ziuqskeeg",
   "question_id": {
     "$oid": "5eb370664bf21802ea58d08d"
   }
@@ -1748,8 +1748,8 @@
   "_id": {
     "$oid": "5eb370814bf21802ea58d090"
   },
-   "isCorrect": false,
-    "choice_desc": "geeksquiz",
+  "isCorrect": false,
+  "choice_desc": "geeksquiz",
   "question_id": {
     "$oid": "5eb370664bf21802ea58d08d"
   }
@@ -1757,8 +1757,8 @@
   "_id": {
     "$oid": "5eb370894bf21802ea58d091"
   },
-   "isCorrect": false,
-    "choice_desc": "ziuqskeegziuqskeeg",
+  "isCorrect": false,
+  "choice_desc": "ziuqskeegziuqskeeg",
   "question_id": {
     "$oid": "5eb370664bf21802ea58d08d"
   }
@@ -1766,8 +1766,8 @@
   "_id": {
     "$oid": "5eb370ce4bf21802ea58d094"
   },
-   "isCorrect": false,
-    "choice_desc": "Every binary tree is either complete or full.",
+  "isCorrect": false,
+  "choice_desc": "Every binary tree is either complete or full.",
   "question_id": {
     "$oid": "5eb370c14bf21802ea58d093"
   }
@@ -1775,8 +1775,8 @@
   "_id": {
     "$oid": "5eb370d74bf21802ea58d095"
   },
-   "isCorrect": false,
-    "choice_desc": "Every complete binary tree is also a full binary tree.",
+  "isCorrect": false,
+  "choice_desc": "Every complete binary tree is also a full binary tree.",
   "question_id": {
     "$oid": "5eb370c14bf21802ea58d093"
   }
@@ -1784,8 +1784,8 @@
   "_id": {
     "$oid": "5eb370e34bf21802ea58d096"
   },
-   "isCorrect": false,
-    "choice_desc": "Every full binary tree is also a complete binary tree.",
+  "isCorrect": false,
+  "choice_desc": "Every full binary tree is also a complete binary tree.",
   "question_id": {
     "$oid": "5eb370c14bf21802ea58d093"
   }
@@ -1793,8 +1793,8 @@
   "_id": {
     "$oid": "5eb370ec4bf21802ea58d097"
   },
-   "isCorrect": false,
-    "choice_desc": "No binary tree is both complete and full.",
+  "isCorrect": false,
+  "choice_desc": "No binary tree is both complete and full.",
   "question_id": {
     "$oid": "5eb370c14bf21802ea58d093"
   }
@@ -1802,8 +1802,8 @@
   "_id": {
     "$oid": "5eb370f74bf21802ea58d098"
   },
-   "isCorrect": true,
-    "choice_desc": "None of the above",
+  "isCorrect": true,
+  "choice_desc": "None of the above",
   "question_id": {
     "$oid": "5eb370c14bf21802ea58d093"
   }
@@ -1811,8 +1811,8 @@
   "_id": {
     "$oid": "5eb3713c4bf21802ea58d09b"
   },
-   "isCorrect": false,
-    "choice_desc": "1, 2, 3, 4 and 6",
+  "isCorrect": false,
+  "choice_desc": "1, 2, 3, 4 and 6",
   "question_id": {
     "$oid": "5eb3712a4bf21802ea58d09a"
   }
@@ -1820,8 +1820,8 @@
   "_id": {
     "$oid": "5eb371474bf21802ea58d09c"
   },
-   "isCorrect": false,
-    "choice_desc": "1,2, 3, 4 and 5",
+  "isCorrect": false,
+  "choice_desc": "1,2, 3, 4 and 5",
   "question_id": {
     "$oid": "5eb3712a4bf21802ea58d09a"
   }
@@ -1829,8 +1829,8 @@
   "_id": {
     "$oid": "5eb371504bf21802ea58d09d"
   },
-   "isCorrect": false,
-    "choice_desc": "1, 3, 4, 5 and 6",
+  "isCorrect": false,
+  "choice_desc": "1, 3, 4, 5 and 6",
   "question_id": {
     "$oid": "5eb3712a4bf21802ea58d09a"
   }
@@ -1838,8 +1838,8 @@
   "_id": {
     "$oid": "5eb3715d4bf21802ea58d09e"
   },
-   "isCorrect": true,
-    "choice_desc": "1, 2, 3, 4, 5 and 6",
+  "isCorrect": true,
+  "choice_desc": "1, 2, 3, 4, 5 and 6",
   "question_id": {
     "$oid": "5eb3712a4bf21802ea58d09a"
   }
@@ -1847,8 +1847,8 @@
   "_id": {
     "$oid": "5eb3719b4bf21802ea58d0a1"
   },
-   "isCorrect": false,
-    "choice_desc": "1",
+  "isCorrect": false,
+  "choice_desc": "1",
   "question_id": {
     "$oid": "5eb3718f4bf21802ea58d0a0"
   }
@@ -1856,8 +1856,8 @@
   "_id": {
     "$oid": "5eb371a14bf21802ea58d0a2"
   },
-   "isCorrect": true,
-    "choice_desc": "5",
+  "isCorrect": true,
+  "choice_desc": "5",
   "question_id": {
     "$oid": "5eb3718f4bf21802ea58d0a0"
   }
@@ -1865,8 +1865,8 @@
   "_id": {
     "$oid": "5eb371a54bf21802ea58d0a3"
   },
-   "isCorrect": false,
-    "choice_desc": "4",
+  "isCorrect": false,
+  "choice_desc": "4",
   "question_id": {
     "$oid": "5eb3718f4bf21802ea58d0a0"
   }
@@ -1874,8 +1874,8 @@
   "_id": {
     "$oid": "5eb371ab4bf21802ea58d0a4"
   },
-   "isCorrect": false,
-    "choice_desc": "3",
+  "isCorrect": false,
+  "choice_desc": "3",
   "question_id": {
     "$oid": "5eb3718f4bf21802ea58d0a0"
   }
@@ -1883,8 +1883,8 @@
   "_id": {
     "$oid": "5eb372144bf21802ea58d0a7"
   },
-   "isCorrect": false,
-    "choice_desc": "I and II",
+  "isCorrect": false,
+  "choice_desc": "I and II",
   "question_id": {
     "$oid": "5eb371e54bf21802ea58d0a6"
   }
@@ -1892,8 +1892,8 @@
   "_id": {
     "$oid": "5eb3721d4bf21802ea58d0a8"
   },
-   "isCorrect": false,
-    "choice_desc": "III and IV",
+  "isCorrect": false,
+  "choice_desc": "III and IV",
   "question_id": {
     "$oid": "5eb371e54bf21802ea58d0a6"
   }
@@ -1901,8 +1901,8 @@
   "_id": {
     "$oid": "5eb372264bf21802ea58d0a9"
   },
-   "isCorrect": false,
-    "choice_desc": "IV only",
+  "isCorrect": false,
+  "choice_desc": "IV only",
   "question_id": {
     "$oid": "5eb371e54bf21802ea58d0a6"
   }
@@ -1910,8 +1910,8 @@
   "_id": {
     "$oid": "5eb372304bf21802ea58d0aa"
   },
-   "isCorrect": true,
-    "choice_desc": "II and IV",
+  "isCorrect": true,
+  "choice_desc": "II and IV",
   "question_id": {
     "$oid": "5eb371e54bf21802ea58d0a6"
   }
@@ -1919,8 +1919,8 @@
   "_id": {
     "$oid": "5eb372664bf21802ea58d0ad"
   },
-   "isCorrect": false,
-    "choice_desc": "O(n)",
+  "isCorrect": false,
+  "choice_desc": "O(n)",
   "question_id": {
     "$oid": "5eb372594bf21802ea58d0ac"
   }
@@ -1928,8 +1928,8 @@
   "_id": {
     "$oid": "5eb3726f4bf21802ea58d0ae"
   },
-   "isCorrect": false,
-    "choice_desc": "O(nLogn)",
+  "isCorrect": false,
+  "choice_desc": "O(nLogn)",
   "question_id": {
     "$oid": "5eb372594bf21802ea58d0ac"
   }
@@ -1937,8 +1937,8 @@
   "_id": {
     "$oid": "5eb372794bf21802ea58d0af"
   },
-   "isCorrect": false,
-    "choice_desc": "O(n ^ (3/2))",
+  "isCorrect": false,
+  "choice_desc": "O(n ^ (3/2))",
   "question_id": {
     "$oid": "5eb372594bf21802ea58d0ac"
   }
@@ -1946,8 +1946,8 @@
   "_id": {
     "$oid": "5eb372844bf21802ea58d0b0"
   },
-   "isCorrect": true,
-    "choice_desc": "O(n^3)",
+  "isCorrect": true,
+  "choice_desc": "O(n^3)",
   "question_id": {
     "$oid": "5eb372594bf21802ea58d0ac"
   }
@@ -1955,8 +1955,8 @@
   "_id": {
     "$oid": "5eb377df4bf21802ea58d0b3"
   },
-   "isCorrect": false,
-    "choice_desc": "n(n-l)/2",
+  "isCorrect": false,
+  "choice_desc": "n(n-l)/2",
   "question_id": {
     "$oid": "5eb377cf4bf21802ea58d0b2"
   }
@@ -1964,8 +1964,8 @@
   "_id": {
     "$oid": "5eb377ea4bf21802ea58d0b4"
   },
-   "isCorrect": false,
-    "choice_desc": "2^n",
+  "isCorrect": false,
+  "choice_desc": "2^n",
   "question_id": {
     "$oid": "5eb377cf4bf21802ea58d0b2"
   }
@@ -1973,8 +1973,8 @@
   "_id": {
     "$oid": "5eb37b2c4bf21802ea58d0b5"
   },
-   "isCorrect": false,
-    "choice_desc": "n!",
+  "isCorrect": false,
+  "choice_desc": "n!",
   "question_id": {
     "$oid": "5eb377cf4bf21802ea58d0b2"
   }
@@ -1982,8 +1982,8 @@
   "_id": {
     "$oid": "5eb37b354bf21802ea58d0b6"
   },
-   "isCorrect": true,
-    "choice_desc": "2^(n(n-1)/2)",
+  "isCorrect": true,
+  "choice_desc": "2^(n(n-1)/2)",
   "question_id": {
     "$oid": "5eb377cf4bf21802ea58d0b2"
   }
@@ -1991,8 +1991,8 @@
   "_id": {
     "$oid": "5eb37b864bf21802ea58d0b9"
   },
-   "isCorrect": false,
-    "choice_desc": "h(i) =i2 mod 10",
+  "isCorrect": false,
+  "choice_desc": "h(i) =i2 mod 10",
   "question_id": {
     "$oid": "5eb37b6e4bf21802ea58d0b8"
   }
@@ -2000,8 +2000,8 @@
   "_id": {
     "$oid": "5eb37b944bf21802ea58d0ba"
   },
-   "isCorrect": true,
-    "choice_desc": "h(i) =i3 mod 10",
+  "isCorrect": true,
+  "choice_desc": "h(i) =i3 mod 10",
   "question_id": {
     "$oid": "5eb37b6e4bf21802ea58d0b8"
   }
@@ -2009,8 +2009,8 @@
   "_id": {
     "$oid": "5eb37b9d4bf21802ea58d0bb"
   },
-   "isCorrect": false,
-    "choice_desc": "h(i) = (11 ∗ i2) mod 10",
+  "isCorrect": false,
+  "choice_desc": "h(i) = (11 ∗ i2) mod 10",
   "question_id": {
     "$oid": "5eb37b6e4bf21802ea58d0b8"
   }
@@ -2018,8 +2018,8 @@
   "_id": {
     "$oid": "5eb37bc84bf21802ea58d0bc"
   },
-   "isCorrect": false,
-    "choice_desc": "h(i) = (12 ∗ i) mod 10",
+  "isCorrect": false,
+  "choice_desc": "h(i) = (12 ∗ i) mod 10",
   "question_id": {
     "$oid": "5eb37b6e4bf21802ea58d0b8"
   }
@@ -2027,8 +2027,8 @@
   "_id": {
     "$oid": "5eb37c114bf21802ea58d0bf"
   },
-   "isCorrect": false,
-    "choice_desc": "i only",
+  "isCorrect": false,
+  "choice_desc": "i only",
   "question_id": {
     "$oid": "5eb37c004bf21802ea58d0be"
   }
@@ -2036,8 +2036,8 @@
   "_id": {
     "$oid": "5eb37c194bf21802ea58d0c0"
   },
-   "isCorrect": false,
-    "choice_desc": "ii only",
+  "isCorrect": false,
+  "choice_desc": "ii only",
   "question_id": {
     "$oid": "5eb37c004bf21802ea58d0be"
   }
@@ -2045,8 +2045,8 @@
   "_id": {
     "$oid": "5eb37c214bf21802ea58d0c1"
   },
-   "isCorrect": true,
-    "choice_desc": "i and ii only",
+  "isCorrect": true,
+  "choice_desc": "i and ii only",
   "question_id": {
     "$oid": "5eb37c004bf21802ea58d0be"
   }
@@ -2054,8 +2054,8 @@
   "_id": {
     "$oid": "5eb37c2c4bf21802ea58d0c2"
   },
-   "isCorrect": false,
-    "choice_desc": "iii or iv",
+  "isCorrect": false,
+  "choice_desc": "iii or iv",
   "question_id": {
     "$oid": "5eb37c004bf21802ea58d0be"
   }
@@ -2066,8 +2066,8 @@
   "question_id": {
     "$oid": "5edbd594b3d1521cff909c52"
   },
-   "isCorrect": false,
-    "choice_desc": "1"
+  "isCorrect": false,
+  "choice_desc": "1"
 },{
   "_id": {
     "$oid": "5edbd594b3d1521cff909c54"
@@ -2075,8 +2075,8 @@
   "question_id": {
     "$oid": "5edbd594b3d1521cff909c52"
   },
-   "isCorrect": true,
-    "choice_desc": "2"
+  "isCorrect": true,
+  "choice_desc": "2"
 },{
   "_id": {
     "$oid": "5edbd594b3d1521cff909c55"
@@ -2084,8 +2084,8 @@
   "question_id": {
     "$oid": "5edbd594b3d1521cff909c52"
   },
-   "isCorrect": false,
-    "choice_desc": "3"
+  "isCorrect": false,
+  "choice_desc": "3"
 },{
   "_id": {
     "$oid": "5edbd594b3d1521cff909c56"
@@ -2093,6 +2093,2724 @@
   "question_id": {
     "$oid": "5edbd594b3d1521cff909c52"
   },
-   "isCorrect": false,
-    "choice_desc": "4"
+  "isCorrect": false,
+  "choice_desc": "4"
+},{
+  "_id": {
+    "$oid": "5f1982238c0aa716081be8a2"
+  },
+  "question_id": {
+    "$oid": "5f1977168c0aa716081be857"
+  },
+  "isCorrect": false,
+  "choice_desc": "5"
+},{
+  "_id": {
+    "$oid": "5f1982278c0aa716081be8a3"
+  },
+  "question_id": {
+    "$oid": "5f1977168c0aa716081be857"
+  },
+  "isCorrect": false,
+  "choice_desc": "6"
+},{
+  "_id": {
+    "$oid": "5f19822a8c0aa716081be8a4"
+  },
+  "question_id": {
+    "$oid": "5f1977168c0aa716081be857"
+  },
+  "isCorrect": true,
+  "choice_desc": "8"
+},{
+  "_id": {
+    "$oid": "5f19822f8c0aa716081be8a5"
+  },
+  "question_id": {
+    "$oid": "5f1977168c0aa716081be857"
+  },
+  "isCorrect": false,
+  "choice_desc": "7"
+},{
+  "_id": {
+    "$oid": "5f1982968c0aa716081be8a6"
+  },
+  "question_id": {
+    "$oid": "5f19773b8c0aa716081be858"
+  },
+  "isCorrect": true,
+  "choice_desc": "ATmega328p"
+},{
+  "_id": {
+    "$oid": "5f1982988c0aa716081be8a7"
+  },
+  "question_id": {
+    "$oid": "5f19773b8c0aa716081be858"
+  },
+  "isCorrect": false,
+  "choice_desc": "ATmega2560"
+},{
+  "_id": {
+    "$oid": "5f19829b8c0aa716081be8a8"
+  },
+  "question_id": {
+    "$oid": "5f19773b8c0aa716081be858"
+  },
+  "isCorrect": false,
+  "choice_desc": "ATmega32114"
+},{
+  "_id": {
+    "$oid": "5f19829d8c0aa716081be8a9"
+  },
+  "question_id": {
+    "$oid": "5f19773b8c0aa716081be858"
+  },
+  "isCorrect": false,
+  "choice_desc": "AT91SAM3x8E"
+},{
+  "_id": {
+    "$oid": "5f1983b18c0aa716081be8aa"
+  },
+  "question_id": {
+    "$oid": "5f19774a8c0aa716081be859"
+  },
+  "isCorrect": true,
+  "choice_desc": "Optiboot bootloader"
+},{
+  "_id": {
+    "$oid": "5f1983b28c0aa716081be8ab"
+  },
+  "question_id": {
+    "$oid": "5f19774a8c0aa716081be859"
+  },
+  "isCorrect": false,
+  "choice_desc": "AIR-boot"
+},{
+  "_id": {
+    "$oid": "5f1983b58c0aa716081be8ac"
+  },
+  "question_id": {
+    "$oid": "5f19774a8c0aa716081be859"
+  },
+  "isCorrect": false,
+  "choice_desc": "Bare box"
+},{
+  "_id": {
+    "$oid": "5f1983b88c0aa716081be8ad"
+  },
+  "question_id": {
+    "$oid": "5f19774a8c0aa716081be859"
+  },
+  "isCorrect": false,
+  "choice_desc": "GAG"
+},{
+  "_id": {
+    "$oid": "5f1984088c0aa716081be8ae"
+  },
+  "question_id": {
+    "$oid": "5f1977628c0aa716081be85a"
+  },
+  "isCorrect": false,
+  "choice_desc": "Assembly Language"
+},{
+  "_id": {
+    "$oid": "5f19840a8c0aa716081be8af"
+  },
+  "question_id": {
+    "$oid": "5f1977628c0aa716081be85a"
+  },
+  "isCorrect": false,
+  "choice_desc": "C Languages"
+},{
+  "_id": {
+    "$oid": "5f19840c8c0aa716081be8b0"
+  },
+  "question_id": {
+    "$oid": "5f1977628c0aa716081be85a"
+  },
+  "isCorrect": false,
+  "choice_desc": "JAVA"
+},{
+  "_id": {
+    "$oid": "5f1984108c0aa716081be8b1"
+  },
+  "question_id": {
+    "$oid": "5f1977628c0aa716081be85a"
+  },
+  "isCorrect": true,
+  "choice_desc": "Any Language"
+},{
+  "_id": {
+    "$oid": "5f19844c8c0aa716081be8b2"
+  },
+  "question_id": {
+    "$oid": "5f1978288c0aa716081be85b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Build() and loop()"
+},{
+  "_id": {
+    "$oid": "5f19844d8c0aa716081be8b3"
+  },
+  "question_id": {
+    "$oid": "5f1978288c0aa716081be85b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Setup() and build()"
+},{
+  "_id": {
+    "$oid": "5f1984508c0aa716081be8b4"
+  },
+  "question_id": {
+    "$oid": "5f1978288c0aa716081be85b"
+  },
+  "isCorrect": true,
+  "choice_desc": "Setup() and loop()"
+},{
+  "_id": {
+    "$oid": "5f1984528c0aa716081be8b5"
+  },
+  "question_id": {
+    "$oid": "5f1978288c0aa716081be85b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Loop() and build() and setup()"
+},{
+  "_id": {
+    "$oid": "5f1985598c0aa716081be8b6"
+  },
+  "question_id": {
+    "$oid": "5f1979158c0aa716081be85c"
+  },
+  "isCorrect": false,
+  "choice_desc": "Production"
+},{
+  "_id": {
+    "$oid": "5f19855b8c0aa716081be8b7"
+  },
+  "question_id": {
+    "$oid": "5f1979158c0aa716081be85c"
+  },
+  "isCorrect": true,
+  "choice_desc": "Pico-Power"
+},{
+  "_id": {
+    "$oid": "5f19855e8c0aa716081be8b8"
+  },
+  "question_id": {
+    "$oid": "5f1979158c0aa716081be85c"
+  },
+  "isCorrect": false,
+  "choice_desc": "Power-Pico"
+},{
+  "_id": {
+    "$oid": "5f1985608c0aa716081be8b9"
+  },
+  "question_id": {
+    "$oid": "5f1979158c0aa716081be85c"
+  },
+  "isCorrect": false,
+  "choice_desc": "Programmable on chip"
+},{
+  "_id": {
+    "$oid": "5f1985c08c0aa716081be8ba"
+  },
+  "question_id": {
+    "$oid": "5f197a068c0aa716081be85d"
+  },
+  "isCorrect": false,
+  "choice_desc": "UNO"
+},{
+  "_id": {
+    "$oid": "5f1985c28c0aa716081be8bb"
+  },
+  "question_id": {
+    "$oid": "5f197a068c0aa716081be85d"
+  },
+  "isCorrect": false,
+  "choice_desc": "RedBoard"
+},{
+  "_id": {
+    "$oid": "5f1985c48c0aa716081be8bc"
+  },
+  "question_id": {
+    "$oid": "5f197a068c0aa716081be85d"
+  },
+  "isCorrect": true,
+  "choice_desc": "LilyPad"
+},{
+  "_id": {
+    "$oid": "5f1985c68c0aa716081be8bd"
+  },
+  "question_id": {
+    "$oid": "5f197a068c0aa716081be85d"
+  },
+  "isCorrect": false,
+  "choice_desc": "Mega"
+},{
+  "_id": {
+    "$oid": "5f1986048c0aa716081be8be"
+  },
+  "question_id": {
+    "$oid": "5f197a208c0aa716081be85e"
+  },
+  "isCorrect": false,
+  "choice_desc": "IDE source"
+},{
+  "_id": {
+    "$oid": "5f1986068c0aa716081be8bf"
+  },
+  "question_id": {
+    "$oid": "5f197a208c0aa716081be85e"
+  },
+  "isCorrect": true,
+  "choice_desc": "Sketch"
+},{
+  "_id": {
+    "$oid": "5f1986088c0aa716081be8c0"
+  },
+  "question_id": {
+    "$oid": "5f197a208c0aa716081be85e"
+  },
+  "isCorrect": false,
+  "choice_desc": "Cryptography"
+},{
+  "_id": {
+    "$oid": "5f19860b8c0aa716081be8c1"
+  },
+  "question_id": {
+    "$oid": "5f197a208c0aa716081be85e"
+  },
+  "isCorrect": false,
+  "choice_desc": "Source code"
+},{
+  "_id": {
+    "$oid": "5f1986458c0aa716081be8c2"
+  },
+  "question_id": {
+    "$oid": "5f197a388c0aa716081be85f"
+  },
+  "isCorrect": false,
+  "choice_desc": "Sensor"
+},{
+  "_id": {
+    "$oid": "5f1986478c0aa716081be8c3"
+  },
+  "question_id": {
+    "$oid": "5f197a388c0aa716081be85f"
+  },
+  "isCorrect": false,
+  "choice_desc": "Data types"
+},{
+  "_id": {
+    "$oid": "5f19864a8c0aa716081be8c4"
+  },
+  "question_id": {
+    "$oid": "5f197a388c0aa716081be85f"
+  },
+  "isCorrect": false,
+  "choice_desc": "Breadboard"
+},{
+  "_id": {
+    "$oid": "5f19864c8c0aa716081be8c5"
+  },
+  "question_id": {
+    "$oid": "5f197a388c0aa716081be85f"
+  },
+  "isCorrect": true,
+  "choice_desc": "Sheilds"
+},{
+  "_id": {
+    "$oid": "5f1986858c0aa716081be8c6"
+  },
+  "question_id": {
+    "$oid": "5f197a5f8c0aa716081be860"
+  },
+  "isCorrect": false,
+  "choice_desc": "Extra peripherals"
+},{
+  "_id": {
+    "$oid": "5f1986888c0aa716081be8c7"
+  },
+  "question_id": {
+    "$oid": "5f197a5f8c0aa716081be860"
+  },
+  "isCorrect": true,
+  "choice_desc": "Add on modules"
+},{
+  "_id": {
+    "$oid": "5f19868b8c0aa716081be8c8"
+  },
+  "question_id": {
+    "$oid": "5f197a5f8c0aa716081be860"
+  },
+  "isCorrect": false,
+  "choice_desc": "Connectivity modules"
+},{
+  "_id": {
+    "$oid": "5f19868f8c0aa716081be8c9"
+  },
+  "question_id": {
+    "$oid": "5f197a5f8c0aa716081be860"
+  },
+  "isCorrect": false,
+  "choice_desc": "Another Arduinos"
+},{
+  "_id": {
+    "$oid": "5f1987238c0aa716081be8ca"
+  },
+  "question_id": {
+    "$oid": "5f197a5f8c0aa716081be860"
+  },
+  "isCorrect": false,
+  "choice_desc": "Another Arduinos"
+},{
+  "_id": {
+    "$oid": "5f1987268c0aa716081be8cb"
+  },
+  "question_id": {
+    "$oid": "5f197a968c0aa716081be861"
+  },
+  "isCorrect": true,
+  "choice_desc": "True"
+},{
+  "_id": {
+    "$oid": "5f1987288c0aa716081be8cc"
+  },
+  "question_id": {
+    "$oid": "5f197a968c0aa716081be861"
+  },
+  "isCorrect": false,
+  "choice_desc": "False"
+},{
+  "_id": {
+    "$oid": "5f19872a8c0aa716081be8cd"
+  },
+  "question_id": {
+    "$oid": "5f197abf8c0aa716081be862"
+  },
+  "isCorrect": false,
+  "choice_desc": "False"
+},{
+  "_id": {
+    "$oid": "5f19872c8c0aa716081be8ce"
+  },
+  "question_id": {
+    "$oid": "5f197abf8c0aa716081be862"
+  },
+  "isCorrect": true,
+  "choice_desc": "True"
+},{
+  "_id": {
+    "$oid": "5f1987918c0aa716081be8cf"
+  },
+  "question_id": {
+    "$oid": "5f197ace8c0aa716081be863"
+  },
+  "isCorrect": false,
+  "choice_desc": "true"
+},{
+  "_id": {
+    "$oid": "5f1987948c0aa716081be8d0"
+  },
+  "question_id": {
+    "$oid": "5f197ace8c0aa716081be863"
+  },
+  "isCorrect": false,
+  "choice_desc": "12"
+},{
+  "_id": {
+    "$oid": "5f1987978c0aa716081be8d1"
+  },
+  "question_id": {
+    "$oid": "5f197ace8c0aa716081be863"
+  },
+  "isCorrect": false,
+  "choice_desc": "16"
+},{
+  "_id": {
+    "$oid": "5f19879a8c0aa716081be8d2"
+  },
+  "question_id": {
+    "$oid": "5f197ace8c0aa716081be863"
+  },
+  "isCorrect": false,
+  "choice_desc": "20"
+},{
+  "_id": {
+    "$oid": "5f1987cd8c0aa716081be8d3"
+  },
+  "question_id": {
+    "$oid": "5f197aeb8c0aa716081be864"
+  },
+  "isCorrect": false,
+  "choice_desc": "true"
+},{
+  "_id": {
+    "$oid": "5f1987cf8c0aa716081be8d4"
+  },
+  "question_id": {
+    "$oid": "5f197aeb8c0aa716081be864"
+  },
+  "isCorrect": false,
+  "choice_desc": "14"
+},{
+  "_id": {
+    "$oid": "5f1987d28c0aa716081be8d5"
+  },
+  "question_id": {
+    "$oid": "5f197aeb8c0aa716081be864"
+  },
+  "isCorrect": false,
+  "choice_desc": "20"
+},{
+  "_id": {
+    "$oid": "5f1987d48c0aa716081be8d6"
+  },
+  "question_id": {
+    "$oid": "5f197aeb8c0aa716081be864"
+  },
+  "isCorrect": false,
+  "choice_desc": "8"
+},{
+  "_id": {
+    "$oid": "5f19887f8c0aa716081be8d7"
+  },
+  "question_id": {
+    "$oid": "5f197aeb8c0aa716081be864"
+  },
+  "isCorrect": true,
+  "choice_desc": "OP-Code"
+},{
+  "_id": {
+    "$oid": "5f1988818c0aa716081be8d8"
+  },
+  "question_id": {
+    "$oid": "5f197aeb8c0aa716081be864"
+  },
+  "isCorrect": false,
+  "choice_desc": "Operators"
+},{
+  "_id": {
+    "$oid": "5f1988838c0aa716081be8d9"
+  },
+  "question_id": {
+    "$oid": "5f197aeb8c0aa716081be864"
+  },
+  "isCorrect": false,
+  "choice_desc": "Commands"
+},{
+  "_id": {
+    "$oid": "5f1988858c0aa716081be8da"
+  },
+  "question_id": {
+    "$oid": "5f197aeb8c0aa716081be864"
+  },
+  "isCorrect": false,
+  "choice_desc": "None of the mentioned"
+},{
+  "_id": {
+    "$oid": "5f1988b48c0aa716081be8db"
+  },
+  "question_id": {
+    "$oid": "5f197bca8c0aa716081be867"
+  },
+  "isCorrect": false,
+  "choice_desc": "It allicates space for the literals"
+},{
+  "_id": {
+    "$oid": "5f1988b68c0aa716081be8dc"
+  },
+  "question_id": {
+    "$oid": "5f197bca8c0aa716081be867"
+  },
+  "isCorrect": false,
+  "choice_desc": "It computes the total length of the program"
+},{
+  "_id": {
+    "$oid": "5f1988b88c0aa716081be8dd"
+  },
+  "question_id": {
+    "$oid": "5f197bca8c0aa716081be867"
+  },
+  "isCorrect": false,
+  "choice_desc": "It builds the symbol table for the symbols and their values"
+},{
+  "_id": {
+    "$oid": "5f1988bb8c0aa716081be8de"
+  },
+  "question_id": {
+    "$oid": "5f197bca8c0aa716081be867"
+  },
+  "isCorrect": true,
+  "choice_desc": "All of the above"
+},{
+  "_id": {
+    "$oid": "5f1988ed8c0aa716081be8df"
+  },
+  "question_id": {
+    "$oid": "5f197be18c0aa716081be868"
+  },
+  "isCorrect": true,
+  "choice_desc": ".EXE files"
+},{
+  "_id": {
+    "$oid": "5f1988f08c0aa716081be8e0"
+  },
+  "question_id": {
+    "$oid": "5f197be18c0aa716081be868"
+  },
+  "isCorrect": false,
+  "choice_desc": ".OBJ files"
+},{
+  "_id": {
+    "$oid": "5f1988f28c0aa716081be8e1"
+  },
+  "question_id": {
+    "$oid": "5f197be18c0aa716081be868"
+  },
+  "isCorrect": false,
+  "choice_desc": ".EXE file and .OBJ file"
+},{
+  "_id": {
+    "$oid": "5f1988f48c0aa716081be8e2"
+  },
+  "question_id": {
+    "$oid": "5f197be18c0aa716081be868"
+  },
+  "isCorrect": false,
+  "choice_desc": ".EXE flie and .LST file"
+},{
+  "_id": {
+    "$oid": "5f1989478c0aa716081be8e3"
+  },
+  "question_id": {
+    "$oid": "5f197bff8c0aa716081be869"
+  },
+  "isCorrect": true,
+  "choice_desc": "To indicate the starting position in memory, where the program block is to be stored"
+},{
+  "_id": {
+    "$oid": "5f1989498c0aa716081be8e4"
+  },
+  "question_id": {
+    "$oid": "5f197bff8c0aa716081be869"
+  },
+  "isCorrect": false,
+  "choice_desc": "To indicate the starting of the computation code"
+},{
+  "_id": {
+    "$oid": "5f19894b8c0aa716081be8e5"
+  },
+  "question_id": {
+    "$oid": "5f197bff8c0aa716081be869"
+  },
+  "isCorrect": false,
+  "choice_desc": "To list the locations of all the registers used"
+},{
+  "_id": {
+    "$oid": "5f1989528c0aa716081be8e6"
+  },
+  "question_id": {
+    "$oid": "5f197bff8c0aa716081be869"
+  },
+  "isCorrect": false,
+  "choice_desc": "To indicate the purpose of the code"
+},{
+  "_id": {
+    "$oid": "5f1989888c0aa716081be8e7"
+  },
+  "question_id": {
+    "$oid": "5f197c158c0aa716081be86a"
+  },
+  "isCorrect": false,
+  "choice_desc": "Stop"
+},{
+  "_id": {
+    "$oid": "5f1989898c0aa716081be8e8"
+  },
+  "question_id": {
+    "$oid": "5f197c158c0aa716081be86a"
+  },
+  "isCorrect": false,
+  "choice_desc": "Return"
+},{
+  "_id": {
+    "$oid": "5f19898c8c0aa716081be8e9"
+  },
+  "question_id": {
+    "$oid": "5f197c158c0aa716081be86a"
+  },
+  "isCorrect": false,
+  "choice_desc": "OP"
+},{
+  "_id": {
+    "$oid": "5f19898e8c0aa716081be8ea"
+  },
+  "question_id": {
+    "$oid": "5f197c158c0aa716081be86a"
+  },
+  "isCorrect": true,
+  "choice_desc": "End"
+},{
+  "_id": {
+    "$oid": "5f1989c38c0aa716081be8eb"
+  },
+  "question_id": {
+    "$oid": "5f197c288c0aa716081be86b"
+  },
+  "isCorrect": false,
+  "choice_desc": "First pass and second respectively"
+},{
+  "_id": {
+    "$oid": "5f198a058c0aa716081be8ec"
+  },
+  "question_id": {
+    "$oid": "5f197c288c0aa716081be86b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Both second pass"
+},{
+  "_id": {
+    "$oid": "5f198a078c0aa716081be8ed"
+  },
+  "question_id": {
+    "$oid": "5f197c288c0aa716081be86b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Second pass and first respectively"
+},{
+  "_id": {
+    "$oid": "5f198a098c0aa716081be8ee"
+  },
+  "question_id": {
+    "$oid": "5f197c288c0aa716081be86b"
+  },
+  "isCorrect": true,
+  "choice_desc": "Both first pass"
+},{
+  "_id": {
+    "$oid": "5f198a438c0aa716081be8ef"
+  },
+  "question_id": {
+    "$oid": "5f197c358c0aa716081be86c"
+  },
+  "isCorrect": true,
+  "choice_desc": "Operation code field & operand field"
+},{
+  "_id": {
+    "$oid": "5f198a458c0aa716081be8f0"
+  },
+  "question_id": {
+    "$oid": "5f197c358c0aa716081be86c"
+  },
+  "isCorrect": false,
+  "choice_desc": "Operand field"
+},{
+  "_id": {
+    "$oid": "5f198a478c0aa716081be8f1"
+  },
+  "question_id": {
+    "$oid": "5f197c358c0aa716081be86c"
+  },
+  "isCorrect": false,
+  "choice_desc": "Operation code field"
+},{
+  "_id": {
+    "$oid": "5f198a498c0aa716081be8f2"
+  },
+  "question_id": {
+    "$oid": "5f197c358c0aa716081be86c"
+  },
+  "isCorrect": false,
+  "choice_desc": "None of the mentioned"
+},{
+  "_id": {
+    "$oid": "5f198a8f8c0aa716081be8f3"
+  },
+  "question_id": {
+    "$oid": "5f197c388c0aa716081be86d"
+  },
+  "isCorrect": false,
+  "choice_desc": "source file name"
+},{
+  "_id": {
+    "$oid": "5f198a918c0aa716081be8f4"
+  },
+  "question_id": {
+    "$oid": "5f197c388c0aa716081be86d"
+  },
+  "isCorrect": false,
+  "choice_desc": "extension .LSF"
+},{
+  "_id": {
+    "$oid": "5f198a938c0aa716081be8f5"
+  },
+  "question_id": {
+    "$oid": "5f197c388c0aa716081be86d"
+  },
+  "isCorrect": false,
+  "choice_desc": "source file name and an extension .LSF"
+},{
+  "_id": {
+    "$oid": "5f198a968c0aa716081be8f6"
+  },
+  "question_id": {
+    "$oid": "5f197c388c0aa716081be86d"
+  },
+  "isCorrect": true,
+  "choice_desc": "source file name and an extension .LST"
+},{
+  "_id": {
+    "$oid": "5f198ad28c0aa716081be8f7"
+  },
+  "question_id": {
+    "$oid": "5f197c5d8c0aa716081be86e"
+  },
+  "isCorrect": true,
+  "choice_desc": ".OBJ file"
+},{
+  "_id": {
+    "$oid": "5f198ad58c0aa716081be8f8"
+  },
+  "question_id": {
+    "$oid": "5f197c5d8c0aa716081be86e"
+  },
+  "isCorrect": false,
+  "choice_desc": ".EXE file"
+},{
+  "_id": {
+    "$oid": "5f198ad78c0aa716081be8f9"
+  },
+  "question_id": {
+    "$oid": "5f197c5d8c0aa716081be86e"
+  },
+  "isCorrect": false,
+  "choice_desc": ".MASM file"
+},{
+  "_id": {
+    "$oid": "5f198ad98c0aa716081be8fa"
+  },
+  "question_id": {
+    "$oid": "5f197c5d8c0aa716081be86e"
+  },
+  "isCorrect": false,
+  "choice_desc": "DEBUG file"
+},{
+  "_id": {
+    "$oid": "5f198b0f8c0aa716081be8fb"
+  },
+  "question_id": {
+    "$oid": "5f197c5f8c0aa716081be86f"
+  },
+  "isCorrect": true,
+  "choice_desc": "Second pass"
+},{
+  "_id": {
+    "$oid": "5f198b118c0aa716081be8fc"
+  },
+  "question_id": {
+    "$oid": "5f197c5f8c0aa716081be86f"
+  },
+  "isCorrect": false,
+  "choice_desc": "First pass"
+},{
+  "_id": {
+    "$oid": "5f198b148c0aa716081be8fd"
+  },
+  "question_id": {
+    "$oid": "5f197c5f8c0aa716081be86f"
+  },
+  "isCorrect": false,
+  "choice_desc": "Zeroeth pass"
+},{
+  "_id": {
+    "$oid": "5f198b168c0aa716081be8fe"
+  },
+  "question_id": {
+    "$oid": "5f197c5f8c0aa716081be86f"
+  },
+  "isCorrect": false,
+  "choice_desc": "Not done by assembler"
+},{
+  "_id": {
+    "$oid": "5f198ba28c0aa716081be8ff"
+  },
+  "question_id": {
+    "$oid": "5f197c618c0aa716081be870"
+  },
+  "isCorrect": false,
+  "choice_desc": "Address of the current instruction"
+},{
+  "_id": {
+    "$oid": "5f198ba48c0aa716081be900"
+  },
+  "question_id": {
+    "$oid": "5f197c618c0aa716081be870"
+  },
+  "isCorrect": false,
+  "choice_desc": "Address of the next instruction"
+},{
+  "_id": {
+    "$oid": "5f198ba68c0aa716081be901"
+  },
+  "question_id": {
+    "$oid": "5f197c618c0aa716081be870"
+  },
+  "isCorrect": true,
+  "choice_desc": "Address of the top element of the stack"
+},{
+  "_id": {
+    "$oid": "5f198ba98c0aa716081be902"
+  },
+  "question_id": {
+    "$oid": "5f197c618c0aa716081be870"
+  },
+  "isCorrect": false,
+  "choice_desc": "None of these"
+},{
+  "_id": {
+    "$oid": "5f198c5d8c0aa716081be903"
+  },
+  "question_id": {
+    "$oid": "5f197c628c0aa716081be871"
+  },
+  "isCorrect": false,
+  "choice_desc": "separate the symbol, mnemonic opcode and operand fields"
+},{
+  "_id": {
+    "$oid": "5f198c5f8c0aa716081be904"
+  },
+  "question_id": {
+    "$oid": "5f197c628c0aa716081be871"
+  },
+  "isCorrect": false,
+  "choice_desc": "build the symbol table"
+},{
+  "_id": {
+    "$oid": "5f198c618c0aa716081be905"
+  },
+  "question_id": {
+    "$oid": "5f197c628c0aa716081be871"
+  },
+  "isCorrect": false,
+  "choice_desc": "construct intermediate code"
+},{
+  "_id": {
+    "$oid": "5f198c638c0aa716081be906"
+  },
+  "question_id": {
+    "$oid": "5f197c628c0aa716081be871"
+  },
+  "isCorrect": true,
+  "choice_desc": "synthesize the target program"
+},{
+  "_id": {
+    "$oid": "5f198caa8c0aa716081be907"
+  },
+  "question_id": {
+    "$oid": "5f197cbf8c0aa716081be872"
+  },
+  "isCorrect": true,
+  "choice_desc": "assembler"
+},{
+  "_id": {
+    "$oid": "5f198cae8c0aa716081be908"
+  },
+  "question_id": {
+    "$oid": "5f197cbf8c0aa716081be872"
+  },
+  "isCorrect": false,
+  "choice_desc": "compilers"
+},{
+  "_id": {
+    "$oid": "5f198cb18c0aa716081be909"
+  },
+  "question_id": {
+    "$oid": "5f197cbf8c0aa716081be872"
+  },
+  "isCorrect": false,
+  "choice_desc": "interpreter"
+},{
+  "_id": {
+    "$oid": "5f198cb38c0aa716081be90a"
+  },
+  "question_id": {
+    "$oid": "5f197cbf8c0aa716081be872"
+  },
+  "isCorrect": false,
+  "choice_desc": "All of these"
+},{
+  "_id": {
+    "$oid": "5f198ce98c0aa716081be90b"
+  },
+  "question_id": {
+    "$oid": "5f197cc18c0aa716081be873"
+  },
+  "isCorrect": true,
+  "choice_desc": "re-enterable"
+},{
+  "_id": {
+    "$oid": "5f198cec8c0aa716081be90c"
+  },
+  "question_id": {
+    "$oid": "5f197cc18c0aa716081be873"
+  },
+  "isCorrect": false,
+  "choice_desc": "non-reusable"
+},{
+  "_id": {
+    "$oid": "5f198ced8c0aa716081be90d"
+  },
+  "question_id": {
+    "$oid": "5f197cc18c0aa716081be873"
+  },
+  "isCorrect": false,
+  "choice_desc": "serially usable"
+},{
+  "_id": {
+    "$oid": "5f198cef8c0aa716081be90e"
+  },
+  "question_id": {
+    "$oid": "5f197cc18c0aa716081be873"
+  },
+  "isCorrect": false,
+  "choice_desc": "recursive"
+},{
+  "_id": {
+    "$oid": "5f198d3f8c0aa716081be90f"
+  },
+  "question_id": {
+    "$oid": "5f197cc38c0aa716081be874"
+  },
+  "isCorrect": true,
+  "choice_desc": "Table of incomplete instructions"
+},{
+  "_id": {
+    "$oid": "5f198d408c0aa716081be910"
+  },
+  "question_id": {
+    "$oid": "5f197cc38c0aa716081be874"
+  },
+  "isCorrect": false,
+  "choice_desc": "Table of information instructions"
+},{
+  "_id": {
+    "$oid": "5f198d428c0aa716081be911"
+  },
+  "question_id": {
+    "$oid": "5f197cc38c0aa716081be874"
+  },
+  "isCorrect": false,
+  "choice_desc": "Translation of instructions information"
+},{
+  "_id": {
+    "$oid": "5f198d448c0aa716081be912"
+  },
+  "question_id": {
+    "$oid": "5f197cc38c0aa716081be874"
+  },
+  "isCorrect": false,
+  "choice_desc": "Translation of information instruction"
+},{
+  "_id": {
+    "$oid": "5f198de18c0aa716081be913"
+  },
+  "question_id": {
+    "$oid": "5f197d088c0aa716081be875"
+  },
+  "isCorrect": false,
+  "choice_desc": "It acquires a positive charge but greater in magnitude than the rod"
+},{
+  "_id": {
+    "$oid": "5f198de38c0aa716081be914"
+  },
+  "question_id": {
+    "$oid": "5f197d088c0aa716081be875"
+  },
+  "isCorrect": false,
+  "choice_desc": "It acquires a positive charge but less in magnitude than the rod"
+},{
+  "_id": {
+    "$oid": "5f198de58c0aa716081be915"
+  },
+  "question_id": {
+    "$oid": "5f197d088c0aa716081be875"
+  },
+  "isCorrect": false,
+  "choice_desc": "It acquires a negative charge but greater in magnitude than the rod"
+},{
+  "_id": {
+    "$oid": "5f198de68c0aa716081be916"
+  },
+  "question_id": {
+    "$oid": "5f197d088c0aa716081be875"
+  },
+  "isCorrect": false,
+  "choice_desc": "It acquires a negative charge but less in magnitude than the rod"
+},{
+  "_id": {
+    "$oid": "5f198e418c0aa716081be917"
+  },
+  "question_id": {
+    "$oid": "5f197d088c0aa716081be875"
+  },
+  "isCorrect": true,
+  "choice_desc": "It acquires a positive charge with the same magnitude as the rod"
+},{
+  "_id": {
+    "$oid": "5f198e598c0aa716081be918"
+  },
+  "question_id": {
+    "$oid": "5f197d0b8c0aa716081be876"
+  },
+  "isCorrect": false,
+  "choice_desc": "Positive"
+},{
+  "_id": {
+    "$oid": "5f198e5c8c0aa716081be919"
+  },
+  "question_id": {
+    "$oid": "5f197d0b8c0aa716081be876"
+  },
+  "isCorrect": true,
+  "choice_desc": "Negative"
+},{
+  "_id": {
+    "$oid": "5f198e5e8c0aa716081be91a"
+  },
+  "question_id": {
+    "$oid": "5f197d0b8c0aa716081be876"
+  },
+  "isCorrect": false,
+  "choice_desc": "Neutral"
+},{
+  "_id": {
+    "$oid": "5f198e638c0aa716081be91b"
+  },
+  "question_id": {
+    "$oid": "5f197d0b8c0aa716081be876"
+  },
+  "isCorrect": false,
+  "choice_desc": "It depends of the separation between the rod and plate"
+},{
+  "_id": {
+    "$oid": "5f198e668c0aa716081be91c"
+  },
+  "question_id": {
+    "$oid": "5f197d0b8c0aa716081be876"
+  },
+  "isCorrect": false,
+  "choice_desc": "More information about the type of metal is required"
+},{
+  "_id": {
+    "$oid": "5f198ecd8c0aa716081be91d"
+  },
+  "question_id": {
+    "$oid": "5f197d0d8c0aa716081be877"
+  },
+  "isCorrect": false,
+  "choice_desc": "Positive"
+},{
+  "_id": {
+    "$oid": "5f198ecf8c0aa716081be91e"
+  },
+  "question_id": {
+    "$oid": "5f197d0d8c0aa716081be877"
+  },
+  "isCorrect": true,
+  "choice_desc": "Negative"
+},{
+  "_id": {
+    "$oid": "5f198ed18c0aa716081be91f"
+  },
+  "question_id": {
+    "$oid": "5f197d0d8c0aa716081be877"
+  },
+  "isCorrect": false,
+  "choice_desc": "It stays neutral"
+},{
+  "_id": {
+    "$oid": "5f198ed38c0aa716081be920"
+  },
+  "question_id": {
+    "$oid": "5f197d0d8c0aa716081be877"
+  },
+  "isCorrect": false,
+  "choice_desc": "It depends on the contact time"
+},{
+  "_id": {
+    "$oid": "5f198ed58c0aa716081be921"
+  },
+  "question_id": {
+    "$oid": "5f197d0d8c0aa716081be877"
+  },
+  "isCorrect": false,
+  "choice_desc": "It depends on the material that sphere B is made of"
+},{
+  "_id": {
+    "$oid": "5f198f2e8c0aa716081be922"
+  },
+  "question_id": {
+    "$oid": "5f197d108c0aa716081be878"
+  },
+  "isCorrect": false,
+  "choice_desc": "Positive"
+},{
+  "_id": {
+    "$oid": "5f198f308c0aa716081be923"
+  },
+  "question_id": {
+    "$oid": "5f197d108c0aa716081be878"
+  },
+  "isCorrect": true,
+  "choice_desc": "Negative"
+},{
+  "_id": {
+    "$oid": "5f198f318c0aa716081be924"
+  },
+  "question_id": {
+    "$oid": "5f197d108c0aa716081be878"
+  },
+  "isCorrect": false,
+  "choice_desc": "It stays neutral"
+},{
+  "_id": {
+    "$oid": "5f198f338c0aa716081be925"
+  },
+  "question_id": {
+    "$oid": "5f197d108c0aa716081be878"
+  },
+  "isCorrect": false,
+  "choice_desc": "It depends on the contact time"
+},{
+  "_id": {
+    "$oid": "5f198f358c0aa716081be926"
+  },
+  "question_id": {
+    "$oid": "5f197d108c0aa716081be878"
+  },
+  "isCorrect": false,
+  "choice_desc": "It depends on the material that the electroscope is made of"
+},{
+  "_id": {
+    "$oid": "5f198f958c0aa716081be927"
+  },
+  "question_id": {
+    "$oid": "5f197d9c8c0aa716081be879"
+  },
+  "isCorrect": false,
+  "choice_desc": "Induction"
+},{
+  "_id": {
+    "$oid": "5f198f978c0aa716081be928"
+  },
+  "question_id": {
+    "$oid": "5f197d9c8c0aa716081be879"
+  },
+  "isCorrect": true,
+  "choice_desc": "Conduction"
+},{
+  "_id": {
+    "$oid": "5f198f998c0aa716081be929"
+  },
+  "question_id": {
+    "$oid": "5f197d9c8c0aa716081be879"
+  },
+  "isCorrect": false,
+  "choice_desc": "Thermoemission"
+},{
+  "_id": {
+    "$oid": "5f198f9a8c0aa716081be92a"
+  },
+  "question_id": {
+    "$oid": "5f197d9c8c0aa716081be879"
+  },
+  "isCorrect": false,
+  "choice_desc": "Photoemission"
+},{
+  "_id": {
+    "$oid": "5f198f9d8c0aa716081be92b"
+  },
+  "question_id": {
+    "$oid": "5f197d9c8c0aa716081be879"
+  },
+  "isCorrect": false,
+  "choice_desc": "None from the above"
+},{
+  "_id": {
+    "$oid": "5f1990428c0aa716081be92c"
+  },
+  "question_id": {
+    "$oid": "5f197d9f8c0aa716081be87a"
+  },
+  "isCorrect": false,
+  "choice_desc": "The electroscope stays neutral because the rod doesn’t touch it"
+},{
+  "_id": {
+    "$oid": "5f1990448c0aa716081be92d"
+  },
+  "question_id": {
+    "$oid": "5f197d9f8c0aa716081be87a"
+  },
+  "isCorrect": false,
+  "choice_desc": "The positive charge flows from the electroscope to the ground"
+},{
+  "_id": {
+    "$oid": "5f1990468c0aa716081be92e"
+  },
+  "question_id": {
+    "$oid": "5f197d9f8c0aa716081be87a"
+  },
+  "isCorrect": false,
+  "choice_desc": "The positive charge flows from the ground to the electroscope"
+},{
+  "_id": {
+    "$oid": "5f1990488c0aa716081be92f"
+  },
+  "question_id": {
+    "$oid": "5f197d9f8c0aa716081be87a"
+  },
+  "isCorrect": true,
+  "choice_desc": "The negative charge flows from the electroscope to the ground"
+},{
+  "_id": {
+    "$oid": "5f19904a8c0aa716081be930"
+  },
+  "question_id": {
+    "$oid": "5f197d9f8c0aa716081be87a"
+  },
+  "isCorrect": false,
+  "choice_desc": "The negative charge flows from the ground to the electroscope"
+},{
+  "_id": {
+    "$oid": "5f1990b58c0aa716081be931"
+  },
+  "question_id": {
+    "$oid": "5f197da18c0aa716081be87b"
+  },
+  "isCorrect": false,
+  "choice_desc": "It is neutral"
+},{
+  "_id": {
+    "$oid": "5f1990b88c0aa716081be932"
+  },
+  "question_id": {
+    "$oid": "5f197da18c0aa716081be87b"
+  },
+  "isCorrect": true,
+  "choice_desc": "Positive"
+},{
+  "_id": {
+    "$oid": "5f1990ba8c0aa716081be933"
+  },
+  "question_id": {
+    "$oid": "5f197da18c0aa716081be87b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Negative"
+},{
+  "_id": {
+    "$oid": "5f1990bc8c0aa716081be934"
+  },
+  "question_id": {
+    "$oid": "5f197da18c0aa716081be87b"
+  },
+  "isCorrect": false,
+  "choice_desc": "It depends on the distance between the electroscope and the rod"
+},{
+  "_id": {
+    "$oid": "5f1990bf8c0aa716081be935"
+  },
+  "question_id": {
+    "$oid": "5f197da18c0aa716081be87b"
+  },
+  "isCorrect": false,
+  "choice_desc": "It depends on the distance between the electroscope and the rod"
+},{
+  "_id": {
+    "$oid": "5f1991128c0aa716081be936"
+  },
+  "question_id": {
+    "$oid": "5f197da48c0aa716081be87c"
+  },
+  "isCorrect": false,
+  "choice_desc": "Positive"
+},{
+  "_id": {
+    "$oid": "5f1991158c0aa716081be937"
+  },
+  "question_id": {
+    "$oid": "5f197da48c0aa716081be87c"
+  },
+  "isCorrect": true,
+  "choice_desc": "Negative"
+},{
+  "_id": {
+    "$oid": "5f1991178c0aa716081be938"
+  },
+  "question_id": {
+    "$oid": "5f197da48c0aa716081be87c"
+  },
+  "isCorrect": false,
+  "choice_desc": "It is neutral"
+},{
+  "_id": {
+    "$oid": "5f1991188c0aa716081be939"
+  },
+  "question_id": {
+    "$oid": "5f197da48c0aa716081be87c"
+  },
+  "isCorrect": false,
+  "choice_desc": "It depends on the distance between the electroscope and the rod"
+},{
+  "_id": {
+    "$oid": "5f19911a8c0aa716081be93a"
+  },
+  "question_id": {
+    "$oid": "5f197da48c0aa716081be87c"
+  },
+  "isCorrect": false,
+  "choice_desc": "It depends on the material that the electroscope is made of"
+},{
+  "_id": {
+    "$oid": "5f1991658c0aa716081be93b"
+  },
+  "question_id": {
+    "$oid": "5f197dfa8c0aa716081be87d"
+  },
+  "isCorrect": false,
+  "choice_desc": "It depends on the material that the electroscope is made of"
+},{
+  "_id": {
+    "$oid": "5f1991678c0aa716081be93c"
+  },
+  "question_id": {
+    "$oid": "5f197dfa8c0aa716081be87d"
+  },
+  "isCorrect": false,
+  "choice_desc": "Positive"
+},{
+  "_id": {
+    "$oid": "5f1991698c0aa716081be93d"
+  },
+  "question_id": {
+    "$oid": "5f197dfa8c0aa716081be87d"
+  },
+  "isCorrect": true,
+  "choice_desc": "Negative"
+},{
+  "_id": {
+    "$oid": "5f19916b8c0aa716081be93e"
+  },
+  "question_id": {
+    "$oid": "5f197dfa8c0aa716081be87d"
+  },
+  "isCorrect": false,
+  "choice_desc": "It is neutral"
+},{
+  "_id": {
+    "$oid": "5f19916e8c0aa716081be93f"
+  },
+  "question_id": {
+    "$oid": "5f197dfa8c0aa716081be87d"
+  },
+  "isCorrect": false,
+  "choice_desc": "It depends on the distance between the electroscope and the rod"
+},{
+  "_id": {
+    "$oid": "5f1991c88c0aa716081be941"
+  },
+  "question_id": {
+    "$oid": "5f197dfe8c0aa716081be87e"
+  },
+  "isCorrect": false,
+  "choice_desc": "The charge with a greater magnitude exerts a larger force on the small charge"
+},{
+  "_id": {
+    "$oid": "5f1991cb8c0aa716081be942"
+  },
+  "question_id": {
+    "$oid": "5f197dfe8c0aa716081be87e"
+  },
+  "isCorrect": false,
+  "choice_desc": "The charge with a greater magnitude exerts a smaller force on the small charge"
+},{
+  "_id": {
+    "$oid": "5f1991ce8c0aa716081be943"
+  },
+  "question_id": {
+    "$oid": "5f197dfe8c0aa716081be87e"
+  },
+  "isCorrect": true,
+  "choice_desc": "The forces on each charge are the same in magnitude and opposite in direction"
+},{
+  "_id": {
+    "$oid": "5f1991d38c0aa716081be944"
+  },
+  "question_id": {
+    "$oid": "5f197dfe8c0aa716081be87e"
+  },
+  "isCorrect": false,
+  "choice_desc": "The forces on each charge are the same in magnitude and pointing in the same direction"
+},{
+  "_id": {
+    "$oid": "5f1992948c0aa716081be945"
+  },
+  "question_id": {
+    "$oid": "5f197e028c0aa716081be87f"
+  },
+  "isCorrect": false,
+  "choice_desc": "There is no electrostatic force between the spheres since one is neutral"
+},{
+  "_id": {
+    "$oid": "5f1992968c0aa716081be946"
+  },
+  "question_id": {
+    "$oid": "5f197e028c0aa716081be87f"
+  },
+  "isCorrect": false,
+  "choice_desc": "There is a repulsive electrostatic force between the spheres"
+},{
+  "_id": {
+    "$oid": "5f1992988c0aa716081be947"
+  },
+  "question_id": {
+    "$oid": "5f197e028c0aa716081be87f"
+  },
+  "isCorrect": true,
+  "choice_desc": "There is an attractive electrostatic force between the spheres"
+},{
+  "_id": {
+    "$oid": "5f19929a8c0aa716081be948"
+  },
+  "question_id": {
+    "$oid": "5f197e028c0aa716081be87f"
+  },
+  "isCorrect": false,
+  "choice_desc": "There is a repulsive electrostatic force applied only on sphere B"
+},{
+  "_id": {
+    "$oid": "5f1992d78c0aa716081be949"
+  },
+  "question_id": {
+    "$oid": "5f197e058c0aa716081be880"
+  },
+  "isCorrect": false,
+  "choice_desc": "F"
+},{
+  "_id": {
+    "$oid": "5f1992da8c0aa716081be94a"
+  },
+  "question_id": {
+    "$oid": "5f197e058c0aa716081be880"
+  },
+  "isCorrect": false,
+  "choice_desc": "2F"
+},{
+  "_id": {
+    "$oid": "5f1992dd8c0aa716081be94b"
+  },
+  "question_id": {
+    "$oid": "5f197e058c0aa716081be880"
+  },
+  "isCorrect": true,
+  "choice_desc": "4F"
+},{
+  "_id": {
+    "$oid": "5f1992df8c0aa716081be94c"
+  },
+  "question_id": {
+    "$oid": "5f197e058c0aa716081be880"
+  },
+  "isCorrect": false,
+  "choice_desc": "1/2F"
+},{
+  "_id": {
+    "$oid": "5f19931b8c0aa716081be94d"
+  },
+  "question_id": {
+    "$oid": "5f197e058c0aa716081be880"
+  },
+  "isCorrect": false,
+  "choice_desc": "1/4F"
+},{
+  "_id": {
+    "$oid": "5f1993298c0aa716081be94e"
+  },
+  "question_id": {
+    "$oid": "5f197e818c0aa716081be881"
+  },
+  "isCorrect": false,
+  "choice_desc": "16F"
+},{
+  "_id": {
+    "$oid": "5f19932b8c0aa716081be94f"
+  },
+  "question_id": {
+    "$oid": "5f197e818c0aa716081be881"
+  },
+  "isCorrect": false,
+  "choice_desc": "2F"
+},{
+  "_id": {
+    "$oid": "5f19932d8c0aa716081be950"
+  },
+  "question_id": {
+    "$oid": "5f197e818c0aa716081be881"
+  },
+  "isCorrect": false,
+  "choice_desc": "4F"
+},{
+  "_id": {
+    "$oid": "5f19932f8c0aa716081be951"
+  },
+  "question_id": {
+    "$oid": "5f197e818c0aa716081be881"
+  },
+  "isCorrect": false,
+  "choice_desc": "1/4F"
+},{
+  "_id": {
+    "$oid": "5f1993318c0aa716081be952"
+  },
+  "question_id": {
+    "$oid": "5f197e818c0aa716081be881"
+  },
+  "isCorrect": true,
+  "choice_desc": "1/9F"
+},{
+  "_id": {
+    "$oid": "5f1993bf8c0aa716081be953"
+  },
+  "question_id": {
+    "$oid": "5f197e838c0aa716081be882"
+  },
+  "isCorrect": true,
+  "choice_desc": "16F"
+},{
+  "_id": {
+    "$oid": "5f1993ce8c0aa716081be955"
+  },
+  "question_id": {
+    "$oid": "5f197e838c0aa716081be882"
+  },
+  "isCorrect": false,
+  "choice_desc": "2F"
+},{
+  "_id": {
+    "$oid": "5f1993d08c0aa716081be956"
+  },
+  "question_id": {
+    "$oid": "5f197e838c0aa716081be882"
+  },
+  "isCorrect": false,
+  "choice_desc": "4F"
+},{
+  "_id": {
+    "$oid": "5f1993d38c0aa716081be957"
+  },
+  "question_id": {
+    "$oid": "5f197e838c0aa716081be882"
+  },
+  "isCorrect": false,
+  "choice_desc": "1/4F"
+},{
+  "_id": {
+    "$oid": "5f1993d78c0aa716081be958"
+  },
+  "question_id": {
+    "$oid": "5f197e838c0aa716081be882"
+  },
+  "isCorrect": false,
+  "choice_desc": "1/2F"
+},{
+  "_id": {
+    "$oid": "5f19941f8c0aa716081be959"
+  },
+  "question_id": {
+    "$oid": "5f197e858c0aa716081be883"
+  },
+  "isCorrect": false,
+  "choice_desc": "16F"
+},{
+  "_id": {
+    "$oid": "5f1994218c0aa716081be95a"
+  },
+  "question_id": {
+    "$oid": "5f197e858c0aa716081be883"
+  },
+  "isCorrect": true,
+  "choice_desc": "64F"
+},{
+  "_id": {
+    "$oid": "5f1994238c0aa716081be95b"
+  },
+  "question_id": {
+    "$oid": "5f197e858c0aa716081be883"
+  },
+  "isCorrect": false,
+  "choice_desc": "48F"
+},{
+  "_id": {
+    "$oid": "5f1994258c0aa716081be95c"
+  },
+  "question_id": {
+    "$oid": "5f197e858c0aa716081be883"
+  },
+  "isCorrect": false,
+  "choice_desc": "1/48F"
+},{
+  "_id": {
+    "$oid": "5f1994278c0aa716081be95d"
+  },
+  "question_id": {
+    "$oid": "5f197e858c0aa716081be883"
+  },
+  "isCorrect": false,
+  "choice_desc": "1/64F"
+},{
+  "_id": {
+    "$oid": "5f1994cd8c0aa716081be95e"
+  },
+  "question_id": {
+    "$oid": "5f197ee08c0aa716081be884"
+  },
+  "isCorrect": false,
+  "choice_desc": "Internal rotational"
+},{
+  "_id": {
+    "$oid": "5f1994cf8c0aa716081be95f"
+  },
+  "question_id": {
+    "$oid": "5f197ee08c0aa716081be884"
+  },
+  "isCorrect": false,
+  "choice_desc": "Couple rotational"
+},{
+  "_id": {
+    "$oid": "5f1994d18c0aa716081be960"
+  },
+  "question_id": {
+    "$oid": "5f197ee08c0aa716081be884"
+  },
+  "isCorrect": false,
+  "choice_desc": "Translational"
+},{
+  "_id": {
+    "$oid": "5f1994d38c0aa716081be961"
+  },
+  "question_id": {
+    "$oid": "5f197ee08c0aa716081be884"
+  },
+  "isCorrect": true,
+  "choice_desc": "External"
+},{
+  "_id": {
+    "$oid": "5f19954e8c0aa716081be962"
+  },
+  "question_id": {
+    "$oid": "5f197ee38c0aa716081be885"
+  },
+  "isCorrect": false,
+  "choice_desc": "True"
+},{
+  "_id": {
+    "$oid": "5f1995538c0aa716081be963"
+  },
+  "question_id": {
+    "$oid": "5f197ee38c0aa716081be885"
+  },
+  "isCorrect": true,
+  "choice_desc": "False"
+},{
+  "_id": {
+    "$oid": "5f1995558c0aa716081be964"
+  },
+  "question_id": {
+    "$oid": "5f197ee48c0aa716081be886"
+  },
+  "isCorrect": true,
+  "choice_desc": "Make the vertical sum of the forces equal to zero"
+},{
+  "_id": {
+    "$oid": "5f1995588c0aa716081be965"
+  },
+  "question_id": {
+    "$oid": "5f197ee48c0aa716081be886"
+  },
+  "isCorrect": false,
+  "choice_desc": "Make the horizontal sum of the forces equal to zero"
+},{
+  "_id": {
+    "$oid": "5f1995968c0aa716081be966"
+  },
+  "question_id": {
+    "$oid": "5f197ee48c0aa716081be886"
+  },
+  "isCorrect": false,
+  "choice_desc": "Make the moment sum of the forces equal to zero"
+},{
+  "_id": {
+    "$oid": "5f1995988c0aa716081be967"
+  },
+  "question_id": {
+    "$oid": "5f197ee48c0aa716081be886"
+  },
+  "isCorrect": false,
+  "choice_desc": "Make the rotational sum of the forces equal to zero"
+},{
+  "_id": {
+    "$oid": "5f1995c28c0aa716081be968"
+  },
+  "question_id": {
+    "$oid": "5f197ee78c0aa716081be887"
+  },
+  "isCorrect": false,
+  "choice_desc": "Make the vertical sum of the forces equal to zero"
+},{
+  "_id": {
+    "$oid": "5f1995c48c0aa716081be969"
+  },
+  "question_id": {
+    "$oid": "5f197ee78c0aa716081be887"
+  },
+  "isCorrect": true,
+  "choice_desc": "Make the horizontal sum of the forces equal to zero"
+},{
+  "_id": {
+    "$oid": "5f1995c68c0aa716081be96a"
+  },
+  "question_id": {
+    "$oid": "5f197ee78c0aa716081be887"
+  },
+  "isCorrect": false,
+  "choice_desc": "Make the moment sum of the forces equal to zero"
+},{
+  "_id": {
+    "$oid": "5f1995c88c0aa716081be96b"
+  },
+  "question_id": {
+    "$oid": "5f197ee78c0aa716081be887"
+  },
+  "isCorrect": false,
+  "choice_desc": "Make the rotational sum of the forces equal to zero"
+},{
+  "_id": {
+    "$oid": "5f1995f08c0aa716081be96c"
+  },
+  "question_id": {
+    "$oid": "5f197f488c0aa716081be888"
+  },
+  "isCorrect": false,
+  "choice_desc": "Moment of line"
+},{
+  "_id": {
+    "$oid": "5f1995f28c0aa716081be96d"
+  },
+  "question_id": {
+    "$oid": "5f197f488c0aa716081be888"
+  },
+  "isCorrect": false,
+  "choice_desc": "Moment of section"
+},{
+  "_id": {
+    "$oid": "5f1995f48c0aa716081be96e"
+  },
+  "question_id": {
+    "$oid": "5f197f488c0aa716081be888"
+  },
+  "isCorrect": false,
+  "choice_desc": "Moment of plane"
+},{
+  "_id": {
+    "$oid": "5f1995f68c0aa716081be96f"
+  },
+  "question_id": {
+    "$oid": "5f197f488c0aa716081be888"
+  },
+  "isCorrect": true,
+  "choice_desc": "Torsional moment"
+},{
+  "_id": {
+    "$oid": "5f19968f8c0aa716081be970"
+  },
+  "question_id": {
+    "$oid": "5f197f4b8c0aa716081be889"
+  },
+  "isCorrect": true,
+  "choice_desc": "Centroid"
+},{
+  "_id": {
+    "$oid": "5f1996918c0aa716081be971"
+  },
+  "question_id": {
+    "$oid": "5f197f4b8c0aa716081be889"
+  },
+  "isCorrect": false,
+  "choice_desc": "Symmetrical centre"
+},{
+  "_id": {
+    "$oid": "5f1996938c0aa716081be972"
+  },
+  "question_id": {
+    "$oid": "5f197f4b8c0aa716081be889"
+  },
+  "isCorrect": false,
+  "choice_desc": "Rotational centre"
+},{
+  "_id": {
+    "$oid": "5f1996958c0aa716081be973"
+  },
+  "question_id": {
+    "$oid": "5f197f4b8c0aa716081be889"
+  },
+  "isCorrect": false,
+  "choice_desc": "Chiral centre"
+},{
+  "_id": {
+    "$oid": "5f1996d88c0aa716081be974"
+  },
+  "question_id": {
+    "$oid": "5f197f4d8c0aa716081be88a"
+  },
+  "isCorrect": false,
+  "choice_desc": "True"
+},{
+  "_id": {
+    "$oid": "5f1996da8c0aa716081be975"
+  },
+  "question_id": {
+    "$oid": "5f197f4d8c0aa716081be88a"
+  },
+  "isCorrect": true,
+  "choice_desc": "False"
+},{
+  "_id": {
+    "$oid": "5f1996dc8c0aa716081be976"
+  },
+  "question_id": {
+    "$oid": "5f197f538c0aa716081be88b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Same"
+},{
+  "_id": {
+    "$oid": "5f1996de8c0aa716081be977"
+  },
+  "question_id": {
+    "$oid": "5f197f538c0aa716081be88b"
+  },
+  "isCorrect": true,
+  "choice_desc": "Different"
+},{
+  "_id": {
+    "$oid": "5f19976c8c0aa716081be978"
+  },
+  "question_id": {
+    "$oid": "5f197f538c0aa716081be88b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Slightly different"
+},{
+  "_id": {
+    "$oid": "5f19976f8c0aa716081be979"
+  },
+  "question_id": {
+    "$oid": "5f197f538c0aa716081be88b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Slightly same"
+},{
+  "_id": {
+    "$oid": "5f1997938c0aa716081be97a"
+  },
+  "question_id": {
+    "$oid": "5f197faa8c0aa716081be88c"
+  },
+  "isCorrect": true,
+  "choice_desc": "The centroid"
+},{
+  "_id": {
+    "$oid": "5f1997958c0aa716081be97b"
+  },
+  "question_id": {
+    "$oid": "5f197faa8c0aa716081be88c"
+  },
+  "isCorrect": false,
+  "choice_desc": "The left end"
+},{
+  "_id": {
+    "$oid": "5f1997978c0aa716081be97c"
+  },
+  "question_id": {
+    "$oid": "5f197faa8c0aa716081be88c"
+  },
+  "isCorrect": false,
+  "choice_desc": "The right end"
+},{
+  "_id": {
+    "$oid": "5f1997998c0aa716081be97d"
+  },
+  "question_id": {
+    "$oid": "5f197faa8c0aa716081be88c"
+  },
+  "isCorrect": false,
+  "choice_desc": "The axis beyond the body of the beam"
+},{
+  "_id": {
+    "$oid": "5f1997c68c0aa716081be97e"
+  },
+  "question_id": {
+    "$oid": "5f197fac8c0aa716081be88d"
+  },
+  "isCorrect": false,
+  "choice_desc": "The net horizontal force"
+},{
+  "_id": {
+    "$oid": "5f1997c88c0aa716081be97f"
+  },
+  "question_id": {
+    "$oid": "5f197fac8c0aa716081be88d"
+  },
+  "isCorrect": true,
+  "choice_desc": "The net vertical force with a negative sign"
+},{
+  "_id": {
+    "$oid": "5f1997c98c0aa716081be980"
+  },
+  "question_id": {
+    "$oid": "5f197fac8c0aa716081be88d"
+  },
+  "isCorrect": false,
+  "choice_desc": "The net horizontal force with a negative sign"
+},{
+  "_id": {
+    "$oid": "5f1997cb8c0aa716081be981"
+  },
+  "question_id": {
+    "$oid": "5f197fac8c0aa716081be88d"
+  },
+  "isCorrect": false,
+  "choice_desc": "The net vertical force"
+},{
+  "_id": {
+    "$oid": "5f1998418c0aa716081be982"
+  },
+  "question_id": {
+    "$oid": "5f197fae8c0aa716081be88e"
+  },
+  "isCorrect": true,
+  "choice_desc": "Positive"
+},{
+  "_id": {
+    "$oid": "5f1998438c0aa716081be983"
+  },
+  "question_id": {
+    "$oid": "5f197fae8c0aa716081be88e"
+  },
+  "isCorrect": false,
+  "choice_desc": "Negative"
+},{
+  "_id": {
+    "$oid": "5f1998458c0aa716081be984"
+  },
+  "question_id": {
+    "$oid": "5f197fae8c0aa716081be88e"
+  },
+  "isCorrect": false,
+  "choice_desc": "Rotational"
+},{
+  "_id": {
+    "$oid": "5f1998488c0aa716081be985"
+  },
+  "question_id": {
+    "$oid": "5f197fae8c0aa716081be88e"
+  },
+  "isCorrect": false,
+  "choice_desc": "Collinear"
+},{
+  "_id": {
+    "$oid": "5f1998858c0aa716081be986"
+  },
+  "question_id": {
+    "$oid": "5f197fb08c0aa716081be88f"
+  },
+  "isCorrect": true,
+  "choice_desc": "Positive"
+},{
+  "_id": {
+    "$oid": "5f1998878c0aa716081be987"
+  },
+  "question_id": {
+    "$oid": "5f197fb08c0aa716081be88f"
+  },
+  "isCorrect": false,
+  "choice_desc": "Negative"
+},{
+  "_id": {
+    "$oid": "5f1998888c0aa716081be988"
+  },
+  "question_id": {
+    "$oid": "5f197fb08c0aa716081be88f"
+  },
+  "isCorrect": false,
+  "choice_desc": "Rotational"
+},{
+  "_id": {
+    "$oid": "5f19988a8c0aa716081be989"
+  },
+  "question_id": {
+    "$oid": "5f197fb08c0aa716081be88f"
+  },
+  "isCorrect": false,
+  "choice_desc": "Collinear"
+},{
+  "_id": {
+    "$oid": "5f1998e58c0aa716081be98a"
+  },
+  "question_id": {
+    "$oid": "5f197ff28c0aa716081be890"
+  },
+  "isCorrect": true,
+  "choice_desc": "Positive"
+},{
+  "_id": {
+    "$oid": "5f1998e68c0aa716081be98b"
+  },
+  "question_id": {
+    "$oid": "5f197ff28c0aa716081be890"
+  },
+  "isCorrect": false,
+  "choice_desc": "Negative"
+},{
+  "_id": {
+    "$oid": "5f1998e98c0aa716081be98c"
+  },
+  "question_id": {
+    "$oid": "5f197ff28c0aa716081be890"
+  },
+  "isCorrect": false,
+  "choice_desc": "Rotational"
+},{
+  "_id": {
+    "$oid": "5f1998eb8c0aa716081be98d"
+  },
+  "question_id": {
+    "$oid": "5f197ff28c0aa716081be890"
+  },
+  "isCorrect": false,
+  "choice_desc": "Collinear"
+},{
+  "_id": {
+    "$oid": "5f1999178c0aa716081be98e"
+  },
+  "question_id": {
+    "$oid": "5f197ff48c0aa716081be891"
+  },
+  "isCorrect": false,
+  "choice_desc": "Pillar"
+},{
+  "_id": {
+    "$oid": "5f1999198c0aa716081be98f"
+  },
+  "question_id": {
+    "$oid": "5f197ff48c0aa716081be891"
+  },
+  "isCorrect": false,
+  "choice_desc": "Box"
+},{
+  "_id": {
+    "$oid": "5f19991b8c0aa716081be990"
+  },
+  "question_id": {
+    "$oid": "5f197ff48c0aa716081be891"
+  },
+  "isCorrect": true,
+  "choice_desc": "Beam"
+},{
+  "_id": {
+    "$oid": "5f19991d8c0aa716081be991"
+  },
+  "question_id": {
+    "$oid": "5f197ff48c0aa716081be891"
+  },
+  "isCorrect": false,
+  "choice_desc": "Statues"
+},{
+  "_id": {
+    "$oid": "5f19994d8c0aa716081be992"
+  },
+  "question_id": {
+    "$oid": "5f197ff68c0aa716081be892"
+  },
+  "isCorrect": true,
+  "choice_desc": "Straight"
+},{
+  "_id": {
+    "$oid": "5f19994f8c0aa716081be993"
+  },
+  "question_id": {
+    "$oid": "5f197ff68c0aa716081be892"
+  },
+  "isCorrect": false,
+  "choice_desc": "Vertical"
+},{
+  "_id": {
+    "$oid": "5f1999518c0aa716081be994"
+  },
+  "question_id": {
+    "$oid": "5f197ff68c0aa716081be892"
+  },
+  "isCorrect": false,
+  "choice_desc": "Rounded"
+},{
+  "_id": {
+    "$oid": "5f1999538c0aa716081be995"
+  },
+  "question_id": {
+    "$oid": "5f197ff68c0aa716081be892"
+  },
+  "isCorrect": false,
+  "choice_desc": "Curled"
+},{
+  "_id": {
+    "$oid": "5f1999d78c0aa716081be996"
+  },
+  "question_id": {
+    "$oid": "5f19807d8c0aa716081be893"
+  },
+  "isCorrect": true,
+  "choice_desc": "Gauss law"
+},{
+  "_id": {
+    "$oid": "5f1999d98c0aa716081be997"
+  },
+  "question_id": {
+    "$oid": "5f19807d8c0aa716081be893"
+  },
+  "isCorrect": false,
+  "choice_desc": "Stoke’s law"
+},{
+  "_id": {
+    "$oid": "5f1999db8c0aa716081be998"
+  },
+  "question_id": {
+    "$oid": "5f19807d8c0aa716081be893"
+  },
+  "isCorrect": false,
+  "choice_desc": "Ampere law"
+},{
+  "_id": {
+    "$oid": "5f1999dd8c0aa716081be999"
+  },
+  "question_id": {
+    "$oid": "5f19807d8c0aa716081be893"
+  },
+  "isCorrect": false,
+  "choice_desc": "Lenz law"
+},{
+  "_id": {
+    "$oid": "5f199a088c0aa716081be99a"
+  },
+  "question_id": {
+    "$oid": "5f1980808c0aa716081be894"
+  },
+  "isCorrect": false,
+  "choice_desc": "Sphere"
+},{
+  "_id": {
+    "$oid": "5f199a098c0aa716081be99b"
+  },
+  "question_id": {
+    "$oid": "5f1980808c0aa716081be894"
+  },
+  "isCorrect": true,
+  "choice_desc": "Cylinder"
+},{
+  "_id": {
+    "$oid": "5f199a0b8c0aa716081be99c"
+  },
+  "question_id": {
+    "$oid": "5f1980808c0aa716081be894"
+  },
+  "isCorrect": false,
+  "choice_desc": "Cube"
+},{
+  "_id": {
+    "$oid": "5f199a0d8c0aa716081be99d"
+  },
+  "question_id": {
+    "$oid": "5f1980808c0aa716081be894"
+  },
+  "isCorrect": false,
+  "choice_desc": "Cuboid"
+},{
+  "_id": {
+    "$oid": "5f199a5e8c0aa716081be99e"
+  },
+  "question_id": {
+    "$oid": "5f1980838c0aa716081be895"
+  },
+  "isCorrect": false,
+  "choice_desc": "Cube"
+},{
+  "_id": {
+    "$oid": "5f199a5f8c0aa716081be99f"
+  },
+  "question_id": {
+    "$oid": "5f1980838c0aa716081be895"
+  },
+  "isCorrect": false,
+  "choice_desc": "Cylinder"
+},{
+  "_id": {
+    "$oid": "5f199a618c0aa716081be9a0"
+  },
+  "question_id": {
+    "$oid": "5f1980838c0aa716081be895"
+  },
+  "isCorrect": true,
+  "choice_desc": "Sphere"
+},{
+  "_id": {
+    "$oid": "5f199a638c0aa716081be9a1"
+  },
+  "question_id": {
+    "$oid": "5f1980838c0aa716081be895"
+  },
+  "isCorrect": false,
+  "choice_desc": "Cuboid"
+},{
+  "_id": {
+    "$oid": "5f199a958c0aa716081be9a2"
+  },
+  "question_id": {
+    "$oid": "5f1980858c0aa716081be896"
+  },
+  "isCorrect": false,
+  "choice_desc": "3"
+},{
+  "_id": {
+    "$oid": "5f199a978c0aa716081be9a3"
+  },
+  "question_id": {
+    "$oid": "5f1980858c0aa716081be896"
+  },
+  "isCorrect": false,
+  "choice_desc": "2"
+},{
+  "_id": {
+    "$oid": "5f199a988c0aa716081be9a4"
+  },
+  "question_id": {
+    "$oid": "5f1980858c0aa716081be896"
+  },
+  "isCorrect": false,
+  "choice_desc": "1"
+},{
+  "_id": {
+    "$oid": "5f199a9c8c0aa716081be9a5"
+  },
+  "question_id": {
+    "$oid": "5f1980858c0aa716081be896"
+  },
+  "isCorrect": true,
+  "choice_desc": "0"
+},{
+  "_id": {
+    "$oid": "5f199abc8c0aa716081be9a6"
+  },
+  "question_id": {
+    "$oid": "5f1980bf8c0aa716081be897"
+  },
+  "isCorrect": false,
+  "choice_desc": "12.74"
+},{
+  "_id": {
+    "$oid": "5f199abf8c0aa716081be9a7"
+  },
+  "question_id": {
+    "$oid": "5f1980bf8c0aa716081be897"
+  },
+  "isCorrect": false,
+  "choice_desc": "13.47"
+},{
+  "_id": {
+    "$oid": "5f199ac18c0aa716081be9a8"
+  },
+  "question_id": {
+    "$oid": "5f1980bf8c0aa716081be897"
+  },
+  "isCorrect": true,
+  "choice_desc": "12.47"
+},{
+  "_id": {
+    "$oid": "5f199ac38c0aa716081be9a9"
+  },
+  "question_id": {
+    "$oid": "5f1980bf8c0aa716081be897"
+  },
+  "isCorrect": false,
+  "choice_desc": "13.74"
+},{
+  "_id": {
+    "$oid": "5f199b878c0aa716081be9aa"
+  },
+  "question_id": {
+    "$oid": "5f1980e18c0aa716081be898"
+  },
+  "isCorrect": false,
+  "choice_desc": "11"
+},{
+  "_id": {
+    "$oid": "5f199b8a8c0aa716081be9ab"
+  },
+  "question_id": {
+    "$oid": "5f1980e18c0aa716081be898"
+  },
+  "isCorrect": false,
+  "choice_desc": "33"
+},{
+  "_id": {
+    "$oid": "5f199b8d8c0aa716081be9ac"
+  },
+  "question_id": {
+    "$oid": "5f1980e18c0aa716081be898"
+  },
+  "isCorrect": true,
+  "choice_desc": "55"
+},{
+  "_id": {
+    "$oid": "5f199b908c0aa716081be9ad"
+  },
+  "question_id": {
+    "$oid": "5f1980e18c0aa716081be898"
+  },
+  "isCorrect": false,
+  "choice_desc": "77"
+},{
+  "_id": {
+    "$oid": "5f199bd18c0aa716081be9ae"
+  },
+  "question_id": {
+    "$oid": "5f1980e38c0aa716081be899"
+  },
+  "isCorrect": false,
+  "choice_desc": "32.86"
+},{
+  "_id": {
+    "$oid": "5f199bd28c0aa716081be9af"
+  },
+  "question_id": {
+    "$oid": "5f1980e38c0aa716081be899"
+  },
+  "isCorrect": true,
+  "choice_desc": "43.86"
+},{
+  "_id": {
+    "$oid": "5f199bd48c0aa716081be9b0"
+  },
+  "question_id": {
+    "$oid": "5f1980e38c0aa716081be899"
+  },
+  "isCorrect": false,
+  "choice_desc": "54.68"
+},{
+  "_id": {
+    "$oid": "5f199bd68c0aa716081be9b1"
+  },
+  "question_id": {
+    "$oid": "5f1980e38c0aa716081be899"
+  },
+  "isCorrect": false,
+  "choice_desc": "65.68"
+},{
+  "_id": {
+    "$oid": "5f199c0d8c0aa716081be9b2"
+  },
+  "question_id": {
+    "$oid": "5f1980ee8c0aa716081be89a"
+  },
+  "isCorrect": false,
+  "choice_desc": "18π"
+},{
+  "_id": {
+    "$oid": "5f199c0f8c0aa716081be9b3"
+  },
+  "question_id": {
+    "$oid": "5f1980ee8c0aa716081be89a"
+  },
+  "isCorrect": false,
+  "choice_desc": "24π"
+},{
+  "_id": {
+    "$oid": "5f199c118c0aa716081be9b4"
+  },
+  "question_id": {
+    "$oid": "5f1980ee8c0aa716081be89a"
+  },
+  "isCorrect": false,
+  "choice_desc": "36π"
+},{
+  "_id": {
+    "$oid": "5f199c138c0aa716081be9b5"
+  },
+  "question_id": {
+    "$oid": "5f1980ee8c0aa716081be89a"
+  },
+  "isCorrect": true,
+  "choice_desc": "72π"
+},{
+  "_id": {
+    "$oid": "5f199c478c0aa716081be9b6"
+  },
+  "question_id": {
+    "$oid": "5f1981438c0aa716081be89b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Electric field intensity"
+},{
+  "_id": {
+    "$oid": "5f199c498c0aa716081be9b7"
+  },
+  "question_id": {
+    "$oid": "5f1981438c0aa716081be89b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Electric flux density"
+},{
+  "_id": {
+    "$oid": "5f199c4d8c0aa716081be9b8"
+  },
+  "question_id": {
+    "$oid": "5f1981438c0aa716081be89b"
+  },
+  "isCorrect": false,
+  "choice_desc": "Charge"
+},{
+  "_id": {
+    "$oid": "5f199c4f8c0aa716081be9b9"
+  },
+  "question_id": {
+    "$oid": "5f1981438c0aa716081be89b"
+  },
+  "isCorrect": true,
+  "choice_desc": "Permittivity"
+},{
+  "_id": {
+    "$oid": "5f199c7e8c0aa716081be9ba"
+  },
+  "question_id": {
+    "$oid": "5f1981458c0aa716081be89c"
+  },
+  "isCorrect": false,
+  "choice_desc": "Div(E) = 0"
+},{
+  "_id": {
+    "$oid": "5f199c808c0aa716081be9bb"
+  },
+  "question_id": {
+    "$oid": "5f1981458c0aa716081be89c"
+  },
+  "isCorrect": true,
+  "choice_desc": "Div(B) = 0"
+},{
+  "_id": {
+    "$oid": "5f199c828c0aa716081be9bc"
+  },
+  "question_id": {
+    "$oid": "5f1981458c0aa716081be89c"
+  },
+  "isCorrect": false,
+  "choice_desc": "Div(H) = 0"
+},{
+  "_id": {
+    "$oid": "5f199c848c0aa716081be9bd"
+  },
+  "question_id": {
+    "$oid": "5f1981458c0aa716081be89c"
+  },
+  "isCorrect": false,
+  "choice_desc": "Div(D) = 0"
+},{
+  "_id": {
+    "$oid": "5f199ccd8c0aa716081be9be"
+  },
+  "question_id": {
+    "$oid": "5f1981478c0aa716081be89d"
+  },
+  "isCorrect": false,
+  "choice_desc": "Permittivity"
+},{
+  "_id": {
+    "$oid": "5f199ccf8c0aa716081be9bf"
+  },
+  "question_id": {
+    "$oid": "5f1981478c0aa716081be89d"
+  },
+  "isCorrect": false,
+  "choice_desc": "Permeability"
+},{
+  "_id": {
+    "$oid": "5f199cd18c0aa716081be9c0"
+  },
+  "question_id": {
+    "$oid": "5f1981478c0aa716081be89d"
+  },
+  "isCorrect": true,
+  "choice_desc": "Radius of Gaussian surface"
+},{
+  "_id": {
+    "$oid": "5f199cd38c0aa716081be9c1"
+  },
+  "question_id": {
+    "$oid": "5f1981478c0aa716081be89d"
+  },
+  "isCorrect": false,
+  "choice_desc": "Electric potential"
+},{
+  "_id": {
+    "$oid": "5f199d3a8c0aa716081be9c2"
+  },
+  "question_id": {
+    "$oid": "5f19814f8c0aa716081be89e"
+  },
+  "isCorrect": true,
+  "choice_desc": "0"
+},{
+  "_id": {
+    "$oid": "5f199d3d8c0aa716081be9c3"
+  },
+  "question_id": {
+    "$oid": "5f19814f8c0aa716081be89e"
+  },
+  "isCorrect": false,
+  "choice_desc": "1"
+},{
+  "_id": {
+    "$oid": "5f199d3f8c0aa716081be9c4"
+  },
+  "question_id": {
+    "$oid": "5f19814f8c0aa716081be89e"
+  },
+  "isCorrect": false,
+  "choice_desc": "2"
+},{
+  "_id": {
+    "$oid": "5f199d428c0aa716081be9c5"
+  },
+  "question_id": {
+    "$oid": "5f19814f8c0aa716081be89e"
+  },
+  "isCorrect": false,
+  "choice_desc": "3"
+},{
+  "_id": {
+    "$oid": "5f199d6f8c0aa716081be9c6"
+  },
+  "question_id": {
+    "$oid": "5f19817e8c0aa716081be89f"
+  },
+  "isCorrect": false,
+  "choice_desc": "3"
+},{
+  "_id": {
+    "$oid": "5f199d718c0aa716081be9c7"
+  },
+  "question_id": {
+    "$oid": "5f19817e8c0aa716081be89f"
+  },
+  "isCorrect": true,
+  "choice_desc": "10/3"
+},{
+  "_id": {
+    "$oid": "5f199d738c0aa716081be9c8"
+  },
+  "question_id": {
+    "$oid": "5f19817e8c0aa716081be89f"
+  },
+  "isCorrect": false,
+  "choice_desc": "11/3"
+},{
+  "_id": {
+    "$oid": "5f199d758c0aa716081be9c9"
+  },
+  "question_id": {
+    "$oid": "5f19817e8c0aa716081be89f"
+  },
+  "isCorrect": false,
+  "choice_desc": "4"
+},{
+  "_id": {
+    "$oid": "5f199da88c0aa716081be9ca"
+  },
+  "question_id": {
+    "$oid": "5f19817f8c0aa716081be8a0"
+  },
+  "isCorrect": false,
+  "choice_desc": "4/4.5"
+},{
+  "_id": {
+    "$oid": "5f199daa8c0aa716081be9cb"
+  },
+  "question_id": {
+    "$oid": "5f19817f8c0aa716081be8a0"
+  },
+  "isCorrect": false,
+  "choice_desc": "3/4.5"
+},{
+  "_id": {
+    "$oid": "5f199dac8c0aa716081be9cc"
+  },
+  "question_id": {
+    "$oid": "5f19817f8c0aa716081be8a0"
+  },
+  "isCorrect": true,
+  "choice_desc": "2/4.5"
+},{
+  "_id": {
+    "$oid": "5f199dae8c0aa716081be9cd"
+  },
+  "question_id": {
+    "$oid": "5f19817f8c0aa716081be8a0"
+  },
+  "isCorrect": false,
+  "choice_desc": "1/4.5"
+},{
+  "_id": {
+    "$oid": "5f199de38c0aa716081be9ce"
+  },
+  "question_id": {
+    "$oid": "5f1981818c0aa716081be8a1"
+  },
+  "isCorrect": false,
+  "choice_desc": "17/6"
+},{
+  "_id": {
+    "$oid": "5f199de68c0aa716081be9cf"
+  },
+  "question_id": {
+    "$oid": "5f1981818c0aa716081be8a1"
+  },
+  "isCorrect": false,
+  "choice_desc": "-17/6"
+},{
+  "_id": {
+    "$oid": "5f199de98c0aa716081be9d0"
+  },
+  "question_id": {
+    "$oid": "5f1981818c0aa716081be8a1"
+  },
+  "isCorrect": false,
+  "choice_desc": "13/6"
+},{
+  "_id": {
+    "$oid": "5f199deb8c0aa716081be9d1"
+  },
+  "question_id": {
+    "$oid": "5f1981818c0aa716081be8a1"
+  },
+  "isCorrect": true,
+  "choice_desc": "-13/6"
 }]

@@ -188,6 +188,12 @@ public class UserController {
             }
             Test test = adminService.getTestbyId(test_id[1]);
             List<Test> listTest = adminService.getListTestByID(test_id[1]);
+            for(int i = 0; i<listQuestion.size(); i++)
+            {
+                Session session = userService.findAllSessionByQuestionAndTestAndUser(listQuestion.get(i).getId().toString(),test.getId().toString(), userService.findByEmail(userName).getId().toString());
+                session.setChoice_id(new ObjectId());
+                quizService.saveSession(session);
+            }
             model.addAttribute("listChoice", listChoice);
             model.addAttribute("listTest", listTest);
             model.addAttribute("listQuestion", listQuestion);

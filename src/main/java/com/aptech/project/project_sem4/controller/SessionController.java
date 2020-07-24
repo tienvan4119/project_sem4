@@ -106,7 +106,7 @@ public class SessionController {
 //                    mark++;
 //                }
             }
-            double rightMark = mark/test.getNumberQuestion();
+            double rightMark = (mark/test.getNumberQuestion())*10;
             Result result = adminService.getResultbyTestAndUser(test.getId().toString(), user_id.toString());
             result.setUser_id(user_id);
             result.setTestId(test.getId());

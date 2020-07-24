@@ -88,7 +88,7 @@ public class AdminService {
         return resultRepository.getResultByTestAndUser(test_id, user_id);
     }
 
-
+    public void DeleteQuestion(Question question){ questionRepository.delete(question);}
 
     public void DeleteTest(String test_id)
     {
@@ -210,4 +210,8 @@ public class AdminService {
     {
         return classRepository.findClassByClassName(className);
     }
+    public void DeleteChoice(Choice choice){ choiceRepository.delete(choice);}
+    public List<Choice> findChoiceByQuestionId(String question_id){ return choiceRepository.findChoiceByQuestionId(question_id);}
+    public Question findQuestionByDesc(String question_desc){ return questionRepository.findQuestionByDesc(question_desc);}
+
 }

@@ -478,4 +478,604 @@
   "topic_id": {
     "$oid": "5e58e4610f82f0344c5d83da"
   }
+},{
+  "_id": {
+    "$oid": "5f1977168c0aa716081be857"
+  },
+  "question_desc": "How many types of arduinos do we have?",
+  "topic_id": {
+    "$oid": "5f132cee34f54736a819a473"
+  }
+},{
+  "_id": {
+    "$oid": "5f19773b8c0aa716081be858"
+  },
+  "question_desc": "What is the microcontroller used in Arduino UNO?",
+  "topic_id": {
+    "$oid": "5f132cee34f54736a819a473"
+  }
+},{
+  "_id": {
+    "$oid": "5f19774a8c0aa716081be859"
+  },
+  "question_desc": "What is the default bootloader of the Arduino UNO?",
+  "topic_id": {
+    "$oid": "5f132cee34f54736a819a473"
+  }
+},{
+  "_id": {
+    "$oid": "5f1977628c0aa716081be85a"
+  },
+  "question_desc": "Which is the software or a programming language used for controlling of Arduino?",
+  "topic_id": {
+    "$oid": "5f132cee34f54736a819a473"
+  }
+},{
+  "_id": {
+    "$oid": "5f1978288c0aa716081be85b"
+  },
+  "question_desc": "Arduino IDE consists of 2 functions. What are they?",
+  "topic_id": {
+    "$oid": "5f132cee34f54736a819a473"
+  }
+},{
+  "_id": {
+    "$oid": "5f1979158c0aa716081be85c"
+  },
+  "question_desc": "What does p refer to in ATmega328p?",
+  "topic_id": {
+    "$oid": "5f132da934f54736a819a474"
+  }
+},{
+  "_id": {
+    "$oid": "5f197a068c0aa716081be85d"
+  },
+  "question_desc": "_________ board allows sewn into clothing.",
+  "topic_id": {
+    "$oid": "5f132da934f54736a819a474"
+  }
+},{
+  "_id": {
+    "$oid": "5f197a208c0aa716081be85e"
+  },
+  "question_desc": "A program written with the IDE for Arduino is called _________",
+  "topic_id": {
+    "$oid": "5f132da934f54736a819a474"
+  }
+},{
+  "_id": {
+    "$oid": "5f197a388c0aa716081be85f"
+  },
+  "question_desc": "___________ are pre built circuit boards that fit on top of Android.",
+  "topic_id": {
+    "$oid": "5f132da934f54736a819a474"
+  }
+},{
+  "_id": {
+    "$oid": "5f197a5f8c0aa716081be860"
+  },
+  "question_desc": "Arduino shields are also called as _________",
+  "topic_id": {
+    "$oid": "5f132da934f54736a819a474"
+  }
+},{
+  "_id": {
+    "$oid": "5f197a968c0aa716081be861"
+  },
+  "question_desc": "Does the level shifter converts the voltage levels between RS-232 and transistor-transistor logic.",
+  "topic_id": {
+    "$oid": "5f132dd634f54736a819a475"
+  }
+},{
+  "_id": {
+    "$oid": "5f197abf8c0aa716081be862"
+  },
+  "question_desc": "Do Arduino provides IDE Environment?",
+  "topic_id": {
+    "$oid": "5f132dd634f54736a819a475"
+  }
+},{
+  "_id": {
+    "$oid": "5f197ace8c0aa716081be863"
+  },
+  "question_desc": "How many digital pins are there on the UNO board?",
+  "topic_id": {
+    "$oid": "5f132dd634f54736a819a475"
+  }
+},{
+  "_id": {
+    "$oid": "5f197aeb8c0aa716081be864"
+  },
+  "question_desc": "How many analog pins are used in Arduino Mega board?",
+  "topic_id": {
+    "$oid": "5f132deb34f54736a819a476"
+  }
+},{
+  "_id": {
+    "$oid": "5f197afd8c0aa716081be865"
+  },
+  "question_desc": "Which board is first to use microcontroller within build USB?",
+  "topic_id": {
+    "$oid": "5f132deb34f54736a819a476"
+  }
+},{
+  "_id": {
+    "$oid": "5f197bbb8c0aa716081be866"
+  },
+  "question_desc": "The instructions like MOV or ADD are called as ______",
+  "topic_id": {
+    "$oid": "5f132e4734f54736a819a477"
+  }
+},{
+  "_id": {
+    "$oid": "5f197bca8c0aa716081be867"
+  },
+  "question_desc": "A single two pass assembler does which of the following in the first pass",
+  "topic_id": {
+    "$oid": "5f132e4734f54736a819a477"
+  }
+},{
+  "_id": {
+    "$oid": "5f197be18c0aa716081be868"
+  },
+  "question_desc": "DEBUG is able to troubleshoot only",
+  "topic_id": {
+    "$oid": "5f132e4734f54736a819a477"
+  }
+},{
+  "_id": {
+    "$oid": "5f197bff8c0aa716081be869"
+  },
+  "question_desc": "The purpose of the ORIGIN directive is __________",
+  "topic_id": {
+    "$oid": "5f132e4734f54736a819a477"
+  }
+},{
+  "_id": {
+    "$oid": "5f197c158c0aa716081be86a"
+  },
+  "question_desc": "The last statement of the source program should be _______",
+  "topic_id": {
+    "$oid": "5f132e8734f54736a819a478"
+  }
+},{
+  "_id": {
+    "$oid": "5f197c288c0aa716081be86b"
+  },
+  "question_desc": "In a two pass assembler, adding literals to literal table and address resolution of local symbols are done using?",
+  "topic_id": {
+    "$oid": "5f132e8734f54736a819a478"
+  }
+},{
+  "_id": {
+    "$oid": "5f197c358c0aa716081be86c"
+  },
+  "question_desc": "A machine language instruction format consists of",
+  "topic_id": {
+    "$oid": "5f132e8734f54736a819a478"
+  }
+},{
+  "_id": {
+    "$oid": "5f197c388c0aa716081be86d"
+  },
+  "question_desc": "The listing file is identified by",
+  "topic_id": {
+    "$oid": "5f132e8734f54736a819a478"
+  }
+},{
+  "_id": {
+    "$oid": "5f197c5d8c0aa716081be86e"
+  },
+  "question_desc": "The extension file that is must for a file to be accepted by the LINK as a valid object file is",
+  "topic_id": {
+    "$oid": "5f132ea234f54736a819a479"
+  }
+},{
+  "_id": {
+    "$oid": "5f197c5f8c0aa716081be86f"
+  },
+  "question_desc": "In a two pass assembler the object code generation is done during the?",
+  "topic_id": {
+    "$oid": "5f132ea234f54736a819a479"
+  }
+},{
+  "_id": {
+    "$oid": "5f197c618c0aa716081be870"
+  },
+  "question_desc": "What is the content of Stack Pointer?",
+  "topic_id": {
+    "$oid": "5f132ea234f54736a819a479"
+  }
+},{
+  "_id": {
+    "$oid": "5f197c628c0aa716081be871"
+  },
+  "question_desc": "In a two-pass assembler, the task of the Pass II is to",
+  "topic_id": {
+    "$oid": "5f132ea234f54736a819a479"
+  }
+},{
+  "_id": {
+    "$oid": "5f197cbf8c0aa716081be872"
+  },
+  "question_desc": "Which of the following are language processors",
+  "topic_id": {
+    "$oid": "5f132ea934f54736a819a47a"
+  }
+},{
+  "_id": {
+    "$oid": "5f197cc18c0aa716081be873"
+  },
+  "question_desc": "System programs such as compiler are designed as that they are",
+  "topic_id": {
+    "$oid": "5f132ea934f54736a819a47a"
+  }
+},{
+  "_id": {
+    "$oid": "5f197cc38c0aa716081be874"
+  },
+  "question_desc": "TII stands for",
+  "topic_id": {
+    "$oid": "5f132ea934f54736a819a47a"
+  }
+},{
+  "_id": {
+    "$oid": "5f197d088c0aa716081be875"
+  },
+  "question_desc": "A plastic rod is rubbed with a piece of animal fur. The plastic rod acquires a negative charge during this process. Which of the following is true about the charge on the piece of fur?",
+  "topic_id": {
+    "$oid": "5f132f9c34f54736a819a47b"
+  }
+},{
+  "_id": {
+    "$oid": "5f197d0b8c0aa716081be876"
+  },
+  "question_desc": "A positively charged rod is brought close to one end of a neutral metallic plate. What type of charge is induced on the closest side of the plate?",
+  "topic_id": {
+    "$oid": "5f132f9c34f54736a819a47b"
+  }
+},{
+  "_id": {
+    "$oid": "5f197d0d8c0aa716081be877"
+  },
+  "question_desc": "A positively charged sphere A is brought close without touching to a neutral sphere B. Sphere B is touched with a grounded wire. What is the charge on sphere B after the wire is removed?",
+  "topic_id": {
+    "$oid": "5f132f9c34f54736a819a47b"
+  }
+},{
+  "_id": {
+    "$oid": "5f197d108c0aa716081be878"
+  },
+  "question_desc": "A neutral electroscope is touched with a negatively charged rod. What is the charge on the electroscope after the rod is removed?",
+  "topic_id": {
+    "$oid": "5f132f9c34f54736a819a47b"
+  }
+},{
+  "_id": {
+    "$oid": "5f197d9c8c0aa716081be879"
+  },
+  "question_desc": "A neutral electroscope is touched with a positively carged rod. After the rod is removed the electroscope is charged positively because of:",
+  "topic_id": {
+    "$oid": "5f13307234f54736a819a47c"
+  }
+},{
+  "_id": {
+    "$oid": "5f197d9f8c0aa716081be87a"
+  },
+  "question_desc": "A negatively charged rod is brought near an uncharged, grounded electroscope. Which of the following statements is true?",
+  "topic_id": {
+    "$oid": "5f13307234f54736a819a47c"
+  }
+},{
+  "_id": {
+    "$oid": "5f197da18c0aa716081be87b"
+  },
+  "question_desc": "A positively charged rod is brought near a charged electroscope. As a result of doing this, the electroscope leaves move further apart. What is the charge on the electroscope?",
+  "topic_id": {
+    "$oid": "5f13307234f54736a819a47c"
+  }
+},{
+  "_id": {
+    "$oid": "5f197da48c0aa716081be87c"
+  },
+  "question_desc": "A negatively charged rod is brought near a charged electroscope. As a result of doing this, the electroscope leaves move further apart. ",
+  "topic_id": {
+    "$oid": "5f13307234f54736a819a47c"
+  }
+},{
+  "_id": {
+    "$oid": "5f197dfa8c0aa716081be87d"
+  },
+  "question_desc": "A positively charged rod is brought near a charged electroscope. As a result of doing this, the electroscope leaves move closer to each other. ",
+  "topic_id": {
+    "$oid": "5f1330bc34f54736a819a47d"
+  }
+},{
+  "_id": {
+    "$oid": "5f197dfe8c0aa716081be87e"
+  },
+  "question_desc": "Two positive charges with magnitudes 4Q and Q are separated by a distance r. Which of the following statements is true?",
+  "topic_id": {
+    "$oid": "5f1330bc34f54736a819a47d"
+  }
+},{
+  "_id": {
+    "$oid": "5f197e028c0aa716081be87f"
+  },
+  "question_desc": "Sphere A is charged positively and sphere B is neutral. The spheres are brought near each other. Which of the following statements is true?",
+  "topic_id": {
+    "$oid": "5f1330bc34f54736a819a47d"
+  }
+},{
+  "_id": {
+    "$oid": "5f197e058c0aa716081be880"
+  },
+  "question_desc": "Two positive charges Q1 and Q2 are separated by a distance r. The charges repel each other with a force F. If the magnitude of each charge is doubled and the distance stays unchanged what is the new force between the charges?",
+  "topic_id": {
+    "$oid": "5f1330bc34f54736a819a47d"
+  }
+},{
+  "_id": {
+    "$oid": "5f197e818c0aa716081be881"
+  },
+  "question_desc": "Two charges Q1 and –Q2 are separated by a distance r. The charges attract each other with a force F. What is the new force between the charges if the distance is tripled?",
+  "topic_id": {
+    "$oid": "5f1330d234f54736a819a47e"
+  }
+},{
+  "_id": {
+    "$oid": "5f197e838c0aa716081be882"
+  },
+  "question_desc": "Two positive charges Q1 and Q2 are separated by a distance r. The charges repel each other with a force F. If the distance between the charges is cut to one-fourth what is the new force acting on each charge?",
+  "topic_id": {
+    "$oid": "5f1330d234f54736a819a47e"
+  }
+},{
+  "_id": {
+    "$oid": "5f197e858c0aa716081be883"
+  },
+  "question_desc": ". Two charges Q1 and –Q2 are separated by a distance r. The charges attract each other with a force F. What is the new force between the charges if the distance is cut to one-fourth and the magnitude of each charge is doubled?",
+  "topic_id": {
+    "$oid": "5f1330d234f54736a819a47e"
+  }
+},{
+  "_id": {
+    "$oid": "5f197ee08c0aa716081be884"
+  },
+  "question_desc": "The ____________ forces are used are used in the method of sections for the calculation of the internal forces.",
+  "topic_id": {
+    "$oid": "5f13311134f54736a819a47f"
+  }
+},{
+  "_id": {
+    "$oid": "5f197ee38c0aa716081be885"
+  },
+  "question_desc": "Every point on the force vector which is the internal force is having the same magnitude and the same direction as the whole force vector have.",
+  "topic_id": {
+    "$oid": "5f13311134f54736a819a47f"
+  }
+},{
+  "_id": {
+    "$oid": "5f197ee48c0aa716081be886"
+  },
+  "question_desc": "For getting the normal force on the supports, we do what?",
+  "topic_id": {
+    "$oid": "5f13311134f54736a819a47f"
+  }
+},{
+  "_id": {
+    "$oid": "5f197ee78c0aa716081be887"
+  },
+  "question_desc": "For getting the horizontal component of the support reactions what do we do?",
+  "topic_id": {
+    "$oid": "5f13311134f54736a819a47f"
+  }
+},{
+  "_id": {
+    "$oid": "5f197f488c0aa716081be888"
+  },
+  "question_desc": "Twisting moment is also called as __________",
+  "topic_id": {
+    "$oid": "5f13314834f54736a819a480"
+  }
+},{
+  "_id": {
+    "$oid": "5f197f4b8c0aa716081be889"
+  },
+  "question_desc": "The loading generally act upon the ___________ of the body.",
+  "topic_id": {
+    "$oid": "5f13314834f54736a819a480"
+  }
+},{
+  "_id": {
+    "$oid": "5f197f4d8c0aa716081be88a"
+  },
+  "question_desc": "The area of does make the difference in the internal forces, that is if the area is large the internal force acting is also large and vice versa.",
+  "topic_id": {
+    "$oid": "5f13314834f54736a819a480"
+  }
+},{
+  "_id": {
+    "$oid": "5f197f538c0aa716081be88b"
+  },
+  "question_desc": "The magnitude of each loading will be ___________ at various points along the axis of the member of the beam.",
+  "topic_id": {
+    "$oid": "5f13314834f54736a819a480"
+  }
+},{
+  "_id": {
+    "$oid": "5f197faa8c0aa716081be88c"
+  },
+  "question_desc": "Torsional moment is applied at the ___________ part of the beam.",
+  "topic_id": {
+    "$oid": "5f13317c34f54736a819a481"
+  }
+},{
+  "_id": {
+    "$oid": "5f197fac8c0aa716081be88d"
+  },
+  "question_desc": "Normal force is equal to _______________",
+  "topic_id": {
+    "$oid": "5f13317c34f54736a819a481"
+  }
+},{
+  "_id": {
+    "$oid": "5f197fae8c0aa716081be88e"
+  },
+  "question_desc": "If the normal force creates a tension then the force is said to be ____________",
+  "topic_id": {
+    "$oid": "5f13317c34f54736a819a481"
+  }
+},{
+  "_id": {
+    "$oid": "5f197fb08c0aa716081be88f"
+  },
+  "question_desc": "If the shear force creates a clockwise rotation then the force is said to be ____________",
+  "topic_id": {
+    "$oid": "5f13317c34f54736a819a481"
+  }
+},{
+  "_id": {
+    "$oid": "5f197ff28c0aa716081be890"
+  },
+  "question_desc": "If the bending of the beam is concave upwards then the bending moment developed is called __________ moment.",
+  "topic_id": {
+    "$oid": "5f1331a934f54736a819a482"
+  }
+},{
+  "_id": {
+    "$oid": "5f197ff48c0aa716081be891"
+  },
+  "question_desc": "___________ are the structures that are being made to support the loadings applied perpendicular to the axis of that structures.",
+  "topic_id": {
+    "$oid": "5f1331a934f54736a819a482"
+  }
+},{
+  "_id": {
+    "$oid": "5f197ff68c0aa716081be892"
+  },
+  "question_desc": "Beams are long and ________ structures that are being made to support the loadings.",
+  "topic_id": {
+    "$oid": "5f1331a934f54736a819a482"
+  }
+},{
+  "_id": {
+    "$oid": "5f19807d8c0aa716081be893"
+  },
+  "question_desc": "Divergence theorem is based on",
+  "topic_id": {
+    "$oid": "5f13321034f54736a819a483"
+  }
+},{
+  "_id": {
+    "$oid": "5f1980808c0aa716081be894"
+  },
+  "question_desc": "The Gaussian surface for a line charge will be",
+  "topic_id": {
+    "$oid": "5f13321034f54736a819a483"
+  }
+},{
+  "_id": {
+    "$oid": "5f1980838c0aa716081be895"
+  },
+  "question_desc": "The Gaussian surface for a point charge will be",
+  "topic_id": {
+    "$oid": "5f13321034f54736a819a483"
+  }
+},{
+  "_id": {
+    "$oid": "5f1980858c0aa716081be896"
+  },
+  "question_desc": "A circular disc of radius 5m with a surface charge density ρs = 10sinφ is enclosed by surface. What is the net flux crossing the surface?",
+  "topic_id": {
+    "$oid": "5f13321034f54736a819a483"
+  }
+},{
+  "_id": {
+    "$oid": "5f1980bf8c0aa716081be897"
+  },
+  "question_desc": "The potential of a coaxial cylinder with charge density 1 unit , inner radius 1m and outer cylinder 2m is (in 109)",
+  "topic_id": {
+    "$oid": "5f13325c34f54736a819a484"
+  }
+},{
+  "_id": {
+    "$oid": "5f1980e18c0aa716081be898"
+  },
+  "question_desc": "The total charge of a surface with densities 1,2,…,10 is",
+  "topic_id": {
+    "$oid": "5f13325c34f54736a819a484"
+  }
+},{
+  "_id": {
+    "$oid": "5f1980e38c0aa716081be899"
+  },
+  "question_desc": "The work done by a charge of 10μC with a potential 4.386 is (in μJ)",
+  "topic_id": {
+    "$oid": "5f13325c34f54736a819a484"
+  }
+},{
+  "_id": {
+    "$oid": "5f1980ee8c0aa716081be89a"
+  },
+  "question_desc": "Find the potential due to a charged ring of density 2 units with radius 2m and the point at which potential is measured is at a distance of 1m from the ring.",
+  "topic_id": {
+    "$oid": "5f13325c34f54736a819a484"
+  }
+},{
+  "_id": {
+    "$oid": "5f1981438c0aa716081be89b"
+  },
+  "question_desc": "Gauss law cannot be used to find which of the following quantity?",
+  "topic_id": {
+    "$oid": "5f13327834f54736a819a485"
+  }
+},{
+  "_id": {
+    "$oid": "5f1981458c0aa716081be89c"
+  },
+  "question_desc": "Gauss law for magnetic fields is given by",
+  "topic_id": {
+    "$oid": "5f13327834f54736a819a485"
+  }
+},{
+  "_id": {
+    "$oid": "5f1981478c0aa716081be89d"
+  },
+  "question_desc": "Gauss law can be used to compute which of the following?",
+  "topic_id": {
+    "$oid": "5f13327834f54736a819a485"
+  }
+},{
+  "_id": {
+    "$oid": "5f19814f8c0aa716081be89e"
+  },
+  "question_desc": "Three charged cylindrical sheets are present in three spaces with σ = 5 at R = 2m, σ = -2 at R = 4m and σ = -3 at R = 5m. Find the flux density at R = 1m.",
+  "topic_id": {
+    "$oid": "5f13327834f54736a819a485"
+  }
+},{
+  "_id": {
+    "$oid": "5f19817e8c0aa716081be89f"
+  },
+  "question_desc": "Three charged cylindrical sheets are present in three spaces with σ = 5 at R = 2m, σ = -2 at R = 4m and σ = -3 at R = 5m. Find the flux density at R = 3m.",
+  "topic_id": {
+    "$oid": "5f13329334f54736a819a486"
+  }
+},{
+  "_id": {
+    "$oid": "5f19817f8c0aa716081be8a0"
+  },
+  "question_desc": "Gauss law cannot be expressed in which of the following forms?",
+  "topic_id": {
+    "$oid": "5f13329334f54736a819a486"
+  }
+},{
+  "_id": {
+    "$oid": "5f1981818c0aa716081be8a1"
+  },
+  "question_desc": "Gauss law can be evaluated in which coordinate system?",
+  "topic_id": {
+    "$oid": "5f13329334f54736a819a486"
+  }
 }]

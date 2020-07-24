@@ -15,7 +15,8 @@
     <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
     <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
 
-    <link th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}"
+          rel="stylesheet">
     <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js}"></script>
     <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
     <script th:src='@{https://kit.fontawesome.com/a076d05399.js}'></script>
@@ -53,157 +54,184 @@
             $('#listSection').on('change', e => {
                 var section_id = $('#listSection option:selected').val();
                 console.log(section_id);
-                $.ajax({type: "POST", url: "/api/admin/getTopic", dataType: 'json',
-                    data : {
-                        section_id : section_id
-                    },success: function(result){
-                        console.log(result)
-                        $('#listTopic').find('option').remove();
-                        var i;
-                        for (i = 0; i < result.length; i++) {
-                            data = result[i].title
-                            console.log(data)
-                            $('#listTopic').append("<option value= "+data+" >" + data + "</option>");
-                            var x = document.getElementById("mySelect")
-                        }
+                $.ajax({
+                    type: "POST", url: "/api/admin/getQuestionBySection", dataType: 'json',
+                    data: {
+                        section_id: section_id
+                    }, success: function (result) {
 
-                    }})
-                if (section_id == 'Section'){
-                    $('#listTopic').empty();
-                    $('#listTopic').append("<option selected>" + "Topic..." + "</option>");
-                }
-
-            })
-            $('#listTopic').on('change', e => {
-                var topic_id_value = $('#listTopic option:selected').text();
-                console.log(topic_id_value);
-                if (topic_id_value === 'Constructors') {
-                    $('#quizs').empty()
-                    $('#quizs').append("<tr>" +
-                        "<td id='ID1' value='1'>1</td>" +
-                        "<td id='section1' value='C plus - plus'>C plus - plus</td>" +
-                        "<td id='topic1' value='Constructors'>Constructors</td>" +
-                        "<td id='question1' value='question1'>Question 1 ....</td>" +
-                        "<td>" +
-                        "<a class='edit' title='Edit' th:id='${user.id}' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE254;</i></a>" +
-                        "<a th:id='${user.id}' class='delete' title='Delete' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE872;</i></a>" +
-                        "</td>" +
-                        "</tr>")
-                }
-                if (topic_id_value === 'This Pointer') {
-                    $('#quizs').empty()
-                    $('#quizs').append("<tr>" +
-                        "<td id='ID2' value='2'>2</td>" +
-                        "<td id='section2' value='C plus - plus'>C plus - plus</td>" +
-                        "<td id='topic2' value='This Pointer'>This Pointer</td>" +
-                        "<td id='question2' value='question2'>Question 2 ....</td>" +
-                        "<td>" +
-                        "<a class='edit' title='Edit' th:id='${user.id}' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE254;</i></a>" +
-                        "<a th:id='${user.id}' class='delete' title='Delete' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE872;</i></a>" +
-                        "</td>" +
-                        "</tr>")
-                }
-                if (topic_id_value === 'Inheritance') {
-                    $('#quizs').empty()
-                    $('#quizs').append("<tr>" +
-                        "<td id='ID3' value='3'>3</td>" +
-                        "<td id='section3' value='C plus - plus'>C plus - plus</td>" +
-                        "<td id='topic3' value='Inheritance'>Inheritance</td>" +
-                        "<td id='question3' value='question3'>Question 3 ....</td>" +
-                        "<td>" +
-                        "<a class='edit' title='Edit' th:id='${user.id}' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE254;</i></a>" +
-                        "<a th:id='${user.id}' class='delete' title='Delete' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE872;</i></a>" +
-                        "</td>" +
-                        "</tr>")
-
-                }
-                if (topic_id_value === 'New and Delete') {
-                    $('#quizs').empty()
-                    $('#quizs').append("<tr>" +
-                        "<td id='ID4' value='4'>4</td>" +
-                        "<td id='section4' value='C plus - plus'>C plus - plus</td>" +
-                        "<td id='topic4' value='New and Delete'>New and Delete</td>" +
-                        "<td id='question4' value='question4'>Question 4 ....</td>" +
-                        "<td>" +
-                        "<a class='edit' title='Edit' th:id='${user.id}' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE254;</i></a>" +
-                        "<a th:id='${user.id}' class='delete' title='Delete' data-toggle='tooltip'><i th:id='${user.id}' class='material-icons'>&#xE872;</i></a>" +
-                        "</td>" +
-                        "</tr>")
-
-                }
-                if (topic_id_value === 'Section') {
-                    $('#quizs').empty();
-                }
-                $('.edit').on('click', e => {
-                    $('#editModal').modal('show');
-                    console.log($(e.target).context.id)
-                    var user_id = $(e.target).context.id;
-
-                    $.ajax({
-                        type: "POST", url: "/api/admin/getUser", dataType: 'json',
-                        data: {
-                            user_id: user_id
-                        }, success: function (result) {
-                            console.log(result);
-                        }
-                    })
-                        .done(function (data) {
-                            var lastname = data.lastName
-                            var firstname = data.firstName
-                            console.log(lastname + '   ' + firstname);
-                            var userEmail = data.email;
-                            $("#editModal #editLastName").val(lastname);
-                            $("#editModal #editFirstName").val(firstname);
-                            $("#editModal #editUserEmail").val(userEmail);
-                        });
-                })
-                $('.delete').on('click', e => {
-                    $('#deleteModal').modal('show');
-                    var user_id = $(e.target).context.id;
-                    $('#save_delete').on('click', function () {
-                        console.log("in here")
-                        console.log(user_id)
                         $.ajax({
-                            type: "POST", url: "/api/admin/DeleteUser", dataType: 'json',
+                            type: "POST", url: "/api/admin/getQuestionTopicBySection", dataType: 'json',
                             data: {
-                                user_id: user_id
-                            }, success: function (result) {
-                                $('#deleteModal').modal('hide');
+                                section_id: section_id
+                            }, success: function (topic) {
+                                $('#quizs').empty()
+                                var i;
+                                var j = 1
+                                for (i = 0; i < result.length; i++, j++) {
+
+                                    $('#quizs').append("<tr>" +
+                                        "<td>" + j + "</td>" +
+                                        "<td>" + $('#listSection option:selected').text() + "</td>" +
+                                        "<td>" + topic[i].title+ "</td>" +
+                                        "<td>" + result[i].question_desc + "</td>" +
+                                        "<td>" +
+                                        "<a onclick='editQuestion(this.id)' class='edit' title='Edit' id='" + result[i].question_desc + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                        "<a onclick='deleteQuestion(this.id)' id='" + result[i].question_desc + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                        "</td>" +
+                                        "</tr>")
+                                }
                             }
                         })
-                            .done(function (data) {
-                                console.log("Yeah")
-                            });
-                        $('#deleteModal').modal('hide');
-
-                        $(e.target)[0].parentNode.closest("tr").remove()
-                    })
+                    }
                 })
-                $('#saveChanges').on('click', e => {
-                    var lastname = $("#editModal #editLastName").val().trim()
-                    var firstname = $("#editModal #editFirstName").val().trim()
-                    var useremail = $("#editModal #editUserEmail").val().trim()
+            })
+        })
+        function deleteQuestion(question_desc) {
+            console.log(question_desc)
+            $('#deleteModal').modal('show');
 
+            $('#save_delete').on('click', e => {
+                $.ajax({
+                    type: "POST", url: "/api/admin/DeleteQuestion", dataType: 'json',
+                    data: {
+                        question_desc: question_desc,
+
+
+                        //CHUA XU LI LOC LAI BANG MOI SAU KHI DELETE
+                    }, success: function (dataSomething) {
+                        console.log(dataSomething)
+                        $('#deleteModal').modal('hide');
+                        $.ajax({
+                            type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
+                            data: {}, success: function (result) {
+
+                                var k = 0;
+                                for (k; k < result.length; k++) {
+                                    $('#listTeachers').append("<option  value= " + result[k].email + " >" + result[k].firstName + " " + result[k].lastName + "</option>");
+                                }
+
+                                $.ajax({
+                                    type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
+                                    data: {}, success: function (dataClass) {
+                                        console.log(result)
+
+                                        $('#teachers').empty()
+                                        var i;
+                                        for (i = 0; i < result.length; i++) {
+                                            console.log(result[i].firstName + result[i].lastName)
+                                            console.log(result[i].email)
+                                            console.log(result[i].location)
+                                            console.log(dataClass[i].className)
+
+                                            $('#teachers').append("<tr>" +
+                                                "<td>" + result[i].firstName + " " + result[i].lastName + "</td>" +
+                                                "<td>" + result[i].location + "</td>" +
+                                                "<td>" + result[i].email + "</td>" +
+                                                "<td>" + dataClass[i].className + "</td>" +
+                                                "<td>" +
+                                                "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='" + result[i].email + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                                "<a onclick='deleteTeacher(this.id)' id='" + result[i].email + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                                "</td>" +
+                                                "</tr>")
+                                        }
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+
+            })
+        }
+
+        function editQuestion(question_desc) {
+            $('#editModal').modal('show');
+            $.ajax({
+                type: "POST", url: "/api/admin/getQuestionByDesc", dataType: 'json',
+                data: {
+                    question_desc: question_desc
+                }, success: function (question) {
                     $.ajax({
-                        type: 'POST', url: "/api/admin/changeProfile", dataType: 'json',
+                        type: "POST", url: "/api/admin/getChoiceByQuestionDesc", dataType: 'json',
                         data: {
-                            lastName: lastname,
-                            firstName: firstname,
-                            userEmail: useremail
-                        }, success: function (result) {
-
+                            question_desc: question_desc
+                        }, success: function (choice) {
+                            console.log(question.question_desc)
+                            $('#editQuestionDesc').empty()
+                            $('#question_Desc').empty()
+                            $('#question_Desc').val(question.question_desc)
+                            $('#editQuestionDesc').html(($("#question_Desc").innerHTML));
                         }
                     })
-                        .done(function (data) {
-                            $('#editModal').modal('hide');
-                            location.reload();
-                            // $('#datatable .lastName').val(data.lastName)
-                            // $('#datatable .firstNName').val(data.firstName)
-                            // $('#datatable .userEmail').val(data.userEmail)
-                        });
-                });
+
+                }
+            })
+
+            $('#saveChanges').on('click', e => {
+                let courseName = $("#editCourse").children("option").filter(":selected").text();
+                let firstName = $("#editFirstName").val();
+                let lastName = $("#editLastName").val();
+                let email = $("#editEmail").val();
+                let location = $("#editAddress").val();
+                let className = $("#editClass").val();
+                let preCourseName =  $("#listCourse").children("option").filter(":selected").text();
+                console.log(preCourseName)
+                $.ajax({
+                    type: 'POST', url: "/api/admin/editStudent", dataType: 'json',
+                    data: {
+                        className: className,
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        location: location,
+                        courseName : courseName,
+                        preCourseName : preCourseName
+
+                        //CHUA XU LI LOC LAI BANG MOI SAU KHI UPDATE
+                    }, success: function (NonUseresult) {
+                        $.ajax({
+                            type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
+                            data: {}, success: function (result) {
+                                console.log(result)
+                                var k = 0;
+                                for (k; k < result.length; k++) {
+                                    $('#listTeachers').append("<option  value= " + result[k].email + " >" + result[k].firstName + " " + result[k].lastName + "</option>");
+                                }
+
+                                $.ajax({
+                                    type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
+                                    data: {}, success: function (dataClass) {
+                                        console.log(result)
+                                        $('#editModal').modal('hide');
+                                        $('#teachers').empty()
+                                        var i;
+                                        for (i = 0; i < result.length; i++) {
+                                            console.log(result[i].firstName + result[i].lastName)
+                                            console.log(result[i].email)
+                                            console.log(result[i].location)
+                                            console.log(dataClass[i].className)
+
+                                            $('#teachers').append("<tr>" +
+                                                "<td>" + result[i].firstName + " " + result[i].lastName + "</td>" +
+                                                "<td>" + result[i].location + "</td>" +
+                                                "<td>" + result[i].email + "</td>" +
+                                                "<td>" + dataClass[i].className + "</td>" +
+                                                "<td>" +
+                                                "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='" + result[i].email + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                                "<a onclick='deleteTeacher(this.id)' id='" + result[i].email + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                                "</td>" +
+                                                "</tr>")
+                                        }
+                                    }
+                                })
+                            }
+                        })
+
+                    }
+                })
             });
-        })
+        }
     </script>
 </head>
 
@@ -252,7 +280,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">QUẢN LÝ:</h6>
                     <a class="collapse-item active" href="teacher.html">LỚP</a>
-                    <a class="collapse-item" href="DetailsStudents.html.html">Quản lý điểm</a>
+                    <a class="collapse-item" href="DetailsStudents.html">Quản lý điểm</a>
                 </div>
             </div>
         </li>
@@ -346,7 +374,8 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${#authentication.getPrincipal().getUsername()}"></span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                  th:text="${#authentication.getPrincipal().getUsername()}"></span>
                             <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                         </a>
                         <!-- Dropdown - User Information -->
@@ -391,7 +420,8 @@
                                 <form>
                                     <select class="custom-select" style="width: 30%" id="listSection">
                                         <option id="Section" value="Section" selected>Section...</option>
-                                        <option th:each="section :  ${listSection}" th:value="${section.id}" th:text="${section.title}"/>
+                                        <option th:each="section :  ${listSection}" th:value="${section.id}"
+                                                th:text="${section.title}"/>
                                     </select>
                                     <select class="custom-select" style="width: 30%" id="listTopic">
                                         <option selected>Topics...</option>
@@ -418,7 +448,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Xóa sinh viên này ?</h5>
+                                                <h5 class="modal-title">Xóa câu hỏi này ?</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -451,42 +481,32 @@
                                             <div class="modal-body">
                                                 <form name="ckeditor" th:action="@{/api/admin/addQuestion}">
                                                     <br>
-                                                    <textarea name="editor1" id="editor1" rows="12" cols="350"
+                                                    <div tyle="display: none;" id="question_Desc">
+
+                                                    </div>
+                                                    <textarea  name="editQuestionDesc" id="editQuestionDesc"
                                                               style="width: 770px">
                                                     </textarea>
                                                     <script>
                                                         // Replace the <textarea id="editor1"> with a CKEditor
                                                         // instance, using default configuration.
-                                                        CKEDITOR.replace('editor1');
+                                                        // CKEDITOR.replace('editor1');
                                                     </script>
                                                     <div class="form-group">
-                                                        <label for="formGroupExampleInput">First Choice</label>
-                                                        <input type="text" class="form-control" id="Choice1"
-                                                               placeholder="First choice">
-                                                        <input type="radio" class="form-check-input" name="optradio"
-                                                               value="1" style="margin-left: -0.9rem; margin-top: 0.3rem">This is the right Choice
+                                                        <label for="formGroupExampleInput">Right Choice</label>
+                                                        <input type="text" class="form-control" id="rightChoice"
+                                                               placeholder="Right choice">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="formGroupExampleInput2">Second Choice</label>
                                                         <input type="text" class="form-control" id="Choice2"
                                                                placeholder="Second Choice">
                                                         <input type="radio" class="form-check-input" name="optradio"
-                                                               value="2" style="margin-left: -0.9rem; margin-top: 0.3rem" >This is the right Choice
+                                                               value="2"
+                                                               style="margin-left: -0.9rem; margin-top: 0.3rem">This is
+                                                        the right Choice
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="formGroupExampleInput2">Third Choice</label>
-                                                        <input type="text" class="form-control" id="Choice3"
-                                                               placeholder="Third choice">
-                                                        <input type="radio" class="form-check-input" name="optradio"
-                                                               value="3" style="margin-left: -0.9rem; margin-top: 0.3rem">This is the right Choice
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="formGroupExampleInput2">Fourth choice</label>
-                                                        <input type="text" class="form-control" id="Choice4"
-                                                               placeholder="Fourth choice">
-                                                        <input type="radio" class="form-check-input" name="optradio"
-                                                               value="4" style="margin-left: -0.9rem; margin-top: 0.3rem">This is the right Choice
-                                                    </div>
+
                                                 </form>
                                             </div>
                                             <div class="modal-footer">

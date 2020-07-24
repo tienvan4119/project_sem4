@@ -119,8 +119,8 @@ private  RelationCourseSectionRepository relationCourseSectionRepository;
     {
         return sessionRepository.findAllSessionBySectionId(test_id, user_id);
     }
-    public List<Session> findAllSessionByQuestionAndTestAndUser(String question_id, String test_id, String user_id)
+    public Session findAllSessionByQuestionAndTestAndUser(String question_id, String test_id, String user_id)
     {
-        return sessionRepository.findAllSessionByQuestionAndTestAndUser(question_id, test_id,user_id);
+        return sessionRepository.findSessionByQuestionAndTestAndUser(question_id, test_id,user_id);
     }
 }

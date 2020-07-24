@@ -401,7 +401,7 @@ public class AdminController {
             result.setUser_id(listUser.get(i).getId());
             result.setDone(false);
             result.setTestAgain(false);
-            result.setTime(timeTest*60);
+            result.setTime(timeTest);
             quizService.saveResult(result);
         }
         return adminService.getListTest(user.getId().toString());
@@ -504,6 +504,63 @@ public class AdminController {
         newQuestion.setQuestion_desc(question_desc);
         newQuestion.setTopic_id(adminService.getTopicByTitleAndSectionId(topic_title, section_id).getId());
         return newQuestion;
+    }
+
+    @RequestMapping(value = "/createQuestion", method = RequestMethod.POST)
+    public String createQuestion(HttpServletRequest request) {
+        String questionDesc = request.getParameter("questionDesc");
+        String title = request.getParameter("topicName");
+        String sectionID = request.getParameter("sectionID");
+        String rightChoice = request.getParameter("rightChoice");
+        String choiceString = request.getParameter("choiceString");
+        String[] choiceDesc = choiceString.split("\\,", -1);
+
+        Question new_Question = new Question();
+
+        Choice new_RightChoice = new Choice();
+        new_Question.setTopic_id(adminService.getTopicByTitleAndSectionId(title, sectionID).getId());
+        new_Question.setQuestion_desc(questionDesc);
+        adminService.saveQuestion(new_Question);
+
+        new_RightChoice.setChoice_desc(rightChoice);
+        new_RightChoice.setQuestion_id(new_Question.getId());
+        new_RightChoice.setCorrect(true);
+        adminService.saveChoice(new_RightChoice);
+
+        for (int j = 0; j < choiceDesc.length; j++) {
+            Choice new_Choice = new Choice();
+            new_Choice.setCorrect(false);
+            new_Choice.setChoice_desc(choiceDesc[j]);
+            new_Choice.setQuestion_id(new_Question.getId());
+            adminService.saveChoice(new_Choice);
+        }
+        return "Yes";
+    }
+    @RequestMapping(value = "/getQuestionBySection", method = RequestMethod.POST)
+    public List<Question> getQuestionBySection(HttpServletRequest request) {
+        String section_id = request.getParameter("section_id");
+        List<Topic> listTopic = quizService.listAllTopicBySection_id(section_id);
+        List<Question> listQuestionyByTopic = new ArrayList<Question>();
+        for (int i = 0; i < listTopic.size(); i++) {
+            listQuestionyByTopic.addAll(quizService.listQuestionByTopic(listTopic.get(i).getId().toString()));
+        }
+        return listQuestionyByTopic;
+    }
+    @RequestMapping(value = "/getQuestionTopicBySection", method = RequestMethod.POST)
+    public List<Topic> getQuestionTopicBySection(HttpServletRequest request) {
+
+        String section_id = request.getParameter("section_id");
+        List<Topic> listTopic = quizService.listAllTopicBySection_id(section_id);
+        List<Question> listQuestionyByTopic = new ArrayList<Question>();
+        for (int i = 0; i < listTopic.size(); i++) {
+            listQuestionyByTopic.addAll(quizService.listQuestionByTopic(listTopic.get(i).getId().toString()));
+        }
+        List<Topic> getTopic = new ArrayList<>();
+        for(int i = 0;i<listQuestionyByTopic.size();i++)
+        {
+            getTopic.add(quizService.getSectionId(listQuestionyByTopic.get(i).getTopic_id().toString()));
+        }
+        return getTopic;
     }
 
     @RequestMapping(value = "/DeleteTest", method = RequestMethod.POST)
@@ -626,6 +683,19 @@ public class AdminController {
         adminService.saveTopic(new_Topic);
         return "Yes";
     }
+
+    @RequestMapping(value = "/getQuestionByDesc", method = RequestMethod.POST)
+    public Question getQuestionByDesc(Model model, HttpServletRequest request) {
+        String question_desc = request.getParameter("question_desc");
+        return adminService.findQuestionByDesc(question_desc);
+    }
+    @RequestMapping(value = "/getChoiceByQuestionDesc", method = RequestMethod.POST)
+    public List<Choice> getChoiceByQuestionDesc(Model model, HttpServletRequest request) {
+        String question_desc = request.getParameter("question_desc");
+        Question edit_question = adminService.findQuestionByDesc(question_desc);
+        return adminService.findChoiceByQuestionId(edit_question.getId().toString());
+    }
+
     @RequestMapping(value = "/getTeacherByEmail", method = RequestMethod.POST)
     public User getTeacherByEmail(Model model, HttpServletRequest request)
     {
@@ -734,6 +804,19 @@ public class AdminController {
         return test;
     }
 
+    @RequestMapping(value = "/DeleteQuestion", method = RequestMethod.POST)
+    public List<Faculty> deleteQuestion(HttpServletRequest request) {
+        String question_desc = request.getParameter("question_desc");
+        Question delete_question = adminService.findQuestionByDesc(question_desc);
+        List<Choice> choice = adminService.findChoiceByQuestionId(delete_question.getId().toString());
+        for(int i = 0 ; i < choice.size(); i++)
+        {
+            adminService.DeleteChoice(choice.get(i));
+        }
+        adminService.DeleteQuestion(delete_question);
+        return adminService.getAllFaculty();
+    }
+
     @RequestMapping(value = "/getStatisticTeacherAdmin", method = RequestMethod.POST)
     public List<Integer> listIntTeacher(Model model, HttpServletRequest request)
     {
@@ -768,7 +851,7 @@ public class AdminController {
         return listIntTeacher;
     }
     @RequestMapping(value = "/getNumberOfTest", method = RequestMethod.POST)
-    public Result getNumber(HttpServletRequest request)
+    public Test getNumber(HttpServletRequest request)
     {
         String params = request.getParameter("current_url");
         String[] test_id = params.split("=");
