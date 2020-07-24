@@ -1,4 +1,7 @@
 function HienThiThoiGianThi(time) {
+  var str = window.location.href
+  var res = str.split("=");
+  var testID = res[1]
   var countDownDate = new Date().getTime() + time * 1000 + 2;
 // Update the count down every 1 second
   var x = setInterval(function () {
@@ -13,7 +16,6 @@ function HienThiThoiGianThi(time) {
       clearInterval(x);
       //let CauHoi = LayCacGiaTriNULL();
       SubmitForm();
-      window.location.replace('/section');
     }
   }, 1000);
 }
@@ -39,6 +41,9 @@ function LayCacGiaTriNULL () {
   return CauHoiChuaDuocTraLoi;
 }
 function appearFunction () {
+  var str = window.location.href
+  var res = str.split("=");
+  var testID = res[1]
   event.preventDefault();
   Swal.fire({
     title: 'Do you want to finish the test?',
@@ -64,23 +69,26 @@ function appearFunction () {
           confirmButtonText: 'Click if u still wanna finished that test '
         }).then((result) =>  {
           if (result.value) {
-            //SubmitForm();
-            window.location.replace('/section');
+            window.location.replace('/userProfile');
           }
         })
       } else {
           console.log("TAT CA CAU HOI DA DUOC TRA LOI")
          // SubmitForm();
-          window.location.replace('/section');
+          window.location.replace('/userProfile');
       }
     }
   });
 }
 function SubmitForm () {
+
   console.log($('#done').val());
   var getSectionId = $('#done').val();
-  let timeRest = document.getElementById("count").innerHTML;
+  let timeTest = document.getElementById("count").innerHTML;
+  console.log(timeTest)
   let current_url = window.location.href
+  var res = current_url.split("=");
+  var testID = res[1]
   // Thời gian được lấy ở TimmRest
   $.ajax({
     type: "POST",
@@ -88,13 +96,14 @@ function SubmitForm () {
     dataType : 'json',
     data : {
       getSectionId : getSectionId,
-      current_url : current_url
+      current_url : current_url,
+      timeTest : timeTest
     },
     success: function () {
-
+      window.location.replace('/userProfile');
     },
   });
-  window.location.replace('/section');
+
 }
 function createPagination(numberOfPage) {
   for (let i = 1; i<=numberOfPage; i++ )
