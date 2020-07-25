@@ -7,7 +7,8 @@
   },
   "studentID": {
     "$oid": "5ee2132c9718b6485e097ebc"
-  }
+  },
+  "_class": "com.aptech.project.project_sem4.model.RelationStudentCourse"
 },{
   "_id": {
     "$oid": "5f104e2659c4142208e11af8"

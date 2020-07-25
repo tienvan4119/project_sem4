@@ -33,42 +33,6 @@ public class UserController {
     private UserRepository userRepository;
     private Random random = new Random();
 
-//    @RequestMapping(value = {"/", "/section"}, method = RequestMethod.GET)
-//    public String section(Model model) {
-//        List<User> listUser = userService.listAll();
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String userName = authentication.getName();
-//        User current_user = userService.findByEmail(userName);
-//        Class user_class = userService.findClassByID(current_user.getClassId().toString());
-//        List<RelationStudentCourse> listCourseofStudent = adminService.getListCourseofStudent(current_user.getId().toString());
-//        List<Course> listCourse = new ArrayList<>();
-//        for(int i = 0; i < listCourseofStudent.size();i++)
-//        {
-//            listCourse.add(adminService.findCoursebyID(listCourseofStudent.get(i).getCourseID().toString()));
-//        }
-//        List<Test> listTest = new ArrayList<>();
-//        for (int i = 0; i<listCourse.size();i++)
-//        {
-//            List<Test> test = adminService.getListTestOfCourse(listCourse.get(i).getId().toString());
-//            for(int j=0;j<test.size();j++)
-//            {
-//                listTest.add(test.get(j));
-//            }
-//        }
-//        List<Course> listCourseOfTest = new ArrayList<>();
-//        for(int i = 0; i< listTest.size(); i++)
-//        {
-//            listCourseOfTest.add( adminService.findCoursebyID(listTest.get(i).getCourseID().toString()));
-//        }
-//
-//        model.addAttribute("current_user", current_user);
-//        model.addAttribute("courseOfTest", listCourseOfTest);
-//        model.addAttribute("listTest", listTest);
-//        model.addAttribute("user_class", user_class);
-//        model.addAttribute("listCourse", listCourse);
-//        return "section";
-//    }
-
     @RequestMapping (value = {"/getSection"})
     public String getListTestForSection(Model model, HttpServletRequest request)
     {
@@ -97,21 +61,7 @@ public class UserController {
         model.addAttribute("current_user", current_user);
         model.addAttribute("user_class", user_class);
         model.addAttribute("listCourse", listCourse);
-        return "section";
-    }
-
-
-    @RequestMapping(value = {"/userResult"})
-    public String userResult(Model model)
-    {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String userName = authentication.getName();
-        User current_user = userService.findByEmail(userName);
-        List<Result> listResult = userService.getListSection_Result(current_user.getId().toString());
-        List<Section> listSection = userService.listAllSection();
-        model.addAttribute("listResult", listResult);
-        model.addAttribute("listSection", listSection);
-        return "userResult";
+        return "/Student/section";
     }
 
     @RequestMapping(value = {"/createQuiz"})
@@ -122,8 +72,16 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
         Result result = adminService.getResultbyTestAndUser(test_id[1],  userService.findByEmail(userName).getId().toString());
+
+        if(result.isDone() && !result.isTestAgain())
+        {
+            return "redirect:/userProfile";
+        }
+
         if(!result.isDone() && !result.isTestAgain())
         {
+            result.setDone(true);
+            quizService.saveResult(result);
             Section current_section = quizService.isDone(userService.getCourseSection(adminService.getTestbyId(test_id[1]).getCourseID().toString()).getSectionId().toString());
 
             List<Topic> listTopic = quizService.listAllTopicBySection_id(current_section.getId().toString());
@@ -165,12 +123,15 @@ public class UserController {
                 session_question.setUser_id(user_id);
                 quizService.saveSession(session_question);
             }
+
             model.addAttribute("listChoice", listChoice);
             model.addAttribute("listTest", listTest);
             model.addAttribute("section", current_section.getId().toString());
         }
         else if (!result.isDone() && result.isTestAgain())
         {
+            result.setDone(true);
+            quizService.saveResult(result);
             Section current_section = quizService.isDone(userService.getCourseSection(adminService.getTestbyId(test_id[1]).getCourseID().toString()).getSectionId().toString());
 
             List<Session> getListSessionTestAgain = userService.getListSessionTestAgain(test_id[1], userService.findByEmail(userName).getId().toString());
@@ -194,12 +155,13 @@ public class UserController {
                 session.setChoice_id(new ObjectId());
                 quizService.saveSession(session);
             }
+            result.setDone(true);
             model.addAttribute("listChoice", listChoice);
             model.addAttribute("listTest", listTest);
             model.addAttribute("listQuestion", listQuestion);
             model.addAttribute("section", current_section.getId().toString());
         }
-        return "quiz";
+        return "/Student/quiz";
     }
 
     public Question getRandomList(List<Question> list) {
@@ -208,6 +170,5 @@ public class UserController {
         System.out.println("\nIndex :" + index);
         return list.get(index);
     }
-
 }
 

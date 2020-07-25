@@ -214,4 +214,12 @@
   "facultyId": {
     "$oid": "5f0dd40ceacb490b39ceaa05"
   }
+},{
+  "_id": {
+    "$oid": "5f1c3dd25f023603862ec31a"
+  },
+  "className": "17TDT",
+  "facultyId": {
+    "$oid": "5f0dd420eacb490b39ceaa06"
+  }
 }]

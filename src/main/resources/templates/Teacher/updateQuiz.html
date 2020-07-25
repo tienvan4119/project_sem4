@@ -73,7 +73,7 @@
                                     $('#quizs').append("<tr>" +
                                         "<td>" + j + "</td>" +
                                         "<td>" + $('#listSection option:selected').text() + "</td>" +
-                                        "<td>" + topic[i].title+ "</td>" +
+                                        "<td>" + topic[i].title + "</td>" +
                                         "<td>" + result[i].question_desc + "</td>" +
                                         "<td>" +
                                         "<a onclick='editQuestion(this.id)' class='edit' title='Edit' id='" + result[i].question_desc + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
@@ -87,6 +87,7 @@
                 })
             })
         })
+
         function deleteQuestion(question_desc) {
             console.log(question_desc)
             $('#deleteModal').modal('show');
@@ -146,87 +147,68 @@
         }
 
         function editQuestion(question_desc) {
+
+            console.log(question_desc)
+            $('#editQuestionDesc').empty();
+            $('#editRightChoice').empty();
+            $('#editListChoice').empty();
             $('#editModal').modal('show');
+
             $.ajax({
                 type: "POST", url: "/api/admin/getQuestionByDesc", dataType: 'json',
                 data: {
                     question_desc: question_desc
                 }, success: function (question) {
                     $.ajax({
-                        type: "POST", url: "/api/admin/getChoiceByQuestionDesc", dataType: 'json',
+                        type: "POST", url: "/api/admin/getRightChoiceByQuestionDesc", dataType: 'json',
                         data: {
                             question_desc: question_desc
-                        }, success: function (choice) {
-                            console.log(question.question_desc)
-                            $('#editQuestionDesc').empty()
-                            $('#question_Desc').empty()
-                            $('#question_Desc').val(question.question_desc)
-                            $('#editQuestionDesc').html(($("#question_Desc").innerHTML));
+                        }, success: function (rightChoice) {
+                            $.ajax({
+                                type: "POST", url: "/api/admin/getFalseChoiceByQuestionDesc", dataType: 'json',
+                                data: {
+                                    question_desc: question_desc
+                                }, success: function (falseChoice) {
+                                    $('#editQuestionDesc').append("<tr>" +
+                                        "<td contenteditable='true'>" + question.question_desc + "</td>" +
+                                        "</tr>")
+                                    $('#editRightChoice').val(rightChoice.choice_desc)
+                                    var i;
+                                    for (i = 0; i < falseChoice.length; i++) {
+                                        $('#editListChoice').append("<div class='form-group'>\n" +
+                                            "                                        <label for='formGroupExampleInput'>Next Choice</label>\n" +
+                                            "                                        <input type='text' value='" + falseChoice[i].choice_desc +  "'class='form-control' id='i' placeholder='Next choice'>\n" +
+                                            "                                    </div>")
+                                    }
+
+                                }
+                            })
                         }
                     })
-
                 }
             })
 
             $('#saveChanges').on('click', e => {
-                let courseName = $("#editCourse").children("option").filter(":selected").text();
-                let firstName = $("#editFirstName").val();
-                let lastName = $("#editLastName").val();
-                let email = $("#editEmail").val();
-                let location = $("#editAddress").val();
-                let className = $("#editClass").val();
-                let preCourseName =  $("#listCourse").children("option").filter(":selected").text();
-                console.log(preCourseName)
+                let question_desc = $("#editQuestionDesc").text();
+                let rightChoice = $("#editRightChoice").val();
+                var choice = []
+                $('#editListChoice .form-control').each(function (index, obj) {
+                    choice.push($(this).val().trim())
+                })
+                var choiceString = choice.join(',')
+                console.log(question_desc)
+                console.log(rightChoice)
+                console.log(choiceString)
                 $.ajax({
-                    type: 'POST', url: "/api/admin/editStudent", dataType: 'json',
+                    type: 'POST', url: "/api/admin/editQuestion", dataType: 'json',
                     data: {
-                        className: className,
-                        firstName: firstName,
-                        lastName: lastName,
-                        email: email,
-                        location: location,
-                        courseName : courseName,
-                        preCourseName : preCourseName
+                        question_desc: question_desc,
+                        rightChoice: rightChoice,
+                        choiceString: choiceString
 
                         //CHUA XU LI LOC LAI BANG MOI SAU KHI UPDATE
                     }, success: function (NonUseresult) {
-                        $.ajax({
-                            type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
-                            data: {}, success: function (result) {
-                                console.log(result)
-                                var k = 0;
-                                for (k; k < result.length; k++) {
-                                    $('#listTeachers').append("<option  value= " + result[k].email + " >" + result[k].firstName + " " + result[k].lastName + "</option>");
-                                }
-
-                                $.ajax({
-                                    type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
-                                    data: {}, success: function (dataClass) {
-                                        console.log(result)
-                                        $('#editModal').modal('hide');
-                                        $('#teachers').empty()
-                                        var i;
-                                        for (i = 0; i < result.length; i++) {
-                                            console.log(result[i].firstName + result[i].lastName)
-                                            console.log(result[i].email)
-                                            console.log(result[i].location)
-                                            console.log(dataClass[i].className)
-
-                                            $('#teachers').append("<tr>" +
-                                                "<td>" + result[i].firstName + " " + result[i].lastName + "</td>" +
-                                                "<td>" + result[i].location + "</td>" +
-                                                "<td>" + result[i].email + "</td>" +
-                                                "<td>" + dataClass[i].className + "</td>" +
-                                                "<td>" +
-                                                "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='" + result[i].email + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
-                                                "<a onclick='deleteTeacher(this.id)' id='" + result[i].email + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
-                                                "</td>" +
-                                                "</tr>")
-                                        }
-                                    }
-                                })
-                            }
-                        })
+                        $('#editModal').modal('hide');
 
                     }
                 })
@@ -280,7 +262,6 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">QUẢN LÝ:</h6>
                     <a class="collapse-item active" href="teacher.html">LỚP</a>
-                    <a class="collapse-item" href="DetailsStudents.html">Quản lý điểm</a>
                 </div>
             </div>
         </li>
@@ -480,33 +461,30 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form name="ckeditor" th:action="@{/api/admin/addQuestion}">
-                                                    <br>
-                                                    <div tyle="display: none;" id="question_Desc">
 
-                                                    </div>
-                                                    <textarea  name="editQuestionDesc" id="editQuestionDesc"
-                                                              style="width: 770px">
-                                                    </textarea>
-                                                    <script>
-                                                        // Replace the <textarea id="editor1"> with a CKEditor
-                                                        // instance, using default configuration.
-                                                        // CKEDITOR.replace('editor1');
-                                                    </script>
+                                                    <table id="editChoices1" class="table table-bordered table-striped"
+                                                           style="width: 100%">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Question Desc</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="editQuestionDesc">
+
+                                                        </tbody>
+                                                    </table>
                                                     <div class="form-group">
                                                         <label for="formGroupExampleInput">Right Choice</label>
-                                                        <input type="text" class="form-control" id="rightChoice"
+                                                        <input type="text" class="form-control" id="editRightChoice"
                                                                placeholder="Right choice">
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label for="formGroupExampleInput2">Second Choice</label>
-                                                        <input type="text" class="form-control" id="Choice2"
-                                                               placeholder="Second Choice">
-                                                        <input type="radio" class="form-check-input" name="optradio"
-                                                               value="2"
-                                                               style="margin-left: -0.9rem; margin-top: 0.3rem">This is
-                                                        the right Choice
-                                                    </div>
+                                                    <table id="editChoices2" class="table table-bordered table-striped"
+                                                           style="width: 100%">
 
+                                                        <tbody id="editListChoice">
+
+                                                        </tbody>
+                                                    </table>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">

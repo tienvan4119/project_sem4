@@ -194,6 +194,7 @@
                             <p th:text="'Name : ' + ${user.firstName} + ' '+${user.lastName}">
                             <p th:text="'Class : '+ ${class.className}"></p>
                             <p th:text="'Email : ' + ${user.email}">
+                            <p th:text="'MSSV : ' + ${user.MSSV}">
                             <p th:text="'Location : ' + ${user.Location}">
                         </div>
 
@@ -251,18 +252,25 @@
                                         <div class="form-group" style="margin-bottom: 30px">
                                             <label class="col-lg-3 control-label">Email:</label>
                                             <div class="col-lg-8">
-                                                <input id="email" class="form-control" type="text" th:value="${user.email}" readonly="">
+                                                <input id="email" class="form-control" type="text" th:value="${user.email}" readonly=>
                                             </div>
                                         </div>
+                                        <div class="form-group" style="margin-top: 30px">
+                                            <label class="col-lg-3 control-label">Class :</label>
+                                            <div class="col-lg-8">
+                                                <input id="class" class="form-control" type="text" th:each="class : ${user_class}" th:value="${class.className}" readonly>
+                                            </div>
+                                        </div>
+
                                         <br>
-                                        <div class="form-group" style="margin-bottom: 30px">
+                                        <div class="form-group" style="margin-top: 30px">
                                             <label class="col-md-3 control-label">Password:</label>
                                             <div class="col-md-8">
                                                 <input id="password" class="form-control" type="password">
                                             </div>
                                         </div>
                                         <br>
-                                        <div class="form-group" style="margin-bottom: 30px">
+                                        <div class="form-group" style="margin-top: 30px">
                                             <label class="col-md-3 control-label">Confirm password:</label>
                                             <div class="col-md-8">
                                                 <input id="re-password" class="form-control" type="password">
@@ -274,7 +282,7 @@
                                             <div class="col-md-8">
                                                 <input type="button" id="save" class="btn btn-primary edit" value="Save Changes" >
                                                 <span></span>
-                                                <input type="reset" class="btn btn-default" value="Cancel">
+                                                <input type="reset" class="btn btn-default" value="Reset">
                                             </div>
                                         </div>
                                     </form>

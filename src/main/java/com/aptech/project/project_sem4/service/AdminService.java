@@ -213,5 +213,24 @@ public class AdminService {
     public void DeleteChoice(Choice choice){ choiceRepository.delete(choice);}
     public List<Choice> findChoiceByQuestionId(String question_id){ return choiceRepository.findChoiceByQuestionId(question_id);}
     public Question findQuestionByDesc(String question_desc){ return questionRepository.findQuestionByDesc(question_desc);}
-
+    public void saveAdminProfile(User user)
+    {
+        userRepository.save(user);
+    }
+    public List<Course> getFullCourse()
+    {
+        return courseRepository.findAll();
+    }
+    public void saveNewCourse(Course course)
+    {
+        courseRepository.save(course);
+    }
+    public void DeleteStudentOfCourse(RelationStudentCourse studentCourse)
+    {
+        relationStudentCourseRepository.delete(studentCourse);
+    }
+    public void DeleteCourse(Course course)
+    {
+        courseRepository.delete(course);
+    }
 }

@@ -6,7 +6,8 @@
   "subName": "Xu Ly Tin hieu so",
   "teacherID": {
     "$oid": "5f0edf9388a5bf1c04e7331f"
-  }
+  },
+  "_class": "com.aptech.project.project_sem4.model.Course"
 },{
   "_id": {
     "$oid": "5f0fcf7f5850a60344922158"
@@ -77,7 +78,7 @@
   "name": "17Nh19",
   "subName": "Vat Ly 1",
   "teacherID": {
-    "$oid": "5f0fce235850a60344922153"
+    "$oid": "5f0ede3688a5bf1c04e73318"
   }
 },{
   "_id": {
@@ -95,7 +96,7 @@
   "name": "17Nh21",
   "subName": "Vat Ly 1",
   "teacherID": {
-    "$oid": "5f0fce465850a60344922154"
+    "$oid": "5f1c3df25f023603862ec31b"
   }
 },{
   "_id": {
@@ -113,7 +114,7 @@
   "name": "17Nh23",
   "subName": "Vat Ly 2",
   "teacherID": {
-    "$oid": "5f0fce235850a60344922153"
+    "$oid": "5f1c3df25f023603862ec31b"
   }
 },{
   "_id": {
@@ -122,7 +123,7 @@
   "name": "17Nh24",
   "subName": "Vat Ly 2",
   "teacherID": {
-    "$oid": "5f0fce465850a60344922154"
+    "$oid": "5f1c3df25f023603862ec31b"
   }
 },{
   "_id": {
@@ -131,7 +132,7 @@
   "name": "17Nh25",
   "subName": "Ky Thuat Dien",
   "teacherID": {
-    "$oid": "5f0fce685850a60344922156"
+    "$oid": "5f1c3e3f5f023603862ec31c"
   }
 },{
   "_id": {
@@ -140,7 +141,7 @@
   "name": "17Nh26",
   "subName": "Ky Thuat Dien Tu ",
   "teacherID": {
-    "$oid": "5f0fce685850a60344922156"
+    "$oid": "5f1c3e3f5f023603862ec31c"
   }
 },{
   "_id": {
@@ -331,4 +332,13 @@
   "teacherID": {
     "$oid": "5f0ede9688a5bf1c04e7331a"
   }
+},{
+  "_id": {
+    "$oid": "5f1c51d5b57e940bda998434"
+  },
+  "name": "17NH50",
+  "teacherID": {
+    "$oid": "5f0ee00688a5bf1c04e73322"
+  },
+  "_class": "com.aptech.project.project_sem4.model.Course"
 }]

@@ -6,8 +6,6 @@
   "lastName": "van",
   "email": "van@gmail.com",
   "password": "$2a$10$EQ.fxS6jT1VHGM11MD5RSO3iTVV8sX9bHHyOMtvkZR/.Q9EXxswbu",
-  "enabled": false,
-  "confirmation_token": "af2e566c-ea11-47f2-825e-4c7280c9031d",
   "roles": [
     {
       "$ref": "role",
@@ -21,13 +19,10 @@
   "_id": {
     "$oid": "5ee2132c9718b6485e097ebc"
   },
-  "firstName": "Nguyen ",
+  "firstName": "Nguyen",
   "lastName": "Tien Van",
   "email": "vannt4119@gmail.com",
-  "password": "$2a$10$RiIbB9xMdJhFEGuk3exYUepnZrbQQpONEi8eni9jNJmfQp.7zbTq.",
-  "classId": {
-    "$oid": "5f0dd857eacb490b39ceaa08"
-  },
+  "password": "$2a$10$dHCj66Sp3s4yFtihj3RrP.HsW1WXb8uO3Mk3I1hlu9GXV5KszIdyK",
   "roles": [
     {
       "$ref": "role",
@@ -36,6 +31,11 @@
       }
     }
   ],
+  "classId": {
+    "$oid": "5f0dd857eacb490b39ceaa08"
+  },
+  "MSSV": "102170258",
+  "Location": "Đà Nẵng",
   "_class": "com.aptech.project.project_sem4.model.User"
 },{
   "_id": {
@@ -61,9 +61,7 @@
   "firstName": "Nguyen ",
   "lastName": "Tien Van",
   "email": "vannt411@gmail.com",
-  "password": "$2a$10$RiIbB9xMdJhFEGuk3exYUepnZrbQQpONEi8eni9jNJmfQp.7zbTq.",
-  "enabled": true,
-  "confirmation_token": "1f21502b-d570-44fe-85d0-391da336f768",
+  "password": "$2a$10$yCSB5dAedR1b1XSFYbKE5.rFycwa.xsGFPsp/pmh33qy9iyBzilOq",
   "roles": [
     {
       "$ref": "role",
@@ -72,6 +70,7 @@
       }
     }
   ],
+  "Location": "Đà Nẵng",
   "_class": "com.aptech.project.project_sem4.model.User"
 },{
   "_id": {
@@ -81,8 +80,6 @@
   "lastName": "abc",
   "email": "admin@gmail.com",
   "password": "$2a$10$MDKXX1J6FiK3dMDu23ZRRuBMIMjbfRwRw4LIgJppjY4GqJ2kyCXe6",
-  "enabled": false,
-  "confirmation_token": "7c109edd-e0ab-4223-a47a-d5bec42e5a15",
   "roles": [
     {
       "$ref": "role",
@@ -100,8 +97,6 @@
   "lastName": "bbb",
   "email": "bbb@gmail.com",
   "password": "$2a$10$9RZ0gxOzpBA3ytxIN/Klier12/5jTY/bwpe5aeVBAbXn4zntvI/L.",
-  "enabled": false,
-  "confirmation_token": "fe9512fa-6ffd-4cc8-b0c9-9f4f5f8740f0",
   "roles": [
     {
       "$ref": "role",
@@ -147,6 +142,7 @@
   "classId": {
     "$oid": "5f0dd857eacb490b39ceaa08"
   },
+  "Location": "Đà Nẵng",
   "_class": "com.aptech.project.project_sem4.model.User"
 },{
   "_id": {
@@ -184,10 +180,12 @@
       }
     }
   ],
-  "_class": "com.aptech.project.project_sem4.model.User",
   "classId": {
     "$oid": "5f0dd857eacb490b39ceaa08"
-  }
+  },
+  "MSSV": "123",
+  "Location": "Da Nang",
+  "_class": "com.aptech.project.project_sem4.model.User"
 },{
   "_id": {
     "$oid": "5f0eaef56cadb920586feb6a"
@@ -395,7 +393,7 @@
   "firstName": "Phan",
   "lastName": "Ly",
   "email": "lyphan4119@gmail.com",
-  "password": "$2a$10$RJ/ME3femhSHW1EYprprR.RrmAgD85Vt32rwsoE4bkVEqwHxMlZeG",
+  "password": "$2a$10$K.e5RvSXV3rbXbbYRgVEleO1mhGa.ziAm.SENzKvBBz70y8gL.rbG",
   "roles": [
     {
       "$ref": "role",
@@ -404,10 +402,12 @@
       }
     }
   ],
-  "_class": "com.aptech.project.project_sem4.model.User",
   "classId": {
     "$oid": "5f0dd8daeacb490b39ceaa0b"
-  }
+  },
+  "MSSV": "102170259",
+  "Location": "Lao",
+  "_class": "com.aptech.project.project_sem4.model.User"
 },{
   "_id": {
     "$oid": "5f0eb4c86cadb920586feb76"
@@ -2176,9 +2176,6 @@
   "lastName": "Duc",
   "email": "phanvanduc@gmail.com",
   "password": "$2a$10$aq.KJvKSM2qFPYiN6/BTYuSAdVAWF2uZvZ2Dzf9Gn.6.vWOQEHMFO",
-  "classId": {
-    "$oid": "5f0dd95aeacb490b39ceaa10"
-  },
   "roles": [
     {
       "$ref": "role",
@@ -2187,6 +2184,10 @@
       }
     }
   ],
+  "classId": {
+    "$oid": "5f0dd95aeacb490b39ceaa10"
+  },
+  "Location": "Đà Nẵng",
   "_class": "com.aptech.project.project_sem4.model.User"
 },{
   "_id": {
@@ -2235,10 +2236,7 @@
   "firstName": "Ninh Khanh",
   "lastName": "Duy",
   "email": "ninhkhanhduy@gmail.com",
-  "password": "$2a$10$aq.KJvKSM2qFPYiN6/BTYuSAdVAWF2uZvZ2Dzf9Gn.6.vWOQEHMFO",
-  "classId": {
-    "$oid": "5f0dd96ceacb490b39ceaa13"
-  },
+  "password": "$2a$10$dHCj66Sp3s4yFtihj3RrP.HsW1WXb8uO3Mk3I1hlu9GXV5KszIdyK",
   "roles": [
     {
       "$ref": "role",
@@ -2247,6 +2245,10 @@
       }
     }
   ],
+  "classId": {
+    "$oid": "5f0dd96ceacb490b39ceaa13"
+  },
+  "Location": "Đà Nẵng",
   "_class": "com.aptech.project.project_sem4.model.User"
 },{
   "_id": {
@@ -2418,6 +2420,46 @@
   "password": "$2a$10$aq.KJvKSM2qFPYiN6/BTYuSAdVAWF2uZvZ2Dzf9Gn.6.vWOQEHMFO",
   "classId": {
     "$oid": "5f0dd9adeacb490b39ceaa1c"
+  },
+  "roles": [
+    {
+      "$ref": "role",
+      "$id": {
+        "$oid": "5f0ddd17eacb490b39ceaa20"
+      }
+    }
+  ],
+  "_class": "com.aptech.project.project_sem4.model.User"
+},{
+  "_id": {
+    "$oid": "5f1c3df25f023603862ec31b"
+  },
+  "firstName": "Nguyen Van",
+  "lastName": "Hieu",
+  "email": "nguyenvanhieu@gmail.com",
+  "password": "$2a$10$aq.KJvKSM2qFPYiN6/BTYuSAdVAWF2uZvZ2Dzf9Gn.6.vWOQEHMFO",
+  "classId": {
+    "$oid": "5f1c3dd25f023603862ec31a"
+  },
+  "roles": [
+    {
+      "$ref": "role",
+      "$id": {
+        "$oid": "5f0ddd17eacb490b39ceaa20"
+      }
+    }
+  ],
+  "_class": "com.aptech.project.project_sem4.model.User"
+},{
+  "_id": {
+    "$oid": "5f1c3e3f5f023603862ec31c"
+  },
+  "firstName": "Nguyen Van",
+  "lastName": "Nguyen",
+  "email": "nguyenvannguye@gmail.com",
+  "password": "$2a$10$aq.KJvKSM2qFPYiN6/BTYuSAdVAWF2uZvZ2Dzf9Gn.6.vWOQEHMFO",
+  "classId": {
+    "$oid": "5f1c3dd25f023603862ec31a"
   },
   "roles": [
     {

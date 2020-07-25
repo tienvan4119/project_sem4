@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Admin - KHOA</title>
+
+  <!-- Custom fonts for this template-->
+<!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans}">
+  <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+
+  <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
+  <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+  <link th:href="@{vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+  <!-- Custom styles for this template-->
+  <link th:href="@{/css/admin.min.css}" rel="stylesheet">
+  <link th:href="@{/css/addDanhSach.css}" rel="stylesheet">
+  <style type="text/css">
+
+        table.table td a {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 5px;
+            min-width: 24px;
+        }
+        table.table td a.edit {
+            color: #FFC107;
+        }
+        table.table td a.delete {
+            color: #E34724;
+        }
+        table.table td i {
+            font-size: 19px;
+        }
+    </style>
+  <script type="text/javascript">
+
+    // select choice a field and a subject
+  $(document).ready(function () {
+    $("#SearchFilter").on("keyup", function() {
+      console.log("abc")
+      var value = $(this).val().toLowerCase();
+      $("#teachers tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+
+
+
+    $.ajax({type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
+      data : {
+
+      },success: function(result){
+        console.log(result)
+        var k = 0;
+        for(k ; k<result.length;k++)
+        {
+          $('#listTeachers').append("<option  value= "+result[k].email+" >" +result[k].firstName+" "+result[k].lastName+ "</option>");
+        }
+
+        $.ajax({type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
+          data : {
+
+          },success: function(dataClass){
+            console.log(result)
+
+            var i;
+            for (i = 0; i < result.length; i++) {
+              console.log(result[i].firstName+ result[i].lastName)
+              console.log(result[i].email)
+              console.log(result[i].location)
+              console.log(dataClass[i].className)
+
+              $('#teachers').append("<tr>" +
+                      "<td>"+result[i].firstName+" "+result[i].lastName+"</td>" +
+                      "<td>"+result[i].location+"</td>" +
+                      "<td>"+result[i].email+"</td>" +
+                      "<td>"+dataClass[i].className+"</td>" +
+                      "<td>" +
+                      "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='"+result[i].email+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                      "<a onclick='deleteTeacher(this.id)' id='"+result[i].email+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                      "</td>" +
+                      "</tr>")
+            }
+          }})
+      }})
+
+
+
+    $('#listKhoa').on('change', e=>{
+      $('#teachers').empty()
+      var faculty_id =  $('#listKhoa option:selected').val();
+      console.log(faculty_id);
+
+      $.ajax({type: "POST", url: "/api/admin/getListTeacherofFaculty", dataType: 'json',
+        data : {
+          faculty_id : faculty_id
+        },success: function(result){
+          $('#listTeachers').empty()
+          $('#listTeachers').append("<option disabled selected>" + "Teacher..." + "</option>");
+          var k = 0;
+          for(k ; k<result.length;k++)
+          {
+            $('#listTeachers').append("<option  value= "+result[k].email+" >" +result[k].firstName+" "+result[k].lastName+ "</option>");
+          }
+          $('#teachers').empty()
+          $.ajax({type: "POST", url: "/api/admin/getClassofFaculty", dataType: 'json',
+            data : {
+              faculty_id : faculty_id
+            },success: function(dataClass){
+
+
+              var i;
+              for (i = 0; i < result.length; i++) {
+                console.log(result[i].firstName+ result[i].lastName)
+                console.log(result[i].email)
+                console.log(result[i].location)
+                console.log(dataClass[i].className)
+                $('#teachers').append("<tr>" +
+                        "<td>"+result[i].firstName+" "+result[i].lastName+"</td>" +
+                        "<td>"+result[i].location+"</td>" +
+                        "<td>"+result[i].email+"</td>" +
+                        "<td>"+dataClass[i].className+"</td>" +
+                        "<td>" +
+                        "<a class='edit' title='Edit' id='iconedit1' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                        "<a id='icondelete1' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                        "</td>" +
+                        "</tr>")
+              }
+            }})
+
+        }})
+
+      if (faculty_id == 'Khoa'){
+        $('#listMonHoc').empty();
+        $('#listMonHoc').append("<option selected>" + "Subjects..." + "</option>");
+      }
+      if (faculty_id == 'ThemKhoa') //Them khoa
+      {
+        $('#listMonHoc').empty();
+        $('#ThemMotKhoa').modal('show');
+      }
+    })
+    $('#listTeachers').on('change', e=>{
+      var teacher_email =  $('#listTeachers option:selected').val();
+      console.log(teacher_email);
+      $.ajax({type: "POST", url: "/api/admin/getListCourses", dataType: 'json',
+        data : {
+          teacher_email : teacher_email
+        },success: function(result){
+          console.log(result)
+
+          $('#listMonHoc').find('option').remove();
+          var i;
+          $('#listMonHoc').append("<option selected>" + "Course..." + "</option>");
+          for (i = 0; i < result.length; i++) {
+            title = result[i].name
+            $('#listMonHoc').append("<option  value= "+title+" >" + title + "</option>");
+
+            var x = document.getElementById("mySelect")
+          }
+          $('#listMonHoc').append("<option value=" + '"AddMonHoc"' + ">" + "Add more..." + "</option>");
+        }})
+    })
+    //Show DataTable
+    $('#listMonHoc').on('change', e => {
+      var course_name =  $('#listMonHoc option:selected').text();
+      console.log(course_name);
+
+      $.ajax({type: "POST", url: "/api/admin/getListStudentofCourse", dataType: 'json',
+        data : {
+          course_name : course_name
+        },success: function(result){
+          console.log(result)
+          $.ajax({type: "POST", url: "/api/admin/getListStudentofCourseClass", dataType: 'json',
+            data : {
+              course_name : course_name
+            },success: function(dataClass){
+              $('#teachers').empty()
+
+              var i;
+              for (i = 0; i < result.length; i++) {
+                console.log(result[i].firstName+ result[i].lastName)
+                console.log(result[i].email)
+                console.log(result[i].location)
+                console.log(dataClass[i].className)
+                $('#teachers').append("<tr>" +
+                        "<td>"+result[i].firstName+" "+result[i].lastName+"</td>" +
+                        "<td>"+result[i].location+"</td>" +
+                        "<td>"+result[i].email+"</td>" +
+                        "<td>"+dataClass[i].className+"</td>" +
+                        "<td>" +
+                        "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='"+result[i].email+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                        "<a onclick='deleteTeacher(this.id)' id='"+result[i].email+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                        "</td>" +
+                        "</tr>")
+              }
+            }})
+
+        }})
+
+      if(course_name == "Data"){
+        $('#teachers').empty()
+
+      }else {
+        //Them mon hoc
+        if(section_id_value == 'AddMonHoc'){
+          $('#ThemMotMH').modal('show');
+        }else{
+          $('#teachers').empty()
+        }
+      }
+      //Click edit button DEMO
+    })
+
+    //Them teacher
+    $('#AddNewTeacher').on('click', e=>{
+      $('#AddNewModal').modal('show');
+      $('#addNew_saveChanges').on('click', e => {
+        var lastName = $("#AddNewModal #addLastName").val().trim()
+        var firstName = $("#AddNewModal #addFirstName").val().trim()
+        var userEmail = $("#AddNewModal #addEmail").val()
+        var userClassID = $("#AddNewModal #addClassID").val()
+        var userFaculty = $("#AddNewModal #addFacultyID").val()
+        $.ajax({
+          type: 'POST', url: "/api/admin/AddNewTeacher", dataType: 'json',
+          data: {
+            lastName: lastName,
+            firstName: firstName,
+            userEmail: userEmail,
+            userClassID: userClassID,
+            userFaculty: userFaculty
+          }, success: function (result) {
+
+          }
+        })
+
+        $('#AddNewModal').modal('hide');
+        location.reload();
+      })
+    })
+  })
+    function editTeacher(teacher_email) {
+      console.log(teacher_email)
+      $('#editModal').modal('show');
+      $.ajax({type: "POST", url: "/api/admin/getTeacherByEmail", dataType: 'json',
+        data : {
+          teacher_email : teacher_email
+        },success: function(teacher){
+          $.ajax({type: "POST", url: "/api/admin/getTeacherClassByEmail", dataType: 'json',
+            data : {
+              teacher_email : teacher_email
+            },success: function(teacherClass){
+              $.ajax({type: "POST", url: "/api/admin/getTeacherOtherClass", dataType: 'json',
+                data : {
+                  teacher_email : teacher_email
+                },success: function(dataClass){
+                  $('#editFirstName').val(teacher.firstName)
+                  $('#editLastName').val(teacher.lastName)
+                  $('#editAddress').val(teacher.location)
+                  $('#editEmail').val(teacher.email)
+
+                  console.log(dataClass)
+                  console.log("duoi dataClass")
+                  $('#editUserClass').empty()
+                  $('#editUserClass').append("<option selected>"+teacherClass.className+"</option>")
+                  for(i = 0; i< dataClass.length; i++)
+                  {
+                    $('#editUserClass').append("<option>"+dataClass[i].className+"</option>")
+                  }
+                }})
+            }})
+        }})
+      $('#saveChanges').on('click', e => {
+        let className = $("#editUserClass").children("option").filter(":selected").text();
+        let firstName = $("#editFirstName").val();
+        let lastName = $("#editLastName").val();
+        let email = $("#editEmail").val();
+        let location = $("#editAddress").val();
+
+        $.ajax({type: 'POST',url: "/api/admin/editTeacher",dataType : 'json',
+          data : {
+            className:className,
+            firstName : firstName,
+            lastName: lastName,
+            email:email,
+            location:location
+          }, success: function(NonUseresult){
+            $.ajax({type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
+              data : {
+
+              },success: function(result){
+                console.log(result)
+                var k = 0;
+                for(k ; k<result.length;k++)
+                {
+                  $('#listTeachers').append("<option  value= "+result[k].email+" >" +result[k].firstName+" "+result[k].lastName+ "</option>");
+                }
+
+                $.ajax({type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
+                  data : {
+
+                  },success: function(dataClass){
+                    console.log(result)
+                    $('#editModal').modal('hide');
+                    $('#teachers').empty()
+                    var i;
+                    for (i = 0; i < result.length; i++) {
+                      console.log(result[i].firstName+ result[i].lastName)
+                      console.log(result[i].email)
+                      console.log(result[i].location)
+                      console.log(dataClass[i].className)
+
+                      $('#teachers').append("<tr>" +
+                              "<td>"+result[i].firstName+" "+result[i].lastName+"</td>" +
+                              "<td>"+result[i].location+"</td>" +
+                              "<td>"+result[i].email+"</td>" +
+                              "<td>"+dataClass[i].className+"</td>" +
+                              "<td>" +
+                              "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='"+result[i].email+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                              "<a onclick='deleteTeacher(this.id)' id='"+result[i].email+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                              "</td>" +
+                              "</tr>")
+                    }
+                  }})
+              }})
+
+          }})
+      });
+    }
+    function deleteTeacher(teacher_email) {
+      console.log(teacher_email)
+      $('#deleteModal').modal('show');
+
+      $('#save_delete').on('click', e => {
+        console.log("in here")
+        $.ajax({type: "POST",url: "/api/admin/DeleteTeacher",dataType : 'json',
+          data : {
+            teacher_email : teacher_email
+          }, success: function(dataSomething){
+            console.log(dataSomething)
+            $('#deleteModal').modal('hide');
+            $.ajax({type: "POST", url: "/api/admin/GetFullTeacher", dataType: 'json',
+              data : {
+
+              },success: function(result){
+
+                var k = 0;
+                for(k ; k<result.length;k++)
+                {
+                  $('#listTeachers').append("<option  value= "+result[k].email+" >" +result[k].firstName+" "+result[k].lastName+ "</option>");
+                }
+
+                $.ajax({type: "POST", url: "/api/admin/GetFullClass", dataType: 'json',
+                  data : {
+
+                  },success: function(dataClass){
+                    console.log(result)
+
+                    $('#teachers').empty()
+                    var i;
+                    for (i = 0; i < result.length; i++) {
+                      console.log(result[i].firstName+ result[i].lastName)
+                      console.log(result[i].email)
+                      console.log(result[i].location)
+                      console.log(dataClass[i].className)
+
+                      $('#teachers').append("<tr>" +
+                              "<td>"+result[i].firstName+" "+result[i].lastName+"</td>" +
+                              "<td>"+result[i].location+"</td>" +
+                              "<td>"+result[i].email+"</td>" +
+                              "<td>"+dataClass[i].className+"</td>" +
+                              "<td>" +
+                              "<a onclick='editTeacher(this.id)' class='edit' title='Edit' id='"+result[i].email+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                              "<a onclick='deleteTeacher(this.id)' id='"+result[i].email+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                              "</td>" +
+                              "</tr>")
+                    }
+                  }})
+              }})
+          }})
+
+      })
+    }
+  </script>
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <!-- End of Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Admin</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item">
+        <a class="nav-link" href="admin.html">
+          <i class="fas fa-fw fa-table"></i>
+          <span>DANH SÁCH KHOA</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Interface
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-user-edit"></i>
+          <span>QUẢN LÝ</span>
+        </a>
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">QUẢN LÝ:</h6>
+            <a class="collapse-item active" href="khoa.html">KHOA</a>
+            <a class="collapse-item" href="addCourse.html">Lớp Học Phần</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column" data-layout-fragment="content">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input id="SearchFilter" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${#authentication.getPrincipal().getUsername()}"></span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="/teacherProfile.html">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-4 text-gray-800">QUẢN LÝ KHOA</h1>
+
+          <div class="row">
+
+            <div class="col-lg-12">
+
+              <!-- nội dung QUẢN LÝ KHOA -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-4">
+                  <form class="form-inline">
+                    <select class="custom-select" style="width: 20%" id="listKhoa">
+                      <option id="Khoa" value="Khoa" disabled selected>Khoa...</option>
+                      <option th:each="faculty :  ${listFaculty}" th:value="${faculty.id}" th:text="${faculty.name}"/>
+                      <option id="AddField" value="ThemKhoa">Add more...</option>
+                    </select>
+
+                    <select class="custom-select" style="width: 20%" id="listTeachers">
+                      <option selected>Teacher...</option>
+                    </select>
+
+                    <select class="custom-select" style="width: 20%" id="listMonHoc">
+                      <option selected value="allTeachers">Course...</option>
+                    </select>
+                    <div class="form-group" style="width:40%">
+                      <div class="input-group">
+                        <input id="fileUpload" type="text" class="form-control" readonly>
+                        <div class="input-group-btn">
+                            <span class="fileUpload btn btn-info">
+                              <span class="upl" id="upload">Upload multiple file</span>
+                              <input type="file" class="upload up" id="up"  multiple/>
+                            </span><!-- btn-orange -->
+                        </div><!-- btn -->
+                      </div><!-- group -->
+                    </div><!-- form-group -->
+                  </form>
+                  <div style="margin-top: 1em">
+                  <button style="float: right;margin-right: 4%;"  
+                          type="submit" id="submit-file" class="btn btn-primary">Add giáo viên</button>
+                  <button id="AddNewTeacher" type="button" class="btn btn-primary">Add A New Teacher</button>
+                  </div>
+                </div>
+
+                <!--Table Quản Lý-->
+                <div class="card-body">
+                  <table id="datatable" class="table table-bordered table-striped" style="width: 100%" >
+                    <thead>
+                      <tr>
+                        <th>Full Name</th>
+                        <th>Address</th>
+                        <th>User's email</th>
+                        <th>Class_ID</th>
+                        <th>Setting</th>
+                      </tr>
+                    </thead>
+                    <tbody id="teachers">
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!--table AddNewModal-->
+              <div class="modal fade" id="AddNewModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="AddNewModal_title">Add a new Teacher</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="Name">First Name</label>
+                        <input type="text" class="form-control" id="addFirstName" >
+                      </div>
+                      <div class="form-group">
+                        <label for="Address">Last Name</label>
+                        <input type="text" class="form-control" id="addLastName" >
+                      </div>
+                      <div class="form-group">
+                        <label for="UserEmail">Email address</label>
+                        <input type="email" class="form-control" id="addUserEmail" >
+                      </div>
+                      <div class="form-group">
+                        <label for="CourseName">Khoa</label>
+                        <select class="custom-select" style="width: 30%" id="addFacultyID">
+                          <option id="FacultyAdd" disabled value="Course" selected>Faculty...
+                          </option>
+                          <option th:each="faculty :  ${listFaculty}" th:value="${faculty.id}"
+                                  th:text="${faculty.name}"/>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="ClassName">Lớp sinh hoạt</label>
+                        <select class="custom-select" style="width: 30%" id="addClassID">
+                          <option id="ClassAdd" disabled value="Class" selected>Class...
+                          </option>
+                          <option th:each="class :  ${listClass}" th:value="${class.id}"
+                                  th:text="${class.className}"/>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button id="addNew_saveChanges" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <!--Table ThemMotKhoa-->
+              <div class="modal fade" id="ThemMotKhoa" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="AddKhoa_title">Add a Field</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="FieldName">Field Name</label>
+                        <input type="text" class="form-control" id="addFieldName" >
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button id="addNewField_SaveChanges" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Table ThemMonHoc-->
+              <div class="modal fade" id="ThemMotMH" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="AddMH_title">Add a Subject</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="SubjectName">Subject Name</label>
+                        <input type="text" class="form-control" id="addSubjectName" >
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button id="addNewSubject_SaveChanges" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--Table EDIT Teachers-->
+              <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="editModal_title">Sửa thông tin giáo viên</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <label for="firstName">first Name</label>
+                        <input type="text" class="form-control" id="editFirstName" >
+                      </div>
+
+                      <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="editLastName" >
+                      </div>
+
+                      <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input type="text" class="form-control" id="editAddress" >
+                      </div>
+                      <div class="form-group">
+                        <label for="Email">User's email</label>
+                        <input readonly type="text" class="form-control" id="editEmail" >
+                      </div>
+                      <div class="form-group">
+                        <select id="editUserClass" class="form-control" >
+
+                        </select>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button id="saveChanges" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--DIALOG DELETE Teachers-->
+              <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Xóa giáo viên này?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Bạn có muốn xóa giáo viên này ? </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button id="save_delete" type="button" class="btn btn-primary">Có</button>
+                      <button type="button" class="btn btn-secondary save_delete" data-dismiss="modal">Không</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+<!--      <footer class="sticky-footer bg-white">-->
+<!--        <div class="container my-auto">-->
+<!--          <div class="copyright text-center my-auto">-->
+<!--            <span>Copyright &copy; Your Website 2020</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </footer>-->
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="/logout" value="/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script th:src="@{/js/admin.min.js}"></script>
+  <script th:src="@{/js/papaparse.min.js}"></script>
+  <script th:src="@{/js/addDanhSach.js}"></script>
+
+</body>
+
+</html>

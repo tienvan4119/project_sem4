@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" data-layout-decorate="~{layoutTeacher/layoutTeacher}" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -13,14 +13,14 @@
 
   <!-- Custom fonts for this template-->
 <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-  <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans}">
-  <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+<!--  <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans}">-->
+<!--  <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">-->
 
-  <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
-  <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-  <link th:href="@{vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
-  <link th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}" rel="stylesheet">
-<!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+<!--  <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>-->
+<!--  <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>-->
+<!--  <link th:href="@{vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">-->
+<!--  <link th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}" rel="stylesheet">-->
+<!--&lt;!&ndash;  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>&ndash;&gt;-->
 
 
   <!-- Custom styles for this template-->
@@ -400,62 +400,11 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Admin</div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="admin.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>DANH SÁCH KHOA</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Interface
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user-edit"></i>
-          <span>QUẢN LÝ</span>
-        </a>
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">QUẢN LÝ:</h6>
-            <a class="collapse-item active" href="khoa.html">KHOA</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column" data-layout-fragment="content">
 
       <!-- Main Content -->
       <div id="content">
@@ -573,13 +522,13 @@
                 <div class="card-body">
                   <table id="datatable" class="table table-bordered table-striped" style="width: 100%" >
                     <thead>
-                      <tr>
-                        <th>Full Name</th>
-                        <th>Address</th>
-                        <th>User's email</th>
-                        <th>Class_ID</th>
-                        <th>Setting</th>
-                      </tr>
+                    <tr>
+                      <th>Full Name</th>
+                      <th>Address</th>
+                      <th>User's email</th>
+                      <th>Class_ID</th>
+                      <th>Setting</th>
+                    </tr>
                     </thead>
                     <tbody id="teachers">
 
@@ -638,7 +587,7 @@
                 </div>
               </div>
 
-            <!--Table ThemMotKhoa-->
+              <!--Table ThemMotKhoa-->
               <div class="modal fade" id="ThemMotKhoa" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -752,15 +701,31 @@
 
             </div>
 
+          </div>
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" href="/logout" value="/logout">Logout</a>
+                </div>
+              </div>
             </div>
-
-
           </div>
 
         </div>
-        <!-- /.container-fluid -->
 
       </div>
+      <!-- /.container-fluid -->
+
+    </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
@@ -773,10 +738,9 @@
 <!--      </footer>-->
       <!-- End of Footer -->
 
-    </div>
+    </div >
     <!-- End of Content Wrapper -->
 
-  </div>
   <!-- End of Page Wrapper -->
 
   <!-- Scroll to Top Button-->
@@ -785,23 +749,7 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="/logout" value="/logout">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Bootstrap core JavaScript-->
   <script th:src="@{/vendor/jquery/jquery.min.js}"></script>

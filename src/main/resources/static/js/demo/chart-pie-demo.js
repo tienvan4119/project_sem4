@@ -14,7 +14,8 @@ function renderChart(data){
   var myPieChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ["CNTT", "DTVT", "Dien"],
+      labels: [
+          "DTVT", "CNTT", "Dien"],
       datasets: [{
         data: [data[0], data[1], data[2]],
         backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],

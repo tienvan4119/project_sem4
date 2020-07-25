@@ -111,7 +111,7 @@ public class SessionController {
             result.setUser_id(user_id);
             result.setTestId(test.getId());
             result.setCourseId(test.getCourseID());
-            result.setDone(true);
+
             result.setTestAgain(false);
             result.setMark(rightMark);
             result.setTime(timeReal);

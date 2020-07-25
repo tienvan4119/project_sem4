@@ -113,7 +113,7 @@ public class RegisterController {
     {
         List<Faculty> listFaculty = adminService.getAllFaculty();
         model.addAttribute("listFaculty", listFaculty);
-        return "admin";
+        return "/Admin/admin";
     }
 
     @RequestMapping(value = {"/index2"})
@@ -181,7 +181,7 @@ public class RegisterController {
         model.addAttribute("listFaculty", listFaculty);
 //        model.addAttribute("listTeacher", listTeacher);
 //        model.addAttribute("listClass", listClassofTeacher);
-        return "khoa";
+        return "/Admin/khoa";
     }
 
     @RequestMapping(value = {"/form2"})
@@ -202,7 +202,7 @@ public class RegisterController {
         model.addAttribute("listCourse", listCourse);
         List<Class> listClass = adminService.getAllClass();
         model.addAttribute("listClass", listClass);
-        return "teacher";
+        return "/Teacher/teacher";
     }
     @RequestMapping(value = {"/DetailsStudents"})
     public String detailStudentPage(Model model)
@@ -213,7 +213,7 @@ public class RegisterController {
         model.addAttribute("listCourse", listCourse);
         List<Class> listClass = adminService.getAllClass();
         model.addAttribute("listClass", listClass);
-        return "DetailsStudents";
+        return "/Teacher/DetailsStudents";
     }
     @RequestMapping(value = {"/addQuiz"})
     public String addQuizPage(Model model)
@@ -222,7 +222,7 @@ public class RegisterController {
         List<Section> listSection = adminService.getAllSection();
         model.addAttribute("listFaculty", listFaculty);
         model.addAttribute("listSection", listSection);
-        return "addQuiz";
+        return "/Teacher/addQuiz";
     }
 
     @RequestMapping(value = {"/updateQuiz"})
@@ -233,7 +233,7 @@ public class RegisterController {
         model.addAttribute("listFaculty", listFaculty);
         model.addAttribute("listSection", listSection);
 
-        return "updateQuiz";
+        return "/Teacher/updateQuiz";
     }
 
     @RequestMapping(value = {"/class"})
@@ -243,7 +243,7 @@ public class RegisterController {
         User user = userService.findUserByEmail(auth.getName());
         List<Course> listCourseOfTeacher = adminService.getListCourseOfTeacher(user.getId().toString());
         model.addAttribute("listCourse", listCourseOfTeacher);
-        return "class";
+        return "/Teacher/class";
     }
     @RequestMapping(value = {"/userProfile"})
     public String userProfile(Model model)  
@@ -261,7 +261,7 @@ public class RegisterController {
         model.addAttribute("listCourse", listCourse);
         model.addAttribute("current_user", current_user);
         model.addAttribute("user_class", user_class);
-        return "userProfile";
+        return "/Student/userProfile";
     }
 
 
@@ -273,7 +273,59 @@ public class RegisterController {
         User current_user = userService.findByEmail(userName);
         List<Course> listCourse = adminService.getListCourseOfTeacher(current_user.getId().toString());
         model.addAttribute("listCourse", listCourse);
-        return "addBaiLam";
+        return "/Teacher/addBaiLam";
+    }
+
+    @RequestMapping(value = {"/adminProfile"})
+    public String adminProfile(Model model)
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        User current_user = userService.findByEmail(userName);
+
+        model.addAttribute("current_user", current_user);
+
+        return "/Admin/adminProfile";
+    }
+
+    @RequestMapping(value = {"/addCourse"})
+    public String addCourse(Model model)
+    {
+        List<Course> listCourse = adminService.getFullCourse();
+        List<User> listUser = new ArrayList<>();
+        for(int i=0; i< listCourse.size();i++)
+        {
+            listUser.add(adminService.findUserbyId(listCourse.get(i).getTeacherID().toString()));
+        }
+        List <User> list_AllUser = userService.listAll();
+        List<User> listTeacher = new ArrayList<User>();
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("TEACHER"))
+            {
+                listTeacher.add(list_AllUser.get(i));
+            }
+        }
+        model.addAttribute("listCourse", listCourse);
+        model.addAttribute("listTeacher", listTeacher);
+        model.addAttribute("listUser", listUser);
+        return "/Admin/addCourse";
+    }
+
+    @RequestMapping(value = {"/teacherProfile"})
+    public String teacherProfile(Model model)
+    {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        User current_user = userService.findByEmail(userName);
+        Class user_class = userService.findClassByID(current_user.getClassId().toString());
+
+        model.addAttribute("current_user", current_user);
+        model.addAttribute("user_class", user_class);
+        return "/Teacher/teacherProfile";
     }
 }
 

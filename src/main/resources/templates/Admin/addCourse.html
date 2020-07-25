@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Course - Class</title>
+
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+
+    <link th:href="@{https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i}"
+          rel="stylesheet">
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js}"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    <script th:src='@{https://kit.fontawesome.com/a076d05399.js}'></script>
+
+    <!-- Custom styles for this template-->
+    <link th:href="@{/css/teacherCSS/sb-admin-2.min.css}" rel="stylesheet">
+    <style type="text/css">
+
+        table.table td a {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0 5px;
+            min-width: 24px;
+        }
+
+        table.table td a.edit {
+            color: #FFC107;
+        }
+
+        table.table td a.delete {
+            color: #E34724;
+        }
+
+        table.table td i {
+            font-size: 19px;
+        }
+    </style>
+
+
+    <script type="text/javascript">
+
+        // select choice a field and a subject
+        $(document).ready(function () {
+            $("#SearchFilter").on("keyup", function () {
+                console.log("abc")
+                var value = $(this).val().toLowerCase();
+                $("#courses tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+
+            $.ajax({type: "POST", url: "/api/admin/getFullCourse", dataType: 'json',
+                data : {
+
+                },success: function(course){
+
+                    var k = 0;
+
+                    $.ajax({type: "POST", url: "/api/admin/getFullTeacherOfCourse", dataType: 'json',
+                        data : {
+
+                        },success: function(teacher){
+
+                            var i;
+                            for (i = 0; i < course.length; i++) {
+                                $('#courses').append("<tr>" +
+                                    "<td>"+teacher[i].firstName+" "+teacher[i].lastName+"</td>" +
+                                    "<td>"+teacher[i].email+"</td>" +
+                                    "<td>"+course[i].name+"</td>" +
+                                    "<td>" +
+                                    "<a onclick='editCourse(this.id)' class='edit' title='Edit' id='"+course[i].name+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                    "<a onclick='deleteCourse(this.id)' id='"+course[i].name+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                    "</td>" +
+                                    "</tr>")
+                            }
+                        }})
+                }})
+
+            $('#AddANewCourse').on('click', e => {
+                $('#AddNewModal').modal('show');
+
+                $('#addNew_saveChanges').on('click', e => {
+                    let teacherID = $("#addTeacherName").children("option").filter(":selected").val();
+                    var courseName = $("#AddNewModal #addCourse").val().trim()
+                    console.log(teacherID + '   '+ courseName)
+                    $.ajax({
+                        type: 'POST', url: "/api/admin/addNewCourse", dataType: 'json',
+                        data: {
+                            teacherID: teacherID,
+                            courseName: courseName,
+
+                        }, success: function (course) {
+                            $.ajax({
+                                type: 'POST', url: "/api/admin/getFullTeacherOfCourse", dataType: 'json',
+                                data: {
+
+                                }, success: function (teacher) {
+                                    $('#AddNewModal').modal('hide');
+                                    var i;
+                                    $('#courses').empty()
+                                    for (i = 0; i < course.length; i++) {
+                                        $('#courses').append("<tr>" +
+                                            "<td>"+teacher[i].firstName+" "+teacher[i].lastName+"</td>" +
+                                            "<td>"+teacher[i].email+"</td>" +
+                                            "<td>"+course[i].name+"</td>" +
+                                            "<td>" +
+                                            "<a onclick='editCourse(this.id)' class='edit' title='Edit' id='"+course[i].name+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                            "<a onclick='deleteCourse(this.id)' id='"+course[i].name+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                            "</td>" +
+                                            "</tr>")
+                                    }
+                                }
+                            })
+                        }
+                    })
+
+                })
+            })
+        })
+        function editCourse(courseName) {
+
+            console.log(courseName)
+            $('#editModal').modal('show');
+            $.ajax({
+                type: "POST", url: "/api/admin/getCurentCourse", dataType: 'json',
+                data: {
+                    courseName: courseName
+                }, success: function (teacher) {
+                    $.ajax({
+                        type: "POST", url: "/api/admin/getOtherTeacher", dataType: 'json',
+                        data: {
+                            courseName: courseName
+                        }, success: function (otherTeacher) {
+                            $.ajax({
+                                type: "POST", url: "/api/admin/getStringTeacherId", dataType: 'json',
+                                data: {
+                                    courseName: courseName
+                                }, success: function (stringTeacherId) {
+                                    console.log(teacher)
+                                    console.log(otherTeacher)
+                                    console.log(stringTeacherId)
+                                    $('#editCourse').val(courseName)
+                                    $('#editTeacher').append("<option selected value="+stringTeacherId[0]+">" + teacher.firstName +' '+ teacher.lastName + "</option>")
+                                    var j = 1
+                                    for (i = 0; i < otherTeacher.length, j<otherTeacher.length -1 ; i++, j++) {
+                                        $('#editTeacher').append("<option value="+stringTeacherId[j] +">" + otherTeacher[i].firstName +' '+ otherTeacher[i].lastName + "</option>")
+                                    }
+                                }
+                            })
+
+
+                        }
+                    })
+
+                }
+            })
+
+            $('#saveChanges').on('click', e => {
+                let courseName = $('#editCourse').val()
+                let teacherID = $("#editTeacher").children("option").filter(":selected").val();
+
+                console.log(courseName + ' ' + teacherID)
+                $.ajax({
+                    type: 'POST', url: "/api/admin/editCourse", dataType: 'json',
+                    data: {
+                        courseName : courseName,
+                        teacherID : teacherID
+                        //CHUA XU LI LOC LAI BANG MOI SAU KHI UPDATE
+                    }, success: function (course) {
+                        $.ajax({
+                            type: 'POST', url: "/api/admin/getFullTeacherOfCourse", dataType: 'json',
+                            data: {
+
+                            }, success: function (teacher) {
+                                $('#editModal').modal('hide');
+                                var i;
+                                $('#courses').empty()
+                                for (i = 0; i < course.length; i++) {
+                                    $('#courses').append("<tr>" +
+                                        "<td>"+teacher[i].firstName+" "+teacher[i].lastName+"</td>" +
+                                        "<td>"+teacher[i].email+"</td>" +
+                                        "<td>"+course[i].name+"</td>" +
+                                        "<td>" +
+                                        "<a onclick='editCourse(this.id)' class='edit' title='Edit' id='"+course[i].name+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                        "<a onclick='deleteCourse(this.id)' id='"+course[i].name+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                        "</td>" +
+                                        "</tr>")
+                                }
+                            }
+                        })
+
+                    }
+                })
+            });
+        }
+        function deleteCourse(courseName) {
+            console.log(courseName)
+            $('#deleteModal').modal('show');
+
+            $('#save_delete').on('click', e => {
+                console.log("in here")
+                $.ajax({
+                    type: "POST", url: "/api/admin/DeleteCourse", dataType: 'json',
+                    data: {
+                        courseName:courseName
+
+                        //CHUA XU LI LOC LAI BANG MOI SAU KHI DELETE
+                    }, success: function (course) {
+                        $('#deleteModal').modal('hide');
+                        $.ajax({
+                            type: 'POST', url: "/api/admin/getFullTeacherOfCourse", dataType: 'json',
+                            data: {
+
+                            }, success: function (teacher) {
+                                $('#editModal').modal('hide');
+                                var i;
+                                $('#courses').empty()
+                                for (i = 0; i < course.length; i++) {
+                                    $('#courses').append("<tr>" +
+                                        "<td>"+teacher[i].firstName+" "+teacher[i].lastName+"</td>" +
+                                        "<td>"+teacher[i].email+"</td>" +
+                                        "<td>"+course[i].name+"</td>" +
+                                        "<td>" +
+                                        "<a onclick='editCourse(this.id)' class='edit' title='Edit' id='"+course[i].name+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                        "<a onclick='deleteCourse(this.id)' id='"+course[i].name+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                        "</td>" +
+                                        "</tr>")
+                                }
+                            }
+                        })
+                    }
+                })
+
+            })
+        }
+
+    </script>
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.html">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Admin</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - DANH SÁCH KHOA -->
+        <li class="nav-item active">
+            <a class="nav-link" href="admin.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>DANH SÁCH KHOA</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Interface
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-user-edit"></i>
+                <span>QUẢN LÝ</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">QUẢN LÝ:</h6>
+                    <a class="collapse-item" href="khoa.html">KHOA</a>
+                    <a class="collapse-item" href="addCourse.html">Lớp Học Phần</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Topbar Search -->
+                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input id="SearchFilter" type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                               aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <!--                            <button class="btn btn-primary" type="button">-->
+                            <!--                                <i class="fas fa-search fa-sm"></i>-->
+                            <!--                            </button>-->
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+
+                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                    <li class="nav-item dropdown no-arrow d-sm-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                             aria-labelledby="searchDropdown">
+                            <form class="form-inline mr-auto w-100 navbar-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control bg-light border-0 small"
+                                           placeholder="Search for..." aria-label="Search"
+                                           aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                  th:text="${#authentication.getPrincipal().getUsername()}"></span>
+                            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Settings
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Activity Log
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <h1 class="h3 mb-4 text-gray-800">QUẢN LÝ LỚP HỌC PHẦN</h1>
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+
+                        <!-- nội dung QUẢN LÝ LỚP HỌC PHẦN -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+<!--                                <form>-->
+<!--                                    <select class="custom-select" style="width: 30%" id="listFaculty">-->
+<!--                                        <option id="Course" disabled value="Course" selected>Course...-->
+<!--                                        </option>-->
+<!--                                        <option th:each="faculty :  ${listFaculty}" th:value="${faculty.id}" th:text="${faculty.name}"/>-->
+<!--                                    </select>-->
+<!--                                </form>-->
+                                <button id="AddANewCourse" type="button" class="btn btn-primary"
+                                        style="margin-top: 1em">Add A New Course
+                                </button>
+
+                            </div>
+
+                            <!--Table Quản Lý-->
+                            <div class="card-body">
+                                <table id="datatable" class="table table-bordered table-striped" style="width: 100%">
+                                    <thead>
+                                    <tr>
+                                        <th>Full Name</th>
+                                        <th>User's email</th>
+                                        <th>Course</th>
+                                        <th>Setting</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="courses">
+
+                                    </tbody>
+                                </table>
+                                <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Xóa Course này ?</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Bạn có muốn xóa Course này ? </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button id="save_delete" type="button" class="btn btn-primary">Có, hãy
+                                                    xóa Course này
+                                                </button>
+                                                <button type="button" class="btn btn-secondary save_delete"
+                                                        data-dismiss="modal">Đóng
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editModal_title">Sửa thông tin Course</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="editCourse">Tên Lớp HP</label>
+                                                    <input type="text" class="form-control" id="editCourse" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="editTeacherName">Tên Giảng viên</label>
+                                                    <select class="custom-select" style="width: 30%" id="editTeacher">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button id="saveChanges" type="button" class="btn btn-primary">Save
+                                                    changes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal fade" id="AddNewModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="AddNewModal_title">Thêm lớp học phần mới</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="CourseName">Tên Lớp HP</label>
+                                                    <input type="text" class="form-control" id="addCourse">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="TeacherName">Tên Giảng viên</label>
+                                                    <select class="custom-select" style="width: 30%" id="addTeacherName">
+                                                        <option id="TeacherAdd" disabled value="Teacher" selected>Teacher...
+                                                        </option>
+                                                        <option t th:each="teacher :  ${listTeacher}" th:value="${teacher.id}"
+                                                                th:text="${teacher.firstName +' '+teacher.lastName}"/>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button id="addNew_saveChanges" type="button" class="btn btn-primary">
+                                                    Save changes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2020</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="/logout" value="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script th:src="@{/js/teacherJS/jquery.min.js}"></script>
+<script th:src="@{js/teacherJS/bootstrap.bundle.min.js}"></script>
+
+<!-- Core plugin JavaScript-->
+<script th:src="@{/js/teacherJS/jquery.easing.min.js}"></script>
+
+<!-- Custom scripts for all pages-->
+<script th:src="@{/js/teacherJS/sb-admin-2.min.js}"></script>
+
+</body>
+
+</html>

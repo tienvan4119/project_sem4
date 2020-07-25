@@ -1,0 +1,371 @@
+[{
+  "_id": {
+    "$oid": "5f17c368b0a5bd27704e5245"
+  },
+  "courseId": {
+    "$oid": "5f0fcf7f5850a60344922158"
+  },
+  "sectionId": {
+    "$oid": "5e22bd4f0cfb642ae4106b6a"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c408b0a5bd27704e5246"
+  },
+  "courseId": {
+    "$oid": "5f0fcf925850a60344922159"
+  },
+  "sectionId": {
+    "$oid": "5e22bd4f0cfb642ae4106b6a"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c568b0a5bd27704e5247"
+  },
+  "courseId": {
+    "$oid": "5f0de45aeacb490b39ceaa23"
+  },
+  "sectionId": {
+    "$oid": "5e22bd4f0cfb642ae4106b6a"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c5cdb0a5bd27704e5248"
+  },
+  "courseId": {
+    "$oid": "5f0fcfa65850a6034492215a"
+  },
+  "sectionId": {
+    "$oid": "5e22bd4f0cfb642ae4106b6a"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c636b0a5bd27704e5249"
+  },
+  "courseId": {
+    "$oid": "5f0fcfb65850a6034492215b"
+  },
+  "sectionId": {
+    "$oid": "5e22bd860cfb642ae4106b6b"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c652b0a5bd27704e524a"
+  },
+  "courseId": {
+    "$oid": "5f0fcfcd5850a6034492215c"
+  },
+  "sectionId": {
+    "$oid": "5e22bd860cfb642ae4106b6b"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c663b0a5bd27704e524b"
+  },
+  "courseId": {
+    "$oid": "5f0fcfd85850a6034492215d"
+  },
+  "sectionId": {
+    "$oid": "5e22bd860cfb642ae4106b6b"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c67cb0a5bd27704e524c"
+  },
+  "courseId": {
+    "$oid": "5f0fcfe15850a6034492215e"
+  },
+  "sectionId": {
+    "$oid": "5e22bd860cfb642ae4106b6b"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c6cdb0a5bd27704e524d"
+  },
+  "courseId": {
+    "$oid": "5f0fcff85850a6034492215f"
+  },
+  "sectionId": {
+    "$oid": "5e22bd980cfb642ae4106b6c"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c6deb0a5bd27704e524e"
+  },
+  "courseId": {
+    "$oid": "5f0fd0015850a60344922160"
+  },
+  "sectionId": {
+    "$oid": "5e22bd980cfb642ae4106b6c"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c6e8b0a5bd27704e524f"
+  },
+  "courseId": {
+    "$oid": "5f0fd0105850a60344922161"
+  },
+  "sectionId": {
+    "$oid": "5e22bd980cfb642ae4106b6c"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c6f6b0a5bd27704e5250"
+  },
+  "courseId": {
+    "$oid": "5f0fd0205850a60344922162"
+  },
+  "sectionId": {
+    "$oid": "5e22bd980cfb642ae4106b6c"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c719b0a5bd27704e5251"
+  },
+  "courseId": {
+    "$oid": "5f0fd02a5850a60344922163"
+  },
+  "sectionId": {
+    "$oid": "5e22bdb80cfb642ae4106b6d"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c724b0a5bd27704e5252"
+  },
+  "courseId": {
+    "$oid": "5f0fd0355850a60344922164"
+  },
+  "sectionId": {
+    "$oid": "5e22bdb80cfb642ae4106b6d"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c730b0a5bd27704e5253"
+  },
+  "courseId": {
+    "$oid": "5f0fd0465850a60344922165"
+  },
+  "sectionId": {
+    "$oid": "5e22bdb80cfb642ae4106b6d"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c73cb0a5bd27704e5254"
+  },
+  "courseId": {
+    "$oid": "5f0fd04f5850a60344922166"
+  },
+  "sectionId": {
+    "$oid": "5e22bdb80cfb642ae4106b6d"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c855b0a5bd27704e5255"
+  },
+  "courseId": {
+    "$oid": "5f0fd0615850a60344922167"
+  },
+  "sectionId": {
+    "$oid": "5f0eafab0b856702a0b2c6c3"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c86bb0a5bd27704e5256"
+  },
+  "courseId": {
+    "$oid": "5f0fd06a5850a60344922168"
+  },
+  "sectionId": {
+    "$oid": "5f0eafab0b856702a0b2c6c3"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c876b0a5bd27704e5257"
+  },
+  "courseId": {
+    "$oid": "5f0fd08c5850a60344922169"
+  },
+  "sectionId": {
+    "$oid": "5f0eafab0b856702a0b2c6c3"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c889b0a5bd27704e5258"
+  },
+  "courseId": {
+    "$oid": "5f0fd0975850a6034492216a"
+  },
+  "sectionId": {
+    "$oid": "5f0eafab0b856702a0b2c6c3"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c8abb0a5bd27704e5259"
+  },
+  "courseId": {
+    "$oid": "5f0fd18b5850a6034492216b"
+  },
+  "sectionId": {
+    "$oid": "5f0eafb60b856702a0b2c6c4"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c8c1b0a5bd27704e525a"
+  },
+  "courseId": {
+    "$oid": "5f0fd1955850a6034492216c"
+  },
+  "sectionId": {
+    "$oid": "5f0eafb60b856702a0b2c6c4"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c8cdb0a5bd27704e525b"
+  },
+  "courseId": {
+    "$oid": "5f0fd19d5850a6034492216d"
+  },
+  "sectionId": {
+    "$oid": "5f0eafb60b856702a0b2c6c4"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c8d9b0a5bd27704e525c"
+  },
+  "courseId": {
+    "$oid": "5f0fd1af5850a6034492216e"
+  },
+  "sectionId": {
+    "$oid": "5f0eafb60b856702a0b2c6c4"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c909b0a5bd27704e525d"
+  },
+  "courseId": {
+    "$oid": "5f0fd1b75850a6034492216f"
+  },
+  "sectionId": {
+    "$oid": "5f0eafc90b856702a0b2c6c5"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c92fb0a5bd27704e525e"
+  },
+  "courseId": {
+    "$oid": "5f0fd1c05850a60344922170"
+  },
+  "sectionId": {
+    "$oid": "5f0eafc90b856702a0b2c6c5"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c943b0a5bd27704e525f"
+  },
+  "courseId": {
+    "$oid": "5f0fd1d25850a60344922171"
+  },
+  "sectionId": {
+    "$oid": "5f0eafc90b856702a0b2c6c5"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c94db0a5bd27704e5260"
+  },
+  "courseId": {
+    "$oid": "5f0fd1dc5850a60344922172"
+  },
+  "sectionId": {
+    "$oid": "5f0eafc90b856702a0b2c6c5"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c96fb0a5bd27704e5261"
+  },
+  "courseId": {
+    "$oid": "5f0fd1eb5850a60344922173"
+  },
+  "sectionId": {
+    "$oid": "5f0eafd10b856702a0b2c6c6"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c97eb0a5bd27704e5262"
+  },
+  "courseId": {
+    "$oid": "5f0fd1ff5850a60344922174"
+  },
+  "sectionId": {
+    "$oid": "5f0eafd10b856702a0b2c6c6"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c990b0a5bd27704e5263"
+  },
+  "courseId": {
+    "$oid": "5f0fd2075850a60344922175"
+  },
+  "sectionId": {
+    "$oid": "5f0eafd10b856702a0b2c6c6"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c99db0a5bd27704e5264"
+  },
+  "courseId": {
+    "$oid": "5f0fd2115850a60344922176"
+  },
+  "sectionId": {
+    "$oid": "5f0eafd10b856702a0b2c6c6"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c9c0b0a5bd27704e5265"
+  },
+  "courseId": {
+    "$oid": "5f0fd2545850a60344922177"
+  },
+  "sectionId": {
+    "$oid": "5f0eafd70b856702a0b2c6c7"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c9cdb0a5bd27704e5266"
+  },
+  "courseId": {
+    "$oid": "5f0fd25d5850a60344922178"
+  },
+  "sectionId": {
+    "$oid": "5f0eafd70b856702a0b2c6c7"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c9dab0a5bd27704e5267"
+  },
+  "courseId": {
+    "$oid": "5f0fd2715850a60344922179"
+  },
+  "sectionId": {
+    "$oid": "5f0eafd70b856702a0b2c6c7"
+  }
+},{
+  "_id": {
+    "$oid": "5f17c9e6b0a5bd27704e5268"
+  },
+  "courseId": {
+    "$oid": "5f0fd2815850a6034492217a"
+  },
+  "sectionId": {
+    "$oid": "5f0eafd70b856702a0b2c6c7"
+  }
+},{
+  "_id": {
+    "$oid": "5f17ca18b0a5bd27704e5269"
+  },
+  "courseId": {
+    "$oid": "5f0fd2905850a6034492217b"
+  },
+  "sectionId": {
+    "$oid": "5f0eafd70b856702a0b2c6c7"
+  }
+}]
