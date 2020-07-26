@@ -78,10 +78,12 @@ public class SessionController {
         String[] timeArray = timeTest.split(" ");
         String[] time = timeArray[0].split("m");
         String testId = test_id[1];
-        int timeReal = Integer.parseInt(time[0]);
+        int timeRealMinute = Integer.parseInt(time[0]);
+        String[] timeSecond = timeArray[1].split("s");
+        int timeRealSecond = Integer.parseInt(timeSecond[0]);
         Test test = adminService.getTestbyId(testId);
         ObjectId section_id_conver = new ObjectId(section_id);
-
+        int RealTime = timeRealMinute*60 + timeRealSecond;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
         ObjectId user_id = userService.findByEmail(userName).getId();
@@ -114,7 +116,7 @@ public class SessionController {
 
             result.setTestAgain(false);
             result.setMark(rightMark);
-            result.setTime(timeReal);
+            result.setTime(RealTime);
             quizService.saveResult(result);
         }catch (Exception e) {
             e.getMessage();

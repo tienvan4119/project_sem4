@@ -48,6 +48,14 @@
 
     // select choice a field and a subject
   $(document).ready(function () {
+
+    $('#formCreate .form-control').on('keyup', e => {
+      console.log('abc123321');
+
+      validateInfo();
+
+    })
+
     $("#SearchFilter").on("keyup", function() {
       console.log("abc")
       var value = $(this).val().toLowerCase();
@@ -230,9 +238,10 @@
       $('#addNew_saveChanges').on('click', e => {
         var lastName = $("#AddNewModal #addLastName").val().trim()
         var firstName = $("#AddNewModal #addFirstName").val().trim()
-        var userEmail = $("#AddNewModal #addEmail").val()
+        var userEmail = $("#AddNewModal #addUserEmail").val()
         var userClassID = $("#AddNewModal #addClassID").val()
         var userFaculty = $("#AddNewModal #addFacultyID").val()
+        console.log(userEmail)
         $.ajax({
           type: 'POST', url: "/api/admin/AddNewTeacher", dataType: 'json',
           data: {
@@ -242,15 +251,51 @@
             userClassID: userClassID,
             userFaculty: userFaculty
           }, success: function (result) {
-
+            location.reload()
           }
         })
-
-        $('#AddNewModal').modal('hide');
-        location.reload();
       })
     })
   })
+
+    function validateInfo() {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      console.log('abc');
+      let LastName = $('#addLastName').val();
+      let FirstName = $('#addFirstName').val();
+      let email = $('#addUserEmail').val();
+      let facultyName = $("#addFacultyID").children("option").filter(":selected").text().trim();
+      let className = $("#addClassID").children("option").filter(":selected").text().trim();
+
+      if (re.test(String(email).toLowerCase()) && LastName !== "" && FirstName !== ""
+              && facultyName !== "Faculty..." && className !== "Class...") {
+        console.log(LastName + FirstName+facultyName+className)
+        console.log("yes")
+        $.ajax({type: "POST", url: "/api/admin/checkEmail", dataType: 'json',
+          data : {
+            email : email
+          },success: function(data){
+          console.log(data[0])
+            if(data[0] === "Email Exited")
+            {
+              console.log("yes yes")
+              $('#addNew_saveChanges').prop('disabled', true);
+            }
+            else
+            {
+              console.log("NO")
+              $('#addNew_saveChanges').prop('disabled', false);
+            }
+          }})
+
+      } else {
+        $('#addNew_saveChanges').prop('disabled', true);
+
+      }
+
+    }
+
     function editTeacher(teacher_email) {
       console.log(teacher_email)
       $('#editModal').modal('show');
@@ -512,7 +557,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="/teacherProfile.html">
+                <a class="dropdown-item" href="/adminProfile.html">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -612,7 +657,7 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="formCreate">
                       <div class="form-group">
                         <label for="Name">First Name</label>
                         <input type="text" class="form-control" id="addFirstName" >
@@ -627,7 +672,7 @@
                       </div>
                       <div class="form-group">
                         <label for="CourseName">Khoa</label>
-                        <select class="custom-select" style="width: 30%" id="addFacultyID">
+                        <select onchange="validateInfo()" class="custom-select" style="width: 30%" id="addFacultyID">
                           <option id="FacultyAdd" disabled value="Course" selected>Faculty...
                           </option>
                           <option th:each="faculty :  ${listFaculty}" th:value="${faculty.id}"
@@ -636,7 +681,7 @@
                       </div>
                       <div class="form-group">
                         <label for="ClassName">Lớp sinh hoạt</label>
-                        <select class="custom-select" style="width: 30%" id="addClassID">
+                        <select onchange="validateInfo()" class="custom-select" style="width: 30%" id="addClassID">
                           <option id="ClassAdd" disabled value="Class" selected>Class...
                           </option>
                           <option th:each="class :  ${listClass}" th:value="${class.id}"
@@ -646,7 +691,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button id="addNew_saveChanges" type="button" class="btn btn-primary">Save changes</button>
+                      <button id="addNew_saveChanges" type="button" class="btn btn-primary" disabled>Save changes</button>
                     </div>
                   </div>
                 </div>

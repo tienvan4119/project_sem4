@@ -52,13 +52,21 @@
     $( document ).ready(function() {
         current_url = window.location.href
         $.ajax({
-            type: "POST", url: "/api/admin/getNumberOfTest", dataType: 'json',
+            type: "POST", url: "/api/admin/getTimeOfTest", dataType: 'json',
             data: {
                 current_url: current_url
             }, success: function (result) {
-                window.value = result.numberQuestion;
-                createPagination(result.numberQuestion);
-                HienThiThoiGianThi(result.time*60);
+                $.ajax({
+                    type: "POST", url: "/api/admin/getNumberofTest", dataType: 'json',
+                    data: {
+                        current_url: current_url
+                    }, success: function (numberQues) {
+                        window.value = numberQues.numberQuestion;
+                        createPagination(numberQues.numberQuestion);
+                        HienThiThoiGianThi(result.time);
+                    }
+                })
+
             }
         })
         $(".tab-pane").first().addClass("active");

@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -83,7 +85,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/AddNewTeacher", method = RequestMethod.POST)
-    public String AddNewTeacher(HttpServletRequest request, ModelAndView modelAndView)
+    public List<Class> AddNewTeacher(HttpServletRequest request, ModelAndView modelAndView)
     {
         BCryptPasswordEncoder bCryptPasswordEncoder  = new BCryptPasswordEncoder();
         String pass = bCryptPasswordEncoder.encode("Van@411209");
@@ -94,7 +96,22 @@ public class AdminController {
         String classID = request.getParameter("userClassID");
         ObjectId classID_convert = new ObjectId(classID);
 //        User userExits = userService.findByEmail(userEmail);
+        List<Faculty> listFaculty = adminService.getAllFaculty();
+        List <User> list_AllUser = userService.listAll();
 
+        List<User> listTeacher = new ArrayList<User>();
+
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("TEACHER"))
+            {
+                listTeacher.add(list_AllUser.get(i));
+            }
+        }
+        List<Class> listClass = adminService.getAllClass();
 
         System.out.println(pass);
         User new_teacher = new User();
@@ -106,7 +123,7 @@ public class AdminController {
         adminService.saveTeacher(new_teacher);
 //        String pass = bCryptPasswordEncoder.encode(request.getParameter("userPass"));
 
-        return "Yes";
+        return listClass;
     }
 
 
@@ -403,7 +420,7 @@ public class AdminController {
             result.setUser_id(listUser.get(i).getId());
             result.setDone(false);
             result.setTestAgain(false);
-            result.setTime(timeTest);
+            result.setTime(timeTest * 60);
             quizService.saveResult(result);
         }
         return adminService.getListTest(user.getId().toString());
@@ -901,15 +918,29 @@ public class AdminController {
     }
 
 
-    @RequestMapping(value = "/getNumberOfTest", method = RequestMethod.POST)
-    public Test getNumber(HttpServletRequest request)
+    @RequestMapping(value = "/getTimeOfTest", method = RequestMethod.POST)
+    public Result getNumber(HttpServletRequest request)
+    {
+        String params = request.getParameter("current_url");
+        String[] test_id = params.split("=");
+        System.out.println(test_id[1]);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        return adminService.getResultbyTestAndUser(test_id[1], user.getId().toString());
+
+    }
+
+    @RequestMapping(value = "/getNumberofTest", method = RequestMethod.POST)
+    public Test getNumberQuest(HttpServletRequest request)
     {
         String params = request.getParameter("current_url");
         String[] test_id = params.split("=");
         System.out.println(test_id[1]);
 
         return adminService.getTestbyId(test_id[1]);
+
     }
+
     @RequestMapping(value = "/getUserByEmail", method = RequestMethod.POST)
     public User getUserByEmail(HttpServletRequest request)
     {
@@ -1082,12 +1113,24 @@ public class AdminController {
         String courseName = request.getParameter("courseName");
 
         Course course = adminService.getCoursebyName(courseName);
-        List<RelationStudentCourse> studentCourses = adminService.getListCourseAndStudent(course.getId().toString());
-        for(int i = 0; i< studentCourses.size();i++)
+        try
         {
-            adminService.DeleteStudentOfCourse(studentCourses.get(i));
+            List<RelationStudentCourse> studentCourses = adminService.getListCourseAndStudent(course.getId().toString());
+            if(studentCourses != null)
+            {
+                for(int i = 0; i< studentCourses.size();i++)
+                {
+                    adminService.DeleteStudentOfCourse(studentCourses.get(i));
+                }
+            }
+        }
+        catch(Exception e)
+        {
+
         }
         adminService.DeleteCourse(course);
+        RelationCourseSection courseSection = adminService.findbyCourseId(course.getId().toString());
+        adminService.DeleteCourseSection(courseSection);
         return adminService.getFullCourse();
     }
 
@@ -1196,6 +1239,25 @@ public class AdminController {
         {
             listString.add(listQuestionyByTopic.get(i).getId().toString());
         }
+        return listString;
+    }
+
+    @RequestMapping(value = "/checkEmail", method = RequestMethod.POST)
+    public List<String> controllerrrrr(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String email = request.getParameter("email");
+        User user = adminService.getUserbyEmail(email);
+        String data;
+        if (user == null)
+        {
+            data = "Email Valid";
+
+        }
+        else {
+            data = "Email Exited";
+
+        }
+        List<String> listString = new ArrayList<>();
+        listString.add(data);
         return listString;
     }
 }

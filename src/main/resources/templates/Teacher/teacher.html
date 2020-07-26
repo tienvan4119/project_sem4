@@ -357,7 +357,7 @@
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="/teacherProfile.html">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
@@ -540,7 +540,7 @@
                                                 <div class="form-group">
                                                     <label for="addMSSV">MSSV</label>
                                                     <input
-                                                            type="text"
+                                                            type="number"
                                                             class="form-control"
                                                             id="addMSSV">
                                                 </div>
@@ -676,6 +676,9 @@
         });
 
 
+
+
+
         $('#AddNewStudent').on('click', e => {
             $('#AddNewModal').modal('show');
 
@@ -773,11 +776,28 @@
 
             if (re.test(String(email).toLowerCase()) && MSSV !== "" && LastName !== "" && FirstName !== "" && Address !== ""
                 && courseName !== "Course..." && className !== "Class...") {
-                $('#addNew_saveChanges').prop('disabled', false);
+                console.log("yes")
+                $.ajax({type: "POST", url: "/api/admin/checkEmail", dataType: 'json',
+                    data : {
+                        email : email
+                    },success: function(data){
+                        console.log(data[0])
+                        if(data[0] === "Email Exited")
+                        {
+                            console.log("yes yes")
+                            $('#addNew_saveChanges').prop('disabled', true);
+                        }
+                        else
+                        {
+                            console.log("NO")
+                            $('#addNew_saveChanges').prop('disabled', false);
+                        }
+                    }})
+
             } else {
                 $('#addNew_saveChanges').prop('disabled', true);
 
-        }
+            }
 
     }
 

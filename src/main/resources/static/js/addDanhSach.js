@@ -16,24 +16,31 @@ $(document).on('change','.up', function(){
 
 $('#submit-file').on("click",function(e){
     e.preventDefault();
-    $('#up').parse({
-        config: {
-            delimiter: "auto",
-            complete: displayHTMLTable,
-        },
-        before: function(file, inputElem)
-        {
-            //console.log("Parsing file...", file);
-        },
-        error: function(err, file)
-        {
-            //console.log("ERROR:", err, file);
-        },
-        complete: function()
-        {
-            //console.log("Done with all files");
-        }
-    });
+    if($('#fileUpload').val() == "" || $('#listCourse option:selected').text().trim() == "Course...")
+    {
+        alert("Kiem tra ten hoc phan va file da chon")
+    }
+    else
+    {
+        $('#up').parse({
+            config: {
+                delimiter: "auto",
+                complete: displayHTMLTable,
+            },
+            before: function(file, inputElem)
+            {
+                //console.log("Parsing file...", file);
+            },
+            error: function(err, file)
+            {
+                //console.log("ERROR:", err, file);
+            },
+            complete: function()
+            {
+                //console.log("Done with all files");
+            }
+        });
+    }
 });
 
 function displayHTMLTable(results) {
@@ -61,6 +68,7 @@ function displayHTMLTable(results) {
                     data: {
                         course_name: course_name
                     }, success: function (dataClass) {
+                        $('#fileUpload').empty()
                         $('#students').empty()
                         var i;
                         for (i = 0; i < result.length; i++) {

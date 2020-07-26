@@ -63,6 +63,7 @@
                 validate();
 
             })
+
             $.ajax({type: "POST", url: "/api/admin/getFullCourse", dataType: 'json',
                 data : {
 
@@ -94,40 +95,53 @@
                 $('#AddNewModal').modal('show');
 
                 $('#addNew_saveChanges').on('click', e => {
-                    let teacherID = $("#addTeacherName").children("option").filter(":selected").val();
-                    let sectionID = $("#addSection").children("option").filter(":selected").val();
-                    var courseName = $("#AddNewModal #addCourse").val().trim()
-                    console.log(teacherID + '   '+ courseName + '   ' + sectionID)
-                    $.ajax({
-                        type: 'POST', url: "/api/admin/addNewCourse", dataType: 'json',
-                        data: {
-                            teacherID: teacherID,
-                            courseName: courseName,
-                            sectionID : sectionID
-                        }, success: function (course) {
-                            $.ajax({
-                                type: 'POST', url: "/api/admin/getFullTeacherOfCourse", dataType: 'json',
-                                data: {
 
-                                }, success: function (teacher) {
-                                    $('#AddNewModal').modal('hide');
-                                    var i;
-                                    $('#courses').empty()
-                                    for (i = 0; i < course.length; i++) {
-                                        $('#courses').append("<tr>" +
-                                            "<td>"+teacher[i].firstName+" "+teacher[i].lastName+"</td>" +
-                                            "<td>"+teacher[i].email+"</td>" +
-                                            "<td>"+course[i].name+"</td>" +
-                                            "<td>" +
-                                            "<a onclick='editCourse(this.id)' class='edit' title='Edit' id='"+course[i].name+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
-                                            "<a onclick='deleteCourse(this.id)' id='"+course[i].name+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
-                                            "</td>" +
-                                            "</tr>")
+                    e.preventDefault();
+                    let teacherID = $("#addTeacherName").children("option").filter(":selected").val().trim();
+                    let sectionID = $("#addSection").children("option").filter(":selected").val().trim();
+                    var courseName = $("#AddNewModal #addCourse").val().trim()
+
+                    if(teacherID == 'TeacherAdd' || sectionID == 'SectionAdd' || courseName == "")
+                    {
+                        console.log("Data sai")
+                        alert("Thong Tin nhap vao khong hop le")
+                    }
+                    else
+                    {
+                        console.log(teacherID + '   '+ courseName + '   ' + sectionID)
+                        $.ajax({
+                            type: 'POST', url: "/api/admin/addNewCourse", dataType: 'json',
+                            data: {
+                                teacherID: teacherID,
+                                courseName: courseName,
+                                sectionID : sectionID
+                            }, success: function (course) {
+                                $.ajax({
+                                    type: 'POST', url: "/api/admin/getFullTeacherOfCourse", dataType: 'json',
+                                    data: {
+
+                                    }, success: function (teacher) {
+                                        $('#AddNewModal').modal('hide');
+                                        location.reload()
+                                        var i;
+                                        $('#courses').empty()
+                                        for (i = 0; i < course.length; i++) {
+                                            $('#courses').append("<tr>" +
+                                                "<td>"+teacher[i].firstName+" "+teacher[i].lastName+"</td>" +
+                                                "<td>"+teacher[i].email+"</td>" +
+                                                "<td>"+course[i].name+"</td>" +
+                                                "<td>" +
+                                                "<a onclick='editCourse(this.id)' class='edit' title='Edit' id='"+course[i].name+"' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                                "<a onclick='deleteCourse(this.id)' id='"+course[i].name+"' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                                "</td>" +
+                                                "</tr>")
+                                        }
                                     }
-                                }
-                            })
-                        }
-                    })
+                                })
+                            }
+                        })
+                    }
+
 
                 })
             })
@@ -392,7 +406,7 @@
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="/adminProfile.html">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>

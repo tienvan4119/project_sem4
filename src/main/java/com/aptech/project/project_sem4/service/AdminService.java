@@ -247,4 +247,12 @@ public class AdminService {
     {
         return questionRepository.findTopicByQuestionId(question_id);
     }
+    public RelationCourseSection findbyCourseId(String course_id)
+    {
+        return relationCourseSectionRepository.findbyCourseId(course_id);
+    }
+    public void DeleteCourseSection(RelationCourseSection courseSection)
+    {
+        relationCourseSectionRepository.delete(courseSection);
+    }
 }

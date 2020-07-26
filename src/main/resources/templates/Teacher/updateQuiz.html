@@ -79,7 +79,7 @@
                                                 "<td>" + j + "</td>" +
                                                 "<td>" + $('#listSection option:selected').text() + "</td>" +
                                                 "<td>" + topic[i].title + "</td>" +
-                                                "<td>" + result[i].question_desc + "</td>" +
+                                                "<td >" + result[i].question_desc + "</td>" +
                                                 "<td>" +
                                                 "<a onclick='editQuestion(this.id)' class='edit' title='Edit' id='" + StringId[i] + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
                                                 "<a onclick='deleteQuestion(this.id)' id='" + StringId[i] + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
@@ -370,7 +370,7 @@
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="//teacherProfile.html">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
@@ -419,11 +419,11 @@
                                 <table id="datatable" class="table table-bordered table-striped" style="width: 100%">
                                     <thead>
                                     <tr>
-                                        <th>Số thứ tự</th>
-                                        <th>Môn</th>
-                                        <th>Phần</th>
-                                        <th>Nội dung câu hỏi</th>
-                                        <th>Cài đặt</th>
+                                        <th width="10%">Số thứ tự</th>
+                                        <th width="20%">Môn</th>
+                                        <th width="20%">Phần</th>
+                                        <th width="40%">Nội dung câu hỏi</th>
+                                        <th width="10%">Cài đặt</th>
                                     </tr>
                                     </thead>
                                     <tbody id="quizs">
