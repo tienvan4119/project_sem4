@@ -38,6 +38,8 @@ public class AdminService {
     private TestRepository testRepository;
     @Autowired
     private ResultRepository resultRepository;
+    @Autowired
+    private RelationCourseSectionRepository relationCourseSectionRepository;
     public User findUserbyId(String id)
     {
         return userRepository.findUserById(id);
@@ -232,5 +234,13 @@ public class AdminService {
     public void DeleteCourse(Course course)
     {
         courseRepository.delete(course);
+    }
+    public void SaveCourseSection(RelationCourseSection courseSection)
+    {
+        relationCourseSectionRepository.save(courseSection);
+    }
+    public void DeleteResult(Result result)
+    {
+        resultRepository.delete(result);
     }
 }

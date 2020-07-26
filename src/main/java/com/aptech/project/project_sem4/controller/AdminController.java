@@ -569,6 +569,19 @@ public class AdminController {
     public List<Test> deleteTest(Model model, HttpServletRequest request)
     {
         String test_id  = request.getParameter("Test_id");
+
+        Test test = adminService.getTestbyId(test_id);
+        List<User> listUser = new ArrayList<>();
+        List<RelationStudentCourse> listCourseStudent  = adminService.getListCourseAndStudent(test.getCourseID().toString());
+        for(int i = 0; i< listCourseStudent.size(); i++)
+        {
+            listUser.add(adminService.findUserbyId(listCourseStudent.get(i).getStudentID().toString()));
+        }
+        for(int i = 0; i<listUser.size();i++)
+        {
+            Result result = adminService.getResultbyTestAndUser(test_id, listUser.get(i).getId().toString());
+            adminService.DeleteResult(result);
+        }
         adminService.DeleteTest(test_id);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
@@ -852,6 +865,42 @@ public class AdminController {
         }
         return listIntTeacher;
     }
+
+    @RequestMapping(value = "/getStatisticStudentAdmin", method = RequestMethod.POST)
+    public List<Integer> listintStudent(Model model, HttpServletRequest request)
+    {
+        List<Faculty> listFaculty = adminService.getAllFaculty();
+        List <User> list_AllUser = userService.listAll();
+        List<User> listStudent = new ArrayList<User>();
+        List<Integer> listIntTeacher = new ArrayList<>();
+        List<Class> listClassofTeacher = new ArrayList<>();
+        for(int i = 0; i < list_AllUser.size(); i++)
+        {
+            Set role = list_AllUser.get(i).getRoles();
+            Object[] roles = role.toArray();
+            Role role_name = (Role) roles[0];
+            if(role_name.getRole().equals("USER"))
+            {
+                listStudent.add(list_AllUser.get(i));
+            }
+        }
+        int number = 0;
+        for(int i = 0; i< listFaculty.size();i++)
+        {
+            for(int k = 0; k<listStudent.size();k++)
+            {
+                if(adminService.findClassById(listStudent.get(k).getClassId().toString()).getFacultyId().equals(listFaculty.get(i).getId()))
+                {
+                    number++;
+                }
+            }
+            listIntTeacher.add(number);
+            number = 0;
+        }
+        return listIntTeacher;
+    }
+
+
     @RequestMapping(value = "/getNumberOfTest", method = RequestMethod.POST)
     public Test getNumber(HttpServletRequest request)
     {
@@ -939,10 +988,15 @@ public class AdminController {
     {
         String teacherID = request.getParameter("teacherID");
         String courseName = request.getParameter("courseName");
+        String sectionID = request.getParameter("sectionID");
         Course newCourse = new Course();
         newCourse.setName(courseName);
         newCourse.setTeacherID(new ObjectId(teacherID));
         adminService.saveNewCourse(newCourse);
+        RelationCourseSection courseSection = new RelationCourseSection();
+        courseSection.setCourseId(newCourse.getId());
+        courseSection.setSectionId(new ObjectId(sectionID));
+        adminService.SaveCourseSection(courseSection);
         return adminService.getFullCourse();
     }
 

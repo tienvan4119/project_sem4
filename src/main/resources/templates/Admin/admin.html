@@ -23,7 +23,23 @@
   <!-- Custom styles for this template-->
   <link th:href="@{/css/admin.min.css}" rel="stylesheet">
 <script type="text/javascript">
+  $(document).ready(function () {
+    $.ajax({
+      type: "POST", url: "/api/admin/getStatisticStudentAdmin", dataType: 'json',
+      data: {
 
+      }, success: function (listStudent) {
+        $.ajax({
+          type: "POST", url: "/api/admin/getStatisticTeacherAdmin", dataType: 'json',
+          data: {
+
+          }, success: function (listTeacher) {
+
+          }
+        })
+      }
+    })
+  })
 </script>
 </head>
 
@@ -183,14 +199,12 @@
           <div class="row" >
 
             <!-- Khoa CNTT -->
-            <div class="col-xl-3 col-md-6 mb-4" th:each="faculty :  ${listFaculty}">
+            <div class="col-xl-3 col-md-6 mb-4" th:each="faculty :  ${listFaculty} ">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1" th:text="${faculty.name}"></div>
-                      <div class="h6 mb-0 font-weight-bold text-gray-800">Teachers: 2</div>
-                      <div class="h6 mb-0 font-weight-bold text-gray-800">Students: 10</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>

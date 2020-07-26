@@ -116,6 +116,8 @@ public class RegisterController {
         return "/Admin/admin";
     }
 
+
+
     @RequestMapping(value = {"/index2"})
     public String listUser(Model model)
     {
@@ -309,6 +311,8 @@ public class RegisterController {
                 listTeacher.add(list_AllUser.get(i));
             }
         }
+        List<Section> listSection = adminService.getAllSection();
+        model.addAttribute("listSection", listSection);
         model.addAttribute("listCourse", listCourse);
         model.addAttribute("listTeacher", listTeacher);
         model.addAttribute("listUser", listUser);

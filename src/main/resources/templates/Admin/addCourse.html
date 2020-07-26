@@ -57,7 +57,12 @@
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
+            $('#formCreate .form-control').on('keyup', e => {
+                console.log('abc123321');
 
+                validate();
+
+            })
             $.ajax({type: "POST", url: "/api/admin/getFullCourse", dataType: 'json',
                 data : {
 
@@ -90,14 +95,15 @@
 
                 $('#addNew_saveChanges').on('click', e => {
                     let teacherID = $("#addTeacherName").children("option").filter(":selected").val();
+                    let sectionID = $("#addSection").children("option").filter(":selected").val();
                     var courseName = $("#AddNewModal #addCourse").val().trim()
-                    console.log(teacherID + '   '+ courseName)
+                    console.log(teacherID + '   '+ courseName + '   ' + sectionID)
                     $.ajax({
                         type: 'POST', url: "/api/admin/addNewCourse", dataType: 'json',
                         data: {
                             teacherID: teacherID,
                             courseName: courseName,
-
+                            sectionID : sectionID
                         }, success: function (course) {
                             $.ajax({
                                 type: 'POST', url: "/api/admin/getFullTeacherOfCourse", dataType: 'json',
@@ -126,6 +132,19 @@
                 })
             })
         })
+
+        function validate() {
+            let teacherID = $("#addTeacherName").children("option").filter(":selected").text().trim();
+            let sectionID = $("#addSection").children("option").filter(":selected").text().trim();
+            var courseName = $("#AddNewModal #addCourse").val().trim()
+            console.log(teacherID + ' ' + sectionID + ' '+ courseName)
+            if (courseName !== "" && teacherID !== "Teacher..." && sectionID !== "Section...") {
+                $('#addNew_saveChanges').prop('disabled', false);
+            } else {
+                $('#addNew_saveChanges').prop('disabled', true);
+            }
+        }
+
         function editCourse(courseName) {
 
             console.log(courseName)
@@ -507,18 +526,27 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body" id="formCreate">
                                                 <div class="form-group">
                                                     <label for="CourseName">Tên Lớp HP</label>
                                                     <input type="text" class="form-control" id="addCourse">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="TeacherName">Tên Giảng viên</label>
-                                                    <select class="custom-select" style="width: 30%" id="addTeacherName">
+                                                    <select onchange="validate()" class="custom-select" style="width: 30%" id="addTeacherName">
                                                         <option id="TeacherAdd" disabled value="Teacher" selected>Teacher...
                                                         </option>
-                                                        <option t th:each="teacher :  ${listTeacher}" th:value="${teacher.id}"
+                                                        <option  th:each="teacher :  ${listTeacher}" th:value="${teacher.id}"
                                                                 th:text="${teacher.firstName +' '+teacher.lastName}"/>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="SectionName">Section</label>
+                                                    <select onchange="validate()" class="custom-select" style="width: 30%" id="addSection">
+                                                        <option id="SectionAdd" disabled value="Teacher" selected>Section...
+                                                        </option>
+                                                        <option t th:each="section :  ${listSection}" th:value="${section.id}"
+                                                                th:text="${section.title}"/>
                                                     </select>
                                                 </div>
                                             </div>
@@ -526,7 +554,7 @@
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <button id="addNew_saveChanges" type="button" class="btn btn-primary">
+                                                <button id="addNew_saveChanges" type="button" class="btn btn-primary" disabled>
                                                     Save changes
                                                 </button>
                                             </div>
