@@ -243,4 +243,8 @@ public class AdminService {
     {
         resultRepository.delete(result);
     }
+    public Question getQuestionById(String question_id)
+    {
+        return questionRepository.findTopicByQuestionId(question_id);
+    }
 }

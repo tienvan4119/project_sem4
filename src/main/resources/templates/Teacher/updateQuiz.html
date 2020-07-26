@@ -65,22 +65,30 @@
                             data: {
                                 section_id: section_id
                             }, success: function (topic) {
-                                $('#quizs').empty()
-                                var i;
-                                var j = 1
-                                for (i = 0; i < result.length; i++, j++) {
+                                $.ajax({
+                                    type: "POST", url: "/api/admin/getStringIdOfQuestion", dataType: 'json',
+                                    data: {
+                                        section_id: section_id
+                                    }, success: function (StringId) {
+                                        $('#quizs').empty()
+                                        var i;
+                                        var j = 1
+                                        for (i = 0; i < result.length; i++, j++) {
 
-                                    $('#quizs').append("<tr>" +
-                                        "<td>" + j + "</td>" +
-                                        "<td>" + $('#listSection option:selected').text() + "</td>" +
-                                        "<td>" + topic[i].title + "</td>" +
-                                        "<td>" + result[i].question_desc + "</td>" +
-                                        "<td>" +
-                                        "<a onclick='editQuestion(this.id)' class='edit' title='Edit' id='" + result[i].question_desc + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
-                                        "<a onclick='deleteQuestion(this.id)' id='" + result[i].question_desc + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
-                                        "</td>" +
-                                        "</tr>")
-                                }
+                                            $('#quizs').append("<tr>" +
+                                                "<td>" + j + "</td>" +
+                                                "<td>" + $('#listSection option:selected').text() + "</td>" +
+                                                "<td>" + topic[i].title + "</td>" +
+                                                "<td>" + result[i].question_desc + "</td>" +
+                                                "<td>" +
+                                                "<a onclick='editQuestion(this.id)' class='edit' title='Edit' id='" + StringId[i] + "' data-toggle='tooltip'><i class='material-icons'>&#xE254;</i></a>" +
+                                                "<a onclick='deleteQuestion(this.id)' id='" + StringId[i] + "' class='delete' title='Delete' data-toggle='tooltip'><i class='material-icons'>&#xE872;</i></a>" +
+                                                "</td>" +
+                                                "</tr>")
+                                        }
+                                    }
+                                })
+
                             }
                         })
                     }
@@ -146,31 +154,31 @@
             })
         }
 
-        function editQuestion(question_desc) {
+        function editQuestion(question_id) {
 
-            console.log(question_desc)
+
             $('#editQuestionDesc').empty();
             $('#editRightChoice').empty();
             $('#editListChoice').empty();
             $('#editModal').modal('show');
 
             $.ajax({
-                type: "POST", url: "/api/admin/getQuestionByDesc", dataType: 'json',
+                type: "POST", url: "/api/admin/getQuestionById", dataType: 'json',
                 data: {
-                    question_desc: question_desc
+                    question_id: question_id
                 }, success: function (question) {
                     $.ajax({
-                        type: "POST", url: "/api/admin/getRightChoiceByQuestionDesc", dataType: 'json',
+                        type: "POST", url: "/api/admin/getRightChoiceByQuestionId", dataType: 'json',
                         data: {
-                            question_desc: question_desc
+                            question_id: question_id
                         }, success: function (rightChoice) {
                             $.ajax({
-                                type: "POST", url: "/api/admin/getFalseChoiceByQuestionDesc", dataType: 'json',
+                                type: "POST", url: "/api/admin/getFalseChoiceByQuestionId", dataType: 'json',
                                 data: {
-                                    question_desc: question_desc
+                                    question_id: question_id
                                 }, success: function (falseChoice) {
                                     $('#editQuestionDesc').append("<tr>" +
-                                        "<td contenteditable='true'>" + question.question_desc + "</td>" +
+                                        "<td>" + question.question_desc + "</td>" +
                                         "</tr>")
                                     $('#editRightChoice').val(rightChoice.choice_desc)
                                     var i;

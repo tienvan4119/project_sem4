@@ -699,10 +699,10 @@ public class AdminController {
         return "Yes";
     }
 
-    @RequestMapping(value = "/getQuestionByDesc", method = RequestMethod.POST)
-    public Question getQuestionByDesc(Model model, HttpServletRequest request) {
-        String question_desc = request.getParameter("question_desc");
-        return adminService.findQuestionByDesc(question_desc);
+    @RequestMapping(value = "/getQuestionById", method = RequestMethod.POST)
+    public Question getQuestionById(Model model, HttpServletRequest request) {
+        String question_id = request.getParameter("question_id");
+        return adminService.getQuestionById(question_id);
     }
     @RequestMapping(value = "/getChoiceByQuestionDesc", method = RequestMethod.POST)
     public List<Choice> getChoiceByQuestionDesc(Model model, HttpServletRequest request) {
@@ -1121,11 +1121,11 @@ public class AdminController {
         }
         return listUser;
     }
-    @RequestMapping(value = "/getRightChoiceByQuestionDesc", method = RequestMethod.POST)
-    public Choice getRightChoiceByQuestionDesc(Model model, HttpServletRequest request) {
-        String question_desc = request.getParameter("question_desc");
-        Question edit_question = adminService.findQuestionByDesc(question_desc);
-        List<Choice> choices = adminService.findChoiceByQuestionId(edit_question.getId().toString());
+    @RequestMapping(value = "/getRightChoiceByQuestionId", method = RequestMethod.POST)
+    public Choice getRightChoiceByQuestionId(Model model, HttpServletRequest request) {
+        String question_id = request.getParameter("question_id");
+
+        List<Choice> choices = adminService.findChoiceByQuestionId(question_id);
         for(int i = 0; i < choices.size(); i++)
         {
             if(choices.get(i).getCorrect())
@@ -1136,11 +1136,11 @@ public class AdminController {
         return null;
     }
 
-    @RequestMapping(value = "/getFalseChoiceByQuestionDesc", method = RequestMethod.POST)
+    @RequestMapping(value = "/getFalseChoiceByQuestionId", method = RequestMethod.POST)
     public List<Choice> getFalseChoiceByQuestionDesc(Model model, HttpServletRequest request) {
-        String question_desc = request.getParameter("question_desc");
-        Question edit_question = adminService.findQuestionByDesc(question_desc);
-        List<Choice> choices = adminService.findChoiceByQuestionId(edit_question.getId().toString());
+        String question_id = request.getParameter("question_id");
+
+        List<Choice> choices = adminService.findChoiceByQuestionId(question_id);
         List<Choice> falseChoices = new ArrayList<>();
         for(int i = 0; i < choices.size(); i++)
         {
@@ -1180,5 +1180,22 @@ public class AdminController {
             adminService.saveChoice(falseChoices.get(i));
         }
         return adminService.getAllFaculty();
+    }
+
+    @RequestMapping(value = "/getStringIdOfQuestion", method = RequestMethod.POST)
+    public List<String> getStringIdOfQuestion(HttpServletRequest request)
+    {
+        String section_id = request.getParameter("section_id");
+        List<Topic> listTopic = quizService.listAllTopicBySection_id(section_id);
+        List<Question> listQuestionyByTopic = new ArrayList<Question>();
+        for (int i = 0; i < listTopic.size(); i++) {
+            listQuestionyByTopic.addAll(quizService.listQuestionByTopic(listTopic.get(i).getId().toString()));
+        }
+        List<String> listString = new ArrayList<>();
+        for(int i=0;i<listQuestionyByTopic.size();i++)
+        {
+            listString.add(listQuestionyByTopic.get(i).getId().toString());
+        }
+        return listString;
     }
 }

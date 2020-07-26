@@ -14,7 +14,7 @@ import java.util.List;
 public interface QuestionRepository  extends MongoRepository<Question, Long> {
     @Query("{ topic_id: ObjectId(\"?0\" )}")
     public List<Question> findQuestionByTopicId(String topic_id);
-    @Query("{ id: ObjectId(\"?0\" )}")
+    @Query("{ _id: ObjectId(\"?0\" )}")
     public Question findTopicByQuestionId(String question_id);
     @Query("{ question_desc: \"?0\" }")
     public Question findQuestionByDesc(String question_desc);
