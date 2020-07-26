@@ -178,7 +178,7 @@
                                     question_id: question_id
                                 }, success: function (falseChoice) {
                                     $('#editQuestionDesc').append("<tr>" +
-                                        "<td>" + question.question_desc + "</td>" +
+                                        "<td style='width: 60px; overflow: hidden'>" + question.question_desc + "</td>" +
                                         "</tr>")
                                     $('#editRightChoice').val(rightChoice.choice_desc)
                                     var i;
@@ -411,9 +411,6 @@
                                         <option id="Section" value="Section" selected>Section...</option>
                                         <option th:each="section :  ${listSection}" th:value="${section.id}"
                                                 th:text="${section.title}"/>
-                                    </select>
-                                    <select class="custom-select" style="width: 30%" id="listTopic">
-                                        <option selected>Topics...</option>
                                     </select>
                                 </form>
                             </div>
