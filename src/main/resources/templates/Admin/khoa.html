@@ -387,12 +387,13 @@
     function deleteTeacher(teacher_email) {
       console.log(teacher_email)
       $('#deleteModal').modal('show');
-
+      var course_name =  $('#listMonHoc option:selected').val();
       $('#save_delete').on('click', e => {
         console.log("in here")
         $.ajax({type: "POST",url: "/api/admin/DeleteTeacher",dataType : 'json',
           data : {
-            teacher_email : teacher_email
+            teacher_email : teacher_email,
+            course_name : course_name
           }, success: function(dataSomething){
             console.log(dataSomething)
             $('#deleteModal').modal('hide');
@@ -611,7 +612,7 @@
                     </select>
                     <div class="form-group" style="width:40%">
                       <div class="input-group">
-                        <input id="fileUpload" type="text" class="form-control" readonly>
+                        <input width="50px" id="fileUpload" type="text" class="form-control" readonly>
                         <div class="input-group-btn">
                             <span class="fileUpload btn btn-info">
                               <span class="upl" id="upload">Upload multiple file</span>
@@ -622,8 +623,8 @@
                     </div><!-- form-group -->
                   </form>
                   <div style="margin-top: 1em">
-                  <button style="float: right;margin-right: 4%;"  
-                          type="submit" id="submit-file" class="btn btn-primary">Add giáo viên</button>
+                  <button style="float: right;margin-right: 4%;"
+                          type="submit" id="submit-file-teacher" class="btn btn-primary">Add giáo viên</button>
                   <button id="AddNewTeacher" type="button" class="btn btn-primary">Add A New Teacher</button>
                   </div>
                 </div>
@@ -636,7 +637,7 @@
                         <th>Full Name</th>
                         <th>Address</th>
                         <th>User's email</th>
-                        <th>Class_ID</th>
+                        <th>ClassName</th>
                         <th>Setting</th>
                       </tr>
                     </thead>
@@ -646,6 +647,12 @@
                   </table>
                 </div>
               </div>
+
+
+
+
+
+
 
               <!--table AddNewModal-->
               <div class="modal fade" id="AddNewModal" tabindex="-1" role="dialog" aria-hidden="true">

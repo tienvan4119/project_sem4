@@ -70,6 +70,16 @@ public class AdminService {
         testRepository.save(test);
     }
 
+    public void saveCourseSection(RelationCourseSection courseSection)
+    {
+        relationCourseSectionRepository.save(courseSection);
+    }
+
+    public List<Result> getListResultByTestId(String test_id)
+    {
+        return resultRepository.getListResultByTestId(test_id);
+    }
+
     public void DeleteTeacher(User user)
     {
         userRepository.delete(user);

@@ -278,7 +278,8 @@
   },
   "studentID": {
     "$oid": "5f0eb9e06cadb920586feb80"
-  }
+  },
+  "_class": "com.aptech.project.project_sem4.model.RelationStudentCourse"
 },{
   "_id": {
     "$oid": "5f1051ed59c4142208e11b13"
@@ -2209,4 +2210,81 @@
   "studentID": {
     "$oid": "5f0ebdfd6cadb920586feb8b"
   }
+},{
+  "_id": {
+    "$oid": "5f1d961a5f2580475dee8798"
+  },
+  "courseID": {
+    "$oid": "5f1d96075f2580475dee8795"
+  },
+  "studentID": {
+    "$oid": "5f1d961a5f2580475dee8797"
+  },
+  "_class": "com.aptech.project.project_sem4.model.RelationStudentCourse"
+},{
+  "_id": {
+    "$oid": "5f1d961a5f2580475dee879a"
+  },
+  "courseID": {
+    "$oid": "5f1d96075f2580475dee8795"
+  },
+  "studentID": {
+    "$oid": "5f1d961a5f2580475dee8799"
+  },
+  "_class": "com.aptech.project.project_sem4.model.RelationStudentCourse"
+},{
+  "_id": {
+    "$oid": "5f1d961a5f2580475dee879c"
+  },
+  "courseID": {
+    "$oid": "5f1d96075f2580475dee8795"
+  },
+  "studentID": {
+    "$oid": "5f1d961a5f2580475dee879b"
+  },
+  "_class": "com.aptech.project.project_sem4.model.RelationStudentCourse"
+},{
+  "_id": {
+    "$oid": "5f1d961a5f2580475dee87a0"
+  },
+  "courseID": {
+    "$oid": "5f1d96075f2580475dee8795"
+  },
+  "studentID": {
+    "$oid": "5f1d961a5f2580475dee879d"
+  },
+  "_class": "com.aptech.project.project_sem4.model.RelationStudentCourse"
+},{
+  "_id": {
+    "$oid": "5f1d961a5f2580475dee87a1"
+  },
+  "courseID": {
+    "$oid": "5f1d96075f2580475dee8795"
+  },
+  "studentID": {
+    "$oid": "5f1d961a5f2580475dee879e"
+  },
+  "_class": "com.aptech.project.project_sem4.model.RelationStudentCourse"
+},{
+  "_id": {
+    "$oid": "5f1d961a5f2580475dee87a2"
+  },
+  "courseID": {
+    "$oid": "5f1d96075f2580475dee8795"
+  },
+  "studentID": {
+    "$oid": "5f1d961a5f2580475dee879f"
+  },
+  "_class": "com.aptech.project.project_sem4.model.RelationStudentCourse"
+},{
+  "_id": {
+    "$oid": "5f1d961a5f2580475dee87a4"
+  },
+  "courseID": {
+    "$oid": "5f1d96075f2580475dee8795"
+  },
+  "studentID": {
+    "$oid": "5f1d961a5f2580475dee87a3"
+  },
+  "_class": "com.aptech.project.project_sem4.model.RelationStudentCourse"
 }]

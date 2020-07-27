@@ -23,4 +23,6 @@ public interface ResultRepository extends MongoRepository<Result, Long> {
 
     @Query("{ testId: ObjectId(\"?0\" ),  user_id: ObjectId(\"?1\" )}")
     public Result getResultByTestAndUser(String test_id, String user_id);
+    @Query("{ testId: ObjectId(\"?0\" )}")
+    public List<Result> getListResultByTestId(String testId);
 }

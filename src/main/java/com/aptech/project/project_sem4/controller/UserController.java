@@ -78,6 +78,7 @@ public class UserController {
             return "redirect:/userProfile";
         }
 
+
         if(!result.isDone() && !result.isTestAgain())
         {
             result.setDone(true);
@@ -130,7 +131,6 @@ public class UserController {
         }
         else if (!result.isDone() && result.isTestAgain())
         {
-            result.setDone(true);
             quizService.saveResult(result);
             Section current_section = quizService.isDone(userService.getCourseSection(adminService.getTestbyId(test_id[1]).getCourseID().toString()).getSectionId().toString());
 
@@ -156,6 +156,7 @@ public class UserController {
                 quizService.saveSession(session);
             }
             result.setDone(true);
+            result.setTestAgain(false);
             model.addAttribute("listChoice", listChoice);
             model.addAttribute("listTest", listTest);
             model.addAttribute("listQuestion", listQuestion);

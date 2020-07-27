@@ -23,6 +23,7 @@
 
     <!-- Custom styles for this template-->
     <link th:href="@{/css/teacherCSS/sb-admin-2.min.css}" rel="stylesheet">
+    <link th:href="@{/css/addDanhSach.css}" rel="stylesheet">
     <style type="text/css">
 
         table.table td a {
@@ -323,7 +324,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">QUẢN LÝ:</h6>
                     <a class="collapse-item" href="khoa.html">KHOA</a>
-                    <a class="collapse-item" href="addCourse.html">Lớp Học Phần</a>
+                    <a class="collapse-item active" href="addCourse.html">Lớp Học Phần</a>
                 </div>
             </div>
         </li>
@@ -451,10 +452,26 @@
 <!--                                        <option th:each="faculty :  ${listFaculty}" th:value="${faculty.id}" th:text="${faculty.name}"/>-->
 <!--                                    </select>-->
 <!--                                </form>-->
-                                <button id="AddANewCourse" type="button" class="btn btn-primary"
-                                        style="margin-top: 1em">Add A New Course
-                                </button>
-
+                                <form class="form-inline">
+                                <div class="form-group" style="width: 40%">
+                                    <div class="input-group">
+                                            <input id="fileUpload" type="text" class="form-control" readonly>
+                                            <div class="input-group-btn">
+                                                  <span class="fileUpload btn btn-info">
+                                                      <span class="upl" id="upload">Upload multiple file</span>
+                                                   <input type="file" class="upload up" id="up"  multiple/>
+                                                 </span><!-- btn-orange -->
+                                            </div>
+                                       <!-- btn -->
+                                    </div><!-- group -->
+                                </div>
+                                </form><!-- form-group -->
+                                <div class="form-group" style="margin-top: 1em">
+                                    <button id="AddANewCourse" type="button" class="btn btn-primary"
+                                            >Add A New Course
+                                    </button>
+                                    <button style="margin-left: 40px" type="submit" id="submit-file-relationCourseTeacher" class="btn btn-primary">Add Course From File</button>
+                                </div>
                             </div>
 
                             <!--Table Quản Lý-->
@@ -638,7 +655,9 @@
 
 <!-- Custom scripts for all pages-->
 <script th:src="@{/js/teacherJS/sb-admin-2.min.js}"></script>
-
+<script th:src="@{/js/admin.min.js}"></script>
+<script th:src="@{/js/papaparse.min.js}"></script>
+<script th:src="@{/js/addDanhSach.js}"></script>
 </body>
 
 </html>
